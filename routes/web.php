@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('produtos', 'Form\\ProductController')->names('products')->parameters(['produtos' => 'product']);
+
 Route::get('listagem', 'UserController@listUser');
 Route::group(['namespace' => 'form'], function () {
     /**

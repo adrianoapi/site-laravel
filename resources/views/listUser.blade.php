@@ -13,5 +13,7 @@
     <p>{{$user->email}}</p>
     <p>{{date('d/m/Y H:i', strtotime($user->created_at))}}</p>
 
+    <a href="{{route('users.listAll')}}">Listagem</a>
+
 </body>
 </html>

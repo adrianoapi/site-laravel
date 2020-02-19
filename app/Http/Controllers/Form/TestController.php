@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Form;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class TestController extends Controller
 {
     public function listAllUsers()
     {
-        $users = User::all();
+        #$users = User::all();
+
+        $users = DB::table('users')->paginate(10);
         
         return view('listAllUsers', ['users' => $users]);
     }

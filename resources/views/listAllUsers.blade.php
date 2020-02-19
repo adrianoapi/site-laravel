@@ -8,7 +8,7 @@
 </head>
 <body>
     <a href="{{route('users.formAddUser')}}">Novo</a>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <td>id</td>
@@ -24,7 +24,8 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>
-                    <a href="">visualizar</a>
+                <a href="{{route('users.list', ['user' => $user->id])}}">Visualizar</a>
+                <a href="{{route('users.formEditUser', ['user' => $user->id])}}">Editar</a>
                     <form action="{{route('user.destroy', ['user' => $user->id])}}" method="POST">
                         @csrf
                         @method('delete')
@@ -34,9 +35,17 @@
                 </td>
             </tr>
             @endforeach
-            
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">{{ $users->fragment('foo')->links() }}</td>
+            </tr>
+        </tfoot>
     </table>
+
+    <style>li {display: inline;}</style>
+
+      
     
 </body>
 </html>

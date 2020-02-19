@@ -23,6 +23,8 @@
         <input type="submit" value="Editar">
 
     </form>
+
+    <a href="{{route('users.listAll')}}">Listagem</a>
     
 </body>
 </html>

@@ -22,6 +22,8 @@
         <input type="submit" value="Cadastrar">
 
     </form>
+
+    <a href="{{route('users.listAll')}}">Listagem</a>
     
 </body>
 </html>

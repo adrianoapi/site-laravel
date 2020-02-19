@@ -7,7 +7,7 @@
     <title>Listagem de Usuários</title>
 </head>
 <body>
-
+    <a href="{{route('users.formAddUser')}}">Novo</a>
     <table>
         <thead>
             <tr>

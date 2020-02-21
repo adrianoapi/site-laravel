@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@showForm');
+Route::post('/posts/debug', 'PostController@debug')->name('debug');
 
 Route::resource('produtos', 'Form\\ProductController')->names('products')->parameters(['produtos' => 'product']);
 

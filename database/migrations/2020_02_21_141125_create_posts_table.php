@@ -19,11 +19,11 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('subtitle');
-            $table->text('description');
+            $table->text('content');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            
+
         });
     }
 

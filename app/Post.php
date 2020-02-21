@@ -9,6 +9,14 @@ class Post extends Model
 {
     protected $table = 'posts';
 
+    #public $timestamp = false;
+
+    protected $fillable = [
+        'title',
+        'subtitle',
+        'contend'
+    ];
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;

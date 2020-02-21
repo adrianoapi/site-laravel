@@ -23,6 +23,9 @@ Route::get('endereco/{address}', 'AddressController@show');
 
 Route::get('/artigo/{post}', 'PostController@show');
 
+Route::get('/categoria/novo', 'CategoryController@create');
+Route::post('/categoria/store', 'CategoryController@store')->name('category.store');
+
 Route::resource('produtos', 'Form\\ProductController')->names('products')->parameters(['produtos' => 'product']);
 
 #Route::get('listagem', 'UserController@listUser');

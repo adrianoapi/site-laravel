@@ -22,4 +22,19 @@ class PostController extends Controller
         $post->user_id  = 1;
         $post->save();
     }
+
+    public function show(Post $post)
+    {
+        echo '<h1>Artigo</h1>';
+        if($post)
+        {
+            echo "<p>#{$post->id}, {$post->title}, {$post->content}</p>";
+        }
+
+        $user = $post->author->first();
+        if($user){
+            echo '<h1>Author</h1>';
+            echo $user->name;
+        }
+    }
 }

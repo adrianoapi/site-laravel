@@ -54,6 +54,7 @@ class AddressController extends Controller
     public function show(Address $address)
     {
         if($address){
+            echo '<h1>Endereço</h1>';
             print_r($address);
         }
 

@@ -48,6 +48,16 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
         $address = $user->address()->first();
+
+        $posts = $user->posts()->get();
+
+        if($posts)
+        {
+            echo '<h1>Artigos</h1>';
+            foreach($posts as $post):
+                echo "<p>#{$post->id}, {$post->title}, {$post->content}</p>";
+            endforeach;
+        }
         
         return view('listUser', ['user' => $user, 'address' => $address]);
     }

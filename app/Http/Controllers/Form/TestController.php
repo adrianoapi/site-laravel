@@ -42,7 +42,7 @@ class TestController extends Controller
 
     public function formEditUser(User $user)
     {
-        return view('editUser', ['user' => $user]);
+        return view('listUser', ['user' => $user]);
     }
 
     public function edit(User $user, Request $request)

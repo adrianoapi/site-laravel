@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Address;
 use App\User;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return View('addAddress');
     }
 
     /**
@@ -35,30 +36,41 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $address = new Address();
+        $address->user_id = $request->user_id;
+        $address->street  = $request->street;
+        $address->number  = $request->number;
+        $address->city    = $request->city;
+        $address->state   = $request->state;
+        $address->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Address $address)
     {
-        $user = User::where('id', $id)->first();
-        $address = $user->address()->first();
-        
-        return view('listUser', ['user' => $user, 'address' => $address]);
+        if($address){
+            print_r($address);
+        }
+
+        $user = $address->user()->first();
+        echo '<h1>User</h1>';
+        if($user){
+            print_r($user);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Address $address)
     {
         //
     }
@@ -67,10 +79,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Address $address)
     {
         //
     }
@@ -78,10 +90,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Address $address)
     {
         //
     }

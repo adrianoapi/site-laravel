@@ -13,6 +13,13 @@
     <p>{{$user->email}}</p>
     <p>{{date('d/m/Y H:i', strtotime($user->created_at))}}</p>
 
+    <?php
+        if(!empty($address)){
+            echo "street: ".$address->street."<br>";
+            echo "city: ".$address->city."<br>";
+        }
+    ?>
+
     <a href="{{route('users.listAll')}}">Listagem</a>
 
 </body>

@@ -54,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('showProduct', ['product' => $product]);
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('editProduct', ['product' => $product]);
     }
 
     /**
@@ -77,7 +77,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->title       = $request->title;
+        $product->amount      = $request->amount;
+        $product->description = $request->description;
+        $product->save();
+
+        return redirect()->route('products.index');
     }
 
     /**

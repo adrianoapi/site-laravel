@@ -22,6 +22,7 @@
                 <td>{{$produto->id}}</td>
                 <td>{{$produto->title}}</td>
                 <td>
+                    <a href="{{route('products.edit', ['product' => $produto->id])}}">Editar</a>
                 </td>
             </tr>
             @endforeach

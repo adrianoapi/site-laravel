@@ -22,7 +22,14 @@
                 <td>{{$produto->id}}</td>
                 <td>{{$produto->title}}</td>
                 <td>
+                    <a href="{{route('products.show', ['product' => $produto->id])}}">Visualizar</a>
                     <a href="{{route('products.edit', ['product' => $produto->id])}}">Editar</a>
+                    <form action="{{route('products.destroy', ['product' => $produto->id])}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <input type="hidden" name="id" id="{{$produto->id}}">
+                    <input type="submit" value="Excluir">
+                    </form>
                 </td>
             </tr>
             @endforeach

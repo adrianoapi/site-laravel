@@ -16,6 +16,8 @@
     <label for="">amount</label>
     <input type="text" name="amount" value="{{$product->amount}}">
     <br>
+    <label for="image"></label>
+    <input type="text" name="image" value="{{$product->image}}"><br>
     <label for="">description</label>
     <textarea name="description" id="description" cols="30" rows="10">{{$product->description}}</textarea>
     <br>

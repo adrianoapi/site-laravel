@@ -13,5 +13,9 @@
     <p>{{$product->amount}}</p>
     <p>{{$product->description}}</p>
 
+    @if($product->image != '')
+        <img src="{{$product->image}}" width="300px" alt="">
+    @endif
+
 </body>
 </html>

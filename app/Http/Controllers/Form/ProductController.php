@@ -37,6 +37,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        if(!empty($request->image)){
+            $product->image   = $request->image;
+        }
         $product = new Product();
         $product->title       = $request->title;
         $product->amount      = $request->amount;
@@ -77,10 +80,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        if(!empty($request->image)){
+            $product->image   = $request->image;
+        }
         $product->title       = $request->title;
         $product->amount      = $request->amount;
         $product->description = $request->description;
-        $product->save();
+
+        print_r($product->save());
 
         return redirect()->route('products.index');
     }

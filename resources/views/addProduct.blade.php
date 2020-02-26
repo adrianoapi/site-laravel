@@ -16,6 +16,9 @@
     <label for="">amount</label>
     <input type="text" name="amount" value="">
     <br>
+    <label for="image"></label>
+    <input type="text" name="image" id="">
+    <br>
     <label for="">description</label>
     <textarea name="description" id="description" cols="30" rows="10"></textarea>
     <br>

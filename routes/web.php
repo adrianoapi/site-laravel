@@ -22,6 +22,7 @@ Route::post('/endereco/store', 'AddressController@store')->name('address.store')
 Route::get('endereco/{address}', 'AddressController@show');
 
 Route::get('/artigo/{post}', 'PostController@show');
+Route::get('/categoria/{category}', 'CategoryController@show');
 
 Route::get('/categoria/novo', 'CategoryController@create');
 Route::post('/categoria/store', 'CategoryController@store')->name('category.store');

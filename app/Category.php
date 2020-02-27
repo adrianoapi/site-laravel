@@ -14,4 +14,9 @@ class Category extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug' ] = Str::slug($value);
     }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'posts_categories', 'category_id', 'post_id');
+    }
 }

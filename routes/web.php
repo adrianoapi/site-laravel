@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', 'PostController@showForm');
-Route::post('/posts/debug', 'PostController@debug')->name('debug');
+Route::resource('artigos', 'PostController')->names('posts')->parameters(['artigos' => 'post']);
 
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');

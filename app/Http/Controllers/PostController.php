@@ -4,15 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
-    public function showForm()
-    {
-        return view('addPost');
-    }
-
-    public function debug(Request $request)
+    public function store(Request $request)
     {
         $post = new Post();
         #$post->create($request->except('_token'));
@@ -21,6 +17,20 @@ class PostController extends Controller
         $post->content  = $request->content;
         $post->user_id  = 1;
         $post->save();
+
+        return \redirect()->route('posts.index');
+    }
+
+    public function index()
+    {
+        $posts = DB::table('posts')->paginate(10);
+        
+        return view('listAllPosts', ['posts' => $posts]);
+    }
+
+    public function create()
+    {
+        return view('addPost');
     }
 
     public function show(Post $post)
@@ -45,5 +55,11 @@ class PostController extends Controller
                 echo "<p>#{$category->id}, {$category->title}</p>";
             endforeach;
         }
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return \redirect()->route('posts.index');
     }
 }

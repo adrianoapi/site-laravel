@@ -8,7 +8,7 @@
 </head>
 <body>
     
-<form action="{{route('debug')}}" method="POST">
+<form action="{{route('posts.store')}}" method="POST">
     @csrf
     <label for="">Título</label>
     <input type="text" name="title" value="">

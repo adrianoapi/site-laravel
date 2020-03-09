@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/admin', 'AuthController@dashboard')->name('admin');
+Route::get('/admin/login', 'AuthController@showLoginForm')->name('admin.login');
+Route::post('/admin/login/do', 'AuthController@login')->name('admin.login.do');
+
 Route::resource('artigos', 'PostController')->names('posts')->parameters(['artigos' => 'post']);
 
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');

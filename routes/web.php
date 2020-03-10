@@ -11,6 +11,18 @@
 |
 */
 
+Route::get('/', function(){
+    return view('site.home');
+})->name('site.home');
+
+Route::get('/cursos', function(){
+    return view('site.courses');
+})->name('site.curses');
+
+Route::get('/contato', function(){
+    return view('site.contact');
+})->name('site.contact');
+
 Route::get('/admin', 'AuthController@dashboard')->name('admin');
 Route::get('/admin/login', 'AuthController@showLoginForm')->name('admin.login');
 Route::get('/admin/logout', 'AuthController@logout')->name('admin.logout');

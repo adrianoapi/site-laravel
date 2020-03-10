@@ -25,4 +25,10 @@ class AuthController extends Controller
     {
         var_dump(Auth::attempt(['email' => $request->email, 'password' => $request->password]));
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return \redirect()->route('admin');
+    }
 }

@@ -23,7 +23,15 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        var_dump(Auth::attempt(['email' => $request->email, 'password' => $request->password]));
+        if(!filter_var($request->email, FILTER_VALIDATE_EMAIL)){
+            return \redirect()->back()->withInput()->withErrors(['Email informado não é válido!']);
+        }
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            return \redirect()->route('admin');
+        }
+        
+        return \redirect()->back()->withInput()->withErrors(['Dados informados não conferem!']);
     }
 
     public function logout()

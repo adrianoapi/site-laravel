@@ -23,10 +23,10 @@ Route::get('/contato', function(){
     return view('site.contact');
 })->name('site.contact');
 
-Route::get('/admin', 'AuthController@dashboard')->name('admin');
-Route::get('/admin/login', 'AuthController@showLoginForm')->name('admin.login');
-Route::get('/admin/logout', 'AuthController@logout')->name('admin.logout');
-Route::post('/admin/login/do', 'AuthController@login')->name('admin.login.do');
+Route::get('/administracao', 'AuthController@dashboard')->name('admin');
+Route::get('/administracao/login', 'AuthController@showLoginForm')->name('admin.login');
+Route::get('/administracao/logout', 'AuthController@logout')->name('admin.logout');
+Route::post('/administracao/login/do', 'AuthController@login')->name('admin.login.do');
 
 Route::resource('artigos', 'PostController')->names('posts')->parameters(['artigos' => 'post']);
 

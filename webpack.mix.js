@@ -21,3 +21,7 @@ mix
 .scripts([
     'resources/views/site/js/script.js',
 ],'public/site/js/script.js').version()
+
+.styles([
+    'resources/views/admin/css/style.css'
+],'public/admin/css/style.css').version()

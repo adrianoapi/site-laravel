@@ -13,6 +13,12 @@ const mix = require('laravel-mix');
 
 mix
 
+.sass('resources/views/blog/scss/style.scss', 'public/site/style.css')
+
+// don't need version
+.scripts(['node_modules/jquery/dist/jquery.js'],'public/site/jquery.js')
+.scripts(['node_modules/bootstrap/dist/js/bootstrap.bundle.js'],'public/site/bootstrap.js')
+
 .styles([
     'resources/views/site/css/rest.css',
     'resources/views/site/css/style.css',

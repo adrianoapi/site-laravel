@@ -15,6 +15,11 @@ Route::get('/blog/home', function(){
     return view('blog.home');
 });
 
+Route::view('/info', 'info');
+
+Route::view('/form', 'upload.form');
+Route::post('upload', 'UploadController@upload')->name('upload');
+
 Route::get('/', function(){
     return view('site.home');
 })->name('site.home');

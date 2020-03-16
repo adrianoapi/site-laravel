@@ -13,6 +13,18 @@
         <h1>bootstrap_</h1>
         <input type="button" class="btn btn-purple" value="success">
     </div>
+
+    <div class="container">
+        <h1>Table dictionary</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>usuarios</td>
+                    <td>users</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     
     
     <script src="{{asset('site/jquery.js')}}"></script>

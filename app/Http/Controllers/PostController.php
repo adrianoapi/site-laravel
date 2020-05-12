@@ -5,17 +5,21 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     public function store(Request $request)
     {
+        if(!Auth::check() === true){
+            return \redirect()->route('admin.login');
+        }
         $post = new Post();
         #$post->create($request->except('_token'));
         $post->title    = $request->title;
         $post->subtitle = $request->subtitle;
         $post->content  = $request->content;
-        $post->user_id  = 1;
+        $post->user_id  = Auth::id();
         $post->save();
 
         return \redirect()->route('posts.index');
@@ -23,6 +27,10 @@ class PostController extends Controller
 
     public function index()
     {
+        if(!Auth::check() === true){
+            return \redirect()->route('admin.login');
+        }
+
         $posts = DB::table('posts')->paginate(10);
         
         return view('listAllPosts', ['posts' => $posts]);
@@ -30,6 +38,9 @@ class PostController extends Controller
 
     public function create()
     {
+        if(!Auth::check() === true){
+            return \redirect()->route('admin.login');
+        }
         return view('addPost');
     }
 

@@ -27,6 +27,11 @@ class LinkController extends Controller
         return view('listAllLinks', ['links' => $links]);
     }
 
+    public function listLink(Link $link)
+    {
+        return view('listLink', ['link' => $link]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

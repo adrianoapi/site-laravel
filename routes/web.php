@@ -39,7 +39,24 @@ Route::post('/administracao/login/do', 'AuthController@login')->name('admin.logi
 
 Route::resource('artigos', 'PostController')->names('posts')->parameters(['artigos' => 'post']);
 
-Route::resource('favoritos', 'LinkController')->names('links')->parameters(['favoritos' => 'link']);
+Route::get('favoritos', 'LinkController@listAllLinks')->name('links.listAll');
+Route::get('favoritos/novo', 'LinkController@create')->name('links.create');
+Route::get('favoritos/editar/{link}', 'LinkController@formEditLink')->name('links.formEditLink');
+Route::get('favoritos/{link}', 'LinkController@listLink')->name('links.list');
+    /**
+     * PSOT
+     */
+    Route::post('favoritos/store', 'LinkController@store')->name('links.store');
+
+    /**
+     * PUT/PATCH
+     */
+    Route::put('favoritos/edit/{link}', 'LinkController@edit')->name('links.edit');
+
+    /**
+     * DELETE
+     */
+    Route::delete('favoritos/destroy/{link}', 'LinkController@destroy')->name('links.destroy');
 
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');

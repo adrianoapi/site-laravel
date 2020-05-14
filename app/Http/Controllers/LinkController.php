@@ -20,6 +20,13 @@ class LinkController extends Controller
         return view('listAllLinks', ['links' => $links]);
     }
 
+    public function listAllLinks()
+    {
+        $links = DB::table('links')->paginate(10);
+        
+        return view('listAllLinks', ['links' => $links]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,6 +35,11 @@ class LinkController extends Controller
     public function create()
     {
         return view('addLink');
+    }
+
+    public function formEditLink(Link $link)
+    {
+        return view('editLink', ['link' => $link]);
     }
 
     /**
@@ -63,9 +75,14 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function edit(Link $link)
+    public function edit(Link $link, Request $request)
     {
-        //
+        $link->title   = $request->title;
+        $link->link_id = $request->link_id;
+        
+        $link->save();
+
+        return redirect()->route('links.listAll');
     }
 
     /**

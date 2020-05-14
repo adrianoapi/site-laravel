@@ -22,6 +22,8 @@
                 <td>{{$link->id}}</td>
                 <td>{{$link->title}}</td>
                 <td>
+                    <a href="{{route('links.list', ['link' => $link->id])}}">Visualizar</a>
+                    <a href="{{route('links.formEditLink', ['link' => $link->id])}}">Editar</a>
                     <form action="{{route('links.destroy', ['link' => $link->id])}}" method="POST">
                         @csrf
                         @method('delete')

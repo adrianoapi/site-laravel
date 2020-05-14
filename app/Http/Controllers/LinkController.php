@@ -60,7 +60,7 @@ class LinkController extends Controller
         $link->link_id = $request->link_id;
         $link->save();
 
-        return \redirect()->route('links.index');
+        return \redirect()->route('links.listAll');
     }
 
     /**
@@ -111,6 +111,6 @@ class LinkController extends Controller
     public function destroy(Link $link)
     {
         $link->delete();
-        return \redirect()->route('links.index');
+        return \redirect()->route('links.listAll');
     }
 }

@@ -39,6 +39,8 @@ Route::post('/administracao/login/do', 'AuthController@login')->name('admin.logi
 
 Route::resource('artigos', 'PostController')->names('posts')->parameters(['artigos' => 'post']);
 
+Route::resource('favoritos', 'LinkController')->names('links')->parameters(['favoritos' => 'link']);
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 
@@ -48,6 +50,7 @@ Route::get('endereco/{address}', 'AddressController@show');
 
 Route::get('/artigo/{post}', 'PostController@show');
 Route::get('/categoria/{category}', 'CategoryController@show');
+Route::get('/favorito/{link}', 'LinkController@show');
 
 Route::get('/categoria/novo', 'CategoryController@create');
 Route::post('/categoria/store', 'CategoryController@store')->name('category.store');

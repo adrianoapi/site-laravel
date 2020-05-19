@@ -112,6 +112,7 @@ class LinkItemController extends Controller
      */
     public function destroy(LinkItem $linkItem)
     {
-        //
+        $linkItem->delete();
+        return \redirect()->route('linksItems.listAll');
     }
 }

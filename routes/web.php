@@ -43,20 +43,17 @@ Route::get('favoritos', 'LinkController@listAllLinks')->name('links.listAll');
 Route::get('favoritos/novo', 'LinkController@create')->name('links.create');
 Route::get('favoritos/editar/{link}', 'LinkController@formEditLink')->name('links.formEditLink');
 Route::get('favoritos/{link}', 'LinkController@listLink')->name('links.list');
-    /**
-     * PSOT
-     */
-    Route::post('favoritos/store', 'LinkController@store')->name('links.store');
+Route::post('favoritos/store', 'LinkController@store')->name('links.store');
+Route::put('favoritos/edit/{link}', 'LinkController@edit')->name('links.edit');
+Route::delete('favoritos/destroy/{link}', 'LinkController@destroy')->name('links.destroy');
 
-    /**
-     * PUT/PATCH
-     */
-    Route::put('favoritos/edit/{link}', 'LinkController@edit')->name('links.edit');
-
-    /**
-     * DELETE
-     */
-    Route::delete('favoritos/destroy/{link}', 'LinkController@destroy')->name('links.destroy');
+Route::get('favoritos-itens', 'LinkItemController@listAllLinksItems')->name('linksItems.listAll');
+Route::get('favoritos-itens/novo', 'LinkItemController@create')->name('linksItems.create');
+Route::post('favoritos-itens/store', 'LinkItemController@store')->name('linksItems.store');
+Route::put('favoritos-itens/edit/{linkItem}', 'LinkItemController@edit')->name('linksItems.edit');
+Route::get('favoritos-itens/{linkItem}', 'LinkItemController@list')->name('linksItems.list');
+Route::get('favoritos-itens/editar/{linkItem}', 'LinkItemController@formEditLink')->name('linksItems.formEditLink');
+Route::delete('favoritos-itens/destroy/{linkItem}', 'LinkItemController@destroy')->name('linksItems.destroy');
 
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');

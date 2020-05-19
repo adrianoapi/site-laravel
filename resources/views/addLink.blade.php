@@ -14,7 +14,13 @@
     <input type="text" name="title" value="">
     <br>
     <label for="">Link pai</label>
-    <input type="number" name="link_id" value="">
+    <select name="link_id">
+        @foreach ($parent as $parentLink)
+
+            <option value="{{$parentLink->id}}">{{$parentLink->title}}</option>
+
+        @endforeach
+    </select>
     <br>
     <input type="submit" value="Cadastrar">
 </form>

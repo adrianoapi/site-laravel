@@ -15,7 +15,17 @@
         <input type="text" name="title" value="{{$link->title}}">
 
         <label for="">link_id</label>
-        <input type="text" name="link_id" value="{{$link->link_id}}">
+        <select name="link_id">
+            @foreach ($parent as $parentLink)
+
+                @if($parentLink->id == $link->link_id)         
+                    <option value="{{$parentLink->id}}" selected>{{$parentLink->title}}</option>
+                @else
+                    <option value="{{$parentLink->id}}">{{$parentLink->title}}</option>      
+                @endif
+                
+            @endforeach
+        </select>
 
         <input type="submit" value="Editar">
 

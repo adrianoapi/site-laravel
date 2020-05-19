@@ -39,12 +39,14 @@ class LinkController extends Controller
      */
     public function create()
     {
-        return view('addLink');
+        $parent = DB::table('links')->get();
+        return view('addLink', ['parent' => $parent]);
     }
 
     public function formEditLink(Link $link)
     {
-        return view('editLink', ['link' => $link]);
+        $parent = DB::table('links')->get();
+        return view('editLink', ['link' => $link, 'parent' => $parent]);
     }
 
     /**

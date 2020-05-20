@@ -61,10 +61,13 @@ mix
 ],'public/dashboard/js/jquery-ie9.js').version()
 
 .scripts([
+    'resources/views/dashboard/js/plugins/bootbox/jquery.bootbox.js',
+    'resources/views/dashboard/js/plugins/chosen/chosen.jquery.min.js',
     'resources/views/dashboard/js/plugins/select2/select2.min.js',
 ],'public/dashboard/js/form.js').version()
 
 .styles([
+    'resources/views/dashboard/css/plugins/chosen/chosen.css',
     'resources/views/dashboard/css/plugins/select2/select2.css',
 ],'public/dashboard/css/form.css').version()
 

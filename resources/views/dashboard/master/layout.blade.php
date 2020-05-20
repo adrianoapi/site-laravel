@@ -37,7 +37,7 @@
 	<![endif]-->
 	
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="img/favicon.ico" />
+	<link rel="shortcut icon" href="{{url('img/favicon.ico')}}" />
 	<!-- Apple devices Homescreen icon -->
 	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
 
@@ -268,7 +268,7 @@
           <ul class="dropdown-menu pull-right message-ul">
             <li>
               <a href="#">
-                <img src="img/demo/user-1.jpg" alt="">
+                <img src="{{url('img/demo/user-1.jpg')}}" alt="">
                 <div class="details">
                   <div class="name">Jane Doe</div>
                   <div class="message">
@@ -279,7 +279,7 @@
             </li>
             <li>
               <a href="#">
-                <img src="img/demo/user-2.jpg" alt="">
+                <img src="{{url('img/demo/user-2.jpg')}}" alt="">
                 <div class="details">
                   <div class="name">John Doedoe</div>
                   <div class="message">
@@ -294,7 +294,7 @@
             </li>
             <li>
               <a href="#">
-                <img src="img/demo/user-3.jpg" alt="">
+                <img src="{{url('img/demo/user-3.jpg')}}" alt="">
                 <div class="details">
                   <div class="name">Bob Doe</div>
                   <div class="message">
@@ -362,25 +362,25 @@
           </ul>
         </li>
         <li class='dropdown language-select'>
-          <a href="#" class='dropdown-toggle' data-toggle="dropdown"><img src="img/demo/flags/us.gif" alt=""><span>US</span></a>
+          <a href="#" class='dropdown-toggle' data-toggle="dropdown"><img src="{{url('img/demo/flags/us.gif')}}" alt=""><span>US</span></a>
           <ul class="dropdown-menu pull-right">
             <li>
-              <a href="#"><img src="img/demo/flags/br.gif" alt=""><span>Brasil</span></a>
+              <a href="#"><img src="{{url('img/demo/flags/br.gif')}}" alt=""><span>Brasil</span></a>
             </li>
             <li>
-              <a href="#"><img src="img/demo/flags/de.gif" alt=""><span>Deutschland</span></a>
+              <a href="#"><img src="{{url('img/demo/flags/de.gif')}}" alt=""><span>Deutschland</span></a>
             </li>
             <li>
-              <a href="#"><img src="img/demo/flags/es.gif" alt=""><span>España</span></a>
+              <a href="#"><img src="{{url('img/demo/flags/es.gif')}}" alt=""><span>España</span></a>
             </li>
             <li>
-              <a href="#"><img src="img/demo/flags/fr.gif" alt=""><span>France</span></a>
+              <a href="#"><img src="{{url('img/demo/flags/fr.gif')}}" alt=""><span>France</span></a>
             </li>
           </ul>
         </li>
       </ul>
       <div class="dropdown">
-        <a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img src="img/demo/user-avatar.jpg" alt=""></a>
+        <a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img src="{{url('img/demo/user-avatar.jpg')}}" alt=""></a>
         <ul class="dropdown-menu pull-right">
           <li>
             <a href="more-userprofile.html">Edit profile</a>

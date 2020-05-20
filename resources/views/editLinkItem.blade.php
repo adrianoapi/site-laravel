@@ -12,19 +12,19 @@
                 @csrf
                 @method('PUT')
                 <div class="control-group">
-                    <label for="textfield" class="control-label">Title</label>
+                    <label for="title" class="control-label">Title</label>
                     <div class="controls">
-                        <input type="text" name="title" value="{{$linkItem->title}}" placeholder="Text input" class="input-xlarge">
+                        <input type="text" name="title" id="title" value="{{$linkItem->title}}" placeholder="Text input" class="input-xlarge">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="password" class="control-label">URL</label>
+                    <label for="url" class="control-label">URL</label>
                     <div class="controls">
-                        <input type="text" name="url" value="{{$linkItem->url}}" placeholder="Password input" class="input-xlarge">
+                        <input type="text" name="url" id="url" value="{{$linkItem->url}}" placeholder="Password input" class="input-xlarge">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="textfield" class="control-label">Basic</label>
+                    <label for="link_id" class="control-label">Basic</label>
                     <div class="controls">
                         <select name="link_id" id="link_id" class="select2-me input-xlarge">
                             @foreach ($parent as $parentLink)

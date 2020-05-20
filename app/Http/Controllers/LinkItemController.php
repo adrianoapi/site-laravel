@@ -44,7 +44,8 @@ class LinkItemController extends Controller
 
     public function list(LinkItem $linkItem)
     {
-        return view('listLinkItem', ['linkItem' => $linkItem]);
+        $parent = DB::table('links')->get();
+        return view('listLinkItem', ['linkItem' => $linkItem, 'parent' => $parent]);
     }
 
     /**

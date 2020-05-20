@@ -2,10 +2,20 @@
 
 @section('content')
 
-<div class="span12">
+<div class="container-fluid">
+    <div class="page-header">
+        <div class="pull-left">
+            <h1>Favortio Item</h1>
+        </div>
+        <div class="pull-right">
+            <div class="btn-toolbar">
+                <a href="{{route('linksItems.listAll')}}" class="btn btn-primary"><i class="icon-reorder" title="Listagem"></i> Listagem</a>
+            </div> 
+        </div> 
+    </div>
     <div class="box box-bordered box-color">
         <div class="box-title">
-            <h3><i class="icon-th-list"></i> Colored</h3>
+            <h3><i class="icon-th-list"></i> Alterar</h3>
         </div>
         <div class="box-content nopadding">
             <form action="{{route('linksItems.edit', ['linkItem' => $linkItem->id])}}" method="POST" class="form-horizontal form-bordered">
@@ -41,12 +51,12 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                    <a href="{{route('linksItems.listAll')}}" class="btn">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Salvar Alteração</button>
+                    <a href="{{route('linksItems.listAll')}}" class="btn">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
     
-    @endsection
+@endsection

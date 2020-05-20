@@ -399,25 +399,24 @@
 
 <div class="container-fluid" id="content">
   <div id="left">
-    <form action="search-results.html" method="GET" class='search-form'>
-      <div class="search-pane">
-        <input type="text" name="search" placeholder="Search here...">
-        <button type="submit"><i class="icon-search"></i></button>
-      </div>
-    </form>
+  
     <div class="subnav">
       <div class="subnav-title">
-        <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Content</span></a>
+        <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Financeiro</span></a>
       </div>
       <ul class="subnav-menu">
+        <li><a href="#"><i class="glyphicon-dashboard"></i> Dashboard</a></li>
         <li class='dropdown'>
-          <a href="#" data-toggle="dropdown">Articles</a>
+          <a href="#" data-toggle="dropdown"><i class="icon-money"></i> Lançamentos</a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#">Action #1</a>
+              <a href="#">Receitas</a>
             </li>
             <li>
-              <a href="#">Antoher Link</a>
+              <a href="#">Despesas</a>
+            </li>
+            <li>
+              <a href="#">Transferências</a>
             </li>
             <li class='dropdown-submenu'>
               <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
@@ -436,17 +435,67 @@
           </ul>
         </li>
         <li>
-          <a href="#">News</a>
+          <a href="#"><i class="icon-search"></i> Pesquisas</a>
         </li>
         <li>
-          <a href="#">Pages</a>
+          <a href="#"><i class="icon-bar-chart"></i> Gráficos</a>
         </li>
-        <li>
-          <a href="#">Comments</a>
+        <li class='dropdown'>
+          <a href="#" data-toggle="dropdown"><i class="icon-laptop"></i> Configurações</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#"><i class="glyphicon-credit_card"></i> Tipos de Lançamento</a>
+            </li>
+            <li>
+              <a href="#"><i class="glyphicon-shopping_bag"></i> Tipos de Despesa</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
     <div class="subnav">
+      <div class="subnav-title">
+        <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Produtividade</span></a>
+      </div>
+      <ul class="subnav-menu">
+        <li class='dropdown'>
+          <a href="#" data-toggle="dropdown"><i class="icon-sitemap"></i> Organogramas</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">Mapa Mental</a>
+            </li>
+            <li>
+              <a href="#">Fluxograma</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="{{route('linksItems.listAll')}}"><i class="icon-star-empty"></i> Favoritos</a>
+        </li>
+        <li>
+          <a href="#"><i class="icon-heart-empty"></i> Coleções</a>
+        </li>
+        <li>
+          <a href="{{route('posts.index')}}"><i class="icon-book"></i> Anotações</a>
+        </li>
+        <li>
+          <a href="#"><i class="glyphicon-keys"></i> Senhas</a>
+        </li>
+        <li class='dropdown'>
+          <a href="#" data-toggle="dropdown"><i class="icon-calendar"></i> Agendas</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#"><i class="glyphicon-tie"></i> Compromissos</a>
+            </li>
+            <li>
+              <a href="#"><i class="glyphicon-iphone_shake"></i> Contatos</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#"><i class="glyphicon-list"></i> Lista de Tarefas</a></li>
+      </ul>
+    </div>
+    <div class="subnav subnav-hidden">
       <div class="subnav-title">
         <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Plugins</span></a>
       </div>
@@ -487,47 +536,9 @@
         </li>
       </ul>
     </div>
-    <div class="subnav">
-      <div class="subnav-title">
-        <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Settings</span></a>
-      </div>
-      <ul class="subnav-menu">
-        <li>
-          <a href="#">Theme settings</a>
-        </li>
-        <li class='dropdown'>
-          <a href="#" data-toggle="dropdown">Page settings</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">Action #1</a>
-            </li>
-            <li>
-              <a href="#">Antoher Link</a>
-            </li>
-            <li class='dropdown-submenu'>
-              <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">This is level 3</a>
-                </li>
-                <li>
-                  <a href="#">Unlimited levels</a>
-                </li>
-                <li>
-                  <a href="#">Easy to use</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Security settings</a>
-        </li>
-      </ul>
-    </div>
     <div class="subnav subnav-hidden">
       <div class="subnav-title">
-        <a href="#" class='toggle-subnav'><i class="icon-angle-right"></i><span>Default hidden</span></a>
+        <a href="#" class='toggle-subnav'><i class="icon-angle-right"></i><span>Configurações</span></a>
       </div>
       <ul class="subnav-menu">
         <li>

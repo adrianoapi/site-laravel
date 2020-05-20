@@ -27,10 +27,7 @@ class PostController extends Controller
 
     public function index()
     {
-        if(!Auth::check() === true){
-            return \redirect()->route('admin.login');
-        }
-
+        
         $posts = DB::table('posts')->paginate(10);
         
         return view('listAllPosts', ['posts' => $posts]);

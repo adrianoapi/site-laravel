@@ -29,7 +29,8 @@ class LinkController extends Controller
 
     public function listLink(Link $link)
     {
-        return view('listLink', ['link' => $link]);
+        $parent = DB::table('links')->get();
+        return view('listLink', ['link' => $link, 'parent' => $parent]);
     }
 
     /**

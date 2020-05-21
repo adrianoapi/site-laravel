@@ -37,7 +37,7 @@
                             <td><a href="{{$link->url}}" target="_blank" rel="noopener noreferrer">{{$link->title}}</a> <i class="icon-external-link"></i></td>
                             <td>{{$link->url}}</td>
                             <td>
-                                <form action="{{route('linksItems.destroy', ['linkItem' => $link->id])}}" method="POST" style="padding: 0px;margin:0px;">
+                                <form action="{{route('linksItems.destroy', ['linkItem' => $link->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
                                     <a href="{{route('linksItems.list', ['linkItem' => $link->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>

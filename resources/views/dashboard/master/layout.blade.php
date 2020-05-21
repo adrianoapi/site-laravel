@@ -42,6 +42,9 @@
 	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
 
 </head>
+
+<body data-layout-sidebar="fixed" data-layout-topbar="fixed">
+  
 <div id="navigation">
   <div class="container-fluid">
     <a href="#" id="brand">FLAT</a>
@@ -406,33 +409,8 @@
       </div>
       <ul class="subnav-menu">
         <li><a href="#"><i class="glyphicon-dashboard"></i> Dashboard</a></li>
-        <li class='dropdown'>
-          <a href="#" data-toggle="dropdown"><i class="icon-money"></i> Lançamentos</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">Receitas</a>
-            </li>
-            <li>
-              <a href="#">Despesas</a>
-            </li>
-            <li>
-              <a href="#">Transferências</a>
-            </li>
-            <li class='dropdown-submenu'>
-              <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">This is level 3</a>
-                </li>
-                <li>
-                  <a href="#">Unlimited levels</a>
-                </li>
-                <li>
-                  <a href="#">Easy to use</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+        <li>
+          <a href="#"><i class="icon-money"></i> Lançamentos</a>
         </li>
         <li>
           <a href="#"><i class="icon-search"></i> Pesquisas</a>

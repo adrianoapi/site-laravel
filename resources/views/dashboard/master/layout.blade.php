@@ -447,8 +447,16 @@
             </li>
           </ul>
         </li>
-        <li>
-          <a href="{{route('linksItems.listAll')}}"><i class="icon-star-empty"></i> Favoritos</a>
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown"><i class="icon-star-empty"></i> Favoritos</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{route('links.listAll')}}"><i class="icon-star-empty"></i> Categorias</a>
+            </li>
+            <li>
+              <a href="{{route('linksItems.listAll')}}"><i class="icon-star-empty"></i> Links</a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="#"><i class="icon-heart-empty"></i> Coleções</a>

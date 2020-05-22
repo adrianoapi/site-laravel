@@ -42,7 +42,12 @@
   <link rel="apple-touch-icon-precomposed" href="{{url('img/apple-touch-icon-precomposed.png')}}" />
 
 	<!-- Fullcalendar -->
-	<link rel="stylesheet" href="{{url('dashboard/css/plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
+  <link rel="stylesheet" href="{{url('dashboard/css/plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
+  
+
+  <!-- icheck -->
+	<script src="{{url('dashboard/js/plugins/icheck/jquery.icheck.min.js')}}"></script>
+
 
 
 </head>

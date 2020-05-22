@@ -42,6 +42,10 @@
                     </div>
                 </div>
 
+                @foreach($linksItems as $link)
+                    <li>{{$link->title}}</li>
+                @endforeach
+
                 <div class="form-actions">
                     <p>{{date('d/m/Y H:i', strtotime($link->created_at))}}</p>
                 </div>

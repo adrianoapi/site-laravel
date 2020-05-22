@@ -42,13 +42,18 @@
                     </div>
                 </div>
 
-                @foreach($linksItems as $link)
-                    <li>{{$link->title}}</li>
-                @endforeach
+                <table class="table table-bordered table-hover">
+                    @foreach($linksItems as $link)
+                    <tr>
+                        <td><li><a href="{{$link->url}}" target="_blank">{{$link->title}}</a></li></td>
+                    </tr>
+                    @endforeach
+                </table>
 
                 <div class="form-actions">
                     <p>{{date('d/m/Y H:i', strtotime($link->created_at))}}</p>
                 </div>
+                
             </form>
         </div>
     </div>

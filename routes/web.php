@@ -32,6 +32,8 @@ Route::get('/contato', function(){
     return view('site.contact');
 })->name('site.contact');
 
+Route::get('dash', 'DashController@index')->name('dash.index');
+
 Route::get('/administracao', 'AuthController@dashboard')->name('admin');
 Route::get('/administracao/login', 'AuthController@showLoginForm')->name('admin.login');
 Route::get('/administracao/logout', 'AuthController@logout')->name('admin.logout');

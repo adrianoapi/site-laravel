@@ -39,7 +39,11 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="{{url('img/favicon.ico')}}" />
 	<!-- Apple devices Homescreen icon -->
-	<link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="{{url('img/apple-touch-icon-precomposed.png')}}" />
+
+	<!-- Fullcalendar -->
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
+
 
 </head>
 
@@ -47,11 +51,11 @@
   
 <div id="navigation">
   <div class="container-fluid">
-    <a href="#" id="brand">FLAT</a>
+    <a href="{{url('dash')}}" id="brand">FLAT</a>
     <a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
     <ul class='main-nav'>
       <li>
-        <a href="index.html">
+        <a href="{{url('dash')}}">
           <span>Dashboard</span>
         </a>
       </li>

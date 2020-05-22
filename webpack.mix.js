@@ -43,6 +43,7 @@ mix
 	'resources/views/dashboard/js/plugins/jquery-ui/jquery.ui.core.min.js',
 	'resources/views/dashboard/js/plugins/jquery-ui/jquery.ui.widget.min.js',
 	'resources/views/dashboard/js/plugins/jquery-ui/jquery.ui.mouse.min.js',
+	'resources/views/dashboard/js/plugins/jquery-ui/jquery.ui.draggable.min.js',
 	'resources/views/dashboard/js/plugins/jquery-ui/jquery.ui.resizable.min.js',
 	'resources/views/dashboard/js/plugins/jquery-ui/jquery.ui.sortable.min.js',
 	'resources/views/dashboard/js/plugins/slimscroll/jquery.slimscroll.min.js',
@@ -62,11 +63,14 @@ mix
 
 .scripts([
     'resources/views/dashboard/js/plugins/bootbox/jquery.bootbox.js',
+    'resources/views/dashboard/js/plugins/fullcalendar/fullcalendar.min.js',
     'resources/views/dashboard/js/plugins/chosen/chosen.jquery.min.js',
     'resources/views/dashboard/js/plugins/select2/select2.min.js',
 ],'public/dashboard/js/form.js').version()
 
 .styles([
+    'resources/views/dashboard/css/plugins/fullcalendar/fullcalendar.css',
+    'resources/views/dashboard/css/plugins/fullcalendar/fullcalendar.css',
     'resources/views/dashboard/css/plugins/chosen/chosen.css',
     'resources/views/dashboard/css/plugins/select2/select2.css',
 ],'public/dashboard/css/form.css').version()

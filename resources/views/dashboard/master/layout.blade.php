@@ -496,7 +496,17 @@
             </li>
           </ul>
         </li>
-        <li><a href="#"><i class="glyphicon-list"></i> Lista de Tarefas</a></li>
+        <li class='dropdown'>
+          <a href="#" data-toggle="dropdown"><i class="glyphicon-list"></i> Lista de Tarefas</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#"><i class="glyphicon-list"></i> Tarefas</a>
+            </li>
+            <li>
+            <a href="{{url('tarefas-grupo')}}"><i class="glyphicon-list"></i> Grupos</a>
+            </li>
+          </ul>
+        </li>
         <li><a href="artigos"><i class="icon-list-alt"></i> Artigos</a></li>
       </ul>
     </div>

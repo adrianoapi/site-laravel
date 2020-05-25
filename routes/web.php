@@ -57,6 +57,14 @@ Route::get('favoritos-itens/{linkItem}', 'LinkItemController@list')->name('links
 Route::get('favoritos-itens/editar/{linkItem}', 'LinkItemController@formEditLink')->name('linksItems.formEditLink');
 Route::delete('favoritos-itens/destroy/{linkItem}', 'LinkItemController@destroy')->name('linksItems.destroy');
 
+Route::get('tarefas-grupo', 'GroupTaskController@index')->name('groupTasks.index');
+Route::get('tarefas-grupo/novo', 'GroupTaskController@create')->name('groupTasks.create');
+Route::post('tarefas-grupo/store', 'GroupTaskController@store')->name('groupTasks.store');
+Route::get('tarefas-grupo/editar/{groupTask}', 'GroupTaskController@edit')->name('groupTasks.edit');
+Route::put('tarefas-grupo/edit/{groupTask}', 'GroupTaskController@update')->name('groupTasks.update');
+Route::get('tarefas-grupo/{groupTask}', 'GroupTaskController@show')->name('groupTasks.show');
+Route::delete('tarefas-grupo/destroy/{groupTask}', 'GroupTaskController@destroy')->name('groupTasks.destroy');
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

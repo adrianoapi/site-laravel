@@ -41,8 +41,9 @@ class TaskController extends Controller
     {
         $task = new Task();
         $task->group_task_id = $request->group_task_id;
-        $task->title = $request->title;
-        $task->content = $request->content;
+        $task->title         = $request->title;
+        $task->content       = $request->content;
+        $task->status        = $request->status;
         $task->save();
 
         return \redirect()->route('tasks.index');
@@ -84,6 +85,7 @@ class TaskController extends Controller
         $task->group_task_id = $request->group_task_id;
         $task->title         = $request->title;
         $task->content       = $request->content;
+        $task->status        = $request->status;
         $task->save();
 
         return redirect()->route('tasks.index');

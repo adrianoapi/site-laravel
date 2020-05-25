@@ -44,6 +44,20 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label class="control-label">Radios</label>
+                    <div class="controls">
+                        <label class="radio">
+                        <input type="radio" name="status" value="open" {{ $task->status === "open" ? "checked" : "" }}> Aberta
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="status" value="closed" {{ $task->status === "closed" ? "checked" : "" }}> Fechada
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="status" value="deleted" {{ $task->status === "deleted" ? "checked" : "" }}> Deletada
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
                     <label for="content" class="control-label">Conteúdo</label>
                     <div class="controls">
                         <textarea name="content" id="content" rows="5" class="input-block-level">{{$task->content}}</textarea>

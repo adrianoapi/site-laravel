@@ -37,6 +37,20 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label class="control-label">Radios</label>
+                    <div class="controls">
+                        <label class="radio">
+                            <input type="radio" name="status" value="open"> Aberta
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="status" value="closed"> Fechada
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="status" value="deleted"> Deletada
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
                     <label for="content" class="control-label">Conteúdo</label>
                     <div class="controls">
                         <textarea name="content" id="content" rows="5" class="input-block-level"></textarea>

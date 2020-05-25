@@ -500,7 +500,7 @@
           <a href="#" data-toggle="dropdown"><i class="glyphicon-list"></i> Lista de Tarefas</a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#"><i class="glyphicon-list"></i> Tarefas</a>
+              <a href="{{url('tarefas')}}"><i class="glyphicon-list"></i> Tarefas</a>
             </li>
             <li>
             <a href="{{url('tarefas-grupo')}}"><i class="glyphicon-list"></i> Grupos</a>

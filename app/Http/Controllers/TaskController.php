@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = DB::table('tasks')->paginate(10);
+        $tasks = Task::where('id', '>', 0)->paginate(10);
         return view('listAllTask', ['tasks' => $tasks]);
     }
 

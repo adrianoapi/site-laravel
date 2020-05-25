@@ -26,6 +26,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
+                        <th>Categoria</th>
+                        <th>Status</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -34,6 +36,7 @@
                         <tr>
                             <td>{{$value->id}}</td>
                             <td>{{$value->title}}</td>
+                            <td>{{$value->groupTask->title}}</td>
                             <td>{{$value->status}}</td>
                             <td>
                                 <form action="{{route('tasks.destroy', ['task' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">

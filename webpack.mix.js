@@ -33,6 +33,18 @@ mix
 ],'public/admin/css/style.css').version()
 
 /* Dashboard */
+
+.styles([
+    'resources/views/dashboard/css/bootstrap.min.css',
+    'resources/views/dashboard/css/bootstrap-responsive.min.css',
+    'resources/views/dashboard/css/plugins/jquery-ui/smoothness/jquery-ui.css',
+    'resources/views/dashboard/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css',
+],'public/dashboard/css/bootstrap.css').version()
+    
+.styles([
+    'resources/views/dashboard/css/style.css',
+    'resources/views/dashboard/css/themes.css',
+],'public/dashboard/css/style.css').version()
     
 .scripts([
     'resources/views/dashboard/js/jquery.min.js',
@@ -67,22 +79,3 @@ mix
     'resources/views/dashboard/js/plugins/chosen/chosen.jquery.min.js',
     'resources/views/dashboard/js/plugins/select2/select2.min.js',
 ],'public/dashboard/js/form.js').version()
-
-.styles([
-    'resources/views/dashboard/css/plugins/fullcalendar/fullcalendar.css',
-    'resources/views/dashboard/css/plugins/fullcalendar/fullcalendar.css',
-    'resources/views/dashboard/css/plugins/chosen/chosen.css',
-    'resources/views/dashboard/css/plugins/select2/select2.css',
-],'public/dashboard/css/form.css').version()
-
-.styles([
-    'resources/views/dashboard/css/bootstrap.min.css',
-    'resources/views/dashboard/css/bootstrap-responsive.min.css',
-    'resources/views/dashboard/css/plugins/jquery-ui/smoothness/jquery-ui.css',
-    'resources/views/dashboard/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css',
-],'public/dashboard/css/bootstrap.css').version()
-    
-.styles([
-    'resources/views/dashboard/css/style.css',
-    'resources/views/dashboard/css/themes.css',
-],'public/dashboard/css/style.css').version()

@@ -13,10 +13,20 @@
 	<!-- Bootstrap -->
   <link rel="stylesheet" href="{{url(mix('dashboard/css/bootstrap.css'))}}">
 
+  <!-- PageGuide -->
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/pageguide/pageguide.css')}}">
+	<!-- Fullcalendar -->
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/fullcalendar/fullcalendar.css')}}">
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
+	<!-- chosen -->
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/chosen/chosen.css')}}">
+	<!-- select2 -->
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/select2/select2.css')}}">
+  <!-- icheck -->
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/icheck/all.css')}}">
+
 	<!-- Theme CSS -->
   <link rel="stylesheet" href="{{url(mix('dashboard/css/style.css'))}}">
-
-  <link rel="stylesheet" href="{{url(mix('dashboard/css/form.css'))}}">
 
 	<!-- jQuery -->
   <script src="{{url(mix('dashboard/js/jquery.js'))}}"></script>
@@ -411,7 +421,6 @@
 
 <div class="container-fluid" id="content">
   <div id="left">
-  
     <div class="subnav">
       <div class="subnav-title">
         <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Financeiro</span></a>
@@ -488,82 +497,7 @@
           </ul>
         </li>
         <li><a href="#"><i class="glyphicon-list"></i> Lista de Tarefas</a></li>
-      </ul>
-    </div>
-    <div class="subnav subnav-hidden">
-      <div class="subnav-title">
-        <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Plugins</span></a>
-      </div>
-      <ul class="subnav-menu">
-        <li>
-          <a href="#">Cache manager</a>
-        </li>
-        <li class='dropdown'>
-          <a href="#" data-toggle="dropdown">Import manager</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">Action #1</a>
-            </li>
-            <li>
-              <a href="#">Antoher Link</a>
-            </li>
-            <li class='dropdown-submenu'>
-              <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">This is level 3</a>
-                </li>
-                <li>
-                  <a href="#">Unlimited levels</a>
-                </li>
-                <li>
-                  <a href="#">Easy to use</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Contact form generator</a>
-        </li>
-        <li>
-          <a href="#">SEO optimization</a>
-        </li>
-      </ul>
-    </div>
-    <div class="subnav subnav-hidden">
-      <div class="subnav-title">
-        <a href="#" class='toggle-subnav'><i class="icon-angle-right"></i><span>Configurações</span></a>
-      </div>
-      <ul class="subnav-menu">
-        <li>
-          <a href="#">Menu</a>
-        </li>
-        <li class='dropdown'>
-          <a href="#" data-toggle="dropdown">With submenu</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">Action #1</a>
-            </li>
-            <li>
-              <a href="#">Antoher Link</a>
-            </li>
-            <li class='dropdown-submenu'>
-              <a href="#" data-toggle="dropdown" class='dropdown-toggle'>More stuff</a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">This is level 3</a>
-                </li>
-                <li>
-                  <a href="#">Easy to use</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Security settings</a>
-        </li>
+        <li><a href="artigos"><i class="icon-list-alt"></i> Artigos</a></li>
       </ul>
     </div>
   </div>

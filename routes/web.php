@@ -81,6 +81,14 @@ Route::put('transacoes-tipo/editar/{transitionType}', 'TransitionTypeController@
 Route::get('transacoes-tipo/{transitionType}', 'TransitionTypeController@show')->name('transitionTypes.show');
 Route::delete('transacoes-tipo/destroy/{transitionType}', 'TransitionTypeController@destroy')->name('transitionTypes.destroy');
 
+Route::get('lancamento-grupo', 'LedgerGroupController@index')->name('ledgerGroups.index');
+Route::get('lancamento-grupo/novo', 'LedgerGroupController@create')->name('ledgerGroups.create');
+Route::post('lancamento-grupo/store', 'LedgerGroupController@store')->name('ledgerGroups.store');
+Route::get('lancamento-grupo/editar/{ledgerGroup}', 'LedgerGroupController@edit')->name('ledgerGroups.edit');
+Route::put('lancamento-grupo/editar/{ledgerGroup}', 'LedgerGroupController@update')->name('ledgerGroups.update');
+Route::get('lancamento-grupo/{ledgerGroup}', 'LedgerGroupController@show')->name('ledgerGroups.show');
+Route::delete('lancamento-grupo/destroy/{ledgerGroup}', 'LedgerGroupController@destroy')->name('ledgerGroups.destroy');
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

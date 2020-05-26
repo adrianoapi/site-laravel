@@ -443,7 +443,7 @@
               <a href="{{'transacoes-tipo'}}"><i class="glyphicon-credit_card"></i> Tipo de tansação</a>
             </li>
             <li>
-              <a href="#"><i class="glyphicon-shopping_bag"></i> Tipos de Despesa</a>
+              <a href="{{'lancamento-grupo'}}"><i class="glyphicon-shopping_bag"></i> Tipos de Despesa</a>
             </li>
           </ul>
         </li>

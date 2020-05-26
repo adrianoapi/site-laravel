@@ -71,7 +71,7 @@ Route::post('tarefas/store', 'TaskController@store')->name('tasks.store');
 Route::get('tarefas/editar/{task}', 'TaskController@edit')->name('tasks.edit');
 Route::put('tarefas/editar/{task}', 'TaskController@update')->name('tasks.update');
 Route::get('tarefas/{task}', 'TaskController@show')->name('tasks.show');
-Route::delete('tarefas/destroy/{task}')->name('tasks.destroy');
+Route::delete('tarefas/destroy/{task}', 'TaskController@destroy')->name('tasks.destroy');
 
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');

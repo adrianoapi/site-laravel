@@ -51,17 +51,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="table-pagination">
-                <a href="#" class="disabled">First</a>
-                <a href="#" class="disabled">Previous</a>
-                <span>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                </span>
-                <a href="#">Next</a>
-                <a href="#">Last</a>
-            </div>
+            {{ $tasks->links('dashboard.pagination') }}
         </div>
     </div>
 </div>

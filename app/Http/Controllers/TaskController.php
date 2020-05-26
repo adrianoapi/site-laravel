@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::where('id', '>', 0)->paginate(10);
+        $tasks = Task::paginate(10);
         return view('listAllTask', ['tasks' => $tasks]);
     }
 
@@ -99,6 +99,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return \redirect()->route('tasks.index');
     }
 }

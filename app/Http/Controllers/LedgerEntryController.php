@@ -16,8 +16,27 @@ class LedgerEntryController extends Controller
      */
     public function index()
     {
-        $ledgerEntries = LedgerEntry::orderBy('entry_date', 'desc')->paginate(100);
-        return view('listAllLedgerEntry', ['ledgerEntries' => $ledgerEntries]);
+        if(array_key_exists('filtro',$_GET)){
+            if($_GET['filtro'] == 'despesa'){
+
+                $ledgerGroups = \App\LedgerGroup::where('ledger_group_id', $_GET['id'])->get();
+                $ids = [];
+                foreach($ledgerGroups as $value):
+                    array_push($ids, $value->id);
+                endforeach;
+
+                $ledgerEntries = LedgerEntry::whereIn('ledger_group_id', $ids)->orderBy('entry_date', 'desc')->paginate(100);
+            }else{
+                $ledgerEntries = LedgerEntry::where('transition_type_id', $_GET['id'])->orderBy('entry_date', 'desc')->paginate(100);
+            }
+        }else{
+            $ledgerEntries = LedgerEntry::orderBy('entry_date', 'desc')->paginate(100);
+        }
+
+        $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
+        $transitionTypes = DB::table('transition_types')->get();
+
+        return view('listAllLedgerEntry', ['ledgerEntries' => $ledgerEntries, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**

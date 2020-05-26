@@ -3,22 +3,33 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="page-header">
-        <div class="pull-left">
-            <h1>/lancamentos</h1>
-        </div>
-        <div class="pull-right">
-            <div class="btn-toolbar">
-                <a href="{{route('ledgerEntries.create')}}" class="btn btn-primary"><i class="icon-plus" title="Adicionar"></i> Adicionar</a>
-            </div> 
-        </div> 
-    </div>
-    <div class="box box-color box-bordered">
+
+    <div class="box box-bordered">
         <div class="box-title">
             <h3>
                 <i class="icon-table"></i>
-                Listagem
+                Lançamentos
             </h3>
+            <div class="actions">
+                <div class="btn-group">
+                    <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="glyphicon-shopping_bag"></i> <span class="caret"></span> Tipo de Despesa</a>
+                    <ul class="dropdown-menu">
+                        @foreach ($ledgerGroups as $value)
+                            <li><a href="{{route('ledgerEntries.index', ['filtro' =>'despesa', 'id' => $value->ledgerGroup->id])}}">{{$value->ledgerGroup->title}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="glyphicon-credit_card"></i> <span class="caret"></span> Tipo de Transação</a>
+                    <ul class="dropdown-menu">
+                        @foreach ($transitionTypes as $value)
+                            <li><a href="{{route('ledgerEntries.index', ['filtro' => 'transacao', 'id' => $value->id])}}">{{$value->title}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="glyphicon-cleaning"></i> Limpar</a>
+                <a href="{{route('ledgerEntries.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Novo Lançamento</a>
+            </div>
         </div>
         <div class="box-content nopadding">
             <table class="table table-hover table-nomargin">

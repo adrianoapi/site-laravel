@@ -411,7 +411,7 @@
             <a href="#">Account settings</a>
           </li>
           <li>
-            <a href="more-login.html">Sign out</a>
+            <a href="{{route('admin.logout')}}">Sign out</a>
           </li>
         </ul>
       </div>
@@ -426,7 +426,7 @@
         <a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Financeiro</span></a>
       </div>
       <ul class="subnav-menu">
-        <li><a href="#"><i class="glyphicon-dashboard"></i> Dashboard</a></li>
+        <li><a href="{{route('dash.index')}}"><i class="glyphicon-dashboard"></i> Dashboard</a></li>
         <li>
           <a href="#"><i class="icon-money"></i> Lançamentos</a>
         </li>

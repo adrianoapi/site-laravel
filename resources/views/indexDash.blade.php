@@ -8,7 +8,7 @@
         <div class="span6">
             <div class="box box-color">
                 <div class="box-title">
-                    <h3><i class="icon-calendar"></i>My calendar</h3>
+                    <h3><i class="icon-calendar"></i>Agenda</h3>
                 </div>
                 <div class="box-content nopadding">
                     <div class="calendar"></div>
@@ -19,7 +19,7 @@
 					<div class="span6">
 						<div class="box box-color box-bordered">
 							<div class="box-title">
-								<h3><i class="icon-ok"></i> Tasks</h3>
+								<h3><i class="icon-ok"></i> Tarefas</h3>
 								<div class="actions">
 									<a href="#new-task" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Add Task</a>
 								</div>

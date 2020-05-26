@@ -440,7 +440,7 @@
           <a href="#" data-toggle="dropdown"><i class="icon-laptop"></i> Configurações</a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#"><i class="glyphicon-credit_card"></i> Tipos de Lançamento</a>
+              <a href="{{'transacoes-tipo'}}"><i class="glyphicon-credit_card"></i> Tipo de tansação</a>
             </li>
             <li>
               <a href="#"><i class="glyphicon-shopping_bag"></i> Tipos de Despesa</a>

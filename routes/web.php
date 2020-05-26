@@ -73,6 +73,14 @@ Route::put('tarefas/editar/{task}', 'TaskController@update')->name('tasks.update
 Route::get('tarefas/{task}', 'TaskController@show')->name('tasks.show');
 Route::delete('tarefas/destroy/{task}', 'TaskController@destroy')->name('tasks.destroy');
 
+Route::get('transacoes-tipo', 'TransitionTypeController@index')->name('transitionTypes.index');
+Route::get('transacoes-tipo/novo', 'TransitionTypeController@create')->name('transitionTypes.create');
+Route::post('transacoes-tipo/store', 'TransitionTypeController@store')->name('transitionTypes.store');
+Route::get('transacoes-tipo/editar/{transitionType}', 'TransitionTypeController@edit')->name('transitionTypes.edit');
+Route::put('transacoes-tipo/editar/{transitionType}', 'TransitionTypeController@update')->name('transitionTypes.update');
+Route::get('transacoes-tipo/{transitionType}', 'TransitionTypeController@show')->name('transitionTypes.show');
+Route::get('transacoes-tipo/destroy/{transitionType}', 'TransitionTypeController@destroy')->name('transitionTypes.destroy');
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

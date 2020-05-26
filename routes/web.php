@@ -39,6 +39,8 @@ Route::get('/administracao/login', 'AuthController@showLoginForm')->name('admin.
 Route::get('/administracao/logout', 'AuthController@logout')->name('admin.logout');
 Route::post('/administracao/login/do', 'AuthController@login')->name('admin.login.do');
 
+Route::get('login', 'AuthController@showLoginForm')->name('login');
+
 Route::resource('artigos', 'PostController')->names('posts')->parameters(['artigos' => 'post']);
 
 Route::get('favoritos', 'LinkController@listAllLinks')->name('links.listAll');

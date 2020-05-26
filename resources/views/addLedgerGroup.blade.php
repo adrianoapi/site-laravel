@@ -27,9 +27,9 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="ledger_groups_id" class="control-label">Basic</label>
+                    <label for="ledger_group_id" class="control-label">Basic</label>
                     <div class="controls">
-                        <select name="ledger_groups_id" id="ledger_groups_id" class="select2-me input-xlarge">
+                        <select name="ledger_group_id" id="ledger_group_id" class="select2-me input-xlarge">
                             <option value="">Select...</option>
                             @foreach ($parents as $value)
                                 <option value="{{$value->id}}">{{$value->title}}</option>

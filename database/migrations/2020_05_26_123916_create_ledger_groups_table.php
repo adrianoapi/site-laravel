@@ -15,7 +15,7 @@ class CreateLedgerGroupsTable extends Migration
     {
         Schema::create('ledger_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('ledger_groups_id')->nullable(true);
+            $table->unsignedBigInteger('ledger_group_id')->nullable(true);
             $table->string('title');
             $table->text('description')->nullable(true);
             $table->timestamps();
@@ -23,7 +23,7 @@ class CreateLedgerGroupsTable extends Migration
 
         Schema::table('ledger_groups', function (Blueprint $table) 
         {
-            $table->foreign('ledger_groups_id')->references('id')->on('ledger_groups')->onDelete('CASCADE');
+            $table->foreign('ledger_group_id')->references('id')->on('ledger_groups')->onDelete('CASCADE');
         });
     }
 

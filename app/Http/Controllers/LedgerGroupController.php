@@ -42,11 +42,11 @@ class LedgerGroupController extends Controller
         $ledgerGroup                   = new LedgerGroup();
         $ledgerGroup->title            = $request->title;
         $ledgerGroup->description      = $request->description;
-        $ledgerGroup->ledger_groups_id = $request->ledger_groups_id;
+        $ledgerGroup->ledger_group_id = $request->ledger_group_id;
         $ledgerGroup->save();
 
-        if($request->ledger_groups_id < 1){
-            $ledgerGroup->ledger_groups_id = $ledgerGroup->id;
+        if($request->ledger_group_id < 1){
+            $ledgerGroup->ledger_group_id = $ledgerGroup->id;
             $ledgerGroup->save();
         }
 
@@ -88,11 +88,11 @@ class LedgerGroupController extends Controller
     {
         $ledgerGroup->title            = $request->title;
         $ledgerGroup->description      = $request->description;
-        $ledgerGroup->ledger_groups_id = $request->ledger_groups_id;
+        $ledgerGroup->ledger_group_id = $request->ledger_group_id;
         $ledgerGroup->save();
 
-        if($request->ledger_groups_id < 1){
-            $ledgerGroup->ledger_groups_id = $ledgerGroup->id;
+        if($request->ledger_group_id < 1){
+            $ledgerGroup->ledger_group_id = $ledgerGroup->id;
             $ledgerGroup->save();
         }
 

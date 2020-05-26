@@ -89,6 +89,14 @@ Route::put('lancamento-grupo/editar/{ledgerGroup}', 'LedgerGroupController@updat
 Route::get('lancamento-grupo/{ledgerGroup}', 'LedgerGroupController@show')->name('ledgerGroups.show');
 Route::delete('lancamento-grupo/destroy/{ledgerGroup}', 'LedgerGroupController@destroy')->name('ledgerGroups.destroy');
 
+Route::get('lancamentos', 'LedgerEntryController@index')->name('ledgerEntries.index');
+Route::get('lancamentos/novo', 'LedgerEntryController@create')->name('ledgerEntries.create');
+Route::post('lancamentos/store', 'LedgerEntryController@store')->name('ledgerEntries.store');
+Route::get('lancamentos/editar/{ledgerEntry}', 'LedgerEntryController@edit')->name('ledgerEntries.edit');
+Route::put('lancamentos/editar/{ledgerEntry}', 'LedgerEntryController@update')->name('ledgerEntries.update');
+Route::get('lancamentos/{ledgerEntry}', 'LedgerEntryController@show')->name('ledgerEntries.show');
+Route::delete('lancamentos/destroy/{ledgerEntry}', 'LedgerEntryController@destroy')->name('ledgerEntries.destroy');
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

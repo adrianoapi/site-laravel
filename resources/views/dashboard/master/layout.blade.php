@@ -23,7 +23,9 @@
 	<!-- select2 -->
 	<link rel="stylesheet" href="{{url('dashboard/css/plugins/select2/select2.css')}}">
   <!-- icheck -->
-	<link rel="stylesheet" href="{{url('dashboard/css/plugins/icheck/all.css')}}">
+  <link rel="stylesheet" href="{{url('dashboard/css/plugins/icheck/all.css')}}">
+  <!-- Datepicker -->
+	<link rel="stylesheet" href="{{url('dashboard/css/plugins/datepicker/datepicker.css')}}">
 
 	<!-- Theme CSS -->
   <link rel="stylesheet" href="{{url(mix('dashboard/css/style.css'))}}">
@@ -36,6 +38,8 @@
   <script src="{{url(mix('dashboard/js/framework.js'))}}"></script>
 
   <script src="{{url(mix('dashboard/js/form.js'))}}"></script>
+  <!-- Datepicker -->
+	<script src="{{url('dashboard/js/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
 
 	<!--[if lte IE 9]>
 		<script src="{{url(mix('dashboard/js/jquery-ie9.js'))}}"></script>
@@ -428,7 +432,7 @@
       <ul class="subnav-menu">
         <li><a href="{{route('dash.index')}}"><i class="glyphicon-dashboard"></i> Dashboard</a></li>
         <li>
-          <a href="#"><i class="icon-money"></i> Lançamentos</a>
+          <a href="{{route('ledgerEntries.index')}}"><i class="icon-money"></i> Lançamentos</a>
         </li>
         <li>
           <a href="#"><i class="icon-search"></i> Pesquisas</a>
@@ -518,6 +522,11 @@
   </div>
 </div>
 
+<script>
+  $('.datepick').datepicker({
+      format: 'dd/mm/yyyy'
+   });
+  </script>
 
 </body>
 </html>

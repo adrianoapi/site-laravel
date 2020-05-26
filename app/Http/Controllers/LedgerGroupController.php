@@ -61,7 +61,8 @@ class LedgerGroupController extends Controller
      */
     public function show(LedgerGroup $ledgerGroup)
     {
-        //
+        $parents = DB::table('ledger_groups')->get();
+        return view('listLedgerGroup', ['ledgerGroup' => $ledgerGroup, 'parents' => $parents]);
     }
 
     /**

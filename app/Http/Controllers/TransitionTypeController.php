@@ -92,6 +92,7 @@ class TransitionTypeController extends Controller
      */
     public function destroy(TransitionType $transitionType)
     {
-        //
+        $transitionType->delete();
+        return redirect()->route('transitionTypes.index');
     }
 }

@@ -79,7 +79,7 @@ Route::post('transacoes-tipo/store', 'TransitionTypeController@store')->name('tr
 Route::get('transacoes-tipo/editar/{transitionType}', 'TransitionTypeController@edit')->name('transitionTypes.edit');
 Route::put('transacoes-tipo/editar/{transitionType}', 'TransitionTypeController@update')->name('transitionTypes.update');
 Route::get('transacoes-tipo/{transitionType}', 'TransitionTypeController@show')->name('transitionTypes.show');
-Route::get('transacoes-tipo/destroy/{transitionType}', 'TransitionTypeController@destroy')->name('transitionTypes.destroy');
+Route::delete('transacoes-tipo/destroy/{transitionType}', 'TransitionTypeController@destroy')->name('transitionTypes.destroy');
 
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');

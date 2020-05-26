@@ -26,12 +26,12 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="group_task_id" class="control-label">Basic</label>
+                    <label for="task_group_id" class="control-label">Basic</label>
                     <div class="controls">
-                        <select name="group_task_id" id="group_task_id" class="select2-me input-xlarge" disabled>
-                            @foreach ($groupTasks as $value)
+                        <select name="task_group_id" id="task_group_id" class="select2-me input-xlarge" disabled>
+                            @foreach ($taskGroup as $value)
 
-                                @if ($value->id == $task->group_task_id)
+                                @if ($value->id == $task->task_group_id)
                                     <option value="{{$value->id}}" selected>{{$value->title}}</option>
                                 @else
                                     <option value="{{$value->id}}">{{$value->title}}</option>

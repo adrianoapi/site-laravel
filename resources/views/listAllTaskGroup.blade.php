@@ -9,7 +9,7 @@
         </div>
         <div class="pull-right">
             <div class="btn-toolbar">
-                <a href="{{route('groupTasks.create')}}" class="btn btn-primary"><i class="icon-plus" title="Adicionar"></i> Adicionar</a>
+                <a href="{{route('taskGroups.create')}}" class="btn btn-primary"><i class="icon-plus" title="Adicionar"></i> Adicionar</a>
             </div> 
         </div> 
     </div>
@@ -31,17 +31,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($groupTasks as $link)
+                    @foreach ($taskGroups as $value)
                         <tr>
-                            <td>{{$link->id}}</td>
-                            <td>{{$link->title}}</td>
+                            <td>{{$value->id}}</td>
+                            <td>{{$value->title}}</td>
                             <td>
-                                <form action="{{route('groupTasks.destroy', ['groupTask' => $link->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                <form action="{{route('taskGroups.destroy', ['taskGroup' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('groupTasks.show', ['groupTask' => $link->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
-                                    <a href="{{route('groupTasks.edit', ['groupTask' => $link->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
-                                    <input type="hidden" name="link" value="{{$link->id}}">
+                                    <a href="{{route('taskGroups.show', ['taskGroup' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
+                                    <a href="{{route('taskGroups.edit', ['taskGroup' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
                                     <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>
                                 </form>
                             </td>

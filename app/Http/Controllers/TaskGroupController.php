@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\GroupTask;
+use App\TaskGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class GroupTaskController extends Controller
+class TaskGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class GroupTaskController extends Controller
      */
     public function index()
     {
-        $groupTask = DB::table('group_tasks')->paginate(10);
-        return view('listAllGroupTask', ['groupTasks' => $groupTask]);
+        $taskGroup = DB::table('task_groups')->paginate(10);
+        return view('listAllTaskGroup', ['taskGroups' => $taskGroup]);
     }
 
     /**
@@ -27,7 +27,7 @@ class GroupTaskController extends Controller
      */
     public function create()
     {
-        return view('addGroupTask');
+        return view('addTaskGroup');
     }
 
     /**
@@ -38,62 +38,62 @@ class GroupTaskController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new GroupTask();
+        $model = new TaskGroup();
         $model->title = $request->title;
         $model->content = $request->content;
         $model->user_id  = Auth::id();
         $model->save();
 
-        return \redirect()->route('groupTasks.index');
+        return \redirect()->route('taskGroups.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\GroupTask  $groupTask
+     * @param  \App\TaskGroup  $taskGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(GroupTask $groupTask)
+    public function show(TaskGroup $taskGroup)
     {
-        return view('listGroupTask', ['groupTask' => $groupTask]);
+        return view('listTaskGroup', ['taskGroup' => $taskGroup]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\GroupTask  $groupTask
+     * @param  \App\TaskGroup  $taskGroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(GroupTask $groupTask)
+    public function edit(TaskGroup $taskGroup)
     {
-        return view('editGroupTask', ['groupTask' => $groupTask]);
+        return view('editTaskGroup', ['taskGroup' => $taskGroup]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\GroupTask  $groupTask
+     * @param  \App\TaskGroup  $taskGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GroupTask $groupTask)
+    public function update(Request $request, TaskGroup $taskGroup)
     {
-        $groupTask->title   = $request->title;
-        $groupTask->content = $request->content;
-        $groupTask->save();
+        $taskGroup->title   = $request->title;
+        $taskGroup->content = $request->content;
+        $taskGroup->save();
 
-        return redirect()->route('groupTasks.index');
+        return redirect()->route('taskGroups.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\GroupTask  $groupTask
+     * @param  \App\TaskGroup  $taskGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GroupTask $groupTask)
+    public function destroy(TaskGroup $taskGroup)
     {
-        $groupTask->delete();
-        return \redirect()->route('groupTasks.index');
+        $taskGroup->delete();
+        return \redirect()->route('taskGroups.index');
     }
 }

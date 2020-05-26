@@ -27,10 +27,10 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="group_task_id" class="control-label">Basic</label>
+                    <label for="task_group_id" class="control-label">Basic</label>
                     <div class="controls">
-                        <select name="group_task_id" id="group_task_id" class="select2-me input-xlarge">
-                            @foreach ($groupTasks as $value)
+                        <select name="task_group_id" id="task_group_id" class="select2-me input-xlarge">
+                            @foreach ($taskGroup as $value)
                                 <option value="{{$value->id}}">{{$value->title}}</option>
                             @endforeach
                         </select>

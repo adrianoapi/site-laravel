@@ -27,8 +27,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $groupTasks = DB::table('group_tasks')->get();
-        return view('addTask', ['groupTasks' => $groupTasks]);
+        $taskGroup = DB::table('task_groups')->get();
+        return view('addTask', ['taskGroup' => $taskGroup]);
     }
 
     /**
@@ -40,7 +40,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $task = new Task();
-        $task->group_task_id = $request->group_task_id;
+        $task->task_group_id = $request->task_group_id;
         $task->title         = $request->title;
         $task->content       = $request->content;
         $task->status        = $request->status;
@@ -57,8 +57,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $groupTasks = DB::table('group_tasks')->get();
-        return view('listTask', ['task' => $task, 'groupTasks' => $groupTasks]);
+        $taskGroup = DB::table('task_groups')->get();
+        return view('listTask', ['task' => $task, 'taskGroup' => $taskGroup]);
     }
 
     /**
@@ -69,8 +69,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        $groupTasks = DB::table('group_tasks')->get();
-        return view('editTask', ['task' => $task, 'groupTasks' => $groupTasks]);
+        $taskGroup = DB::table('task_groups')->get();
+        return view('editTask', ['task' => $task, 'taskGroup' => $taskGroup]);
     }
 
     /**
@@ -82,7 +82,7 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        $task->group_task_id = $request->group_task_id;
+        $task->task_group_id = $request->task_group_id;
         $task->title         = $request->title;
         $task->content       = $request->content;
         $task->status        = $request->status;

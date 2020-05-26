@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupTasksTable extends Migration
+class CreateTaskGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGroupTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_tasks', function (Blueprint $table) {
+        Schema::create('task_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title');
@@ -31,6 +31,6 @@ class CreateGroupTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_tasks');
+        Schema::dropIfExists('task_groups');
     }
 }

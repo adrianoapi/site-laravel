@@ -9,7 +9,7 @@
         </div>
         <div class="pull-right">
             <div class="btn-toolbar">
-                <a href="{{route('groupTasks.index')}}" class="btn btn-primary"><i class="icon-reorder" title="Listagem"></i> Listagem</a>
+                <a href="{{route('taskGroups.index')}}" class="btn btn-primary"><i class="icon-reorder" title="Listagem"></i> Listagem</a>
             </div> 
         </div> 
     </div>
@@ -18,7 +18,7 @@
             <h3><i class="icon-th-list"></i> Adicionar</h3>
         </div>
         <div class="box-content nopadding">
-            <form action="{{route('groupTasks.store')}}" method="POST" class="form-horizontal form-bordered">
+            <form action="{{route('taskGroups.store')}}" method="POST" class="form-horizontal form-bordered">
                 @csrf
                 <div class="control-group">
                     <label for="title" class="control-label">Title</label>
@@ -35,7 +35,7 @@
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a href="{{route('groupTasks.index')}}" class="btn">Cancelar</a>
+                    <a href="{{route('taskGroups.index')}}" class="btn">Cancelar</a>
                 </div>
             </form>
         </div>

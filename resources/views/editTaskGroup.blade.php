@@ -9,7 +9,7 @@
         </div>
         <div class="pull-right">
             <div class="btn-toolbar">
-                <a href="{{route('groupTasks.index')}}" class="btn btn-primary"><i class="icon-reorder" title="Listagem"></i> Listagem</a>
+                <a href="{{route('taskGroups.index')}}" class="btn btn-primary"><i class="icon-reorder" title="Listagem"></i> Listagem</a>
             </div> 
         </div> 
     </div>
@@ -18,25 +18,25 @@
             <h3><i class="icon-th-list"></i> Adicionar</h3>
         </div>
         <div class="box-content nopadding">
-            <form action="{{route('groupTasks.update', ['groupTask' => $groupTask->id])}}" method="POST" class="form-horizontal form-bordered">
+            <form action="{{route('taskGroups.update', ['taskGroup' => $taskGroup->id])}}" method="POST" class="form-horizontal form-bordered">
                 @csrf
                 @method('PUT')
                 <div class="control-group">
                     <label for="title" class="control-label">Title</label>
                     <div class="controls">
-                        <input type="text" name="title" id="title" value="{{$groupTask->title}}" placeholder="Text input" class="input-xlarge">
+                        <input type="text" name="title" id="title" value="{{$taskGroup->title}}" placeholder="Text input" class="input-xlarge">
                     </div>
                 </div>
                 <div class="control-group">
                     <label for="content" class="control-label">Conteúdo</label>
                     <div class="controls">
-                        <textarea name="content" id="content" rows="5" class="input-block-level">{{$groupTask->content}}</textarea>
+                        <textarea name="content" id="content" rows="5" class="input-block-level">{{$taskGroup->content}}</textarea>
                     </div>
                 </div>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a href="{{route('groupTasks.index')}}" class="btn">Cancelar</a>
+                    <a href="{{route('taskGroups.index')}}" class="btn">Cancelar</a>
                 </div>
             </form>
         </div>

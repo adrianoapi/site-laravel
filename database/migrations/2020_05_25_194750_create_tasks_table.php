@@ -15,13 +15,13 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('group_task_id');
+            $table->unsignedBigInteger('task_group_id');
             $table->string('title');
             $table->text('content');
             $table->enum('status', ['open', 'closed','deleted'])->default('open');
             $table->timestamps();
 
-            $table->foreign('group_task_id')->references('id')->on('group_tasks')->onDelete('CASCADE');
+            $table->foreign('task_group_id')->references('id')->on('task_groups')->onDelete('CASCADE');
         });
     }
 

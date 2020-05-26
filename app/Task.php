@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    public function groupTask()
+    public function taskGroup()
     {
-        return $this->hasOne(GroupTask::class, 'id', 'group_task_id');
+        return $this->hasOne(TaskGroup::class, 'id', 'task_group_id');
     }
 }

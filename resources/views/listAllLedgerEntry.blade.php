@@ -2,7 +2,7 @@
 
 @section('content')
 
-<br>
+<p>&nbsp;</p>
 <div class="breadcrumbs">
     <ul>
         <li>

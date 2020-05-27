@@ -20,17 +20,21 @@ Route::view('/info', 'info');
 Route::view('/form', 'upload.form');
 Route::post('upload', 'UploadController@upload')->name('upload');
 
-Route::get('/', function(){
-    return view('site.home');
-})->name('site.home');
+Route::prefix('/')->group(function(){
+    Route::get('/', function(){
+        return view('site.home');
+    })->name('site.home');
+    
+    Route::get('cursos', function(){
+        return view('site.courses');
+    })->name('site.curses');
+    
+    Route::get('contato', function(){
+        return view('site.contact');
+    })->name('site.contact');
+});
 
-Route::get('/cursos', function(){
-    return view('site.courses');
-})->name('site.curses');
 
-Route::get('/contato', function(){
-    return view('site.contact');
-})->name('site.contact');
 
 Route::get('dash', 'DashController@index')->name('dash.index');
 

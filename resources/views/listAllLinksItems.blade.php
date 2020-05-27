@@ -26,23 +26,26 @@
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
+                        <th>Categoria</th>
                         <th>Url</th>
                         <th>Options</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($linksItems as $link)
+                    @foreach ($linksItems as $value)
+                    
                         <tr>
-                            <td>{{$link->id}}</td>
-                            <td><a href="{{$link->url}}" target="_blank" rel="noopener noreferrer">{{$link->title}}</a> <i class="icon-external-link"></i></td>
-                            <td>{{$link->url}}</td>
+                            <td>{{$value->id}}</td>
+                            <td><a href="{{$value->url}}" target="_blank" rel="noopener noreferrer">{{$value->title}}</a> <i class="icon-external-link"></i></td>
+                            <td>{{$value->link->title}}</td>
+                            <td>{{$value->url}}</td>
                             <td>
-                                <form action="{{route('linksItems.destroy', ['linkItem' => $link->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                <form action="{{route('linksItems.destroy', ['linkItem' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('linksItems.list', ['linkItem' => $link->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
-                                    <a href="{{route('linksItems.formEditLink', ['linkItem' => $link->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
-                                    <input type="hidden" name="link" value="{{$link->id}}">
+                                    <a href="{{route('linksItems.list', ['linkItem' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
+                                    <a href="{{route('linksItems.formEditLink', ['linkItem' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
+                                    <input type="hidden" name="link" value="{{$value->id}}">
                                     <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>
                                 </form>
                             </td>
@@ -50,17 +53,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="table-pagination">
-                <a href="#" class="disabled">First</a>
-                <a href="#" class="disabled">Previous</a>
-                <span>
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                </span>
-                <a href="#">Next</a>
-                <a href="#">Last</a>
-            </div>
+            {{ $linksItems->links('dashboard.pagination') }}
         </div>
     </div>
 </div>

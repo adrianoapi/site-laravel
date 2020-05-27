@@ -6,27 +6,40 @@
 
     <div class="box box-bordered">
         <div class="box-title">
-            <h3>
-                <i class="icon-table"></i>
-                Lançamentos
-            </h3>
+            
+            <form action="{{route('ledgerEntries.index')}}" method="GET" class="span3" style="margin: 0;padding:0;">
+                <div class="input-append input-prepend" style="margin: 0;padding:0;">
+                    <span class="add-on"><i class="icon-search"></i></span>
+                    <input type="hidden" name="filtro" value="pesquisa">
+                <input type="text" name="pesquisar" value="{{array_key_exists('pesquisar', $_GET) ? $_GET['pesquisar'] : ''}}" placeholder="lançamentos..." class="input-medium">
+                    <button class="btn" type="submit">Pesquisar</button>
+                </div>
+            </form>
+
             <div class="actions">
+                
                 <div class="btn-group">
-                    <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="glyphicon-shopping_bag"></i> <span class="caret"></span> Tipo de Despesa</a>
+                    <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="glyphicon-filter"></i> <span class="caret"></span> Filtrar</a>
                     <ul class="dropdown-menu">
-                        @foreach ($ledgerGroups as $value)
-                            <li><a href="{{route('ledgerEntries.index', ['filtro' =>'despesa', 'id' => $value->ledgerGroup->id])}}">{{$value->ledgerGroup->title}}</a></li>
-                        @endforeach
+                        <li class="dropdown-submenu">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Despesa</a>
+                            <ul class="dropdown-menu">
+                                @foreach ($ledgerGroups as $value)
+                                    <li><a href="{{route('ledgerEntries.index', ['filtro' =>'despesa', 'id' => $value->ledgerGroup->id])}}">{{$value->ledgerGroup->title}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Transação</a>
+                            <ul class="dropdown-menu">
+                                @foreach ($transitionTypes as $value)
+                                    <li><a href="{{route('ledgerEntries.index', ['filtro' => 'transacao', 'id' => $value->id])}}">{{$value->title}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
                 </div>
-                <div class="btn-group">
-                    <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="glyphicon-credit_card"></i> <span class="caret"></span> Tipo de Transação</a>
-                    <ul class="dropdown-menu">
-                        @foreach ($transitionTypes as $value)
-                            <li><a href="{{route('ledgerEntries.index', ['filtro' => 'transacao', 'id' => $value->id])}}">{{$value->title}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
+                
                 <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="glyphicon-cleaning"></i> Limpar</a>
                 <a href="{{route('ledgerEntries.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Novo Lançamento</a>
             </div>
@@ -37,7 +50,7 @@
                     <tr>
                         <th>Data</th>
                         <th>Valor</th>
-                        <th>Título</th>
+                        <th>Lançamento</th>
                         <th>Tipo de Despesa</th>
                         <th>Tipo de Transação</th>
                         <th>Options</th>

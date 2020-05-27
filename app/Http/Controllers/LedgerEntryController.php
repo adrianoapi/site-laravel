@@ -31,6 +31,9 @@ class LedgerEntryController extends Controller
                 endforeach;
 
                 $ledgerEntries = LedgerEntry::whereIn('ledger_group_id', $ids)->orderBy('entry_date', 'desc')->paginate(100);
+            
+            }elseif($_GET['filtro'] == 'pesquisa'){
+                $ledgerEntries = LedgerEntry::where('description', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('entry_date', 'desc')->paginate(100);
             }else{
                 $ledgerEntries = LedgerEntry::where('transition_type_id', $_GET['id'])->orderBy('entry_date', 'desc')->paginate(100);
             }

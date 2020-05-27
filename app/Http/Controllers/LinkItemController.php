@@ -25,7 +25,7 @@ class LinkItemController extends Controller
 
     public function listAllLinksItems()
     {
-        $linksItems = DB::table('links_items')->paginate(10);
+        $linksItems = \App\LinkItem::paginate(10);
         
         return view('listAllLinksItems', ['linksItems' => $linksItems]);
     }

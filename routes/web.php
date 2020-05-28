@@ -124,6 +124,17 @@ Route::prefix('lancamentos')->group(function(){
     Route::delete('destroy/{ledgerEntry}', 'LedgerEntryController@destroy')->name('ledgerEntries.destroy');
 });
 
+Route::prefix('lancamento-itens')->group(function(){
+    Route::get ('/',                   'LedgerItemController@index' )->name('ledgerItems.index');
+    Route::get ('novo/{ledgerEntry}',  'LedgerItemController@create')->name('ledgerItems.create');
+    Route::post('store',               'LedgerItemController@store' )->name('ledgerItems.store');
+    Route::get ('editar/{ledgerItem}', 'LedgerItemController@edit'  )->name('ledgerItems.edit');
+    Route::put ('editar/{ledgerItem}', 'LedgerItemController@update')->name('ledgerItems.update');
+    Route::get ('{ledgerItem}',        'LedgerItemController@show'  )->name('ledgerItems.show');
+    
+    Route::delete('destroy/{ledgerItem}','LedgerItemController@destroy')->name('ledgerItems.destroy');
+});
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

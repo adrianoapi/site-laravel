@@ -2,26 +2,6 @@
 
 @section('content')
 
-<p>&nbsp; </p>
-<div class="breadcrumbs">
-    <ul>
-        <li>
-            <a href="more-login.html">Home</a>
-            <i class="icon-angle-right"></i>
-        </li>
-        <li>
-            <a href="components-messages.html">Components</a>
-            <i class="icon-angle-right"></i>
-        </li>
-        <li>
-            <a href="components-bootstrap.html">Bootstrap elements</a>
-        </li>
-    </ul>
-    <div class="close-bread">
-        <a href="#"><i class="icon-remove"></i></a>
-    </div>
-</div>
-
 <div class="container-fluid">
 
     <div class="box box-bordered">
@@ -68,19 +48,19 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
-                        <th>Data</th>
-                        <th>Valor</th>
-                        <th>Lançamento</th>
-                        <th>Tipo de Despesa</th>
-                        <th>Tipo de Transação</th>
-                        <th>Options</th>
+                        <th class="span2">Data</th>
+                        <th class="span1">Valor</th>
+                        <th class="span2">Lançamento</th>
+                        <th class="span2">Tipo de Despesa</th>
+                        <th class="span3">Tipo de Transação</th>
+                        <th class="span2">Options</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($ledgerEntries as $value)
                         <tr>
                             <td>{{$value->entry_date}}</td>
-                            <td><span class="btn btn-{{$value->transitionType->action == 'recipe' ? 'darkblue' : 'lightred'}}">{{$value->amount}}</span></td>
+                            <td><span class="badge badge-{{$value->transitionType->action == 'recipe' ? 'success' : 'important'}}">{{$value->amount}}</span></td>
                             <td>{{$value->description}}</td>
                             <td>{{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}</td>
                             <td>{{$value->transitionType->title}}</td>
@@ -88,9 +68,10 @@
                                 <form action="{{route('ledgerEntries.destroy', ['ledgerEntry' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('ledgerEntries.show', ['ledgerEntry' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Detalhar"><i class="glyphicon-expand"></i></a>
+                                    <a href="{{route('ledgerEntries.show', ['ledgerEntry' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Detalhar"><i class="icon-search"></i></a>
                                     <a href="{{route('ledgerEntries.edit', ['ledgerEntry' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
-                                    <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>
+                                    <a href="{{route('ledgerItems.create', ['ledgerEntry' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Item"><i class="icon-plus-sign"></i></a>
+                                    <button type="submit" class="btn btn-inverse" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

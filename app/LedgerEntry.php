@@ -15,6 +15,11 @@ class LedgerEntry extends Model
         return $this->hasOne(LedgerGroup::class, 'id', 'ledger_group_id');
     }
 
+    public function ledgerItems()
+    {
+        return $this->hasMany(LedgerItem::class, 'ledger_entry_id', 'id');
+    }
+
     public function transitionType()
     {
         return $this->hasOne(TransitionType::class, 'id', 'transition_type_id');

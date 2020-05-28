@@ -7,6 +7,7 @@
     <div class="box box-bordered">
 
         <div class="box-title">
+            
             <h3><i class="icon-plus-sign"></i> Item</h3>
 
             <ul class="tabs actions">

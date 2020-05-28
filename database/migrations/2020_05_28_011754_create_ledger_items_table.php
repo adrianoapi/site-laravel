@@ -17,7 +17,7 @@ class CreateLedgerItemsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('ledger_entry_id');
             $table->string('description');
-            $table->integer('quanty');
+            $table->integer('quantity');
             $table->decimal('price', 10, 2);
             $table->decimal('total_price', 10, 2);
             $table->timestamps();

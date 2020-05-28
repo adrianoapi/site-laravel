@@ -4,6 +4,13 @@
 
 <div class="container-fluid">
 
+    @if (is_object($ledgerItem))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        Item <strong>{{$ledgerItem->description}}</strong> craido com sucesso!
+    </div>
+    @endif
+    
     <div class="box box-bordered">
 
         <div class="box-title">
@@ -56,9 +63,9 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="quanty" class="control-label">Quantidade</label>
+                    <label for="quantity" class="control-label">Quantidade</label>
                     <div class="controls">
-                        <input type="number" name="quanty" id="quanty" placeholder="1" class="input-large">
+                        <input type="number" name="quantity" id="quantity" placeholder="1" class="input-large">
                     </div>
                 </div>
                 <div class="control-group">

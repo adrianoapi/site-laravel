@@ -61,7 +61,7 @@
                     @foreach ($ledgerItems as $value)
                     <tr>
                         <td>{{$value->description}}</td>
-                        <td>{{$value->quanty}}</td>
+                        <td>{{$value->quantity}}</td>
                         <td>{{$value->price}}</td>
                         <td>{{$value->total_price}}</td>
                         <td>

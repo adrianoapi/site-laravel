@@ -30,15 +30,15 @@ class LedgerEntryController extends Controller
                     array_push($ids, $value->id);
                 endforeach;
 
-                $ledgerEntries = LedgerEntry::whereIn('ledger_group_id', $ids)->orderBy('entry_date', 'desc')->paginate(100);
+                $ledgerEntries = LedgerEntry::whereIn('ledger_group_id', $ids)->orderBy('entry_date', 'desc')->paginate(50);
             
             }elseif($_GET['filtro'] == 'pesquisa'){
-                $ledgerEntries = LedgerEntry::where('description', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('entry_date', 'desc')->paginate(100);
+                $ledgerEntries = LedgerEntry::where('description', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('entry_date', 'desc')->paginate(50);
             }else{
-                $ledgerEntries = LedgerEntry::where('transition_type_id', $_GET['id'])->orderBy('entry_date', 'desc')->paginate(100);
+                $ledgerEntries = LedgerEntry::where('transition_type_id', $_GET['id'])->orderBy('entry_date', 'desc')->paginate(50);
             }
         }else{
-            $ledgerEntries = LedgerEntry::orderBy('entry_date', 'desc')->paginate(100);
+            $ledgerEntries = LedgerEntry::orderBy('entry_date', 'desc')->paginate(50);
         }
 
         $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();

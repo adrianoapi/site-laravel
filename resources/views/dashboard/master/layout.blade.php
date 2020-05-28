@@ -8,7 +8,7 @@
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	
-	<title>FLAT - Blank Page</title>
+	<title>pagSoft</title>
 
 	<!-- Bootstrap -->
   <link rel="stylesheet" href="{{url(mix('dashboard/css/bootstrap.css'))}}">
@@ -70,7 +70,7 @@
   
 <div id="navigation">
   <div class="container-fluid">
-    <a href="{{url('dash')}}" id="brand">FLAT</a>
+    <a href="{{url('dash')}}" id="brand">pagSoft</a>
     <a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
     <ul class='main-nav'>
       <li>
@@ -80,210 +80,93 @@
       </li>
       <li>
         <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-          <span>Forms</span>
+          <span>Financeiro</span>
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li>
-            <a href="forms-basic.html">Basic forms</a>
-          </li>
-          <li>
-            <a href="forms-extended.html">Extended forms</a>
-          </li>
-          <li>
-            <a href="forms-validation.html">Validation</a>
-          </li>
-          <li>
-            <a href="forms-wizard.html">Wizard</a>
-          </li>
-        </ul>
+        <li><a href="{{route('dash.index')}}"><i class="glyphicon-dashboard"></i> Dashboard</a></li>
+        <li>
+          <a href="{{route('ledgerEntries.index')}}"><i class="icon-money"></i> Lançamentos</a>
+        </li>
+        <li>
+          <a href="#"><i class="icon-search"></i> Pesquisas</a>
+        </li>
+        <li>
+          <a href="#"><i class="icon-bar-chart"></i> Gráficos</a>
+        </li>
+        <li class='dropdown-submenu'>
+          <a href="#" data-toggle="dropdown"><i class="icon-laptop"></i> Configurações</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{'transacoes-tipo'}}"><i class="glyphicon-credit_card"></i> Tipo de tansação</a>
+            </li>
+            <li>
+              <a href="{{'lancamento-grupo'}}"><i class="glyphicon-shopping_bag"></i> Tipos de Despesa</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
       </li>
       <li>
         <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-          <span>Components</span>
+          <span>Produtividade</span>
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li>
-            <a href="components-timeline.html">Timeline</a>
-          </li>
-          <li>
-            <a href="components-pagestatistics.html">Page statistics</a>
-          </li>
-          <li>
-            <a href="components-sidebarwidgets.html">Sidebar widgets</a>
-          </li>
-          <li>
-            <a href="components-messages.html">Messages &amp; Chat</a>
-          </li>
-          <li>
-            <a href="components-gallery.html">Gallery &amp; Thumbs</a>
-          </li>
-          <li>
-            <a href="components-tiles.html">Tiles</a>
-          </li>
-          <li>
-            <a href="components-icons.html">Icons &amp; Buttons</a>
-          </li>
-          <li>
-            <a href="components-elements.html">UI elements</a>
-          </li>
-          <li>
-            <a href="components-typography.html">Typography</a>
-          </li>
-          <li>
-            <a href="components-bootstrap.html">Bootstrap elements</a>
-          </li>
-          <li>
-            <a href="components-grid.html">Grid</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-          <span>Tables</span>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="tables-basic.html">Basic tables</a>
-          </li>
-          <li>
-            <a href="tables-dynamic.html">Dynamic tables</a>
-          </li>
-          <li>
-            <a href="tables-large.html">Large tables</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-          <span>Plugins</span>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="plugins-charts.html">Charts</a>
-          </li>
-          <li>
-            <a href="plugins-calendar.html">Calendar</a>
-          </li>
-          <li>
-            <a href="plugins-filemanager.html">File manager</a>
-          </li>
-          <li>
-            <a href="plugins-filetrees.html">File trees</a>
-          </li>
-          <li>
-            <a href="plugins-elements.html">Editable elements</a>
-          </li>
-          <li>
-            <a href="plugins-maps.html">Maps</a>
-          </li>
-          <li>
-            <a href="plugins-dragdrop.html">Drag &amp; Drop widgets</a>
-          </li>
-          
-        </ul>
-      </li>
-      <li class='active'>
-        <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-          <span>Pages</span>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="more-error.html">Error pages</a>
-          </li>
-          <li class='dropdown-submenu'>
-            <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Shop</a>
+          <li class='dropdown'>
+            <a href="#" data-toggle="dropdown"><i class="icon-sitemap"></i> Organogramas</a>
             <ul class="dropdown-menu">
               <li>
-                <a href="more-shop-list.html">List view</a>
+                <a href="#">Mapa Mental</a>
               </li>
               <li>
-                <a href="more-shop-product.html">Product view</a>
+                <a href="#">Fluxograma</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a href="#" data-toggle="dropdown"><i class="icon-star-empty"></i> Favoritos</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{route('links.listAll')}}"><i class="icon-star-empty"></i> Categorias</a>
+              </li>
+              <li>
+                <a href="{{route('linksItems.listAll')}}"><i class="icon-star-empty"></i> Links</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="more-pricing.html">Pricing tables</a>
+            <a href="#"><i class="icon-heart-empty"></i> Coleções</a>
           </li>
           <li>
-            <a href="more-faq.html">FAQ</a>
+            <a href="{{route('posts.index')}}"><i class="icon-book"></i> Anotações</a>
           </li>
           <li>
-            <a href="more-invoice.html">Invoice</a>
-          </li>
-          <li>
-            <a href="more-userprofile.html">User profile</a>
-          </li>
-          <li>
-            <a href="more-searchresults.html">Search results</a>
-          </li>
-          <li>
-            <a href="more-login.html">Login</a>
-          </li>
-          <li>
-            <a href="more-locked.html">Lock screen</a>
-          </li>
-          <li>
-            <a href="more-email.html">Email templates</a>
-          </li>
-          <li class='active'>
-            <a href="more-blank.html">Blank page</a>
+            <a href="#"><i class="glyphicon-keys"></i> Senhas</a>
           </li>
           <li class='dropdown-submenu'>
-            <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Blog</a>
+            <a href="#" data-toggle="dropdown"><i class="icon-calendar"></i> Agendas</a>
             <ul class="dropdown-menu">
               <li>
-                <a href="more-blog-list.html">List big image</a>
+                <a href="#"><i class="glyphicon-tie"></i> Compromissos</a>
               </li>
               <li>
-                <a href="more-blog-list-small.html">List small image</a>
-              </li>
-              <li>
-                <a href="more-blog-post.html">Post</a>
+                <a href="#"><i class="glyphicon-iphone_shake"></i> Contatos</a>
               </li>
             </ul>
           </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-          <span>Layouts</span>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="layouts-sidebar-hidden.html">Default hidden sidebar</a>
-          </li>
-          <li>
-            <a href="layouts-sidebar-right.html">Sidebar right side</a>
-          </li>
-          <li>
-            <a href="layouts-color.html">Different default color</a>
-          </li>
-          <li>
-            <a href="layouts-fixed.html">Fixed layout</a>
-          </li>
-          <li>
-            <a href="layouts-fixed-topside.html">Fixed topbar and sidebar</a>
-          </li>
           <li class='dropdown-submenu'>
-            <a href="#">Mobile sidebar</a>
+            <a href="#" data-toggle="dropdown"><i class="glyphicon-list"></i> Lista de Tarefas</a>
             <ul class="dropdown-menu">
               <li>
-                <a href="layouts-mobile-slide.html">Slide</a>
+                <a href="{{url('tarefas')}}"><i class="glyphicon-list"></i> Tarefas</a>
               </li>
               <li>
-                <a href="layouts-mobile-button.html">Button</a>
+              <a href="{{url('tarefas-grupo')}}"><i class="glyphicon-list"></i> Grupos</a>
               </li>
             </ul>
           </li>
-          <li>
-            <a href="layouts-footer.html">Footer</a>
-          </li>
+          <li><a href="artigos"><i class="icon-list-alt"></i> Artigos</a></li>
         </ul>
       </li>
     </ul>

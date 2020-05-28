@@ -130,7 +130,7 @@ Route::prefix('lancamento-itens')->group(function(){
     Route::post('store',               'LedgerItemController@store' )->name('ledgerItems.store');
     Route::get ('editar/{ledgerItem}', 'LedgerItemController@edit'  )->name('ledgerItems.edit');
     Route::put ('editar/{ledgerItem}', 'LedgerItemController@update')->name('ledgerItems.update');
-    Route::get ('{ledgerItem}',        'LedgerItemController@show'  )->name('ledgerItems.show');
+    Route::get ('{ledgerEntry}',       'LedgerItemController@show'  )->name('ledgerItems.show');
     
     Route::delete('destroy/{ledgerItem}','LedgerItemController@destroy')->name('ledgerItems.destroy');
 });

@@ -69,12 +69,18 @@ class LedgerItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\LedgerItem  $ledgerItem
+     * @param  \App\LedgerEntry  $ledgerEntry
      * @return \Illuminate\Http\Response
      */
-    public function show(LedgerItem $ledgerItem)
+    public function show(\App\LedgerEntry $ledgerEntry)
     {
-        //
+        if($ledgerEntry->user_id != Auth::id()){
+            die('erro');
+        }
+
+        $ledgerItems = LedgerItem::where('ledger_entry_id', $ledgerEntry->id)->orderBy('id', 'desc')->get();
+        
+        return view('listLedgerItem', ['ledgerItems' => $ledgerItems, 'ledgerEntry' => $ledgerEntry]);
     }
 
     /**
@@ -108,6 +114,13 @@ class LedgerItemController extends Controller
      */
     public function destroy(LedgerItem $ledgerItem)
     {
-        //
+        $ledgerEntry = \App\LedgerEntry::where('id', $ledgerItem->ledger_entry_id)->first();
+        if($ledgerEntry->user_id != Auth::id()){
+            die('erro');
+        }
+
+        $ledgerItem->delete();
+
+        return redirect()->route('ledgerItems.show', ['ledgerEntry' => $ledgerEntry]);
     }
 }

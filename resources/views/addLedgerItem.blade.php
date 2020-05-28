@@ -9,9 +9,17 @@
         <div class="box-title">
         <h3><i class="icon-plus-sign"></i> Item</h3>
 
-            <div class="actions">
-                <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Listagem</a>
-            </div>
+            <ul class="tabs actions">
+                <li class="active">
+                    <a href="{{route('ledgerItems.create', ['ledgerEntry' => $ledgerEntry->id])}}" data-toggle="modal" class="btn"><i class="icon-edit"></i> Novo Item</a>
+                </li>
+                <li>
+                    <a href="{{route('ledgerItems.show', ['ledgerEntry' => $ledgerEntry->id])}}" data-toggle="modal" class="btn"><i class="icon-shopping-cart"></i> Itens</a>
+                </li>
+                <li>
+                    <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Lancamentos</a>
+                </li>
+            </ul>
 
         </div>
 
@@ -38,30 +46,6 @@
             </table>
         </div>
         
-        <div class="box-content nopadding">
-            <table class="table table-hover table-nomargin">
-                <thead>
-                    <tr>
-                        <th class="span4">Descrição</th>
-                        <th class="span2">Quantidade</th>
-                        <th class="span2">Valor Unitário</th>
-                        <th class="span2">Valor Total</th>
-                        <th class="span2">Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($ledgerItems as $value)
-                    <tr>
-                        <td>{{$value->description}}</td>
-                        <td>{{$value->quanty}}</td>
-                        <td>{{$value->price}}</td>
-                        <td>{{$value->total_price}}</td>
-                        <td><button class="btn btn-inverse"><i class="icon-trash"></i> Excluir</button></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
         <div class="box-content nopadding">
             <form action="{{route('ledgerItems.store')}}" method="POST" class="form-horizontal form-bordered">
                 @csrf

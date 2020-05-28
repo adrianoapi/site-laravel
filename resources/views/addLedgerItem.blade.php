@@ -1,7 +1,7 @@
 @extends('dashboard.master.layout')
 
 @section('content')
-teste
+
 <div class="container-fluid">
 
     <div class="box box-bordered">

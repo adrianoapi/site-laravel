@@ -135,6 +135,17 @@ Route::prefix('lancamento-itens')->group(function(){
     Route::delete('destroy/{ledgerItem}','LedgerItemController@destroy')->name('ledgerItems.destroy');
 });
 
+Route::prefix('exames')->group(function(){
+    Route::get ('/',             'ExamController@index' )->name('exams.index');
+    Route::get ('novo',          'ExamController@create')->name('exams.create');
+    Route::post('store',         'ExamController@store' )->name('exams.store');
+    Route::get ('editar/{exam}', 'ExamController@edit'  )->name('exams.edit');
+    Route::put ('editar/{exam}', 'ExamController@update')->name('exams.update');
+    Route::get ('{exam}',        'ExamController@show'  )->name('exams.show');
+
+    Route::delete('destroy/{exam}', 'ExamController@destroy')->name('exams.destroy');
+});
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

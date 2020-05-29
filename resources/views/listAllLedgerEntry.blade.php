@@ -39,9 +39,16 @@
                         </li>
                     </ul>
                 </div>
-                
-                <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="glyphicon-cleaning"></i> Limpar</a>
-                <a href="{{route('ledgerEntries.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Novo Lançamento</a>
+
+                <ul class="tabs actions">
+                    <li>
+                        <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="glyphicon-cleaning"></i> Limpar</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{route('ledgerEntries.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Novo Lançamento</a>
+                    </li>
+                </ul>
+            
             </div>
         </div>
         <div class="box-content nopadding">

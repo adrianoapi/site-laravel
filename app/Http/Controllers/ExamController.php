@@ -44,7 +44,8 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         $exam = new Exam();
-        $exam->title = $request->title;
+        $exam->user_id     = Auth::id();
+        $exam->title       = $request->title;
         $exam->description = $request->description;
         $exam->save();
 
@@ -82,7 +83,7 @@ class ExamController extends Controller
      */
     public function update(Request $request, Exam $exam)
     {
-        $exam->title = $request->title;
+        $exam->title       = $request->title;
         $exam->description = $request->description;
         $exam->save();
 

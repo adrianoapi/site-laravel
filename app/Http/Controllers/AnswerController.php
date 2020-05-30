@@ -79,8 +79,7 @@ class AnswerController extends Controller
      */
     public function edit(Answer $answer)
     {
-        $questions = DB::table('questions')->get();
-        return view('editAnswer', ['answer' => $answer, 'questions' => $questions]);
+        //
     }
 
     /**

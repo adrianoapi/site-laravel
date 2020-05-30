@@ -29,6 +29,9 @@
                         <td>{{$question->title}}</td>
                         <td>{{$question->exam->title}}</td>
                     </tr>
+                    <tr>
+                        <td colspan="2">{{$question->description}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

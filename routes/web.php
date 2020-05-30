@@ -146,6 +146,17 @@ Route::prefix('exames')->group(function(){
     Route::delete('destroy/{exam}', 'ExamController@destroy')->name('exams.destroy');
 });
 
+Route::prefix('questoes')->group(function(){
+    Route::get('/',                 'QuestionController@index' )->name('questions.index');
+    Route::get('/novo',             'QuestionController@create')->name('questions.create');
+    Route::post('store',            'QuestionController@store' )->name('questions.store');
+    Route::get('editar/{question}', 'QuestionController@edit'  )->name('questions.edit');
+    Route::put('editar/{question}', 'QuestionController@update')->name('questions.update');
+    Route::get('{question}',        'QuestionController@show'  )->name('questions.show');
+
+    Route::delete('destroy/{question}', 'QuestionController@destroy')->name('questions.destroy');
+});
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

@@ -159,11 +159,11 @@ Route::prefix('questoes')->group(function(){
 
 Route::prefix('respostas')->group(function(){
     Route::get ('/',             'AnswerController@index' )->name('answers.index');
-    Route::get ('novo',          'AnswerController@create')->name('answers.create');
+    Route::get ('novo/{question}',          'AnswerController@create')->name('answers.create');
     Route::post('store',         'AnswerController@store' )->name('answers.store');
     Route::get ('edit/{answer}', 'AnswerController@edit'  )->name('answers.edit');
     Route::put ('edit/{answer}', 'AnswerController@update')->name('answers.update');
-    Route::get ('{answer}',      'AnswerController@show'  )->name('answers.show');
+    Route::get ('{question}',      'AnswerController@show'  )->name('answers.show');
 
     Route::delete('destroy/{answer}', 'AnswerController@destroy')->name('answers.destroy');
 });

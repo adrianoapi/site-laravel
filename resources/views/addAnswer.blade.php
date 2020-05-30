@@ -4,32 +4,51 @@
 
 <div class="container-fluid">
 
+    @if (is_object($answer))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        Resposta <strong>{{$answer->description}}</strong> craido com sucesso!
+    </div>
+    @endif
+
     <div class="box box-bordered">
         <div class="box-title">
             <h3><i class="icon-plus-sign"></i> Adicionar</h3>
-    
+
             <ul class="tabs actions">
+                <li class="active">
+                    <a href="{{route('answers.create', ['question' => $question->id])}}" data-toggle="modal" class="btn"><i class="icon-edit"></i> Nova Resposta</a>
+                </li>
                 <li>
-                    <a href="{{route('answers.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Respostas</a>
+                    <a href="{{route('answers.show',   ['question'  => $question->id])}}" data-toggle="modal" class="btn"><i class="icon-shopping-cart"></i> Resostas</a>
+                </li>
+                <li>
+                    <a href="{{route('questions.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Questões</a>
                 </li>
             </ul>
-    
+
         </div>
+
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin">
+                <thead>
+                    <tr>
+                        <th class="span2">Título</th>
+                        <th class="span2">Exame</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{$question->title}}</td>
+                        <td>{{$question->exam->title}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <div class="box-content nopadding">
             <form action="{{route('answers.store')}}" method="POST" class="form-horizontal form-bordered">
                 @csrf
-                <div class="control-group">
-                    <label for="question_id" class="control-label">Exame</label>
-                    <div class="controls">
-                        <select name="question_id" id="question_id" class="select2-me input-xlarge">
-                            @foreach ($questions as $value)
-
-                                <option value="{{$value->id}}">{{$value->title}}</option>
-
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
                 <div class="control-group">
                     <label for="description" class="control-label">Conteúdo</label>
                     <div class="controls">
@@ -46,6 +65,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="question_id" value="{{$question->id}}">
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Salvar</button>
                     <a href="{{route('answers.index')}}" class="btn">Cancelar</a>

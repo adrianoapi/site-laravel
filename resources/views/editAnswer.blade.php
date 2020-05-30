@@ -20,12 +20,6 @@
                 @csrf
                 @method('PUT')
                 <div class="control-group">
-                    <label for="title" class="control-label">Título</label>
-                    <div class="controls">
-                        <input type="text" name="title" value="{{$answer->title}}" id="title" placeholder="Text input" class="input-xlarge">
-                    </div>
-                </div>
-                <div class="control-group">
                     <label for="question_id" class="control-label">Exame</label>
                     <div class="controls">
                         <select name="question_id" id="question_id" class="select2-me input-xlarge">

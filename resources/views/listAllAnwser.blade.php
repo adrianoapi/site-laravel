@@ -21,7 +21,7 @@
                     <tr>
                         <th class="span1">ID</th>
                         <th class="span1">Tipo</th>
-                        <th class="span5">Título</th>
+                        <th class="span5">Descrição</th>
                         <th class="span3">Questão</th>
                         <th class="span2">Options</th>
                     </tr>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{$value->id}}</td>
                             <td>{{$value->correct == true ? 'Correta' : 'Errada'}}</td>
-                            <td>{{$value->title}}</td>
+                            <td>{{$value->description}}</td>
                             <td>{{$value->question->title}}</td>
                             <td>
                                 <form action="{{route('answers.destroy', ['answer' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">

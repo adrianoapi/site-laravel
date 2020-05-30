@@ -46,7 +46,6 @@ class AnswerController extends Controller
     {
         $answer = new Answer();
         $answer->question_id = $request->question_id;
-        $answer->title       = $request->title;
         $answer->description = $request->description;
         $answer->correct     = $request->correct == 'true' ? true : false;
         $answer->save();
@@ -88,7 +87,6 @@ class AnswerController extends Controller
     public function update(Request $request, Answer $answer)
     {
         $answer->question_id = $request->question_id;
-        $answer->title       = $request->title;
         $answer->description = $request->description;
         $answer->correct     = $request->correct == 'true' ? true : false;
         $answer->save();

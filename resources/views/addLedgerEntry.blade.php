@@ -3,19 +3,17 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="page-header">
-        <div class="pull-left">
-            <h1>/lancamentos</h1>
-        </div>
-        <div class="pull-right">
-            <div class="btn-toolbar">
-                <a href="{{route('ledgerEntries.index')}}" class="btn btn-primary"><i class="icon-reorder" title="Listagem"></i> Listagem</a>
-            </div> 
-        </div> 
-    </div>
-    <div class="box box-bordered box-color">
+
+    <div class="box box-bordered">
         <div class="box-title">
-            <h3><i class="icon-th-list"></i> Adicionar</h3>
+            <h3><i class="icon-plus-sign"></i> Adicionar</h3>
+    
+            <ul class="tabs actions">
+                <li>
+                    <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Lançamentos</a>
+                </li>
+            </ul>
+    
         </div>
         <div class="box-content nopadding">
             <form action="{{route('ledgerEntries.store')}}" method="POST" class="form-horizontal form-bordered">

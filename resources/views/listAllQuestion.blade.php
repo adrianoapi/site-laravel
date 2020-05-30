@@ -10,7 +10,7 @@
         
             <ul class="tabs actions">
                 <li class="active">
-                    <a href="{{route('questions.create')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Adicionar Questão</a>
+                    <a href="{{route('questions.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Adicionar Questão</a>
                 </li>
             </ul>
         

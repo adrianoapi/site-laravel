@@ -11,9 +11,11 @@
                 Exames
             </h3>
 
-            <div class="actions">
-                <a href="{{route('exams.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Novo Exame</a>
-            </div>
+            <ul class="tabs actions">
+                <li class="active">
+                    <a href="{{route('exams.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Adicionar Exame</a>
+                </li>
+            </ul>
 
         </div>
         <div class="box-content nopadding">

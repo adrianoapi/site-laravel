@@ -141,6 +141,17 @@
           <li>
             <a href="{{route('posts.index')}}"><i class="icon-book"></i> Anotações</a>
           </li>
+          <li class='dropdown-submenu'>
+            <a href="#" data-toggle="dropdown"><i class="icon-ok-circle"></i> Exames</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{route('exams.index')}}"><i class="icon-ok-circle"></i> Listar Exames</a>
+              </li>
+              <li>
+                <a href="{{route('questions.index')}}"><i class="icon-ok-circle"></i> Listar Questões</a>
+              </li>
+            </ul>
+          </li>
           <li>
             <a href="#"><i class="glyphicon-keys"></i> Senhas</a>
           </li>
@@ -368,6 +379,18 @@
         </li>
         <li>
           <a href="{{route('posts.index')}}"><i class="icon-book"></i> Anotações</a>
+        </li>
+        
+        <li class='dropdown'>
+          <a href="#" data-toggle="dropdown"><i class="icon-ok-circle"></i> Exames</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="{{route('exams.index')}}"><i class="icon-ok-circle"></i> Listar Exames</a>
+            </li>
+            <li>
+              <a href="{{route('questions.index')}}"><i class="icon-ok-circle"></i> Listar Questões</a>
+            </li>
+          </ul>
         </li>
         <li>
           <a href="#"><i class="glyphicon-keys"></i> Senhas</a>

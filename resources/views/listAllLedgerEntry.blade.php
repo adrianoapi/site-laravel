@@ -67,7 +67,7 @@
                     @foreach ($ledgerEntries as $value)
                         <tr>
                             <td>{{$value->entry_date}}</td>
-                            <td><span class="badge badge-{{$value->transitionType->action == 'recipe' ? 'success' : 'important'}}">{{$value->amount}}</span></td>
+                            <td><span class="btn btn-small btn-{{$value->transitionType->action == 'recipe' ? 'success' : 'danger'}}">{{$value->amount}}</span></td>
                             <td>{{$value->description}}</td>
                             <td>{{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}</td>
                             <td>{{$value->transitionType->title}}</td>

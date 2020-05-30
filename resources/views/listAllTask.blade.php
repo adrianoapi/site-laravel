@@ -3,22 +3,20 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="page-header">
-        <div class="pull-left">
-            <h1>/tarefas-grupo</h1>
-        </div>
-        <div class="pull-right">
-            <div class="btn-toolbar">
-                <a href="{{route('tasks.create')}}" class="btn btn-primary"><i class="icon-plus" title="Adicionar"></i> Adicionar</a>
-            </div> 
-        </div> 
-    </div>
-    <div class="box box-color box-bordered">
+    
+    <div class="box box-bordered">
         <div class="box-title">
             <h3>
-                <i class="icon-table"></i>
-                Listagem
+                <i class="glyphicon-list"></i>
+                Tarefas
             </h3>
+        
+            <ul class="tabs actions">
+                <li class="active">
+                    <a href="{{route('tasks.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Adicionar Tarefa</a>
+                </li>
+            </ul>
+        
         </div>
         <div class="box-content nopadding">
             <table class="table table-hover table-nomargin">

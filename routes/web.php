@@ -148,13 +148,24 @@ Route::prefix('exames')->group(function(){
 
 Route::prefix('questoes')->group(function(){
     Route::get('/',                 'QuestionController@index' )->name('questions.index');
-    Route::get('/novo',             'QuestionController@create')->name('questions.create');
+    Route::get('novo',              'QuestionController@create')->name('questions.create');
     Route::post('store',            'QuestionController@store' )->name('questions.store');
     Route::get('editar/{question}', 'QuestionController@edit'  )->name('questions.edit');
     Route::put('editar/{question}', 'QuestionController@update')->name('questions.update');
     Route::get('{question}',        'QuestionController@show'  )->name('questions.show');
 
     Route::delete('destroy/{question}', 'QuestionController@destroy')->name('questions.destroy');
+});
+
+Route::prefix('respostas')->group(function(){
+    Route::get ('/',             'AnswerController@index' )->name('answers.index');
+    Route::get ('novo',          'AnswerController@create')->name('answers.create');
+    Route::post('store',         'AnswerController@store' )->name('answers.store');
+    Route::get ('edit/{answer}', 'AnswerController@edit'  )->name('answers.edit');
+    Route::put ('edit/{answer}', 'AnswerController@update')->name('answers.update');
+    Route::get ('{answer}',      'AnswerController@show'  )->name('answers.show');
+
+    Route::delete('destroy/{answer}', 'AnswerController@destroy')->name('answers.destroy');
 });
 
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');

@@ -55,10 +55,10 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
-                        <th class="span2">Data</th>
+                        <th class="span1">Data</th>
                         <th class="span1">Valor</th>
                         <th class="span2">Lançamento</th>
-                        <th class="span2">Tipo de Despesa</th>
+                        <th class="span3">Tipo de Despesa</th>
                         <th class="span3">Tipo de Transação</th>
                         <th class="span2">Options</th>
                     </tr>
@@ -67,7 +67,7 @@
                     @foreach ($ledgerEntries as $value)
                         <tr>
                             <td>{{$value->entry_date}}</td>
-                            <td><span class="btn btn-small btn-{{$value->transitionType->action == 'recipe' ? 'success' : 'danger'}}">{{$value->amount}}</span></td>
+                            <td><span class="btn btn-small btn-{{$value->transitionType->action == 'recipe' ? 'teal' : 'lightred'}}">{{$value->amount}}</span></td>
                             <td>{{$value->description}}</td>
                             <td>{{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}</td>
                             <td>{{$value->transitionType->title}}</td>

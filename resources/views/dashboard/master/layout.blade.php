@@ -150,6 +150,9 @@
               <li>
                 <a href="{{route('questions.index')}}"><i class="icon-ok-circle"></i> Listar Questões</a>
               </li>
+              <li>
+                <a href="{{route('answers.index')}}"><i class="icon-ok-circle"></i> Listar Respostas</a>
+              </li>
             </ul>
           </li>
           <li>
@@ -389,6 +392,9 @@
             </li>
             <li>
               <a href="{{route('questions.index')}}"><i class="icon-ok-circle"></i> Listar Questões</a>
+            </li>
+            <li>
+              <a href="{{route('answers.index')}}"><i class="icon-ok-circle"></i> Listar Respsotas</a>
             </li>
           </ul>
         </li>

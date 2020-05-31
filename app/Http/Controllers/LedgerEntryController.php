@@ -77,7 +77,7 @@ class LedgerEntryController extends Controller
         $ledgerEntry->amount             = $request->amount;
         $ledgerEntry->save();
 
-        return redirect()->route('ledgerEntries.index');
+        return redirect()->route('ledgerItems.create', ['ledgerEntry' => $ledgerEntry]);
     }
 
     /**

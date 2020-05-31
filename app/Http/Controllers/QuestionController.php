@@ -91,7 +91,7 @@ class QuestionController extends Controller
         $question->description = $request->description;
         $question->save();
 
-        return redirect()->route('questions.index');
+        return redirect()->route('questions.show', ['question' => $question]);
     }
 
     /**

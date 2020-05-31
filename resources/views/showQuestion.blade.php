@@ -6,10 +6,12 @@
 
     <div class="box box-bordered">
         <div class="box-title">
-            <h3><i class="icon-plus-sign"></i> Altear</h3>
+            <h3><i class="icon-plus-sign"></i> Detalhe</h3>
     
             <ul class="tabs actions">
                 <li>
+                    <a href="{{route('questions.edit', ['question' => $question->id])}}" data-toggle="modal" class="btn"><i class="icon-edit"></i> Editar</a>
+                </li><li>
                     <a href="{{route('questions.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Questões</a>
                 </li>
             </ul>
@@ -30,7 +32,7 @@
                         <td>{{$question->exam->title}}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">{{$question->description}}</td>
+                        <td colspan="2">{!! html_entity_decode($question->description) !!}</td>
                     </tr>
                 </tbody>
             </table>

@@ -91,6 +91,17 @@ class ExamController extends Controller
     }
 
     /**
+     * Show the form for execute the specified resource.
+     *
+     * @param  \App\Exam  $exam
+     * @return \Illuminate\Http\Response
+     */
+    public function execute(Exam $exam)
+    {
+        return view('showExamExecute');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Exam  $exam

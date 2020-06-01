@@ -98,7 +98,8 @@ class ExamController extends Controller
      */
     public function execute(Exam $exam)
     {
-        return view('showExamExecute');
+        $question = \App\Question::inRandomOrder()->where('exam_id', $exam->id)->first();
+        return view('showExamExecute', ['exam' => $exam, 'question' => $question]);
     }
 
     /**

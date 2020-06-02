@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{!! html_entity_decode($question->description) !!}</td>
+                        <td colspan="2">{!! html_entity_decode($question->description) !!}</td>
                     </tr>
                     @foreach ($question->answers as $value)
                     <tr>

@@ -6,7 +6,15 @@
 
     <div class="box box-bordered">
         <div class="box-title">
-            <h3><i class="icon-table"></i> Questões</h3>
+
+            <form action="{{route('questions.index')}}" method="GET" class="span3" style="margin: 0;padding:0;">
+                <div class="input-append input-prepend" style="margin: 0;padding:0;">
+                    <span class="add-on"><i class="icon-search"></i></span>
+                    <input type="hidden" name="filtro" value="pesquisa">
+                    <input type="text" name="pesquisar" value="{{array_key_exists('pesquisar', $_GET) ? $_GET['pesquisar'] : ''}}" placeholder="título..." class="input-medium">
+                    <button class="btn" type="submit">Pesquisar</button>
+                </div>
+            </form>
         
             <ul class="tabs actions">
                 <li class="active">

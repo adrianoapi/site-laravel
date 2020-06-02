@@ -21,7 +21,14 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::paginate(10);
+        if(array_key_exists('filtro',$_GET)){
+            if($_GET['filtro'] == 'pesquisa'){
+                $questions = Question::where('title', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('title', 'asc')->paginate(10);
+            }
+        }else{
+            $questions = Question::paginate(10);
+        }
+        
         return view('listAllQuestion', ['questions' => $questions]);
     }
 

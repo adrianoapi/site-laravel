@@ -28,7 +28,7 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
-                        <th>Questão</th>
+                        <th colspan="2">Questão</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,14 +39,19 @@
                     <tr>
                         <td>
                             <div class="check-line">
-                                <input type="radio" id="{{$value->id}}" class='icheck-me' name="answer_id" value="{{$value->id}}" data-skin="square" data-color="blue" {{$value->correct == true ? 'checked' : ''}}> <label class='inline' for="c7">{{$value->description}}</label>
+                            <input type="radio" id="{{$value->id}}" class='icheck-me' data-skin="square" data-color="blue" {{$value->id == $answer->id ? 'checked' : ''}}> <label class='inline' for="c7">{{$value->description}}</label>
                             </div>
+                        </td>
+                        <td>
+                            @if ($value->correct)
+                                <span class="btn btn-success">[certo]<span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
                     <thead>
                         <tr>
-                            <td>
+                            <td colspan="2">
                                 <a href="{{route('exams.execute', ['exam' => $question->exam->id])}}" class="btn">Voltar</a>
                             </td>
                         </tr>

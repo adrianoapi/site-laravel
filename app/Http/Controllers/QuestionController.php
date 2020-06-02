@@ -94,6 +94,13 @@ class QuestionController extends Controller
         return redirect()->route('questions.show', ['question' => $question]);
     }
 
+    public function confirm(Request $request, Question $question)
+    {
+        $answer = \App\Answer::where('id', $request->answer_id)->first();
+        $exam   = \App\Exam::where('id', $question->exam_id)->first();
+        return view('showExamConfirm', ['exam' => $exam, 'question' => $question, 'answer' => $answer]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

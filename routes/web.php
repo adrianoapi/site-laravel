@@ -170,6 +170,11 @@ Route::prefix('respostas')->group(function(){
     Route::delete('destroy/{answer}', 'AnswerController@destroy')->name('answers.destroy');
 });
 
+Route::prefix('imagens')->group(function(){
+    Route::get ('novo/{question}',  'QuestionImageController@create')->name('questionImages.create');
+    Route::post('store',            'QuestionImageController@store' )->name('questionImages.store');
+});
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

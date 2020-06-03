@@ -48,21 +48,9 @@
     </div>
 </div>
 
-<script>
-    function readURL(input, id) {
-      id = id || '#file-image';
-      if (input.files &amp;&amp; input.files[0]) {
-          var reader = new FileReader();
-  
-          reader.onload = function (e) {
-              $(id).attr('src', e.target.result);
-          };
-  
-          reader.readAsDataURL(input.files[0]);
-          $('#file-image').removeClass('hidden');
-          $('#start').hide();
-      }
-   }
-  </script>
+@foreach ($question->images as $value)
+    <img src="data:{{$value->type}};base64, {{$value->image}}" width="120" alt="" />
+@endforeach
+
 
 @endsection

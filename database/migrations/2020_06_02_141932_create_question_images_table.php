@@ -16,7 +16,7 @@ class CreateQuestionImagesTable extends Migration
         Schema::create('question_images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('question_id');
-            $table->text('image');
+            $table->longText('image');
             $table->string('type');
             $table->integer('size');
             $table->timestamps();

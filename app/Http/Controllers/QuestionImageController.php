@@ -44,14 +44,19 @@ class QuestionImageController extends Controller
             $atendimento = $request->all();
             $file      = $request->file('fileUpload');
             $questionImage = new QuestionImage();
+
+            $image_base64 = base64_encode(file_get_contents($_FILES['fileUpload']['tmp_name']));
             
-            $questionImage->image       = explode(',',$atendimento['fileUpload'])[1];
+            $questionImage->image       = $image_base64;
             $questionImage->type        = $this->fileType($file->getClientOriginalName());
             $questionImage->size        = $file->getClientSize();
             $questionImage->question_id = $request->question_id;
             $questionImage->save();
-            #echo '<img src="data:image/png;base64, '.$imgBase64.'" alt="Red dot" />';
         }
+
+        $question = \App\Question::where('id', $questionImage->question_id)->first();
+
+        return redirect()->route('questionImages.create', ['question' => $question]);
     }
 
     public function fileType($value)

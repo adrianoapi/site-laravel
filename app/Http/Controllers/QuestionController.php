@@ -22,14 +22,18 @@ class QuestionController extends Controller
     public function index()
     {
         if(array_key_exists('filtro',$_GET)){
-            if($_GET['filtro'] == 'pesquisa'){
+            if($_GET['filtro'] == 'exame'){
+                $questions = Question::where('exam_id', $_GET['id'])->paginate(10);
+            }elseif($_GET['filtro'] == 'pesquisa'){
                 $questions = Question::where('title', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('title', 'asc')->paginate(10);
             }
         }else{
             $questions = Question::paginate(10);
         }
+
+        $exams = \App\Exam::all();
         
-        return view('listAllQuestion', ['questions' => $questions]);
+        return view('listAllQuestion', ['questions' => $questions, 'exams' => $exams]);
     }
 
     /**

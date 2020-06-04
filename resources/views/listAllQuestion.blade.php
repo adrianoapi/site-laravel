@@ -15,14 +15,33 @@
                     <button class="btn" type="submit">Pesquisar</button>
                 </div>
             </form>
+
+            <div class="actions">
+
+                <div class="btn-group">
+                    <a href="#" data-toggle="dropdown" class="btn dropdown-toggle"><i class="glyphicon-filter"></i> <span class="caret"></span> Filtrar</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Exames</a>
+                            <ul class="dropdown-menu">
+                                @foreach ($exams as $value)
+                                    <li><a href="{{route('questions.index', ['filtro' =>'exame', 'id' => $value->id])}}">{{$value->title}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
         
-            <ul class="tabs actions">
-                <li class="active">
-                    <a href="{{route('questions.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Adicionar Questão</a>
-                </li>
-            </ul>
-        
-        </div>
+                <ul class="tabs actions">
+                    <li>
+                        <a href="{{route('questions.index')}}" data-toggle="modal" class="btn"><i class="glyphicon-cleaning"></i> Limpar</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{route('questions.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Adicionar Questão</a>
+                    </li>
+                </ul>
+            </div>
+
         <div class="box-content nopadding">
             <table class="table table-hover table-nomargin">
                 <thead>

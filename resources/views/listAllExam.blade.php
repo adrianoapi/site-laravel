@@ -36,9 +36,10 @@
                                 <form action="{{route('exams.destroy', ['exam' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('exams.execute', ['exam' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Realizar Teste"><i class="icon-desktop"></i></a>
-                                    <a href="{{route('exams.show',    ['exam' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
-                                    <a href="{{route('exams.edit',    ['exam' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
+                                    <a href="{{route('exams.execute', ['exam'   => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Realizar Teste"><i class="icon-desktop"></i></a>
+                                    <a href="{{route('exams.show',    ['exam'   => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
+                                    <a href="{{route('exams.edit',    ['exam'   => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
+                                    <a href="{{route('questions.index', ['filtro' => 'exame', 'id' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Questões"><i class="icon-check"></i></a>
                                     <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>
                                 </form>
                             </td>

@@ -10,7 +10,7 @@
 
             <ul class="tabs actions">
                 <li>
-                    <a href="{{route('exams.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Exames</a>
+                    <a href="{{route('questions.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Questões</a>
                 </li>
             </ul>
 

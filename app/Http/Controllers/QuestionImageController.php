@@ -132,6 +132,9 @@ class QuestionImageController extends Controller
      */
     public function destroy(QuestionImage $questionImage)
     {
-        //
+        $question = \App\Question::where('id', $questionImage->question_id)->first();
+        $questionImage->delete();
+
+        return redirect()->route('questionImages.create', ['question' => $question]);
     }
 }

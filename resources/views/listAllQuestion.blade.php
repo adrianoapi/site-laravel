@@ -27,10 +27,10 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
-                        <th class="span2">ID</th>
+                        <th class="span1">ID</th>
                         <th class="span5">Título</th>
                         <th class="span3">Exame</th>
-                        <th class="span2">Options</th>
+                        <th class="span3">Options</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,7 +43,7 @@
                                 <form action="{{route('questions.destroy', ['question' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('questionImages.create', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Imagem"><i class="icon-file-alt"></i></a>
+                                    <a href="{{route('questionImages.create', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Imagem"><i class="glyphicon-picture"></i></a>
                                     <a href="{{route('questions.show', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
                                     <a href="{{route('questions.edit', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
                                     <a href="{{route('answers.create', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Resosta"><i class="icon-plus-sign"></i></a>

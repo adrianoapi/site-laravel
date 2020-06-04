@@ -33,7 +33,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="2">{!! html_entity_decode($question->description) !!}</td>
+                        <td>
+                            {!! html_entity_decode($question->description) !!}
+                            @foreach ($question->images as $value)
+                            <hr>
+                                <img src="data:{{$value->type}};base64, {{$value->image}}" alt="" />
+                            @endforeach
+                        </td>
                     </tr>
                     @foreach ($question->answers as $value)
                     <tr>

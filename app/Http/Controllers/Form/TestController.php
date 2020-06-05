@@ -35,6 +35,7 @@ class TestController extends Controller
         $user->name     = $request->name;
         $user->email    = $request->email;
         $user->password = Hash::make($request->password);
+        $user->active   = false;
         $user->save();
         
         return redirect()->route('users.listAll');

@@ -27,7 +27,7 @@ class AuthController extends Controller
             return \redirect()->back()->withInput()->withErrors(['Email informado não é válido!']);
         }
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'active' => true])){
             return \redirect()->route('admin');
         }
         

@@ -10,13 +10,13 @@
 
             <ul class="tabs actions">
                 <li>
-                    <a href="{{route('collItems.create', ['collection' => $collection->id])}}" data-toggle="modal" class="btn"><i class="icon-edit"></i> Nova Resposta</a>
+                    <a href="{{route('collItems.create', ['collection' => $collection->id])}}" data-toggle="modal" class="btn"><i class="icon-edit"></i> Novo Item</a>
                 </li>
                 <li class="active">
-                    <a href="{{route('collItems.show',   ['collection'  => $collection->id])}}" data-toggle="modal" class="btn"><i class="icon-shopping-cart"></i> Resostas</a>
+                    <a href="{{route('collItems.show',   ['collection'  => $collection->id])}}" data-toggle="modal" class="btn"><i class="glyphicon-tags"></i> Resostas</a>
                 </li>
                 <li>
-                    <a href="{{route('collections.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Questões</a>
+                    <a href="{{route('collections.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Coleções</a>
                 </li>
             </ul>
 
@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($collItems as $value)
+                    @foreach ($collection->items as $value)
                     <tr>
                         <td>{{$value->title}}</td>
                         <td>

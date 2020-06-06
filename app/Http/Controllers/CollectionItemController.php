@@ -60,8 +60,7 @@ class CollectionItemController extends Controller
      */
     public function show(\App\Collection $collection)
     {
-        $collItems = CollectionItem::where('collection_id', $collection->id)->orderBy('id', 'desc')->get();
-        return view('showCollectionItem',['collItems' => $collItems, 'collection' => $collection]);
+        return view('showCollectionItem',['collection' => $collection]);
     }
 
     /**

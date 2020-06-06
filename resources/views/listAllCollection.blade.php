@@ -36,7 +36,7 @@
                                 <form action="{{route('collections.destroy', ['collection' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('collItems.create',    ['collection'   => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Item"><i class="icon-file-alt"></i></a>
+                                    <a href="{{route('collItems.create',    ['collection'   => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Item"><i class="glyphicon-tag"></i></a>
                                     <a href="{{route('collections.show',    ['collection'   => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
                                     <a href="{{route('collections.edit',    ['collection'   => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
                                     <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>

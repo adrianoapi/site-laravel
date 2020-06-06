@@ -136,7 +136,7 @@
             </ul>
           </li>
           <li>
-            <a href="#"><i class="icon-heart-empty"></i> Coleções</a>
+          <a href="{{route('collections.index')}}"><i class="icon-heart-empty"></i> Coleções</a>
           </li>
           <li>
             <a href="{{route('posts.index')}}"><i class="icon-book"></i> Anotações</a>
@@ -375,7 +375,7 @@
           </ul>
         </li>
         <li>
-          <a href="#"><i class="icon-heart-empty"></i> Coleções</a>
+          <a href="{{route('collections.index')}}"><i class="icon-heart-empty"></i> Coleções</a>
         </li>
         <li>
           <a href="{{route('posts.index')}}"><i class="icon-book"></i> Anotações</a>

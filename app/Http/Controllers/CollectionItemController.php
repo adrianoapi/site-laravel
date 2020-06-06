@@ -28,9 +28,9 @@ class CollectionItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(\App\Collection $collection)
     {
-        return viw('addCollectionItem');
+        return view('addCollectionItem', ['collItems' => [],'collection' => $collection, 'collItem' => '']);
     }
 
     /**
@@ -41,18 +41,27 @@ class CollectionItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $collection = \App\Collection::where('id', $request->collection_id)->first();
+
+        $collectionItem = new CollectionItem();
+        $collectionItem->collection_id = $request->collection_id;
+        $collectionItem->title         = $request->title;
+        $collectionItem->description   = $request->description;
+        $collectionItem->save();
+
+        return view('addCollectionItem', ['collItems' => [],'collection' => $collection, 'collItem' => '']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\CollectionItem  $collectionItem
+     * @param  \App\Collection $collection
      * @return \Illuminate\Http\Response
      */
-    public function show(CollectionItem $collectionItem)
+    public function show(\App\Collection $collection)
     {
-        //
+        $collItems = CollectionItem::where('collection_id', $collection->id)->orderBy('id', 'desc')->get();
+        return view('showCollectionItem',['collItems' => $collItems, 'collection' => $collection]);
     }
 
     /**
@@ -81,11 +90,14 @@ class CollectionItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CollectionItem  $collectionItem
+     * @param  \App\CollectionItem  $collItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CollectionItem $collectionItem)
+    public function destroy(CollectionItem $collItem)
     {
-        //
+        $collection = \App\Collection::where('id', $collItem->collection_id)->first();
+        $collItem->delete();
+
+        return redirect()->route('collItems.show', ['collection' => $collection]);
     }
 }

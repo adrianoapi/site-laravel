@@ -47,6 +47,7 @@ class CollectionItemController extends Controller
         $collectionItem->collection_id = $request->collection_id;
         $collectionItem->title         = $request->title;
         $collectionItem->description   = $request->description;
+        $collectionItem->release       = $request->release;
         $collectionItem->save();
 
         return view('addCollectionItem', ['collection' => $collection, 'collItem' => $collectionItem]);

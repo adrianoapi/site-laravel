@@ -43,6 +43,7 @@
                 <thead>
                     <tr>
                         <th class="span4">Descrição</th>
+                        <th class="span4">Lançamento</th>
                         <th class="span2">Ação</th>
                     </tr>
                 </thead>
@@ -50,6 +51,7 @@
                     @foreach ($collection->items as $value)
                     <tr>
                         <td>{{$value->title}}</td>
+                        <td>{{$value->release}}</td>
                         <td>
                             <form action="{{route('collItems.destroy', ['collItem' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                 @csrf

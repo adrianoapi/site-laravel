@@ -30,7 +30,7 @@ class CollectionItemController extends Controller
      */
     public function create(\App\Collection $collection)
     {
-        return view('addCollectionItem', ['collItems' => [],'collection' => $collection, 'collItem' => '']);
+        return view('addCollectionItem', ['collection' => $collection, 'collItem' => '']);
     }
 
     /**
@@ -49,7 +49,7 @@ class CollectionItemController extends Controller
         $collectionItem->description   = $request->description;
         $collectionItem->save();
 
-        return view('addCollectionItem', ['collItems' => [],'collection' => $collection, 'collItem' => '']);
+        return view('addCollectionItem', ['collection' => $collection, 'collItem' => $collectionItem]);
     }
 
     /**

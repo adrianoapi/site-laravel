@@ -188,6 +188,17 @@ Route::prefix('colecoes')->group(function(){
     Route::delete('destroy/{collection}', 'CollectionController@destroy')->name('collections.destroy');
 });
 
+Route::prefix('colecoes/itens')->group(function(){
+    Route::get ('/',               'CollectionItemController@index' )->name('collItems.index');
+    Route::get ('novo',            'CollectionItemController@create')->name('collItems.create');
+    Route::post('store',           'CollectionItemController@store' )->name('collItems.store');
+    Route::get ('edit/{collItem}', 'CollectionItemController@edit'  )->name('collItems.edit');
+    Route::put ('edit/{collItem}', 'CollectionItemController@update')->name('collItems.update');
+    Route::get ('{collItem}',      'CollectionItemController@show'  )->name('collItems.show');
+
+    Route::delete('destroy/{collItem}', 'CollectionItemController@destroy')->name('collItens.destroy');
+});
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

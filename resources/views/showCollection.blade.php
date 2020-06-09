@@ -15,27 +15,48 @@
             </ul>
 
         </div>
-        <div class="box-content nopadding">
-            <form action="" method="POST" class="form-horizontal form-bordered">
-                <div class="control-group">
-                    <label for="title" class="control-label">Title</label>
-                    <div class="controls">
-                        <input type="text" name="title" id="title" value="{{$collection->title}}" placeholder="Text input" class="input-xlarge" disabled>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label for="description" class="control-label">Conteúdo</label>
-                    <div class="controls">
-                        <textarea name="description" id="description" rows="5" class="input-block-level" disabled>{{$collection->description}}</textarea>
-                    </div>
-                </div>
 
-                <div class="form-actions">
-                    <a href="{{route('collections.index')}}" class="btn">Voltar</a>
-                </div>
-            </form>
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin">
+                <thead>
+                    <tr>
+                        <th class="span2">Título</th>
+                        <th class="span2">Exame</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{$collection->title}}</td>
+                        <td>{{$collection->description}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin">
+                <thead>
+                    <tr>
+                        <th class="span4">Item</th>
+                        <th class="span2">Descrição</th>
+                        <th class="span2">Lançamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($collection->items as $value)
+                    <tr>
+                        <td>{{$value->desctitleription}}</td>
+                        <td>{{$value->description}}</td>
+                        <td>{{$value->release}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
+
+
 
 @endsection

@@ -37,15 +37,15 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
-                        <th class="span4">Item</th>
-                        <th class="span2">Descrição</th>
-                        <th class="span2">Lançamento</th>
+                        <th class="span3">Item</th>
+                        <th class="span3">Descrição</th>
+                        <th class="span3">Lançamento</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($collection->items as $value)
                     <tr>
-                        <td>{{$value->desctitleription}}</td>
+                        <td>{{$value->title}}</td>
                         <td>{{$value->description}}</td>
                         <td>{{$value->release}}</td>
                     </tr>

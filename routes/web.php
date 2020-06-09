@@ -199,6 +199,13 @@ Route::prefix('colecoes/itens')->group(function(){
     Route::delete('destroy/{collItem}', 'CollectionItemController@destroy')->name('collItems.destroy');
 });
 
+Route::prefix('colecoes/itens/imagens')->group(function(){
+    Route::get ('/novo/{collItem}', 'CollectionItemImageController@create')->name('collItemImages.create');
+    Route::post('store',            'CollectionItemImageController@store' )->name('collItemImages.store');
+
+    Route::delete('destroy/{collItemImage}', 'CollectionItemImageController@destroy')->name('collItemImages.destroy');
+});
+
 Route::get('/usuario/{id}', 'UserController@show')->name('user.listUser');
 Route::get('/usuario', 'UserController@show')->name('users.listAll');
 

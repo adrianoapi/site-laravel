@@ -67,24 +67,29 @@ class CollectionItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CollectionItem  $collectionItem
+     * @param  \App\CollectionItem  $collItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(CollectionItem $collectionItem)
+    public function edit(CollectionItem $collItem)
     {
-        //
+        return view('editCollectionItem', ['collItem' => $collItem]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CollectionItem  $collectionItem
+     * @param  \App\CollectionItem  $collItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CollectionItem $collectionItem)
+    public function update(Request $request, CollectionItem $collItem)
     {
-        //
+        $collItem->title       = $request->title;
+        $collItem->description = $request->description;
+        $collItem->release     = $request->release;
+        $collItem->save();
+
+        return redirect()->route('collItems.show', ['collection' => $collItem->collection]);
     }
 
     /**

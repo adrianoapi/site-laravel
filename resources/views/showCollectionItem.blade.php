@@ -56,6 +56,7 @@
                             <form action="{{route('collItems.destroy', ['collItem' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                 @csrf
                                 @method('delete')
+                                <a href="{{route('collItems.edit',     ['collItem'  => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i> Editar</a>
                                 <button type="submit" class="btn btn-inverse"><i class="icon-trash"></i> Excluir</button>
                             </form>
                         </td>

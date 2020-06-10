@@ -11,6 +11,11 @@ class CollectionItem extends Model
         return $this->hasOne(Collection::class, 'id', 'collection_id');
     }
 
+    public function images()
+    {
+        return $this->hasMany(CollectionItemImage::class, 'collection_item_id', 'id');
+    }
+
     public function setReleaseAttribute($value)
     {
         $date = str_replace('/', '-', $value);

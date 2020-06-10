@@ -42,6 +42,24 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
+                        <th class="span2">Colecao</th>
+                        <th class="span2">Item</th>
+                        <th class="span2">Descricao</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{$collItem->collection->title}}</td>
+                        <td>{{$collItem->title}}</td>
+                        <td>{{$collItem->description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box-content nopadding">
+            <table class="table table-hover table-nomargin">
+                <thead>
+                    <tr>
                         <th class="span10">Imagem</th>
                         <th class="span2">Ação</th>
                     </tr>

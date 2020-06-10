@@ -37,14 +37,19 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
-                        <th class="span3">Item</th>
+                        <th class="span2">Imagem</th>
+                        <th class="span5">Item</th>
                         <th class="span3">Descrição</th>
-                        <th class="span3">Lançamento</th>
+                        <th class="span2">Lançamento</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($collection->items as $value)
                     <tr>
+                        <td>
+                            @if (!empty($value->images[0]->collection_item_id))
+                            <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
+                            @endif
                         <td>{{$value->title}}</td>
                         <td>{{$value->description}}</td>
                         <td>{{$value->release}}</td>

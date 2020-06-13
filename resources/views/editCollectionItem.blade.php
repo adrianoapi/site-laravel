@@ -70,7 +70,7 @@
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a href="{{route('collItems.index')}}" class="btn">Cancelar</a>
+                    <a href="{{route('collItems.show', ['collection' => $collItem->collection->id])}}" class="btn">Cancelar</a>
                 </div>
             </form>
         </div>

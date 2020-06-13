@@ -63,7 +63,7 @@
                                     @csrf
                                     @method('delete')
                                     <a href="{{route('questionImages.create', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Imagem"><i class="glyphicon-picture"></i></a>
-                                    <a href="{{route('questions.show', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-file-alt"></i></a>
+                                    <a href="{{route('questions.show', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-search"></i></a>
                                     <a href="{{route('questions.edit', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
                                     <a href="{{route('answers.create', ['question' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Resosta"><i class="icon-plus-sign"></i></a>
                                     <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>

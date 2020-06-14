@@ -12,9 +12,10 @@
     @csrf
     <label for="">Título</label>
     <input type="text" name="title" value="">
+    {{Form::label('title', 'Título', array('class' => ''));}}
     <br>
-    <label for="">Sub-título</label>
     <input type="text" name="subtitle" value="">
+    {{Form::label('title', 'Sub-título', array('class' => ''));}}
     <br>
     <label for="">Conteúdo</label>
     <textarea name="content" id="content" cols="30" rows="10"></textarea>

@@ -48,7 +48,9 @@
                     <tr>
                         <td>
                             @if (!empty($value->images[0]->collection_item_id))
-                            <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
+                            <a href="#new-task" data-toggle="modal" class='btn'>
+                                <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
+                            </a>
                             @endif
                         <td>{{$value->title}}</td>
                         <td>{{$value->description}}</td>
@@ -60,6 +62,39 @@
         </div>
 
     </div>
+</div>
+
+<div id="new-task" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Add new task</h3>
+    </div>
+    <form action="#" class='new-task-form form-horizontal form-bordered'>
+        <div class="modal-body nopadding">
+            <div class="control-group">
+                <label for="tasktitel" class="control-label">Icon</label>
+                <div class="controls">
+                    <select name="icons" id="icons" class='select2-me input-xlarge'>
+                        <option value="icon-adjust">icon-adjust</option>
+                        <option value="icon-asterisk">icon-asterisk</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="task-name" class="control-label">Task</label>
+                <div class="controls">
+                    <input type="text" name="task-name">
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="tasktitel" class="control-label"></label>
+                <div class="controls">
+                    <label class="checkbox"><input type="checkbox" name="task-bookmarked" value="yep"> Mark as important</label>
+                </div>
+            </div>
+        </div>
+    </form>
+
 </div>
 
 

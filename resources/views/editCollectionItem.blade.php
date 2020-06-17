@@ -59,7 +59,7 @@
                 <div class="control-group">
                     <label for="description" class="control-label">Descrição</label>
                     <div class="controls">
-                        <textarea name="description" id="description" rows="5" class="input-block-level">{{$collItem->description}}</textarea>
+                        <textarea name="description" id="description" rows="5" class="ckeditor span12">{{$collItem->description}}</textarea>
                     </div>
                 </div>
                 <div class="control-group">
@@ -76,5 +76,12 @@
         </div>
     </div>
 </div>
-    
+<script type="text/javascript">
+    {literal}
+    CKEDITOR.replace( 'description',
+    {
+        language: 'he'
+    });
+    {/literal}
+</script>
 @endsection

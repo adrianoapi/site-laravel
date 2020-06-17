@@ -58,7 +58,7 @@
                 <div class="control-group">
                     <label for="description" class="control-label">Descrição</label>
                     <div class="controls">
-                        <textarea name="description" id="description" rows="5" class="input-block-level"></textarea>
+                        <textarea name="description" id="description" rows="5" class="ckeditor span12"></textarea>
                     </div>
                 </div>
                 <div class="control-group">
@@ -76,5 +76,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    CKEDITOR.replace('body' ,{
+filebrowserUploadUrl : '/admin/panel/upload-image',
+filebrowserImageUploadUrl :  '/admin/panel/upload-image'
+});
+</script>
     
 @endsection

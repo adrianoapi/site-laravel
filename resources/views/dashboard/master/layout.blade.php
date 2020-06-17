@@ -38,6 +38,10 @@
   <script src="{{url(mix('dashboard/js/framework.js'))}}"></script>
 
   <script src="{{url(mix('dashboard/js/form.js'))}}"></script>
+
+  <!-- CKEditor -->
+  <script src="{{url('dashboard/js/plugins/ckeditor/ckeditor.js')}}"></script>
+  
   <!-- Datepicker -->
 	<script src="{{url('dashboard/js/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
 

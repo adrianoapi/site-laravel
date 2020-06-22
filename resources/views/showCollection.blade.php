@@ -10,6 +10,8 @@
 
             <ul class="tabs actions">
                 <li>
+                    <a href="{{route('collItems.create',    ['collection'   => $collection->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Item"><i class="glyphicon-tag"></i></a>
+                    <a href="{{route('collections.edit',    ['collection'   => $collection->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
                     <a href="{{route('collections.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> collectiones</a>
                 </li>
             </ul>

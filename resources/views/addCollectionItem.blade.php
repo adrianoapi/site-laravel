@@ -23,7 +23,7 @@
                     <a href="{{route('collItems.show',   ['collection'  => $collection->id])}}" data-toggle="modal" class="btn"><i class="glyphicon-tags"></i> Itens</a>
                 </li>
                 <li>
-                    <a href="{{route('collections.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Coleções</a>
+                    <a href="{{route('collections.show', ['collection'   => $collection->id])}}" data-toggle="modal" class="btn"><i class="icon-search"></i> Coleção</a>
                 </li>
             </ul>
 

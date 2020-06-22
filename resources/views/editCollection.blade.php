@@ -10,7 +10,7 @@
 
             <ul class="tabs actions">
                 <li>
-                    <a href="{{route('collections.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> collectiones</a>
+                    <a href="{{route('collections.show', ['collection'   => $collection->id])}}" data-toggle="modal" class="btn"><i class="icon-search"></i> Coleção</a>
                 </li>
             </ul>
 

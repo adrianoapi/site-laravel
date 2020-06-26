@@ -55,7 +55,7 @@
                             </a>
                             @endif
                         <td>{{$value->title}}</td>
-                        <td>{{$value->description}}</td>
+                        <td>{!! html_entity_decode($value->description) !!}</td>
                         <td>{{$value->release}}</td>
                     </tr>
                     @endforeach

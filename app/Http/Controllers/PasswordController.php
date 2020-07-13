@@ -73,7 +73,8 @@ class PasswordController extends Controller
      */
     public function edit(Password $password)
     {
-        //
+        $password->pass = Crypt::decryptString($password->pass);
+        return \view('editPassword', ['password' => $password]);
     }
 
     /**

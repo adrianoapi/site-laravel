@@ -157,7 +157,7 @@
             </ul>
           </li>
           <li>
-            <a href="#"><i class="glyphicon-keys"></i> Senhas</a>
+            <a href="{{route('passwords.index')}}"><i class="glyphicon-keys"></i> Senhas</a>
           </li>
           <li class='dropdown-submenu'>
             <a href="#" data-toggle="dropdown"><i class="icon-calendar"></i> Agendas</a>
@@ -397,7 +397,7 @@
           </ul>
         </li>
         <li>
-          <a href="#"><i class="glyphicon-keys"></i> Senhas</a>
+          <a href="{{route('passwords.index')}}"><i class="glyphicon-keys"></i> Senhas</a>
         </li>
         <li class='dropdown'>
           <a href="#" data-toggle="dropdown"><i class="icon-calendar"></i> Agendas</a>

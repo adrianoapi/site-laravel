@@ -13,7 +13,7 @@
 
             <ul class="tabs actions">
                 <li class="active">
-                    <a href="{{route('passwords.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Adicionar coleção</a>
+                    <a href="{{route('passwords.create')}}" data-toggle="modal" class="btn"><i class="icon-plus-sign"></i> Adicionar Senha</a>
                 </li>
             </ul>
 
@@ -37,7 +37,6 @@
                                     @csrf
                                     @method('delete')
                                     <a href="{{route('passwords.show',   ['password' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-search"></i></a>
-                                    <a href="{{route('collItems.create', ['password' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Adicionar Item"><i class="glyphicon-tag"></i></a>
                                     <a href="{{route('passwords.edit',   ['password' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
                                     <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>
                                 </form>

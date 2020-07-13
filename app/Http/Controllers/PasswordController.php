@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Password;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class PasswordController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +43,15 @@ class PasswordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $password = new Password();
+        $password->user_id = Auth::id();
+        $password->title   = $request->title;
+        $password->login   = $request->login;
+        $password->pass    = Crypt::encryptString($request->pass);
+        $password->url     = $request->url;
+        $password->save();
+
+        return redirect()->route('passwords.index');
     }
 
     /**
@@ -81,6 +96,7 @@ class PasswordController extends Controller
      */
     public function destroy(Password $password)
     {
-        //
+        $password->delete();
+        return redirect()->route('passwords.index');
     }
 }

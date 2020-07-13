@@ -86,7 +86,13 @@ class PasswordController extends Controller
      */
     public function update(Request $request, Password $password)
     {
-        //
+        $password->title   = $request->title;
+        $password->login   = $request->login;
+        $password->pass    = Crypt::encryptString($request->pass);
+        $password->url     = $request->url;
+        $password->save();
+
+        return \redirect()->route('passwords.index');
     }
 
     /**

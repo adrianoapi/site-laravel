@@ -10,7 +10,7 @@
         var attributes = $("form[name=frm-"+value+"]").serialize().replace(/&_method=delete/i, '');
         
         $.ajax({
-            url: "{{route('passwords.showAjax')}}",
+            url: "{{route('passwords.show')}}",
             type: "POST",
             data: attributes,
             dataType: 'json',
@@ -73,7 +73,7 @@
 <div id="new-task" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h5 id="myModalLabel">Add new task</h5>
+        <h5 id="myModalLabel">Show</h5>
     </div>
     <div id="modal-content">conteúdo...</div>
 </div>

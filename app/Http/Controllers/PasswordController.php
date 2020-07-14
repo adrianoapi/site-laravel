@@ -54,18 +54,7 @@ class PasswordController extends Controller
         return redirect()->route('passwords.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Password  $password
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Password $password)
-    {
-        //
-    }
-
-    public function shAjax(Request $request)
+    public function show(Request $request)
     {
         $password = Password::findOrFail($request->passowrd);
         $password->pass = Crypt::decryptString($password->pass);

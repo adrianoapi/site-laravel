@@ -206,7 +206,7 @@ Route::prefix('senhas')->group(function(){
     Route::get('edit/{password}', 'PasswordController@edit'  )->name('passwords.edit');
     Route::put('edit/{password}', 'PasswordController@update')->name('passwords.update');
     Route::get('{password}',      'PasswordController@show'  )->name('passwords.show');
-    Route::post('visualizar',     'PasswordController@shAjax')->name('passwords.showAjax');
+    Route::post('visualizar',     'PasswordController@show'  )->name('passwords.show');
 
     Route::delete('destroy/{password}', 'PasswordController@destroy')->name('passwords.destroy');
 });

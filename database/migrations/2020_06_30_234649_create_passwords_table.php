@@ -19,7 +19,7 @@ class CreatePasswordsTable extends Migration
             $table->string('title');
             $table->string('login');
             $table->string('pass');
-            $table->string('url');
+            $table->string('url')->nullable(true);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');

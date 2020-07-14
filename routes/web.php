@@ -20,7 +20,7 @@ Route::view('/info', 'info');
 Route::view('/form', 'upload.form');
 Route::post('upload', 'UploadController@upload')->name('upload');
 
-Route::prefix('/')->group(function(){
+Route::prefix('/site-old')->group(function(){
     Route::get('/', function(){
         return view('site.home');
     })->name('site.home');
@@ -32,6 +32,12 @@ Route::prefix('/')->group(function(){
     Route::get('contato', function(){
         return view('site.contact');
     })->name('site.contact');
+});
+
+Route::prefix('/')->group(function(){
+    Route::get('/', function(){
+        return view('site3.home');
+    })->name('site3.home');
 });
 
 

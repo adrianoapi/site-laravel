@@ -19,6 +19,15 @@ mix
 .scripts(['node_modules/jquery/dist/jquery.js'],'public/site/jquery.js')
 .scripts(['node_modules/bootstrap/dist/js/bootstrap.bundle.js'],'public/site/bootstrap.js')
 
+/* Site3 */
+
+.styles([
+    'resources/views/site3/css/style.css',
+    'resources/views/site3/css/font-awesome.css',
+],'public/site3/css/style.css').version()
+
+/* Site3 */
+
 .styles([
     'resources/views/site/css/rest.css',
     'resources/views/site/css/style.css',

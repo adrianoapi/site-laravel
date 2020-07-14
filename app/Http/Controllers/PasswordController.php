@@ -65,6 +65,13 @@ class PasswordController extends Controller
         //
     }
 
+    public function shAjax(Request $request)
+    {
+        $password = Password::findOrFail($request->passowrd);
+        $password->pass = Crypt::decryptString($password->pass);
+        return json_encode($password);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

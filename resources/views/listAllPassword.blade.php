@@ -2,6 +2,33 @@
 
 @section('content')
 
+<script>
+    function showAjax(value)
+    {
+        $("#modal-content").html('');
+
+        var attributes = $("form[name=frm-"+value+"]").serialize();
+        var attributes = attributes.replace(/delete/i, 'POST');
+
+        $.ajax({
+            url: "{{route('passwords.showAjax')}}",
+            type: "POST",
+            data: attributes,
+            dataType: 'json',
+            success: function(data){
+
+                var msg = '';
+                msg += "<br>Title: "+data.title;
+                msg += "<br>Login: "+data.login;
+                msg += "<br>Pass:  "+data.pass;
+                msg += "<br>Url:  "+data.url;
+
+                $("#modal-content").html(msg);
+            }
+        });
+    }
+</script>
+
 <div class="container-fluid">
     
     <div class="box box-bordered">
@@ -33,10 +60,11 @@
                             <td>{{$value->id}}</td>
                             <td>{{$value->title}}</td>
                             <td>
-                                <form action="{{route('passwords.destroy', ['password' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
+                                <form name="frm-{{ $value->id }}" action="{{route('passwords.destroy', ['password' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('passwords.show',   ['password' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Visualizar"><i class="icon-search"></i></a>
+                                    <input type="hidden" name="passowrd" value="{{ $value->id }}">
+                                    <a href="#new-task" onclick="showAjax({{ $value->id }})" data-toggle="modal" class='btn'><i class="icon-search"></i></a>
                                     <a href="{{route('passwords.edit',   ['password' => $value->id])}}" class="btn" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i></a>
                                     <button type="submit" class="btn" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i></button>
                                 </form>
@@ -49,5 +77,13 @@
         </div>
     </div>
 </div>
-    
+
+<div id="new-task" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h5 id="myModalLabel">Add new task</h5>
+    </div>
+    <div id="modal-content">conteúdo...</div>
+</div>
+
 @endsection

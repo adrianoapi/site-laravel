@@ -7,23 +7,15 @@
     {
         $("#modal-content").html('');
 
-        var attributes = $("form[name=frm-"+value+"]").serialize();
-        var attributes = attributes.replace(/delete/i, 'POST');
-
+        var attributes = $("form[name=frm-"+value+"]").serialize().replace(/&_method=delete/i, '');
+        
         $.ajax({
             url: "{{route('passwords.showAjax')}}",
             type: "POST",
             data: attributes,
             dataType: 'json',
             success: function(data){
-
-                var msg = '';
-                msg += "<br>Title: "+data.title;
-                msg += "<br>Login: "+data.login;
-                msg += "<br>Pass:  "+data.pass;
-                msg += "<br>Url:  "+data.url;
-
-                $("#modal-content").html(msg);
+                $("#modal-content").html(data['body']);
             }
         });
     }

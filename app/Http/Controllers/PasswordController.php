@@ -69,7 +69,10 @@ class PasswordController extends Controller
     {
         $password = Password::findOrFail($request->passowrd);
         $password->pass = Crypt::decryptString($password->pass);
-        return json_encode($password);
+
+        return response()->json([
+            'body' => view('showPassword', compact('password'))->render(),
+        ]);
     }
 
     /**

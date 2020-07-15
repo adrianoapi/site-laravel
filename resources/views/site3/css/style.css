@@ -135,7 +135,7 @@ Author URL: http://w3layouts.com
 
   .form-36-mian {
       background-size: cover;
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(255, 255, 255, 0)), url(../images/women.jpg);
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(255, 255, 255, 0)), url(../images/bing-3.jpg);
       background-attachment: fixed;
       min-height: 100vh;
       display: grid;

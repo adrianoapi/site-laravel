@@ -5,6 +5,7 @@
 <div class="container-fluid">
 
     <div class="box box-bordered">
+        
         <div class="box-title">
 
             <form action="{{route('questions.index')}}" method="GET" class="span3" style="margin: 0;padding:0;">
@@ -42,6 +43,7 @@
                 </ul>
             </div>
 
+        </div>
         <div class="box-content nopadding">
             <table class="table table-hover table-nomargin">
                 <thead>

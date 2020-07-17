@@ -40,9 +40,17 @@
                 <thead>
                     <tr>
                         <th class="span2">Imagem</th>
-                        <th class="span5">Item</th>
-                        <th class="span3">Descrição</th>
-                        <th class="span2">Lançamento</th>
+                        @if($collection->show_title)
+                            <th class="span3">Titulo</th>
+                        @endif
+
+                        @if($collection->show_description)
+                            <th class="span3">Descrição</th>
+                        @endif
+                        
+                        @if($collection->show_release)
+                            <th class="span2">Lançamento</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -54,9 +62,18 @@
                                 <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
                             </a>
                             @endif
-                        <td>{{$value->title}}</td>
-                        <td>{!! html_entity_decode($value->description) !!}</td>
-                        <td>{{$value->release}}</td>
+
+                        @if($collection->show_description)
+                            <td>{{$value->title}}</td>
+                        @endif
+
+                        @if($collection->show_description)
+                            <td>{!! html_entity_decode($value->description) !!}</td>
+                        @endif
+
+                        @if($collection->show_release)
+                            <td>{{$value->release}}</td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

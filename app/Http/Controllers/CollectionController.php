@@ -43,9 +43,12 @@ class CollectionController extends Controller
     public function store(Request $request)
     {
         $collection = new Collection();
-        $collection->user_id     = Auth::id();
-        $collection->title       = $request->title;
-        $collection->description = $request->description;
+        $collection->user_id          = Auth::id();
+        $collection->title            = $request->title;
+        $collection->description      = $request->description;
+        $collection->show_title       = $request->show_title       == 'true' ? true : false;
+        $collection->show_description = $request->show_description == 'true' ? true : false;
+        $collection->show_release     = $request->show_release     == 'true' ? true : false;
         $collection->save();
 
         return redirect()->route('collections.index');
@@ -82,8 +85,11 @@ class CollectionController extends Controller
      */
     public function update(Request $request, Collection $collection)
     {
-        $collection->title       = $request->title;
-        $collection->description = $request->description;
+        $collection->title            = $request->title;
+        $collection->description      = $request->description;
+        $collection->show_title       = $request->show_title       == 'true' ? true : false;
+        $collection->show_description = $request->show_description == 'true' ? true : false;
+        $collection->show_release     = $request->show_release     == 'true' ? true : false;
         $collection->save();
 
         return redirect()->route('collections.index');

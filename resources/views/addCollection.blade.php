@@ -25,6 +25,36 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label for="show_title" class="control-label">show_title</label>
+                    <div class="controls">
+                        <div class="check-demo-col">
+                            <div class="check-line">
+                                <input type="checkbox" id="show_title" name="show_title" value="true" class='icheck-me' data-skin="square" data-color="blue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="show_description" class="control-label">show_description</label>
+                    <div class="controls">
+                        <div class="check-demo-col">
+                            <div class="check-line">
+                                <input type="checkbox" id="show_description" name="show_description" value="true" class='icheck-me' data-skin="square" data-color="blue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="show_release" class="control-label">show_release</label>
+                    <div class="controls">
+                        <div class="check-demo-col">
+                            <div class="check-line">
+                                <input type="checkbox" id="show_release" name="show_release" value="true" class='icheck-me' data-skin="square" data-color="blue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
                     <label for="description" class="control-label">Conteúdo</label>
                     <div class="controls">
                         <textarea name="description" id="description" rows="5" class="input-block-level"></textarea>

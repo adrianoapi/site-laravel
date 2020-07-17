@@ -14,6 +14,8 @@ class AddColumnsToConfigCollections extends Migration
     public function up()
     {
         Schema::table('collections', function (Blueprint $table) {
+            $table->boolean('show_id');
+            $table->boolean('show_image');
             $table->boolean('show_title');
             $table->boolean('show_description');
             $table->boolean('show_release');
@@ -28,6 +30,8 @@ class AddColumnsToConfigCollections extends Migration
     public function down()
     {
         Schema::table('collections', function (Blueprint $table) {
+            $table->dropColumn('show_id');
+            $table->dropColumn('show_image');
             $table->dropColumn('show_title');
             $table->dropColumn('show_description');
             $table->dropColumn('show_release');

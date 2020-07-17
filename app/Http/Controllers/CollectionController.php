@@ -46,6 +46,8 @@ class CollectionController extends Controller
         $collection->user_id          = Auth::id();
         $collection->title            = $request->title;
         $collection->description      = $request->description;
+        $collection->show_id          = $request->show_id          == 'true' ? true : false;
+        $collection->show_image       = $request->show_image       == 'true' ? true : false;
         $collection->show_title       = $request->show_title       == 'true' ? true : false;
         $collection->show_description = $request->show_description == 'true' ? true : false;
         $collection->show_release     = $request->show_release     == 'true' ? true : false;
@@ -87,6 +89,8 @@ class CollectionController extends Controller
     {
         $collection->title            = $request->title;
         $collection->description      = $request->description;
+        $collection->show_id          = $request->show_id          == 'true' ? true : false;
+        $collection->show_image       = $request->show_image       == 'true' ? true : false;
         $collection->show_title       = $request->show_title       == 'true' ? true : false;
         $collection->show_description = $request->show_description == 'true' ? true : false;
         $collection->show_release     = $request->show_release     == 'true' ? true : false;

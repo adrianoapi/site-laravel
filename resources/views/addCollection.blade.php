@@ -25,6 +25,26 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label for="show_id" class="control-label">show_id</label>
+                    <div class="controls">
+                        <div class="check-demo-col">
+                            <div class="check-line">
+                                <input type="checkbox" id="show_id" name="show_id" value="true" class='icheck-me' data-skin="square" data-color="blue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="show_image" class="control-label">show_image</label>
+                    <div class="controls">
+                        <div class="check-demo-col">
+                            <div class="check-line">
+                                <input type="checkbox" id="show_image" name="show_image" value="true" class='icheck-me' data-skin="square" data-color="blue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
                     <label for="show_title" class="control-label">show_title</label>
                     <div class="controls">
                         <div class="check-demo-col">

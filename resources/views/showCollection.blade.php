@@ -39,7 +39,14 @@
             <table class="table table-hover table-nomargin">
                 <thead>
                     <tr>
-                        <th class="span2">Imagem</th>
+                        @if($collection->show_id)
+                            <th class="span1">Id</th>
+                        @endif
+
+                        @if($collection->show_image)
+                            <th class="span2">Imagem</th>
+                        @endif
+
                         @if($collection->show_title)
                             <th class="span3">Titulo</th>
                         @endif
@@ -47,7 +54,7 @@
                         @if($collection->show_description)
                             <th class="span3">Descrição</th>
                         @endif
-                        
+
                         @if($collection->show_release)
                             <th class="span2">Lançamento</th>
                         @endif
@@ -56,12 +63,19 @@
                 <tbody>
                     @foreach ($collection->items as $value)
                     <tr>
-                        <td>
-                            @if (!empty($value->images[0]->collection_item_id))
-                            <a href="#new-task" data-toggle="modal" class='btn'>
-                                <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
-                            </a>
-                            @endif
+                        @if($collection->show_id)
+                            <td>{{$value->id}}</td>
+                        @endif
+
+                        @if($collection->show_image)
+                            <td>
+                                @if (!empty($value->images[0]->collection_item_id))
+                                <a href="#new-task" data-toggle="modal" class='btn'>
+                                    <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
+                                </a>
+                                @endif    
+                            </td>
+                        @endif
 
                         @if($collection->show_description)
                             <td>{{$value->title}}</td>

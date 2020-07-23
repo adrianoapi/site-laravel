@@ -77,7 +77,7 @@
                             </td>
                         @endif
 
-                        @if($collection->show_description)
+                        @if($collection->show_title)
                             <td>{{$value->title}}</td>
                         @endif
 

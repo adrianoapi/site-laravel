@@ -39,8 +39,31 @@ class TaskController extends Controller
     public function upAjax(Request $request)
     {
         $data = $request->all();
-        echo '<pre>';
-        print_r($data);
+
+        if(array_key_exists('todo', $data)){
+            foreach ($data['todo'] as $key => $value) {
+                DB::table('tasks')
+                    ->where('id', $value)
+                    ->update(['status' => 'todo']);
+            }
+        }
+
+        if(array_key_exists('inprogress', $data)){
+            foreach ($data['inprogress'] as $key => $value) {
+                DB::table('tasks')
+                    ->where('id', $value)
+                    ->update(['status' => 'inprogress']);
+            }
+        }
+
+        if(array_key_exists('completed', $data)){
+            foreach ($data['completed'] as $key => $value) {
+                DB::table('tasks')
+                    ->where('id', $value)
+                    ->update(['status' => 'completed']);
+            }
+        }
+
         exit();
         return response()->json([
             $request->attributes['_token']

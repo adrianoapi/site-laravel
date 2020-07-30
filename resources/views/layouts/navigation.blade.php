@@ -25,7 +25,7 @@
                 <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
             </li>
             <li class="active">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Tarefas</span> <span class="fa arrow"></span></a>
+                <a href="index.html"><i class="fa fa-tasks"></i> <span class="nav-label">Tarefas</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{url('tarefas')}}">Tarefas</a></li>
                     <li><a href="{{url('tarefas-grupo')}}">Grupos</a></li>

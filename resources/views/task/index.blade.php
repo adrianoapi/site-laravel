@@ -229,4 +229,7 @@
 
         </div>
 
+        @csrf
+        
+
 @endsection

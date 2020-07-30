@@ -36,6 +36,17 @@ class TaskController extends Controller
         return view('addTask', ['taskGroup' => $taskGroup]);
     }
 
+    public function upAjax(Request $request)
+    {
+        $data = $request->all();
+        echo '<pre>';
+        print_r($data);
+        exit();
+        return response()->json([
+            $request->attributes['_token']
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -22,7 +22,7 @@ class TaskGroupController extends Controller
     public function index()
     {
         $taskGroup = DB::table('task_groups')->paginate(10);
-        return view('listAllTaskGroup', ['taskGroups' => $taskGroup]);
+        return view('taskGroup.index', ['taskGroups' => $taskGroup]);
     }
 
     /**

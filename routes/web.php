@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/template', 'HomeController@index')->name("main");
+Route::get('/minor', 'HomeController@minor')->name("minor");
+
+
 Route::get('/blog/home', function(){
     return view('blog.home');
 });

@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->unsignedBigInteger('task_group_id');
             $table->string('title');
             $table->text('content');
-            $table->enum('status', ['open', 'closed','deleted'])->default('open');
+            $table->enum('status', ['todo', 'inprogress','completed'])->default('todo');
             $table->timestamps();
 
             $table->foreign('task_group_id')->references('id')->on('task_groups')->onDelete('CASCADE');

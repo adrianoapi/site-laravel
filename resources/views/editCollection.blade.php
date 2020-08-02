@@ -81,6 +81,16 @@
                         <textarea name="description" id="description" rows="5" class="input-block-level">{{$collection->description}}</textarea>
                     </div>
                 </div>
+                <div class="control-group">
+                    <label for="description" class="control-label">Conteúdo</label>
+                    <div class="controls">
+                        <select name="ordery_by">
+                        @foreach ($order as $item)
+                            <option value="{{$item}}">{{$item}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Salvar</button>

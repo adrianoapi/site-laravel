@@ -13,6 +13,12 @@ class CollectionController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function getOrder()
+    {
+        return ['title', 'release','id'];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -75,7 +81,7 @@ class CollectionController extends Controller
      */
     public function edit(Collection $collection)
     {
-        return view('editCollection', ['collection' => $collection]);
+        return view('editCollection', ['collection' => $collection, 'order' => $this->getOrder()]);
     }
 
     /**
@@ -94,6 +100,7 @@ class CollectionController extends Controller
         $collection->show_title       = $request->show_title       == 'true' ? true : false;
         $collection->show_description = $request->show_description == 'true' ? true : false;
         $collection->show_release     = $request->show_release     == 'true' ? true : false;
+        $collection->ordery_by        = "{$request->ordery_by}";
         $collection->save();
 
         return redirect()->route('collections.index');

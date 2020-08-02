@@ -14,7 +14,7 @@ class AddColumnsToOrderCollections extends Migration
     public function up()
     {
         Schema::table('collections', function (Blueprint $table) {
-            $table->enum('order_by', ['title', 'release','id'])->default('title');
+            $table->enum('order', ['title', 'release','id'])->default('title');
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnsToOrderCollections extends Migration
     public function down()
     {
         Schema::table('collections', function (Blueprint $table) {
-            $table->dropColumn('order_by');
+            $table->dropColumn('order');
         });
     }
 }

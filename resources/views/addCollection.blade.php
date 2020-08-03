@@ -80,6 +80,16 @@
                         <textarea name="description" id="description" rows="5" class="input-block-level"></textarea>
                     </div>
                 </div>
+                <div class="control-group">
+                    <label for="description" class="control-label">Conteúdo</label>
+                    <div class="controls">
+                        <select name="order" id="order" class="select2-me input-xlarge">
+                            @foreach ($order as $value)
+                                <option value="{{$value}}">{{$value}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Salvar</button>

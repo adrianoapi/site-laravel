@@ -37,7 +37,7 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        return view('addCollection');
+        return view('addCollection', ['order' => $this->getOrder()]);
     }
 
     /**
@@ -57,6 +57,7 @@ class CollectionController extends Controller
         $collection->show_title       = $request->show_title       == 'true' ? true : false;
         $collection->show_description = $request->show_description == 'true' ? true : false;
         $collection->show_release     = $request->show_release     == 'true' ? true : false;
+        $collection->order            = $request->order;
         $collection->save();
 
         return redirect()->route('collections.index');
@@ -100,7 +101,7 @@ class CollectionController extends Controller
         $collection->show_title       = $request->show_title       == 'true' ? true : false;
         $collection->show_description = $request->show_description == 'true' ? true : false;
         $collection->show_release     = $request->show_release     == 'true' ? true : false;
-        $collection->ordery_by        = "{$request->ordery_by}";
+        $collection->order            = $request->order;
         $collection->save();
 
         return redirect()->route('collections.index');

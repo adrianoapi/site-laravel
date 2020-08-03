@@ -84,10 +84,10 @@
                 <div class="control-group">
                     <label for="description" class="control-label">Conteúdo</label>
                     <div class="controls">
-                        <select name="ordery_by">
-                        @foreach ($order as $item)
-                            <option value="{{$item}}">{{$item}}</option>
-                        @endforeach
+                        <select name="order" id="order" class="select2-me input-xlarge">
+                            @foreach ($order as $value)
+                                <option value="{{$value}}" {{$value == $collection->order ? 'selected':''}}>{{$value}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

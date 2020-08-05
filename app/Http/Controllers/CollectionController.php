@@ -26,7 +26,7 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $collections = Collection::orderBy('title', 'asc')->paginate(10);
+        $collections = Collection::orderBy('title', 'asc')->paginate(20);
         return view('listAllCollection', ['collections' => $collections]);
     }
 

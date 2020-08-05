@@ -36,6 +36,21 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="font-normal">Basic example</label>
+            <div>
+                <select data-placeholder="Choose a Country..." class="chosen-select"  tabindex="2">
+                <option value="">Select</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                </select>
+            </div>
+        </div>
+
+        <script>
+            $('.chosen-select').chosen({width: "100%"});
+        </script>
+
         <div class="row">
             <div class="col-lg-4">
                 <div class="ibox">
@@ -133,3 +148,45 @@
         
 
 @endsection
+
+@section('scripts')
+<script>
+        $('.chosen-select').chosen({width: "100%"});
+        $(document).ready(function(){
+
+            $("#todo, #inprogress, #completed").sortable({
+                connectWith: ".connectList",
+                update: function( event, ui ) {
+                    var todo = $( "#todo" ).sortable( "toArray" );
+                    var inprogress = $( "#inprogress" ).sortable( "toArray" );
+                    var completed = $( "#completed" ).sortable( "toArray" );
+                    $('.output').html("ToDo: " + window.JSON.stringify(todo) + "<br/>" + "In Progress: " + window.JSON.stringify(inprogress) + "<br/>" + "Completed: " + window.JSON.stringify(completed));
+               
+                    var token = $("[name='_token']").val();
+                    var attributes = {
+                        '_token'    : token,
+                        'todo'      : todo,
+                        'inprogress': inprogress,
+                        'completed' : completed
+                    };
+                    
+                    $.ajax({
+                        url: "{{route('tasks.ajax')}}",
+                        type: "POST",
+                        data: attributes,
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                        }
+                    });
+                    
+
+                }
+            }).disableSelection();
+
+            
+           
+        });
+
+    </script>
+    @endsection

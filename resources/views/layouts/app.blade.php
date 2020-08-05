@@ -18,6 +18,8 @@
     <link href="{!! asset('inspinia/css/animate.css') !!}" rel="stylesheet">
     <link href="{!! asset('inspinia/css/style.css') !!}" rel="stylesheet">
 
+    <link href="{!! asset('inspinia/css/plugins/chosen/bootstrap-chosen.css') !!}" rel="stylesheet">
+
 
 
 </head>
@@ -65,44 +67,10 @@
     <script src="{!! asset('inspinia/js/inspinia.js') !!}"></script>
     <script src="{!! asset('inspinia/js/plugins/pace/pace.min.js') !!}"></script>
 
-    <script>
-        $(document).ready(function(){
+    <!-- Chosen -->
+    <script src="{!! asset('inspinia/js/plugins/chosen/chosen.jquery.js') !!}"></script>
 
-            $("#todo, #inprogress, #completed").sortable({
-                connectWith: ".connectList",
-                update: function( event, ui ) {
-                    var todo = $( "#todo" ).sortable( "toArray" );
-                    var inprogress = $( "#inprogress" ).sortable( "toArray" );
-                    var completed = $( "#completed" ).sortable( "toArray" );
-                    $('.output').html("ToDo: " + window.JSON.stringify(todo) + "<br/>" + "In Progress: " + window.JSON.stringify(inprogress) + "<br/>" + "Completed: " + window.JSON.stringify(completed));
-               
-                    var token = $("[name='_token']").val();
-                    var attributes = {
-                        '_token'    : token,
-                        'todo'      : todo,
-                        'inprogress': inprogress,
-                        'completed' : completed
-                    };
-                    
-                    $.ajax({
-                        url: "{{route('tasks.ajax')}}",
-                        type: "POST",
-                        data: attributes,
-                        dataType: 'json',
-                        success: function(data){
-                            console.log(data);
-                        }
-                    });
-                    
 
-                }
-            }).disableSelection();
-
-            
-           
-        });
-
-    </script>
 
 @section('scripts')
 @show

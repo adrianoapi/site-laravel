@@ -11,17 +11,44 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">Cadastrar tarefa</h4>
+                        <h6 class="modal-title">Cadastrar tarefa</h6>
                     </div>
                     <div class="modal-body">
 
                         <div class="ibox-content">
                             <form method="get">
 
-                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Normal</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="form-group  row">
+                                    <label class="col-sm-2 col-form-label">Título</label>
+                                    <div class="col-sm-10"><input type="text" class="form-control"  tabindex="1"></div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
+
+                                <div class="form-group  row">
+                                    <label class="col-sm-2 col-form-label">Grupo</label>
+                                    <div class="col-sm-10">
+                                        <select data-placeholder="Choose a Country..." class="chosen-select"  tabindex="2">
+                                            @foreach ($taskGroup as $value)
+                                                <option value="{{$value->id}}">{{$value->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group  row">
+                                    <label class="col-sm-2 col-form-label">Descrição</label>
+                                    <div class="col-sm-10">
+
+                                    <div class="ibox-content no-padding">
+
+                                    <div class="summernote">
+                                        text
+                                    </div>
+
+                                </div>
+                                        
+                                    </div>
+                                </div>
                                 
                             </form>
                         </div>
@@ -35,21 +62,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="font-normal">Basic example</label>
-            <div>
-                <select data-placeholder="Choose a Country..." class="chosen-select"  tabindex="2">
-                <option value="">Select</option>
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                </select>
-            </div>
-        </div>
-
-        <script>
-            $('.chosen-select').chosen({width: "100%"});
-        </script>
 
         <div class="row">
             <div class="col-lg-4">
@@ -152,6 +164,13 @@
 @section('scripts')
 <script>
         $('.chosen-select').chosen({width: "100%"});
+
+        $(document).ready(function(){
+
+            $('.summernote').summernote();
+
+        });
+
         $(document).ready(function(){
 
             $("#todo, #inprogress, #completed").sortable({

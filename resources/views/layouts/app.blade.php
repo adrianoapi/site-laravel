@@ -18,7 +18,11 @@
     <link href="{!! asset('inspinia/css/animate.css') !!}" rel="stylesheet">
     <link href="{!! asset('inspinia/css/style.css') !!}" rel="stylesheet">
 
+    <!-- Chosen -->
     <link href="{!! asset('inspinia/css/plugins/chosen/bootstrap-chosen.css') !!}" rel="stylesheet">
+
+    <!-- SUMMERNOTE -->
+    <link href="{!! asset('inspinia/css/plugins/summernote/summernote-bs4.css') !!}" rel="stylesheet">
 
 
 
@@ -69,6 +73,9 @@
 
     <!-- Chosen -->
     <script src="{!! asset('inspinia/js/plugins/chosen/chosen.jquery.js') !!}"></script>
+
+    <!-- SUMMERNOTE -->
+    <script src="{!! asset('inspinia/js/plugins/summernote/summernote-bs4.js') !!}"></script>
 
 
 

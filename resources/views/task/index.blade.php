@@ -77,7 +77,7 @@
                                 <li class="warning-element" id="{{$value->id}}">
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
-                                        <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
+                                        <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> 12.10.2015
                                     </div>
                                 </li>

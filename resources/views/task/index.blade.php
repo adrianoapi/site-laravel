@@ -94,7 +94,7 @@ $levels = [
                         <ul class="sortable-list connectList agile-list" id="todo">
                             @foreach ($tasks as $value)
                                 @if($value->status == "todo")
-                                <li class="{{$levels[$value->level]['class']}}-element agile_{{$value->id}}" id="{{$value->id}}">
+                                <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
@@ -117,7 +117,7 @@ $levels = [
                         <ul class="sortable-list connectList agile-list" id="inprogress">
                             @foreach ($tasks as $value)
                                 @if($value->status == "inprogress")
-                                <li class="{{$levels[$value->level]['class']}}-element agile_{{$value->id}}" id="{{$value->id}}">
+                                <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
@@ -137,7 +137,7 @@ $levels = [
                     <div class="ibox-content">
                         <h3>Completed</h3>
                         <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>
-                        <ul class="sortable-list connectList agile-list agile_{{$value->id}}" id="completed">
+                        <ul class="sortable-list connectList agile-list" id="completed">
                             @foreach ($tasks as $value)
                                 @if($value->status == "completed")
                                 <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
@@ -186,7 +186,7 @@ $levels = [
                 dataType: "json",
                 success: function(data){
                     if(data['status']){
-                        $('.agile_'+id).fadeOut("normal", function() {
+                        $('#'+id).fadeOut("normal", function() {
                             $(this).remove();
                         });
                     }

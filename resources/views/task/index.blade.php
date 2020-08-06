@@ -4,6 +4,13 @@
 
 @section('content')
 
+<?php
+$levels = [
+    'low'    => ['class' => 'success'],
+    'medium' => ['class' => 'warning'],
+    'high'   => ['class' => 'danger' ]
+];
+?>
     <div class="wrapper wrapper-content  animated fadeInRight">
 
         <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -28,9 +35,22 @@
                             <div class="hr-line-dashed"></div>
 
                             <div class="form-group  row">
+                                <label class="col-sm-2 col-form-label">Level</label>
+                                <div class="col-sm-10">
+                                    <select name="level" data-placeholder="Choose a level..." class="chosen-select"  tabindex="2">
+                                        @foreach ($levels as $key => $value)
+                                            <option value="{{$key}}">{{$key}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group  row">
                                 <label class="col-sm-2 col-form-label">Grupo</label>
                                 <div class="col-sm-10">
-                                    <select name="task_group_id" data-placeholder="Choose a Country..." class="chosen-select"  tabindex="2">
+                                    <select name="task_group_id" data-placeholder="Choose a group..." class="chosen-select"  tabindex="2">
                                         @foreach ($taskGroup as $value)
                                             <option value="{{$value->id}}">{{$value->title}}</option>
                                         @endforeach
@@ -74,7 +94,7 @@
                         <ul class="sortable-list connectList agile-list" id="todo">
                             @foreach ($tasks as $value)
                                 @if($value->status == "todo")
-                                <li class="warning-element" id="{{$value->id}}">
+                                <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
@@ -95,7 +115,7 @@
                         <ul class="sortable-list connectList agile-list" id="inprogress">
                             @foreach ($tasks as $value)
                                 @if($value->status == "inprogress")
-                                <li class="warning-element" id="{{$value->id}}">
+                                <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
@@ -116,7 +136,7 @@
                         <ul class="sortable-list connectList agile-list" id="completed">
                             @foreach ($tasks as $value)
                                 @if($value->status == "completed")
-                                <li class="warning-element" id="{{$value->id}}">
+                                <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>

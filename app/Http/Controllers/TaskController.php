@@ -44,6 +44,7 @@ class TaskController extends Controller
         $task->task_group_id = $request->task_group_id;
         $task->title         = $request->title;
         $task->content       = $request->content;
+        $task->level         = $request->level;
         $task->status        = 'todo';
         
         if($task->save()){

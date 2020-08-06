@@ -19,6 +19,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->enum('status', ['todo', 'inprogress','completed'])->default('todo');
+            $table->enum('level', ['low', 'medium', 'high'])->default('low');
             $table->timestamps();
 
             $table->foreign('task_group_id')->references('id')->on('task_groups')->onDelete('CASCADE');

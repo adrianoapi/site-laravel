@@ -96,6 +96,7 @@ Route::prefix('tarefas')->group(function(){
     Route::post('store',         'TaskController@store'  )->name('tasks.store');
     Route::post('upAjax',        'TaskController@upAjax' )->name('tasks.ajax');
     Route::post('addAjax',       'TaskController@addAjax')->name('tasks.addAjax');
+    Route::post('delAjax',       'TaskController@delAjax')->name('tasks.delAjax');
     Route::get ('editar/{task}', 'TaskController@edit'   )->name('tasks.edit');
     Route::put ('editar/{task}', 'TaskController@update' )->name('tasks.update');
     Route::get ('{task}',        'TaskController@show'   )->name('tasks.show');

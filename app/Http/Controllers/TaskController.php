@@ -159,4 +159,14 @@ class TaskController extends Controller
         $task->delete();
         return \redirect()->route('tasks.index');
     }
+
+    public function delAjax(Request $request)
+    {
+        $task =Task::findOrFail($request->id);
+        if($task->delete()){
+            return response()->json(['status' => true]);
+        }else{
+            return response()->json(['status' => faslse]);
+        }
+    }
 }

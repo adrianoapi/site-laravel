@@ -94,10 +94,11 @@ $levels = [
                         <ul class="sortable-list connectList agile-list" id="todo">
                             @foreach ($tasks as $value)
                                 @if($value->status == "todo")
-                                <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
+                                <li class="{{$levels[$value->level]['class']}}-element agile_{{$value->id}}" id="{{$value->id}}">
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
+                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
@@ -116,10 +117,11 @@ $levels = [
                         <ul class="sortable-list connectList agile-list" id="inprogress">
                             @foreach ($tasks as $value)
                                 @if($value->status == "inprogress")
-                                <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
+                                <li class="{{$levels[$value->level]['class']}}-element agile_{{$value->id}}" id="{{$value->id}}">
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
+                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
@@ -135,13 +137,14 @@ $levels = [
                     <div class="ibox-content">
                         <h3>Completed</h3>
                         <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>
-                        <ul class="sortable-list connectList agile-list" id="completed">
+                        <ul class="sortable-list connectList agile-list agile_{{$value->id}}" id="completed">
                             @foreach ($tasks as $value)
                                 @if($value->status == "completed")
                                 <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
+                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
@@ -164,6 +167,33 @@ $levels = [
 <script>
         $('.chosen-select').chosen({width: "100%"});
 
+        let token = $("[name='_token']").val();
+
+        function acaoExcluir(id)
+        {
+            var x = confirm("Deseja excluir este item?");
+            if (!x){return false;}
+            
+            var attributes = {
+                '_token': token,
+                'id'    : id
+            };
+
+            $.ajax({
+                url: "{{route('tasks.delAjax')}}",
+                type: "POST",
+                data: attributes,
+                dataType: "json",
+                success: function(data){
+                    if(data['status']){
+                        $('.agile_'+id).fadeOut("normal", function() {
+                            $(this).remove();
+                        });
+                    }
+                }
+            });
+            
+        }
 
         $(document).ready(function(){
 
@@ -177,7 +207,6 @@ $levels = [
                     var completed = $( "#completed" ).sortable( "toArray" );
                     //$('.output').html("ToDo: " + window.JSON.stringify(todo) + "<br/>" + "In Progress: " + window.JSON.stringify(inprogress) + "<br/>" + "Completed: " + window.JSON.stringify(completed));
                
-                    var token = $("[name='_token']").val();
                     var attributes = {
                         '_token'    : token,
                         'todo'      : todo,
@@ -211,7 +240,9 @@ $levels = [
                     data: $("#addTask").serialize(),
                     dataType: 'json',
                     success: function(data){
-                        console.log(data);
+                        if(data['status']){
+                            $('#myModal5').modal('hide');
+                        }
                     }
                 });
 

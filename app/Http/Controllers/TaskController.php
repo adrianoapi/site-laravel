@@ -59,26 +59,29 @@ class TaskController extends Controller
         $data = $request->all();
 
         if(array_key_exists('todo', $data)){
+            $i = 0;
             foreach ($data['todo'] as $key => $value) {
                 DB::table('tasks')
                     ->where('id', $value)
-                    ->update(['status' => 'todo']);
+                    ->update(['status' => 'todo', 'order' => ++$i]);
             }
         }
 
         if(array_key_exists('inprogress', $data)){
+            $i = 0;
             foreach ($data['inprogress'] as $key => $value) {
                 DB::table('tasks')
                     ->where('id', $value)
-                    ->update(['status' => 'inprogress']);
+                    ->update(['status' => 'inprogress', 'order' => ++$i]);
             }
         }
 
         if(array_key_exists('completed', $data)){
+            $i = 0;
             foreach ($data['completed'] as $key => $value) {
                 DB::table('tasks')
                     ->where('id', $value)
-                    ->update(['status' => 'completed']);
+                    ->update(['status' => 'completed', 'order' => ++$i]);
             }
         }
 

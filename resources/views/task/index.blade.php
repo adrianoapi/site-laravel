@@ -122,7 +122,7 @@ $levels = [
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
-                                        <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
+                                        <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
                                 </li>
@@ -145,7 +145,7 @@ $levels = [
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
-                                        <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
+                                        <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
                                 </li>

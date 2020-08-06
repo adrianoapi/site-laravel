@@ -99,7 +99,7 @@ $levels = [
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
-                                        <i class="fa fa-clock-o"></i> 12.10.2015
+                                        <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
                                 </li>
                                 @endif
@@ -120,7 +120,7 @@ $levels = [
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
-                                        <i class="fa fa-clock-o"></i> 12.10.2015
+                                        <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
                                 </li>
                                 @endif
@@ -141,7 +141,7 @@ $levels = [
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
-                                        <i class="fa fa-clock-o"></i> 12.10.2015
+                                        <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
                                 </li>
                                 @endif

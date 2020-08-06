@@ -95,6 +95,7 @@ $levels = [
                             @foreach ($tasks as $value)
                                 @if($value->status == "todo")
                                 <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
+                                    <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>

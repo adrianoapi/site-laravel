@@ -117,6 +117,7 @@ $levels = [
                             @foreach ($tasks as $value)
                                 @if($value->status == "inprogress")
                                 <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
+                                    <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
@@ -138,6 +139,7 @@ $levels = [
                             @foreach ($tasks as $value)
                                 @if($value->status == "completed")
                                 <li class="{{$levels[$value->level]['class']}}-element" id="{{$value->id}}">
+                                    <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
                                         <a href="#" class="float-right btn btn-xs btn-white">Tag</a>

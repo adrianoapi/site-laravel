@@ -91,13 +91,14 @@ Route::prefix('tarefas-grupo')->group(function(){
 });
 
 Route::prefix('tarefas')->group(function(){
-    Route::get ('/',             'TaskController@index' )->name('tasks.index');
-    Route::get ('novo',          'TaskController@create')->name('tasks.create');
-    Route::post('store',         'TaskController@store' )->name('tasks.store');
-    Route::post('upAjax',        'TaskController@upAjax')->name('tasks.ajax');
-    Route::get ('editar/{task}', 'TaskController@edit'  )->name('tasks.edit');
-    Route::put ('editar/{task}', 'TaskController@update')->name('tasks.update');
-    Route::get ('{task}',        'TaskController@show'  )->name('tasks.show');
+    Route::get ('/',             'TaskController@index'  )->name('tasks.index');
+    Route::get ('novo',          'TaskController@create' )->name('tasks.create');
+    Route::post('store',         'TaskController@store'  )->name('tasks.store');
+    Route::post('upAjax',        'TaskController@upAjax' )->name('tasks.ajax');
+    Route::post('addAjax',       'TaskController@addAjax')->name('tasks.addAjax');
+    Route::get ('editar/{task}', 'TaskController@edit'   )->name('tasks.edit');
+    Route::put ('editar/{task}', 'TaskController@update' )->name('tasks.update');
+    Route::get ('{task}',        'TaskController@show'   )->name('tasks.show');
 
     Route::delete('destroy/{task}', 'TaskController@destroy')->name('tasks.destroy');
 });

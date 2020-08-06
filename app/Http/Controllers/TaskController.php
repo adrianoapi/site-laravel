@@ -38,6 +38,21 @@ class TaskController extends Controller
         return view('addTask', ['taskGroup' => $taskGroup]);
     }
 
+    public function addAjax(Request $request)
+    {
+        $task = new Task();
+        $task->task_group_id = $request->task_group_id;
+        $task->title         = $request->title;
+        $task->content       = $request->content;
+        $task->status        = 'todo';
+        
+        if($task->save()){
+            return response()->json(['status' => true]);
+        }else{
+            return response()->json(['status' => faslse]);
+        }
+    }
+
     public function upAjax(Request $request)
     {
         $data = $request->all();

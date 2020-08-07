@@ -115,6 +115,17 @@ Route::prefix('transacoes-tipo')->group(function(){
     Route::delete('destroy/{transitionType}', 'TransitionTypeController@destroy')->name('transitionTypes.destroy');
 });
 
+Route::prefix('lancamentos-fixos')->group(function(){
+    Route::get ('/',                    'FixedCostController@index' )->name('fixedCosts.index');
+    Route::get ('novo',                 'FixedCostController@create')->name('fixedCosts.create');
+    Route::post('store',                'FixedCostController@store' )->name('fixedCosts.store');
+    Route::get ('editar/{ledgerEntry}', 'FixedCostController@edit'  )->name('fixedCosts.edit');
+    Route::put ('editar/{ledgerEntry}', 'FixedCostController@update')->name('fixedCosts.update');
+    Route::get ('{ledgerEntry}',        'FixedCostController@show'  )->name('fixedCosts.show');
+
+    Route::delete('destroy/{ledgerEntry}', 'FixedCostController@destroy')->name('ledgerEntries.destroy');
+});
+
 Route::prefix('lancamento-grupo')->group(function(){
     Route::get ('/',                    'LedgerGroupController@index' )->name('ledgerGroups.index');
     Route::get ('novo',                 'LedgerGroupController@create')->name('ledgerGroups.create');

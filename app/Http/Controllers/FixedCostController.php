@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\FixedCost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class FixedCostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +30,10 @@ class FixedCostController extends Controller
      */
     public function create()
     {
-        //
+        $ledgerGroups    = DB::table('ledger_groups'   )->get();
+        $transitionTypes = DB::table('transition_types')->get();
+
+        return view('fixedCost.add', ['ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**

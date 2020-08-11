@@ -27,6 +27,8 @@
     <!-- checkbox -->
     <link href="{!! asset('inspinia/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css') !!}" rel="stylesheet">
 
+    <link href="{!! asset('inspinia/css/plugins/datapicker/datepicker3.css') !!}" rel="stylesheet">
+
 
 
 </head>
@@ -82,6 +84,9 @@
 
     <!-- iCheck -->
     <script src="{!! asset('inspinia/js/plugins/iCheck/icheck.min.js') !!}"></script>
+
+    <!-- Data picker -->
+    <script src="{!! asset('inspinia/js/plugins/datapicker/bootstrap-datepicker.js') !!}"></script>
 
 
 

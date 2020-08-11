@@ -48,16 +48,16 @@ class FixedCostController extends Controller
      */
     public function store(Request $request)
     {
-        $ledgerEntry = new FixedCost();
-        $ledgerEntry->user_id            = Auth::id();
-        $ledgerEntry->ledger_group_id    = $request->ledger_group_id;
-        $ledgerEntry->transition_type_id = $request->transition_type_id;
-        $ledgerEntry->description        = $request->description;
-        $ledgerEntry->entry_date         = $request->entry_date;
-        $ledgerEntry->amount             = $request->amount;
-        $ledgerEntry->recurrent          = $request->recurrent == 'true' ? true : false;
-        $ledgerEntry->notify             = $request->notify    == 'true' ? true : false;
-        $ledgerEntry->save();
+        $fixedCost = new FixedCost();
+        $fixedCost->user_id            = Auth::id();
+        $fixedCost->ledger_group_id    = $request->ledger_group_id;
+        $fixedCost->transition_type_id = $request->transition_type_id;
+        $fixedCost->description        = $request->description;
+        $fixedCost->entry_date         = $request->entry_date;
+        $fixedCost->amount             = $request->amount;
+        $fixedCost->recurrent          = $request->recurrent == 'true' ? true : false;
+        $fixedCost->notify             = $request->notify    == 'true' ? true : false;
+        $fixedCost->save();
 
         return redirect()->route('fixedCosts.index');
     }
@@ -81,7 +81,11 @@ class FixedCostController extends Controller
      */
     public function edit(FixedCost $fixedCost)
     {
-        //
+        $ledgerGroups    = DB::table('ledger_groups')->get();
+        $transitionTypes = DB::table('transition_types')->get();
+
+        return view('fixedCost.edit', ['fixedCost' => $fixedCost, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+    
     }
 
     /**
@@ -93,7 +97,17 @@ class FixedCostController extends Controller
      */
     public function update(Request $request, FixedCost $fixedCost)
     {
-        //
+        $fixedCost->user_id            = Auth::id();
+        $fixedCost->ledger_group_id    = $request->ledger_group_id;
+        $fixedCost->transition_type_id = $request->transition_type_id;
+        $fixedCost->description        = $request->description;
+        $fixedCost->entry_date         = $request->entry_date;
+        $fixedCost->amount             = $request->amount;
+        $fixedCost->recurrent          = $request->recurrent == 'true' ? true : false;
+        $fixedCost->notify             = $request->notify    == 'true' ? true : false;
+        $fixedCost->save();
+
+        return redirect()->route('fixedCosts.index');
     }
 
     /**

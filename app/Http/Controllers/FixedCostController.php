@@ -20,7 +20,7 @@ class FixedCostController extends Controller
      */
     public function index()
     {
-        $fixedCosts      = FixedCost::orderBy('entry_date', 'desc')->paginate(50);
+        $fixedCosts      = FixedCost::orderBy('entry_date', 'asc')->paginate(50);
         $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
         $transitionTypes = DB::table('transition_types')->get();
 

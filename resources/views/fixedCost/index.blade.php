@@ -46,9 +46,9 @@
                                                 <form action="{{route('fixedCosts.destroy', ['fixedCost' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{route('fixedCosts.show', ['fixedCost' => $value->id])}}" class="btn btn-white btn-xs" rel="tooltip" title="" data-original-title="Detalhar"><i class="icon-search"></i>Detalhar</a>
-                                                    <a href="{{route('fixedCosts.edit', ['fixedCost' => $value->id])}}" class="btn btn-white btn-xs" rel="tooltip" title="" data-original-title="Editar"><i class="icon-edit"></i>Editar</a>
-                                                    <button type="submit" class="btn btn-white btn-xs" rel="tooltip" title="" data-original-title="Excluir"><i class="icon-trash"></i>Excluir</button>
+                                                    <a href="{{route('fixedCosts.show', ['fixedCost' => $value->id])}}" class="btn btn-white btn-sm" rel="tooltip" title="" data-original-title="Detalhar"><i class="fa fa-chain"></i></a>
+                                                    <a href="{{route('fixedCosts.edit', ['fixedCost' => $value->id])}}" class="btn btn-white btn-sm" rel="tooltip" title="" data-original-title="Editar"><i class="fa fa-pencil-square-o"></i></a>
+                                                    <button type="submit" class="btn btn-white btn-sm" rel="tooltip" title="" data-original-title="Excluir"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

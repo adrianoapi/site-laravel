@@ -106,8 +106,8 @@
           
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-white btn-sm" type="submit">Cancel</button>
-                                <button class="btn btn-primary btn-sm" type="submit">Save changes</button>
+                                <a href="{{route('fixedCosts.index')}}" class="btn btn-white btn-sm">Cancelar</a>
+                                <button class="btn btn-primary btn-sm" type="submit">Save </button>
                             </div>
                         </div>
 

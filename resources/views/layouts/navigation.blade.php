@@ -27,9 +27,9 @@
             <li class="active">
                 <a href="index.html"><i class="fa fa-tasks"></i> <span class="nav-label">Tarefas</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{url('tarefas')}}">Tarefas</a></li>
-                    <li><a href="{{url('tarefas-grupo')}}">Grupos</a></li>
-                    <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
+                    <li><a href="{{route('tasks.index')}}">Tarefas</a></li>
+                    <li><a href="{{route('taskGroups.index')}}">Grupos</a></li>
+                    <li><a href="{{route('fixedCosts.index')}}">Lançamentos fixos</a></li>
                     <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
                 </ul>
             </li>

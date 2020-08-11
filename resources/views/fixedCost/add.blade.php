@@ -30,7 +30,8 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <form method="get">
+                    <form action="{{route('fixedCosts.store')}}" method="POST">
+                        @csrf
                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Descrição</label>
                             <div class="col-sm-10">
                                 <input type="text" name="description" id="description" class="form-control" tabindex="1">
@@ -87,7 +88,7 @@
                             <label class="col-sm-2 col-form-label">Recorrente<br>
                             <small>Repete todo mês</small></label>
                             <div class="col-sm-10">
-                                <div class="i-checks"><label> <input type="checkbox" name="recurrent" id="recurrent" value="" checked="" tabindex="6"> <i></i> Repetir </label></div>
+                                <div class="i-checks"><label> <input type="checkbox" name="recurrent" id="recurrent" value="true" checked="" tabindex="6"> <i></i> Repetir </label></div>
                             </div>
                         </div>
 
@@ -97,7 +98,7 @@
                             <label class="col-sm-2 col-form-label">Norificação<br>
                             <small>Enviará mensagem para lembrar o vencimento</small></label>
                             <div class="col-sm-10">
-                                <div class="i-checks"><label> <input type="checkbox" name="notify" id="notify" value="" checked="" tabindex="7"> <i></i> Notificar </label></div>
+                                <div class="i-checks"><label> <input type="checkbox" name="notify" id="notify" value="true" checked="" tabindex="7"> <i></i> Notificar </label></div>
                             </div>
                         </div>
 
@@ -109,7 +110,7 @@
                                 <button class="btn btn-primary btn-sm" type="submit">Save changes</button>
                             </div>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>

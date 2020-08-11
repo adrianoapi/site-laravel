@@ -20,7 +20,11 @@ class FixedCostController extends Controller
      */
     public function index()
     {
-        //
+        $fixedCosts      = FixedCost::orderBy('entry_date', 'desc')->paginate(50);
+        $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
+        $transitionTypes = DB::table('transition_types')->get();
+
+        return view('fixedCost.index',  ['fixedCosts' => $fixedCosts, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**
@@ -44,7 +48,18 @@ class FixedCostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ledgerEntry = new FixedCost();
+        $ledgerEntry->user_id            = Auth::id();
+        $ledgerEntry->ledger_group_id    = $request->ledger_group_id;
+        $ledgerEntry->transition_type_id = $request->transition_type_id;
+        $ledgerEntry->description        = $request->description;
+        $ledgerEntry->entry_date         = $request->entry_date;
+        $ledgerEntry->amount             = $request->amount;
+        $ledgerEntry->recurrent          = $request->recurrent == 'true' ? true : false;
+        $ledgerEntry->notify             = $request->notify    == 'true' ? true : false;
+        $ledgerEntry->save();
+
+        return redirect()->route('fixedCosts.index');
     }
 
     /**

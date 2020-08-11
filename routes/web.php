@@ -116,14 +116,14 @@ Route::prefix('transacoes-tipo')->group(function(){
 });
 
 Route::prefix('lancamentos-fixos')->group(function(){
-    Route::get ('/',                    'FixedCostController@index' )->name('fixedCosts.index');
-    Route::get ('novo',                 'FixedCostController@create')->name('fixedCosts.create');
-    Route::post('store',                'FixedCostController@store' )->name('fixedCosts.store');
-    Route::get ('editar/{ledgerEntry}', 'FixedCostController@edit'  )->name('fixedCosts.edit');
-    Route::put ('editar/{ledgerEntry}', 'FixedCostController@update')->name('fixedCosts.update');
-    Route::get ('{ledgerEntry}',        'FixedCostController@show'  )->name('fixedCosts.show');
+    Route::get ('/',                  'FixedCostController@index' )->name('fixedCosts.index');
+    Route::get ('novo',               'FixedCostController@create')->name('fixedCosts.create');
+    Route::post('store',              'FixedCostController@store' )->name('fixedCosts.store');
+    Route::get ('editar/{fixedCost}', 'FixedCostController@edit'  )->name('fixedCosts.edit');
+    Route::put ('editar/{fixedCost}', 'FixedCostController@update')->name('fixedCosts.update');
+    Route::get ('{fixedCost}',        'FixedCostController@show'  )->name('fixedCosts.show');
 
-    Route::delete('destroy/{ledgerEntry}', 'FixedCostController@destroy')->name('ledgerEntries.destroy');
+    Route::delete('destroy/{fixedCost}', 'FixedCostController@destroy')->name('fixedCosts.destroy');
 });
 
 Route::prefix('lancamento-grupo')->group(function(){

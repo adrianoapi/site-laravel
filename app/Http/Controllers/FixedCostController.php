@@ -118,6 +118,8 @@ class FixedCostController extends Controller
      */
     public function destroy(FixedCost $fixedCost)
     {
-        //
+        $fixedCost->delete();
+        
+        return redirect()->route('fixedCosts.index');
     }
 }

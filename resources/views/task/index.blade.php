@@ -98,6 +98,7 @@ $levels = [
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
+                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i> Arquivar</a>
                                         <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
@@ -121,6 +122,7 @@ $levels = [
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
+                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i> Arquivar</a>
                                         <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
@@ -144,6 +146,7 @@ $levels = [
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
+                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i> Arquivar</a>
                                         <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
@@ -167,7 +170,30 @@ $levels = [
 <script>
         $('.chosen-select').chosen({width: "100%"});
 
-        let token = $("[name='_token']").val();
+        const token = $("[name='_token']").val();
+
+        function acaoEArquivar(id)
+        {
+            var attributes = {
+                '_token': token,
+                'id'    : id
+            };
+
+            $.ajax({
+                url: "{{route('tasks.Arquivar')}}",
+                type: "POST",
+                data: attributes,
+                dataType: "json",
+                success: function(data){
+                    if(data['status']){
+                        $('#'+id).fadeOut("normal", function() {
+                            $(this).remove();
+                        });
+                    }
+                }
+            });
+            
+        }
 
         function acaoExcluir(id)
         {

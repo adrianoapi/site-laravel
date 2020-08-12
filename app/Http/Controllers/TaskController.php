@@ -21,7 +21,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks     = Task::orderBy('order', 'asc')->paginate(10);
+        $tasks     = Task::where('archived', false)->orderBy('order', 'asc')->paginate(10);
         $taskGroup = DB::table('task_groups')->get();
 
         return view('task.index', ['tasks' => $tasks, 'taskGroup' => $taskGroup]);
@@ -151,6 +151,17 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
+    public function arquivar(Request $request)
+    {
+        $task = Task::findOrFail($request->id);
+        $task->archived = true;
+        if($task->save()){
+            return response()->json(['status' => true]);
+        }else{
+            return response()->json(['status' => faslse]);
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -165,7 +176,7 @@ class TaskController extends Controller
 
     public function delAjax(Request $request)
     {
-        $task =Task::findOrFail($request->id);
+        $task = Task::findOrFail($request->id);
         if($task->delete()){
             return response()->json(['status' => true]);
         }else{

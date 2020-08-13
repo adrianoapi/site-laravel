@@ -98,8 +98,8 @@ $levels = [
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
-                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i> Arquivar</a>
-                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
+                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i></a>
+                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i></a>
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
@@ -122,8 +122,8 @@ $levels = [
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
-                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i> Arquivar</a>
-                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
+                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i></a>
+                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i></a>
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>
@@ -146,8 +146,8 @@ $levels = [
                                     <h5>{{$value->title}}</h5>
                                     {!! html_entity_decode($value->content) !!}
                                     <div class="agile-detail">
-                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i> Arquivar</a>
-                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-trash-o"></i> Excluir</a>
+                                        <a href="javascript:void(0)" onclick="acaoEArquivar({{$value->id}})" class="float-right btn btn-xs btn-white"><i class="fa fa-archive"></i></a>
+                                        <a href="javascript:void(0)" onclick="acaoExcluir({{$value->id}})" class="float-right btn btn-xs btn-white" title="Excluir"><i class="fa fa-trash-o"></i></a>
                                         <a href="#" class="float-right btn btn-xs btn-white">{{$value->taskGroup->title}}</a>
                                         <i class="fa fa-clock-o"></i> {{date('d/m/Y H:i', strtotime($value->created_at))}}
                                     </div>

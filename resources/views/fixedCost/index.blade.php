@@ -47,6 +47,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <a href="{{route('fixedCosts.show', ['fixedCost' => $value->id])}}" class="btn btn-white btn-sm" rel="tooltip" title="" data-original-title="Detalhar"><i class="fa fa-search-plus"></i></a>
+                                                    <a href="{{route('fixedCosts.entry',['fixedCost' => $value->id])}}" class="btn btn-white btn-sm" rel="tooltip" title="" data-original-title="Detalhar"><i class="fa fa-copy"></i></a>
                                                     <a href="{{route('fixedCosts.edit', ['fixedCost' => $value->id])}}" class="btn btn-white btn-sm" rel="tooltip" title="" data-original-title="Editar"><i class="fa fa-pencil-square-o"></i></a>
                                                     <button type="submit" class="btn btn-white btn-sm" rel="tooltip" title="" data-original-title="Excluir"><i class="fa fa-trash"></i></button>
                                                 </form>

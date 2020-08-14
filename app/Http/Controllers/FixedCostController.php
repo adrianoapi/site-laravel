@@ -111,6 +111,25 @@ class FixedCostController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\FixedCost  $fixedCost
+     */
+    public function entry(FixedCost $fixedCost)
+    {
+        $ledgerEntry = new \App\LedgerEntry();
+        $ledgerEntry->user_id            = $fixedCost->user_id;
+        $ledgerEntry->ledger_group_id    = $fixedCost->ledger_group_id;
+        $ledgerEntry->transition_type_id = $fixedCost->transition_type_id;
+        $ledgerEntry->description        = $fixedCost->description;
+        $ledgerEntry->entry_date         = $fixedCost->entry_date;
+        $ledgerEntry->amount             = $fixedCost->amount;
+        $ledgerEntry->save();
+
+        return redirect()->route('ledgerEntries.index');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\FixedCost  $fixedCost

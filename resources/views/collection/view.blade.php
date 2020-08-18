@@ -25,7 +25,7 @@
                         </div>
                         <div class="table-responsive">
 
-                            <table class="table table-hover table-nomargin">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th class="span2">Título</th>
@@ -44,7 +44,7 @@
                                 <thead>
                                     <tr>
                                         @if($collection->show_id)
-                                            <th     >Id</th>
+                                            <th>Id</th>
                                         @endif
 
                                         @if($collection->show_image)

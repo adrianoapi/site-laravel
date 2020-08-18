@@ -111,7 +111,7 @@ class FixedCostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Get attributes form FixedCost for insert to LedgerEntry
      *
      * @param  \App\FixedCost  $fixedCost
      */

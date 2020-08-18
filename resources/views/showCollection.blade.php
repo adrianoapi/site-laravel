@@ -23,13 +23,13 @@
                 <thead>
                     <tr>
                         <th class="span2">Título</th>
-                        <th class="span2">Exame</th>
+                        <th class="span2">Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{{$collection->title}}</td>
-                        <td>{{$collection->description}}</td>
+                        <td>{{count($collection->items)}}</td>
                     </tr>
                 </tbody>
             </table>

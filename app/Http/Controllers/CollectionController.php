@@ -71,7 +71,8 @@ class CollectionController extends Controller
      */
     public function show(Collection $collection)
     {
-        return view('showCollection', ['collection' => $collection]);
+        #showCollection
+        return view('collection.view', ['collection' => $collection]);
     }
 
     /**

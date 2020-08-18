@@ -14,7 +14,7 @@
                     <div class="ibox-content">
                         <div class="row">
                             <div class="col-sm-6 m-b-xs">
-                                <a href="{{route('collections.create')}}" class="btn btn-primary">Adicionar coleção</a>
+                                <a href="{{route('collections.create')}}" class="btn btn-white">Adicionar</a>
                             </div>
                             <div class="col-sm-6">
                                 <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm"> <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!
@@ -26,14 +26,16 @@
                             <table class="table table-bordered table-hover table-nomargin">
                                 <thead>
                                     <tr>
-                                        <th class="span2">ID</th>
-                                        <th class="span8">Título</th>
-                                        <th class="span2">Ações</th>
+                                        <th class=""></th>
+                                        <th class="">ID</th>
+                                        <th class="w-75">Título</th>
+                                        <th class="">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($collections as $value)
                                         <tr>
+                                            <td><input type="checkbox" class="i-checks" name="input[]"></td>
                                             <td>{{$value->id}}</td>
                                             <td>{{$value->title}}</td>
                                             <td>
@@ -60,4 +62,15 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
 @endsection

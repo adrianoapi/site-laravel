@@ -14,9 +14,9 @@
                     <div class="ibox-content">
                         <div class="row">
                             <div class="col-sm-6 m-b-xs">
-                                <a href="{{route('collections.index')}}" class="btn btn-primary"> Voltar</a>
-                                <a href="{{route('collItems.create',    ['collection'   => $collection->id])}}" class="btn btn-primary" rel="tooltip" title="" data-original-title="Adicionar Item">Adicionar Item</a>
-                                <a href="{{route('collections.edit',    ['collection'   => $collection->id])}}" class="btn btn-primary" rel="tooltip" title="" data-original-title="Editar">Editar</a>
+                                <a href="{{route('collections.index')}}" class="btn btn-white"> <i class="fa fa-arrow-circle-o-left"></i></a>
+                                <a href="{{route('collItems.create',    ['collection'   => $collection->id])}}" class="btn btn-white" rel="tooltip" title="" data-original-title="Adicionar Item">Adicionar Item</a>
+                                <a href="{{route('collections.edit',    ['collection'   => $collection->id])}}" class="btn btn-white" rel="tooltip" title="" data-original-title="Editar">Editar</a>
                             </div>
                             <div class="col-sm-6">
                                 <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm"> <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!

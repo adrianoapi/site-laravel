@@ -29,6 +29,9 @@
 
     <link href="{!! asset('inspinia/css/plugins/datapicker/datepicker3.css') !!}" rel="stylesheet">
 
+    <link href="{!! asset('inspinia/css/plugins/codemirror/codemirror.css') !!}" rel="stylesheet">
+    <link href="{!! asset('inspinia/css/plugins/codemirror/monokai.css') !!}" rel="stylesheet">
+
 
 
 </head>
@@ -87,6 +90,10 @@
 
     <!-- Data picker -->
     <script src="{!! asset('inspinia/js/plugins/datapicker/bootstrap-datepicker.js') !!}"></script>
+
+    <!-- CodeMirror -->
+    <script src="{!! asset('inspinia/js/plugins/codemirror/codemirror.js') !!}"></script>
+    <script src="{!! asset('inspinia/js/plugins/codemirror/mode/javascript/javascript.js') !!}"></script>
 
 
 

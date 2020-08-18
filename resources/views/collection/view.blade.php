@@ -106,3 +106,21 @@
     </div>
 
 @endsection
+
+@section('scripts')
+<script>
+    
+function qsa(sel) {
+    return Array.apply(null, document.querySelectorAll(sel));
+}
+qsa(".code").forEach(function (editorEl) {
+  CodeMirror.fromTextArea(editorEl, {
+    lineNumbers: true,
+    styleActiveLine: true,
+    matchBrackets: true,
+    theme: 'monokai',
+  });
+});
+
+</script>
+@endsection

@@ -26,7 +26,12 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $collections = Collection::orderBy('title', 'asc')->paginate(20);
+        if(array_key_exists('filtro',$_GET)){
+            $collections = Collection::where('title', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('title', 'asc')->paginate(50);
+        }else{
+            $collections = Collection::orderBy('title', 'asc')->paginate(20);
+        }
+        
         return view('collection.index', ['collections' => $collections]);
     }
 

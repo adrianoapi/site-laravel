@@ -37,7 +37,7 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        return view('addCollection', ['order' => $this->getOrder()]);
+        return view('collection.add', ['order' => $this->getOrder()]);
     }
 
     /**
@@ -83,7 +83,7 @@ class CollectionController extends Controller
      */
     public function edit(Collection $collection)
     {
-        return view('editCollection', ['collection' => $collection, 'order' => $this->getOrder()]);
+        return view('collection.edit', ['collection' => $collection, 'order' => $this->getOrder()]);
     }
 
     /**

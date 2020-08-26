@@ -22,7 +22,7 @@ class PasswordController extends Controller
     public function index()
     {
         $passwords = Password::orderBy('title', 'asc')->paginate(10);
-        return view('listAllPassword', ['passwords' => $passwords]);
+        return view('password.index', ['passwords' => $passwords]);
     }
 
     /**

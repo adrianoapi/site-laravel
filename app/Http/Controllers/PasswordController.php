@@ -21,7 +21,11 @@ class PasswordController extends Controller
      */
     public function index()
     {
-        $passwords = Password::orderBy('title', 'asc')->paginate(10);
+        if(array_key_exists('filtro',$_GET)){
+            $passwords = Password::where('title', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('title', 'asc')->paginate(50);
+        }else{
+            $passwords = Password::orderBy('title', 'asc')->paginate(20);
+        }
         return view('password.index', ['passwords' => $passwords]);
     }
 

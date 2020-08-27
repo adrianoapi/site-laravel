@@ -15,6 +15,7 @@
                         <div class="row">
                                 <div class="col-sm-6 m-b-xs">
                                     <a href="{{route('ledgerEntries.create')}}" class="btn btn-white">Adicionar</a>
+                                    <a href="{{route('ledgerEntries.index')}}" class="btn btn-white"> Limpar</a>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="btn-group">

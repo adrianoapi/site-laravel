@@ -44,7 +44,7 @@ class LedgerEntryController extends Controller
         $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
-        return view('listAllLedgerEntry', ['ledgerEntries' => $ledgerEntries, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+        return view('ledgerEntry.index', ['ledgerEntries' => $ledgerEntries, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**

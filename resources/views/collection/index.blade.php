@@ -19,7 +19,7 @@
                             <div class="col-sm-6">
                                 <form action="{{route('collections.index')}}" method="GET" class="span3" style="margin: 0;padding:0;">
                                     <div class="input-group">
-                                    <input type="hidden" name="filtro" value="pesquisa">
+                                        <input type="hidden" name="filtro" value="pesquisa">
                                         <input placeholder="Search" type="text" name="pesquisar" value="{{array_key_exists('pesquisar', $_GET) ? $_GET['pesquisar'] : ''}}" class="form-control form-control-sm">
                                         <span class="input-group-append">
                                             <button type="submit" class="btn btn-sm btn-primary">Go!</button>

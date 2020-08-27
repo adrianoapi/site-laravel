@@ -57,7 +57,7 @@ class LedgerEntryController extends Controller
         $ledgerGroups    = DB::table('ledger_groups')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
-        return view('addLedgerEntry', ['ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+        return view('ledgerEntry.add', ['ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**
@@ -105,7 +105,7 @@ class LedgerEntryController extends Controller
         $ledgerGroups    = DB::table('ledger_groups')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
-        return view('editLedgerEntry', ['ledgerEntry' => $ledgerEntry, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+        return view('ledgerEntry.edit', ['ledgerEntry' => $ledgerEntry, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**

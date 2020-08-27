@@ -13,7 +13,7 @@
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                                <div class="col-sm-4 m-b-xs">
+                                <div class="col-sm-6 m-b-xs">
                                     <a href="{{route('ledgerEntries.create')}}" class="btn btn-white">Adicionar</a>
                                 </div>
                                 <div class="col-sm-2">
@@ -25,8 +25,6 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                </div>
-                                <div class="col-sm-2">
                                     <div class="btn-group">
                                         <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Transação</button>
                                         <ul class="dropdown-menu">

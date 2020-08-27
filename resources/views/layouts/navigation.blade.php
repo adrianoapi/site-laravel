@@ -30,6 +30,7 @@
                     <li><a href="{{route('collections.index')}}">Coleções</a></li>
                     <li><a href="{{route('tasks.index')}}">Tarefas</a></li>
                     <li><a href="{{route('taskGroups.index')}}">Grupos</a></li>
+                    <li><a href="{{route('ledgerEntries.index')}}">Lançamentos</a></li>
                     <li><a href="{{route('fixedCosts.index')}}">Lançamentos fixos</a></li>
                     <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
                 </ul>

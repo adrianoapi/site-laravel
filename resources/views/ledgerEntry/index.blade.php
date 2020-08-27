@@ -13,11 +13,11 @@
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                                <div class="col-sm-6 m-b-xs">
-                                    <a href="{{route('ledgerEntries.create')}}" class="btn btn-white">Adicionar</a>
-                                    <a href="{{route('ledgerEntries.index')}}" class="btn btn-white"> Limpar</a>
+                                <div class="col-sm-5 m-b-xs">
+                                    <a href="{{route('ledgerEntries.create')}}" class="btn btn-primary">Adicionar</a>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-4">
+                                    <a href="{{route('ledgerEntries.index')}}" class="btn btn-warning"> Limpar</a>
                                     <div class="btn-group">
                                         <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">Despesa</button>
                                         <ul class="dropdown-menu">
@@ -35,7 +35,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <form action="{{route('ledgerEntries.index')}}" method="GET" class="span3" style="margin: 0;padding:0;">
                                         <div class="input-group">
                                             <input type="hidden" name="filtro" value="pesquisa">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="table-responsive">
 
-                                <table class="table table-hover table-nomargin">
+                                <table class="table table-bordered table-hover table-nomargin">
                                     <thead>
                                         <tr>
                                             <th>Data</th>

@@ -37,7 +37,7 @@ class LedgerItemController extends Controller
 
         $ledgerItems = LedgerItem::where('ledger_entry_id', $ledgerEntry->id)->orderBy('id', 'desc')->get();
         
-        return view('addLedgerItem', ['ledgerItems' => $ledgerItems, 'ledgerEntry' => $ledgerEntry, 'ledgerItem' => '']);
+        return view('ledgerItem.add', ['ledgerItems' => $ledgerItems, 'ledgerEntry' => $ledgerEntry, 'ledgerItem' => '']);
     }
 
     /**
@@ -80,7 +80,7 @@ class LedgerItemController extends Controller
 
         $ledgerItems = LedgerItem::where('ledger_entry_id', $ledgerEntry->id)->orderBy('id', 'desc')->get();
         
-        return view('listLedgerItem', ['ledgerItems' => $ledgerItems, 'ledgerEntry' => $ledgerEntry]);
+        return view('ledgerItem.show', ['ledgerItems' => $ledgerItems, 'ledgerEntry' => $ledgerEntry]);
     }
 
     /**

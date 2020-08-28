@@ -91,7 +91,7 @@ class LedgerEntryController extends Controller
         $ledgerGroups    = DB::table('ledger_groups')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
-        return view('listLedgerEntry', ['ledgerEntry' => $ledgerEntry, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+        return view('ledgerEntry.show', ['ledgerEntry' => $ledgerEntry, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**

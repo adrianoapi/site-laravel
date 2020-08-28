@@ -12,7 +12,7 @@
                 <li>
                     <a href="{{route('ledgerEntries.index')}}" data-toggle="modal" class="btn"><i class="icon-reorder"></i> Lancamentos</a>
                 </li>
-            </ul>
+            </ul> 
 
         </div>
         <div class="box-content nopadding">

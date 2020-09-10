@@ -56,7 +56,7 @@ class LedgerEntryController extends Controller
     {
         $ledgerGroups    = DB::table('ledger_groups')->get();
         $transitionTypes = DB::table('transition_types')->get();
-        die('oi');
+
         return view('ledgerEntry.add', ['ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
@@ -76,8 +76,6 @@ class LedgerEntryController extends Controller
         $ledgerEntry->entry_date         = $request->entry_date;
         $ledgerEntry->amount             = $request->amount;
         $ledgerEntry->save();
-
-        
 
         return redirect()->route('ledgerItems.create', ['ledgerEntry' => $ledgerEntry]);
     }

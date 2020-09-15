@@ -546,7 +546,7 @@
                     label: "Despesa",
                     backgroundColor: "rgba(255, 100, 148, 0.5)",
                     borderColor: "rgba(225,100,148,0.7)",
-                    pointBackgroundColor: "rgba(220,220,220,1)",
+                    pointBackgroundColor: "rgba(225,100,148,1)",
                     pointBorderColor: "#fff",
                     data: [{{$cost}}]
                 }

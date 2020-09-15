@@ -13,7 +13,7 @@ class DashController extends Controller
     
     public function index()
     {
-        return view('indexDash');
+        return view('dash.index');
     }
 
     public function list()

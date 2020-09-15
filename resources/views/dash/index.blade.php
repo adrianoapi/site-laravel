@@ -471,6 +471,7 @@
         $recipe = NULL;
         $cost = NULL;
         $i=1;
+        ksort($lancamentoTotal);
         foreach($lancamentoTotal as $key => $value):
             $separetor = ($i < count($lancamentoTotal)) ? ',' : '';
             $days .= "\"$key\"".$separetor;

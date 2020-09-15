@@ -4,6 +4,30 @@
 
 @section('content')
 
+<?php
+    $days   = NULL;
+    $recipe = NULL;
+    $cost   = NULL;
+    $totalCost   = 0;
+    $totalRecipe = 0;
+    $i = 1;
+    ksort($lancamentoTotal);
+    foreach($lancamentoTotal as $key => $value):
+        $separetor = ($i < count($lancamentoTotal)) ? ',' : '';
+        $days .= "\"$key\"".$separetor;
+        $recipe .= $value['lucro'].$separetor;
+        $cost .= $value['despesa'].$separetor;
+
+        $totalRecipe += $value['lucro'  ];
+        $totalCost   += $value['despesa'];
+        
+        $i++;
+    endforeach;
+
+    $percentRecipe = $totalRecipe * 100 / ($totalRecipe + $totalCost);
+    $percentCost   = $totalCost * 100 / ($totalRecipe + $totalCost);
+?>
+
 <div class="wrapper wrapper-content">
         <div class="row">
             <div class="col-lg-2">
@@ -100,17 +124,17 @@
                                 <div class="col-md-4">
                                     <ul class="stat-list m-t-lg">
                                         <li>
-                                            <h2 class="no-margins">2,346</h2>
+                                            <h2 class="no-margins">R$ {{number_format($totalRecipe, 2, ',','.')}}</h2>
                                             <small>Total orders in period</small>
                                             <div class="progress progress-mini">
-                                                <div class="progress-bar" style="width: 48%;"></div>
+                                                <div class="progress-bar" style="width: {{$percentRecipe}}%;"></div>
                                             </div>
                                         </li>
                                         <li>
-                                            <h2 class="no-margins ">4,422</h2>
+                                            <h2 class="no-margins ">R$ {{number_format($totalCost, 2, ',','.')}}</h2>
                                             <small>Orders in last month</small>
                                             <div class="progress progress-mini">
-                                                <div class="progress-bar" style="width: 60%;"></div>
+                                                <div class="progress-bar-danger" style="width: {{$percentCost}}%;"></div>
                                             </div>
                                         </li>
                                     </ul>
@@ -505,21 +529,6 @@
                 show: false,
             }
         });
-
-        <?php
-        $days = NULL;
-        $recipe = NULL;
-        $cost = NULL;
-        $i=1;
-        ksort($lancamentoTotal);
-        foreach($lancamentoTotal as $key => $value):
-            $separetor = ($i < count($lancamentoTotal)) ? ',' : '';
-            $days .= "\"$key\"".$separetor;
-            $recipe .= $value['lucro'].$separetor;
-            $cost .= $value['despesa'].$separetor;
-            $i++;
-        endforeach;
-        ?>
 
         var lineData = {
             

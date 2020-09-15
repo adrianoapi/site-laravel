@@ -20,7 +20,7 @@ class DashController extends Controller
         ->where('transition_types.action', 'expensive')
         ->groupBy('ledger_entries.entry_date')
         ->orderByDesc('ledger_entries.entry_date')
-        ->limit(4)
+        ->limit(3)
         ->get();
 
         $recipe = DB::table('ledger_entries')
@@ -29,7 +29,7 @@ class DashController extends Controller
         ->where('transition_types.action', 'recipe')
         ->groupBy('ledger_entries.entry_date')
         ->orderByDesc('ledger_entries.entry_date')
-        ->limit(10)
+        ->limit(7)
         ->get();
 
         $dtLancamento    = array();

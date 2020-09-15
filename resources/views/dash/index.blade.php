@@ -466,8 +466,23 @@
             }
         });
 
+        <?php
+        $days = NULL;
+        $recipe = NULL;
+        $cost = NULL;
+        $i=1;
+        foreach($lancamentoTotal as $key => $value):
+            $separetor = ($i < count($lancamentoTotal)) ? ',' : '';
+            $days .= "\"$key\"".$separetor;
+            $recipe .= $value['lucro'].$separetor;
+            $cost .= $value['despesa'].$separetor;
+            $i++;
+        endforeach;
+        ?>
+
         var lineData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            
+            labels: [{!! html_entity_decode($days) !!}],
             datasets: [
                 {
                     label: "Example dataset",
@@ -475,7 +490,7 @@
                     borderColor: "rgba(26,179,148,0.7)",
                     pointBackgroundColor: "rgba(26,179,148,1)",
                     pointBorderColor: "#fff",
-                    data: [48, 48, 60, 39, 56, 37, 30]
+                    data: [{{$recipe}}]
                 },
                 {
                     label: "Example dataset",
@@ -483,7 +498,7 @@
                     borderColor: "rgba(220,220,220,1)",
                     pointBackgroundColor: "rgba(220,220,220,1)",
                     pointBorderColor: "#fff",
-                    data: [65, 59, 40, 51, 36, 25, 40]
+                    data: [{{$cost}}]
                 }
             ]
         };

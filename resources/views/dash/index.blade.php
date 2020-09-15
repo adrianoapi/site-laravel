@@ -30,83 +30,15 @@
 
 <div class="wrapper wrapper-content">
         <div class="row">
-            <div class="col-lg-2">
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <span class="label label-success float-right">Monthly</span>
-                        <h5>Views</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">386,200</h1>
-                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-                        <small>Total views</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <span class="label label-info float-right">Annual</span>
-                        <h5>Orders</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">80,800</h1>
-                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                        <small>New orders</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <span class="label label-primary float-right">Today</span>
-                        <h5>visits</h5>
-                    </div>
-                    <div class="ibox-content">
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h1 class="no-margins">406,42</h1>
-                                <div class="font-bold text-navy">44% <i class="fa fa-level-up"></i> <small>Rapid pace</small></div>
-                            </div>
-                            <div class="col-md-6">
-                                <h1 class="no-margins">206,12</h1>
-                                <div class="font-bold text-navy">22% <i class="fa fa-level-up"></i> <small>Slow pace</small></div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <h5>Monthly income</h5>
-                        <div class="ibox-tools">
-                            <span class="label label-primary">Updated 12.2015</span>
-                        </div>
-                    </div>
-                    <div class="ibox-content no-padding">
-                        <div class="flot-chart m-t-lg" style="height: 55px;">
-                            <div class="flot-chart-content" id="flot-chart1"></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-8">
                 <div class="ibox ">
                     <div class="ibox-content">
                         <div>
-                                        <span class="float-right text-right">
-                                        <small>Average value of sales in the past month in: <strong>United states</strong></small>
-                                            <br/>
-                                            All sales: 162,862
-                                        </span>
+                            <span class="float-right text-right">
+                            <small>Average value of sales in the past month in: <strong>United states</strong></small>
+                                <br/>
+                                All sales: 162,862
+                            </span>
                             <h3 class="font-bold no-margins">
                                 Half-year revenue margin
                             </h3>
@@ -308,127 +240,6 @@
                         <td><span class="pie">3,1</span></td>
                         <td>75%</td>
                         <td>Jul 18, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Gamma project</td>
-                        <td>Anna Jordan</td>
-                        <td>(016977) 0648</td>
-                        <td>Tellus Ltd</td>
-                        <td><span class="pie">4,9</span></td>
-                        <td>18%</td>
-                        <td>Jul 22, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Alpha project</td>
-                        <td>Alice Jackson</td>
-                        <td>0500 780909</td>
-                        <td>Nec Euismod In Company</td>
-                        <td><span class="pie">6,9</span></td>
-                        <td>40%</td>
-                        <td>Jul 16, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Project <small>This is example of project</small></td>
-                        <td>Patrick Smith</td>
-                        <td>0800 051213</td>
-                        <td>Inceptos Hymenaeos Ltd</td>
-                        <td><span class="pie">0.52/1.561</span></td>
-                        <td>20%</td>
-                        <td>Jul 14, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Gamma project</td>
-                        <td>Anna Jordan</td>
-                        <td>(016977) 0648</td>
-                        <td>Tellus Ltd</td>
-                        <td><span class="pie">4,9</span></td>
-                        <td>18%</td>
-                        <td>Jul 22, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Project <small>This is example of project</small></td>
-                        <td>Patrick Smith</td>
-                        <td>0800 051213</td>
-                        <td>Inceptos Hymenaeos Ltd</td>
-                        <td><span class="pie">0.52/1.561</span></td>
-                        <td>20%</td>
-                        <td>Jul 14, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Alpha project</td>
-                        <td>Alice Jackson</td>
-                        <td>0500 780909</td>
-                        <td>Nec Euismod In Company</td>
-                        <td><span class="pie">6,9</span></td>
-                        <td>40%</td>
-                        <td>Jul 16, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Betha project</td>
-                        <td>John Smith</td>
-                        <td>0800 1111</td>
-                        <td>Erat Volutpat</td>
-                        <td><span class="pie">3,1</span></td>
-                        <td>75%</td>
-                        <td>Jul 18, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Gamma project</td>
-                        <td>Anna Jordan</td>
-                        <td>(016977) 0648</td>
-                        <td>Tellus Ltd</td>
-                        <td><span class="pie">4,9</span></td>
-                        <td>18%</td>
-                        <td>Jul 22, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Alpha project</td>
-                        <td>Alice Jackson</td>
-                        <td>0500 780909</td>
-                        <td>Nec Euismod In Company</td>
-                        <td><span class="pie">6,9</span></td>
-                        <td>40%</td>
-                        <td>Jul 16, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Project <small>This is example of project</small></td>
-                        <td>Patrick Smith</td>
-                        <td>0800 051213</td>
-                        <td>Inceptos Hymenaeos Ltd</td>
-                        <td><span class="pie">0.52/1.561</span></td>
-                        <td>20%</td>
-                        <td>Jul 14, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Gamma project</td>
-                        <td>Anna Jordan</td>
-                        <td>(016977) 0648</td>
-                        <td>Tellus Ltd</td>
-                        <td><span class="pie">4,9</span></td>
-                        <td>18%</td>
-                        <td>Jul 22, 2013</td>
                         <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
                     </tr>
                     </tbody>

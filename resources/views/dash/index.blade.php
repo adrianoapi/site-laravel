@@ -143,22 +143,18 @@
                         <th>Phone </th>
                         <th>Company </th>
                         <th>Completed </th>
-                        <th>Task</th>
-                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($tasks as $value)
                     <tr>
-                        <td>1</td>
+                        <td>{{$value->id}}</td>
                         <td>{{$value->title}}</td>
-                        <td>Patrick Smith</td>
-                        <td>0800 051213</td>
+                        <td>{{$value->taskGroup->title}}</td>
+                        <td>{{date('d/m/Y H:i', strtotime($value->created_at))}}</td>
                         <td>Inceptos Hymenaeos Ltd</td>
                         <td><span class="pie">0.52/1.561</span></td>
-                        <td>20%</td>
-                        <td>Jul 14, 2013</td>
                         <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
                     </tr>
                     @endforeach

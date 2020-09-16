@@ -18,27 +18,29 @@
                     IN+
                 </div>
             </li>
-            <li class="">
+            <li class="{{Route::current()->getName() === 'dash.index' || Route::current()->getName() === NULL ? 'active' : ''}}">
                 <a href="{{route('dash.index') }}"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span></a>
             </li>
-            <li class="">
+            <li class="{{Route::current()->getName() === 'transitionTypes.index' ? 'active' : ''}}">
                 <a href="{{ url('/minor') }}"><i class="fa fa-desktop"></i> <span class="nav-label">Configurações</span> </a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('transitionTypes.index')}}">Tipo de Transação</a></li>
                 </ul>
             </li>
-            <li class="active">
+            <li class="{{Route::current()->getName() === 'ledgerEntries.index' || Route::current()->getName() === 'fixedCosts.index' ? 'active' : ''}}">
                 <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{route('collections.index')}}">Coleções</a></li>
                     <li><a href="{{route('ledgerEntries.index')}}">Lançamentos</a></li>
                     <li><a href="{{route('fixedCosts.index')}}">Lançamentos fixos</a></li>
                 </ul>
             </li>
-            <li class="">
+            <li class="{{Route::current()->getName() === 'collections.index' ? 'active' : ''}}">
+                <a href="{{route('collections.index')}}"><i class="fa fa-trophy"></i> <span class="nav-label">Coleções</span> <span class="fa arrow"></span></a>
+            </li>
+            <li class="{{Route::current()->getName() === 'passwords.index' ? 'active' : ''}}">
                 <a href="{{route('passwords.index')}}"><i class="fa fa-key"></i> <span class="nav-label">Senhas</span> <span class="fa arrow"></span></a>
             </li>
-            <li class="">
+            <li class="{{Route::current()->getName() === 'tasks.index' || Route::current()->getName() === 'taskGroups.index' ? 'active' : ''}}">
                 <a href="#"><i class="fa fa-tasks"></i> <span class="nav-label">Tarefas</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('tasks.index')}}">Tarefas</a></li>

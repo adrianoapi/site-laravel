@@ -149,9 +149,10 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach ($tasks as $value)
                     <tr>
                         <td>1</td>
-                        <td>Project <small>This is example of project</small></td>
+                        <td>{{$value->title}}</td>
                         <td>Patrick Smith</td>
                         <td>0800 051213</td>
                         <td>Inceptos Hymenaeos Ltd</td>
@@ -160,28 +161,7 @@
                         <td>Jul 14, 2013</td>
                         <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Alpha project</td>
-                        <td>Alice Jackson</td>
-                        <td>0500 780909</td>
-                        <td>Nec Euismod In Company</td>
-                        <td><span class="pie">6,9</span></td>
-                        <td>40%</td>
-                        <td>Jul 16, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Betha project</td>
-                        <td>John Smith</td>
-                        <td>0800 1111</td>
-                        <td>Erat Volutpat</td>
-                        <td><span class="pie">3,1</span></td>
-                        <td>75%</td>
-                        <td>Jul 18, 2013</td>
-                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
-                    </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

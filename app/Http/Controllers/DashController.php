@@ -32,6 +32,13 @@ class DashController extends Controller
         ->limit(7)
         ->get();
 
+        $tasks = \App\Task::where('status', '!=', 'completed')->orderBy('title', 'asc')->get();
+        
+        return view('dash.index', ['lancamentoTotal' => $this->legderSort($expensive, $recipe), 'tasks' => $tasks]);
+    }
+
+    protected function legderSort($expensive, $recipe)
+    {
         $dtLancamento    = array();
         $lancamentoTotal = array();
         
@@ -61,8 +68,8 @@ class DashController extends Controller
                 $lancamentoTotal[$value]['lucro'] = 0;
             }
         endforeach;
-        
-        return view('dash.index', ['lancamentoTotal' => $lancamentoTotal]);
+
+        return  $lancamentoTotal;
     }
 
     public function list()

@@ -23,6 +23,8 @@
 				<!-- copyright -->
 				<div class="copy-right">
 					<p>© 2020 PagSoft</p>
+					<p>O que não pode ser medido, não pode ser gerenciado (W.E.Deming).</p>
+					<p>O que pode ser medido, pode ser melhorado (Peter Drucker).</p>
 				</div>
 				<!-- //copyright -->
 			</div>

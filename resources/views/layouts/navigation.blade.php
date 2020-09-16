@@ -21,10 +21,11 @@
             <li class="{{Route::current()->getName() === 'dash.index' || Route::current()->getName() === NULL ? 'active' : ''}}">
                 <a href="{{route('dash.index') }}"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span></a>
             </li>
-            <li class="{{Route::current()->getName() === 'transitionTypes.index' ? 'active' : ''}}">
+            <li class="{{Route::current()->getName() === 'transitionTypes.index' || Route::current()->getName() === 'ledgerGroups.index' ? 'active' : ''}}">
                 <a href="{{ url('/minor') }}"><i class="fa fa-desktop"></i> <span class="nav-label">Configurações</span> </a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('transitionTypes.index')}}">Tipo de Transação</a></li>
+                    <li><a href="{{route('ledgerGroups.index')}}">Grupo Lançamento</a></li>
                 </ul>
             </li>
             <li class="{{Route::current()->getName() === 'ledgerEntries.index' || Route::current()->getName() === 'fixedCosts.index' ? 'active' : ''}}">

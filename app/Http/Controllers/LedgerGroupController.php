@@ -22,7 +22,7 @@ class LedgerGroupController extends Controller
     public function index()
     {
         $ledgerGroups = LedgerGroup::paginate(10);
-        return view('listAllLedgerGroup', ['ledgerGroups' => $ledgerGroups]);
+        return view('ledgerGroup.index', ['ledgerGroups' => $ledgerGroups]);
     }
 
     /**
@@ -33,7 +33,7 @@ class LedgerGroupController extends Controller
     public function create()
     {
         $parents = DB::table('ledger_groups')->get();
-        return view('addLedgerGroup', ['parents' => $parents]);
+        return view('ledgerGroup.add', ['parents' => $parents]);
     }
 
     /**
@@ -67,7 +67,7 @@ class LedgerGroupController extends Controller
     public function show(LedgerGroup $ledgerGroup)
     {
         $parents = DB::table('ledger_groups')->get();
-        return view('listLedgerGroup', ['ledgerGroup' => $ledgerGroup, 'parents' => $parents]);
+        return view('ledgerGroup.view', ['ledgerGroup' => $ledgerGroup, 'parents' => $parents]);
     }
 
     /**
@@ -79,7 +79,7 @@ class LedgerGroupController extends Controller
     public function edit(LedgerGroup $ledgerGroup)
     {
         $parents = DB::table('ledger_groups')->get();
-        return view('editLedgerGroup', ['ledgerGroup' => $ledgerGroup, 'parents' => $parents]);
+        return view('ledgerGroup.edit', ['ledgerGroup' => $ledgerGroup, 'parents' => $parents]);
     }
 
     /**

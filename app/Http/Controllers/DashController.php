@@ -38,7 +38,7 @@ class DashController extends Controller
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'))
         ->where('transition_types.action', 'expensive')
-        ->where('transition_types.credit_card', '!=', true)
+        ->where('ledger_entries.entry_date', '<>', true)
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
 

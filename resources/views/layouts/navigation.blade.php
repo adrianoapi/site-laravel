@@ -19,20 +19,30 @@
                 </div>
             </li>
             <li class="">
-                <a href="{{ url('/template') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+                <a href="{{route('dash.index') }}"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span></a>
             </li>
             <li class="">
-                <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
+                <a href="{{ url('/minor') }}"><i class="fa fa-desktop"></i> <span class="nav-label">Configurações</span> </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('transitionTypes.index')}}">Tipo de Transação</a></li>
+                </ul>
             </li>
             <li class="active">
-                <a href="index.html"><i class="fa fa-tasks"></i> <span class="nav-label">Tarefas</span> <span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('collections.index')}}">Coleções</a></li>
-                    <li><a href="{{route('tasks.index')}}">Tarefas</a></li>
-                    <li><a href="{{route('taskGroups.index')}}">Grupos</a></li>
                     <li><a href="{{route('ledgerEntries.index')}}">Lançamentos</a></li>
                     <li><a href="{{route('fixedCosts.index')}}">Lançamentos fixos</a></li>
-                    <li><a href="{{route('passwords.index')}}">Senhas</a></li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="{{route('passwords.index')}}"><i class="fa fa-key"></i> <span class="nav-label">Senhas</span> <span class="fa arrow"></span></a>
+            </li>
+            <li class="">
+                <a href="#"><i class="fa fa-tasks"></i> <span class="nav-label">Tarefas</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('tasks.index')}}">Tarefas</a></li>
+                    <li><a href="{{route('taskGroups.index')}}">Grupos</a></li>
                 </ul>
             </li>
         </ul>

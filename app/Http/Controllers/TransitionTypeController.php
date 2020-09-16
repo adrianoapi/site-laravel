@@ -20,7 +20,7 @@ class TransitionTypeController extends Controller
     public function index()
     {
         $transitionTypes = TransitionType::paginate(10);
-        return view('listAllTransitionType', ['transitionTypes' => $transitionTypes]);
+        return view('transitionType.index', ['transitionTypes' => $transitionTypes]);
     }
 
     /**
@@ -30,7 +30,7 @@ class TransitionTypeController extends Controller
      */
     public function create()
     {
-        return view('addTransitionType');
+        return view('transitionType.add');
     }
 
     /**
@@ -45,6 +45,7 @@ class TransitionTypeController extends Controller
         $transitionType->title       = $request->title;
         $transitionType->description = $request->description;
         $transitionType->action      = $request->action;
+        $transitionType->credit_card = $request->credit_card == 'true' ? true : false;
         $transitionType->save();
 
         return redirect()->route('transitionTypes.index');
@@ -58,7 +59,7 @@ class TransitionTypeController extends Controller
      */
     public function show(TransitionType $transitionType)
     {
-        return view('listTransitionType', ['transitionType' => $transitionType]);
+        return view('transitionType.view', ['transitionType' => $transitionType]);
     }
 
     /**
@@ -69,7 +70,7 @@ class TransitionTypeController extends Controller
      */
     public function edit(TransitionType $transitionType)
     {
-        return view('editTransitionType', ['transitionType' => $transitionType]);
+        return view('transitionType.edit', ['transitionType' => $transitionType]);
     }
 
     /**
@@ -84,6 +85,7 @@ class TransitionTypeController extends Controller
         $transitionType->title       = $request->title;
         $transitionType->description = $request->description;
         $transitionType->action      = $request->action;
+        $transitionType->credit_card = $request->credit_card == 'true' ? true : false;
         $transitionType->save();
 
         return redirect()->route('transitionTypes.index');

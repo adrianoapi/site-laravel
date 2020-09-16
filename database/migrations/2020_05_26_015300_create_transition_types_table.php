@@ -18,6 +18,7 @@ class CreateTransitionTypesTable extends Migration
             $table->string('title');
             $table->text('description')->nullable(true);
             $table->enum('action', ['expensive', 'recipe']);
+            $table->boolean('credit_card');
             $table->timestamps();
         });
     }

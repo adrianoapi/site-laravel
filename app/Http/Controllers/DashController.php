@@ -33,8 +33,27 @@ class DashController extends Controller
         ->get();
 
         $tasks = \App\Task::where('status', '!=', 'completed')->orderBy('title', 'asc')->get();
+
+        $totalExpensive = DB::table('ledger_entries')
+        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+        ->select(DB::raw('sum( ledger_entries.amount ) as total'))
+        ->where('transition_types.action', 'expensive')
+        ->orderByDesc('ledger_entries.entry_date')
+        ->get();
+
+        $totalRecipe = DB::table('ledger_entries')
+        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+        ->select(DB::raw('sum( ledger_entries.amount ) as total'))
+        ->where('transition_types.action', 'recipe')
+        ->orderByDesc('ledger_entries.entry_date')
+        ->get();
         
-        return view('dash.index', ['lancamentoTotal' => $this->legderSort($expensive, $recipe), 'tasks' => $tasks]);
+        return view('dash.index', [
+            'lancamentoTotal' => $this->legderSort($expensive, $recipe),
+            'tasks' => $tasks,
+            'dbTotalExpensive' => $totalExpensive,
+            'dbTotalRecipe'    => $totalRecipe
+        ]);
     }
 
     protected function legderSort($expensive, $recipe)

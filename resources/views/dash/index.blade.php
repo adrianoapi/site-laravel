@@ -35,9 +35,11 @@
                     <div class="ibox-content">
                         <div>
                             <span class="float-right text-right">
-                            <small>Average value of sales in the past month in: <strong>United states</strong></small>
-                                <br/>
-                                All sales: 162,862
+                                Receita: R$ <strong>{{number_format($dbTotalRecipe[0]->total, 2, ',','.')}}</strong>
+                                -
+                                Despesa: R$ <strong>{{number_format($dbTotalExpensive[0]->total, 2, ',','.')}}</strong>
+                                =
+                                Total: R$ <strong>{{number_format($dbTotalRecipe[0]->total - $dbTotalExpensive[0]->total, 2, ',','.')}}</strong>
                             </span>
                             <h3 class="font-bold no-margins">
                                 Half-year revenue margin
@@ -78,7 +80,7 @@
                         <div class="m-t-md">
                             <small class="float-right">
                                 <i class="fa fa-clock-o"> </i>
-                                Update on 16.07.2015
+                                {{date('d/m/Y H:i:s')}}
                             </small>
                             <small>
                                 <strong>Analysis of sales:</strong> The value has been changed over time, and last month reached a level over $50,000.

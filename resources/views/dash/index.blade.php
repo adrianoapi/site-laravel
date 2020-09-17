@@ -8,8 +8,10 @@
     $days   = NULL;
     $recipe = NULL;
     $cost   = NULL;
-    $totalCost   = 0;
-    $totalRecipe = 0;
+    $totalCost     = 0;
+    $totalRecipe   = 0;
+    $percentRecipe = 0;
+    $percentCost   = 0;
     $i = 1;
     ksort($lancamentoTotal);
     foreach($lancamentoTotal as $key => $value):
@@ -24,8 +26,10 @@
         $i++;
     endforeach;
 
-    $percentRecipe = $totalRecipe * 100 / ($totalRecipe + $totalCost);
-    $percentCost   = $totalCost * 100 / ($totalRecipe + $totalCost);
+    if(($totalRecipe + $totalCost) > 0){
+        $percentRecipe = $totalRecipe * 100 / ($totalRecipe + $totalCost);
+        $percentCost   = $totalCost * 100 / ($totalRecipe + $totalCost);
+    }
 ?>
 
 <div class="wrapper wrapper-content">

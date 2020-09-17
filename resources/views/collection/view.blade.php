@@ -74,9 +74,12 @@
                                         @if($collection->show_image)
                                             <td>
                                                 @if (!empty($value->images[0]->collection_item_id))
-                                                <a href="#new-task" data-toggle="modal" class='btn'>
+                                                <form name="frm-{{ $value->id }}" action="" method="POST">
+                                                    @csrf
+                                                <a href="#new-task" onclick="showAjax({{ $value->id }})" class="btn btn-sm btn-white" data-toggle="modal" data-target="#myModal5">
                                                     <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
                                                 </a>
+                                                </form>
                                                 @endif    
                                             </td>
                                         @endif
@@ -96,6 +99,29 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
+                            <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    <form name="addAjax" method="post" id="addTask" action="{{route('tasks.addAjax')}}">
+                                        @csrf
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            Info
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="ibox-content" id="modal-content"></div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
 
@@ -122,5 +148,28 @@ qsa(".code").forEach(function (editorEl) {
   });
 });
 
+    function showAjax(value)
+    {
+        $("#modal-content").html('');
+
+        var attributes = $("form[name=frm-"+value+"]").serialize();
+        $.ajax({
+            url: "{{route('collItems.view')}}",
+            type: "POST",
+            data: attributes+'&id='+value,
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                $("#modal-content").html(data['body']);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
 </script>
 @endsection

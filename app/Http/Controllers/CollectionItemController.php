@@ -92,6 +92,14 @@ class CollectionItemController extends Controller
         return redirect()->route('collItems.show', ['collection' => $collItem->collection]);
     }
 
+    public function view(Request $request)
+    {
+        $collItem = CollectionItem::where('id', $request->id)->first();
+        return response()->json([
+            'body' => view('ledgerItem.showModal', ['collItem' => $collItem])->render(),
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

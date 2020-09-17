@@ -23,15 +23,15 @@
                         </div>
                         <div class="table-responsive">
                             
-                            <table class="table table-hover table-nomargin">
+                            <table class="table table-bordered table-hover table-nomargin">
                                 <thead>
                                     <tr>
-                                        <th class="span1">Data</th>
-                                        <th class="span1">Valor</th>
-                                        <th class="span2">Lançamento</th>
-                                        <th class="span3">Tipo de Despesa</th>
-                                        <th class="span3">Tipo de Transação</th>
-                                        <th class="span2">Options</th>
+                                        <th>Data</th>
+                                        <th>Valor</th>
+                                        <th>Lançamento</th>
+                                        <th>Tipo de Despesa</th>
+                                        <th>Tipo de Transação</th>
+                                        <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>

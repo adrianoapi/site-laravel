@@ -23,13 +23,12 @@
                         </div>
                         <div class="table-responsive">
                             
-                            <table class="table table-hover table-nomargin">
+                            <table class="table table-bordered table-hover table-nomargin">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Title</th>
                                         <th>Categoria</th>
-                                        <th>Status</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>

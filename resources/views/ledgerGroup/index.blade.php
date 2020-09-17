@@ -15,6 +15,7 @@
                         <div class="row">
                             <div class="col-sm-6 m-b-xs">
                                 <a href="{{route('ledgerGroups.create')}}" class="btn btn-primary"><i class="icon-plus" title="Adicionar"></i> Adicionar</a>
+                                <a href="{{route('ledgerGroups.organize')}}" class="btn btn-default"><i class="icon-plus" title="Organizar"></i> Organizar</a>
                             </div>
                             <div class="col-sm-6">
                                 <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm"> <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!

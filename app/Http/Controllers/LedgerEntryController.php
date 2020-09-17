@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LedgerEntryController extends Controller
 {
-    public function __construct()
+    public function __construct(LedgerGroupController $ledgerGroup)
     {
         $this->middleware('auth');
     }
@@ -54,7 +54,8 @@ class LedgerEntryController extends Controller
      */
     public function create()
     {
-        $ledgerGroups    = DB::table('ledger_groups')->get();
+        #$ledgerGroups    = DB::table('ledger_groups')->get();
+        $ledgerGroups    = \App::call('App\Http\Controllers\LedgerGroupController@getTree');
         $transitionTypes = DB::table('transition_types')->get();
 
         return view('ledgerEntry.add', ['ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
@@ -88,7 +89,7 @@ class LedgerEntryController extends Controller
      */
     public function show(LedgerEntry $ledgerEntry)
     {
-        $ledgerGroups    = DB::table('ledger_groups')->get();
+        $ledgerGroups    = \App::call('App\Http\Controllers\LedgerGroupController@getTree');
         $transitionTypes = DB::table('transition_types')->get();
 
         return view('ledgerEntry.show', ['ledgerEntry' => $ledgerEntry, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
@@ -102,7 +103,7 @@ class LedgerEntryController extends Controller
      */
     public function edit(LedgerEntry $ledgerEntry)
     {
-        $ledgerGroups    = DB::table('ledger_groups')->get();
+        $ledgerGroups    = \App::call('App\Http\Controllers\LedgerGroupController@getTree');
         $transitionTypes = DB::table('transition_types')->get();
 
         return view('ledgerEntry.edit', ['ledgerEntry' => $ledgerEntry, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);

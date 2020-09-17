@@ -91,8 +91,8 @@ class LedgerGroupController extends Controller
      */
     public function update(Request $request, LedgerGroup $ledgerGroup)
     {
-        $ledgerGroup->title            = $request->title;
-        $ledgerGroup->description      = $request->description;
+        $ledgerGroup->title           = $request->title;
+        $ledgerGroup->description     = $request->description;
         $ledgerGroup->ledger_group_id = $request->ledger_group_id;
         $ledgerGroup->save();
 
@@ -102,6 +102,82 @@ class LedgerGroupController extends Controller
         }
 
         return redirect()->route('ledgerGroups.index');
+    }
+
+    public function getTree()
+    {
+        return explode('-||',$this->getEstruturaMenu(LedgerGroup::all()));
+    }
+
+    public function organize()
+    {
+        return view('ledgerGroup.organize');
+    }
+
+    public function getEstruturaMenu($array)
+    {
+        $html = '';
+
+        foreach ($array as $key => $value):
+
+            //Verifica se o item do array é o próprio pai
+            if ($value->id == $value->ledger_group_id) {
+
+                $html .= $value->id . "||-" . $value->title . "-||";
+
+                //Remove o indice pai
+                unset($array[$key]);
+
+                $html .= $this->getEstruturaMenuSub($value->id, $array, $novo_count = 0, $ultima_categoria = 0);
+            }
+
+        endforeach;
+
+        return $html;
+    }
+
+    public function getEstruturaMenuSub($id, $array, $novo_count, $ultima_categoria = 0)
+    {
+
+        $html = '';
+
+        //Laço sub
+        foreach ($array as $key => $data):
+
+            if ($id == $data->ledger_group_id) {
+
+                /* Passa sempre o último id da categoria para verificar
+                 * se ela pertence ao pai anterior, se sim ela permanecerá
+                 * no mesmo nível
+                 */
+                if ($ultima_categoria == $data->ledger_group_id) {
+                    $novo_count;
+                } else {
+                    $novo_count++;
+                }
+
+                $ultima_categoria = $data->categoria_id;
+
+                $html .= $data->id . "||-" . $this->identarEstruturaMenu($novo_count) . $data->title . "-||";
+
+                //Remove que já foi encotrado na comparação
+                unset($array[$key]);
+
+                $html .= $this->getEstruturaMenuSub($data->id, $array, $novo_count, $ultima_categoria);
+            }
+
+        endforeach;
+
+        return $html;
+    }
+
+    public function identarEstruturaMenu($value)
+    {
+        $indentacao = '|';
+        for ($i = 0; $i < $value; $i++) {
+            $indentacao .= " - ";
+        }
+        return $indentacao;
     }
 
     /**

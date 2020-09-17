@@ -44,9 +44,15 @@
                             <label class="col-sm-2 col-form-label">Level</label>
                             <div class="col-sm-10">
                                 <select name="ledger_group_id" id="ledger_group_id" data-placeholder="Choose a level..." class="chosen-select"  tabindex="2">
-                                    @foreach ($ledgerGroups as $value)
-                                    <option value="{{$value->id}}" {{$value->id == $ledgerEntry->ledger_group_id ? 'selected':''}} {{$value->id == $value->ledger_group_id ? 'disabled' : ''}}>{{$value->id == $value->ledger_group_id ? '== '.$value->title.' ==' : $value->title}}</option>
-                                    @endforeach
+                                   <?php
+                                    foreach ($ledgerGroups as $value):
+                                        $data = explode('||-', $value);
+                                        $selected = ($ledgerEntry->ledger_group_id == $data[0]) ? " selected" : NULL;
+                                        if (isset($data[1])) {
+                                            echo '<option value="'.$data[0].'" '.$selected.'>'. $data[1] .'</option>';
+                                        }
+                                    endforeach;
+                                    ?>
                                 </select>
                             </div>
                         </div>

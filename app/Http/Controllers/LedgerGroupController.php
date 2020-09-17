@@ -156,7 +156,7 @@ class LedgerGroupController extends Controller
                     $novo_count++;
                 }
 
-                $ultima_categoria = $data->categoria_id;
+                $ultima_categoria = $data->ledger_group_id;
 
                 $html .= $data->id . "||-" . $this->identarEstruturaMenu($novo_count) . $data->title . "-||";
 

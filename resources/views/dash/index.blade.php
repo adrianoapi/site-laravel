@@ -143,12 +143,12 @@
                     <thead>
                     <tr>
 
-                        <th>#</th>
-                        <th>Project </th>
-                        <th>Name </th>
-                        <th>Phone </th>
-                        <th>Company </th>
-                        <th>Completed </th>
+                        <th>ID</th>
+                        <th>Level</th>
+                        <th>Title</th>
+                        <th>Group</th>
+                        <th>Date</th>
+                        <th>Progress</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -156,11 +156,19 @@
                     @foreach ($tasks as $value)
                     <tr>
                         <td>{{$value->id}}</td>
+                        <td>{{$value->level}}</td>
                         <td>{{$value->title}}</td>
                         <td>{{$value->taskGroup->title}}</td>
                         <td>{{date('d/m/Y H:i', strtotime($value->created_at))}}</td>
-                        <td>Inceptos Hymenaeos Ltd</td>
-                        <td><span class="pie">0.52/1.561</span></td>
+                        <td>
+                            @if($value->status == 'todo')
+                                <span class="pie">0.00/1.0</span>
+                            @elseif($value->status == 'inprogress')
+                                <span class="pie">0.50/1.0</span>
+                            @else
+                                <span class="pie">1.0/1.0</span>
+                            @endif
+                        </td>
                         <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
                     </tr>
                     @endforeach

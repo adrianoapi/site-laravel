@@ -32,7 +32,7 @@ class DashController extends Controller
         ->limit(7)
         ->get();
 
-        $tasks = \App\Task::where('status', '!=', 'completed')->orderBy('title', 'asc')->get();
+        $tasks = \App\Task::where('archived', false)->orderBy('title', 'asc')->get();
 
         $totalExpensive = DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')

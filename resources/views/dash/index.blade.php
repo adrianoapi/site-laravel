@@ -142,10 +142,8 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-
-                        <th>ID</th>
-                        <th>Level</th>
                         <th>Title</th>
+                        <th>Level</th>
                         <th>Group</th>
                         <th>Date</th>
                         <th>Progress</th>
@@ -155,9 +153,16 @@
                     <tbody>
                     @foreach ($tasks as $value)
                     <tr>
-                        <td>{{$value->id}}</td>
-                        <td>{{$value->level}}</td>
                         <td>{{$value->title}}</td>
+                        <td>
+                            @if($value->level == 'low')
+                                <span class="label label-success">{{strtoupper($value->level)}}</span>
+                            @elseif($value->level == 'medium')
+                                <span class="label label-warning">{{strtoupper($value->level)}}</span>
+                            @else
+                                <span class="label label-danger">{{strtoupper($value->level)}}</span>
+                            @endif
+                        </td>
                         <td>{{$value->taskGroup->title}}</td>
                         <td>{{date('d/m/Y H:i', strtotime($value->created_at))}}</td>
                         <td>

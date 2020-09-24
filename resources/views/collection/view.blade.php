@@ -48,7 +48,7 @@
                                     <a href="#new-task" onclick="showAjax({{ $value->id }})" class="btn btn-sm btn-white" data-toggle="modal" data-target="#myModal5">
                                             <div class="text-center">
                                                 <img alt="image" src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120">
-                                                <div class="m-t-xs font-bold">Graphics designer</div>
+                                                <div class="m-t-xs font-bold">{{$value->title}}</div>
                                             </div>
                                         </a>
                                     </div>

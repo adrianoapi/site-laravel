@@ -66,11 +66,24 @@
                         <div class="hr-line-dashed"></div>
 
                         <div class="form-group  row">
-                            <label class="col-sm-2 col-form-label">order</label>
+                            <label class="col-sm-2 col-form-label">Order</label>
                             <div class="col-sm-10">
                                 <select name="order" data-placeholder="Choose a order..." class="chosen-select"  tabindex="2">
                                     @foreach ($order as $value)
                                         <option value="{{$value}}" {{$value == $collection->order ? 'selected':''}}>{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group  row">
+                            <label class="col-sm-2 col-form-label">Layout</label>
+                            <div class="col-sm-10">
+                                <select name="layout" data-placeholder="Choose a layout..." class="chosen-select"  tabindex="2">
+                                    @foreach ($layout as $value)
+                                        <option value="{{$value}}" {{$value == $collection->layout ? 'selected':''}}>{{$value}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -19,6 +19,11 @@ class CollectionController extends Controller
         return ['title', 'release','id'];
     }
 
+    public function getLayout()
+    {
+        return ['list', 'gallery'];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +47,7 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        return view('collection.add', ['order' => $this->getOrder()]);
+        return view('collection.add', ['order' => $this->getOrder(), 'layout' => $this->getLayout()]);
     }
 
     /**
@@ -63,6 +68,7 @@ class CollectionController extends Controller
         $collection->show_description = $request->show_description == 'true' ? true : false;
         $collection->show_release     = $request->show_release     == 'true' ? true : false;
         $collection->order            = $request->order;
+        $collection->layout           = $request->layout;
         $collection->save();
 
         return redirect()->route('collections.index');
@@ -88,7 +94,11 @@ class CollectionController extends Controller
      */
     public function edit(Collection $collection)
     {
-        return view('collection.edit', ['collection' => $collection, 'order' => $this->getOrder()]);
+        return view('collection.edit', [
+            'collection' => $collection,
+            'order'      => $this->getOrder(),
+            'layout'     => $this->getLayout()
+            ]);
     }
 
     /**
@@ -108,6 +118,7 @@ class CollectionController extends Controller
         $collection->show_description = $request->show_description == 'true' ? true : false;
         $collection->show_release     = $request->show_release     == 'true' ? true : false;
         $collection->order            = $request->order;
+        $collection->layout           = $request->layout;
         $collection->save();
 
         return redirect()->route('collections.index');

@@ -25,6 +25,7 @@
                         </div>
                         <div class="table-responsive">
 
+                        
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -39,7 +40,24 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
+
+                            <div class="row">
+                            @foreach ($collection->items as $value)
+                                    <div class="contact-box">
+                                    <form name="frm-{{ $value->id }}" action="" method="POST">@csrf</form>
+                                    <a href="#new-task" onclick="showAjax({{ $value->id }})" class="btn btn-sm btn-white" data-toggle="modal" data-target="#myModal5">
+                                            <div class="text-center">
+                                                <img alt="image" src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120">
+                                                <div class="m-t-xs font-bold">Graphics designer</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @if($collection->layout == "gallery")
+       
+                            @else
                             <table class="table table-hover table-nomargin">
                                 <thead>
                                     <tr>
@@ -99,6 +117,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            @endif
 
                             <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
@@ -159,7 +178,6 @@ qsa(".code").forEach(function (editorEl) {
             data: attributes+'&id='+value,
             dataType: 'json',
             success: function(data){
-                console.log(data);
                 $("#modal-content").html(data['body']);
             }
         });

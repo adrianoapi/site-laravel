@@ -59,6 +59,31 @@ class DashController extends Controller
         ]);
     }
 
+    public function ajaxChart()
+    {
+        $expensive = DB::table('ledger_entries')
+        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+        ->where('transition_types.action', 'expensive')
+        ->groupBy('ledger_entries.entry_date')
+        ->orderByDesc('ledger_entries.entry_date')
+        ->limit(3)
+        ->get();
+
+        $recipe = DB::table('ledger_entries')
+        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+        ->where('transition_types.action', 'recipe')
+        ->groupBy('ledger_entries.entry_date')
+        ->orderByDesc('ledger_entries.entry_date')
+        ->limit(7)
+        ->get();
+
+        return response()->json([
+            'body' => view('dash.ajaxChart', ['lancamentoTotal' => $this->legderSort($expensive, $recipe)])->render(),
+        ]);
+    }
+
     protected function legderSort($expensive, $recipe)
     {
         $dtLancamento    = array();

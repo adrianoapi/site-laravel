@@ -54,9 +54,17 @@
                         <div class="m-t-sm">
 
                             <div class="row">
-                                <div class="col-md-8">
-                                    <div>
-                                        <canvas id="lineChart" height="114"></canvas>
+                                <div class="col-md-8" id="ajax-chart">
+                                    <div class="ibox-content">
+                                        <div class="spiner-example">
+                                            <div class="sk-spinner sk-spinner-wave">
+                                                <div class="sk-rect1"></div>
+                                                <div class="sk-rect2"></div>
+                                                <div class="sk-rect3"></div>
+                                                <div class="sk-rect4"></div>
+                                                <div class="sk-rect5"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -208,41 +216,24 @@
     <!-- ChartJS-->
     <script src="{!! asset('inspinia/js/plugins/chartJs/Chart.min.js') !!}"></script>
 
+    <!-- Tinycon -->
+    <script src="{!! asset('inspinia/js/plugins/tinycon/tinycon.min.js') !!}"></script>
+
 <script>
     
     $(document).ready(function() {
-
-        var lineData = {
-            
-            labels: [{!! html_entity_decode($days) !!}],
-            datasets: [
-                {
-                    label: "Receita",
-                    backgroundColor: "rgba(26,179,148,0.5)",
-                    borderColor: "rgba(26,179,148,0.7)",
-                    pointBackgroundColor: "rgba(26,179,148,1)",
-                    pointBorderColor: "#fff",
-                    data: [{{$recipe}}]
-                },
-                {
-                    label: "Despesa",
-                    backgroundColor: "rgba(255, 100, 148, 0.5)",
-                    borderColor: "rgba(225,100,148,0.7)",
-                    pointBackgroundColor: "rgba(225,100,148,1)",
-                    pointBorderColor: "#fff",
-                    data: [{{$cost}}]
-                }
-            ]
-        };
-
-        var lineOptions = {
-            responsive: true
-        };
-
-
-        var ctx = document.getElementById("lineChart").getContext("2d");
-        new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
-
+        
+        $.ajax({
+            url: "{{route('dash.ajaxChart')}}",
+            type: "GET",
+            data: {
+                "_token": "{{csrf_token()}}"
+            },
+            dataType: 'json',
+                success: function(data){
+                    $("#ajax-chart").html(data['body']);
+            }
+        });
 
     });
 

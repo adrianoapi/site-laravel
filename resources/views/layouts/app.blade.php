@@ -32,7 +32,8 @@
     <link href="{!! asset('inspinia/css/plugins/codemirror/codemirror.css') !!}" rel="stylesheet">
     <link href="{!! asset('inspinia/css/plugins/codemirror/monokai.css') !!}" rel="stylesheet">
 
-
+    <!-- Toastr style -->
+    <link href="{!! asset('inspinia/css/plugins/toastr/toastr.min.css') !!}" rel="stylesheet">
 
 </head>
 <body>

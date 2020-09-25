@@ -46,7 +46,10 @@ Route::prefix('/')->group(function(){
 
 
 
-Route::get('dash', 'DashController@index')->name('dash.index');
+Route::prefix('dash')->group(function(){
+    Route::get ('/',             'DashController@index')->name('dash.index');
+    Route::get ('/chart',        'DashController@ajaxChart')->name('dash.ajaxChart');
+});
 
 Route::get('/administracao', 'AuthController@dashboard')->name('admin');
 Route::get('/administracao/login', 'AuthController@showLoginForm')->name('admin.login');

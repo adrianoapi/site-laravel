@@ -84,6 +84,14 @@ class DashController extends Controller
         ]);
     }
 
+    public function ajaxTask()
+    {
+        $tasks = \App\Task::where('archived', false)->orderBy('title', 'asc')->get();
+        return response()->json([
+            'body' => view('dash.ajaxTask', ['tasks' => $tasks])->render()
+        ]);
+    }
+
     protected function legderSort($expensive, $recipe)
     {
         $dtLancamento    = array();

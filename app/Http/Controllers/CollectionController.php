@@ -80,10 +80,26 @@ class CollectionController extends Controller
      * @param  \App\Collection  $collection
      * @return \Illuminate\Http\Response
      */
-    public function show(Collection $collection)
+    public function show(Collection $collection, Request $request)
     {
-        #showCollection
-        return view('collection.view', ['collection' => $collection]);
+        if(array_key_exists('filtro',$_GET)){
+            $collectionItems = \App\CollectionItem::
+            where([
+                ['description', 'like', '%' . $_GET['pesquisar'] . '%'],
+                ['collection_id', $collection->id]
+            ])
+            ->orderBy($collection->order, 'asc')->get();
+        }else{
+            $collectionItems = \App\CollectionItem::where('collection_id', $collection->id)
+            ->orderBy($collection->order, 'asc')
+            ->get();
+        }
+        
+        
+        return view('collection.view', [
+            'collection' => $collection,
+            'collectionItems' => $collectionItems
+            ]);
     }
 
     /**

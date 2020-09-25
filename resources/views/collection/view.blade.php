@@ -19,8 +19,13 @@
                                 <a href="{{route('collections.edit',    ['collection'   => $collection->id])}}" class="btn btn-white" rel="tooltip" title="" data-original-title="Editar">Editar</a>
                             </div>
                             <div class="col-sm-6">
-                                <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm"> <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!
-                                </button> </span></div>
+                                <form action="{{route('collections.show', ['collection'   => $collection->id])}}" method="GET" class="span3" style="margin: 0;padding:0;">
+                                    <input type="hidden" name="filtro" value="pesquisa">
+                                    <div class="input-group">
+                                        <input placeholder="Search" type="text" name="pesquisar" value="{{array_key_exists('pesquisar', $_GET) ? $_GET['pesquisar'] : ''}}" class="form-control form-control-sm">
+                                        <span class="input-group-append"> <button type="submit" class="btn btn-sm btn-primary">Go!</button> </span>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -41,8 +46,10 @@
                                 </tbody>
                             </table>
 
+                            @if($collection->layout == "gallery")
+
                             <div class="row">
-                            @foreach ($collection->items as $value)
+                            @foreach ($collectionItems as $value)
                                     <div class="contact-box">
                                     <form name="frm-{{ $value->id }}" action="" method="POST">@csrf</form>
                                     <a href="#new-task" onclick="showAjax({{ $value->id }})" class="btn btn-sm btn-white" data-toggle="modal" data-target="#myModal5">
@@ -54,9 +61,7 @@
                                     </div>
                                 @endforeach
                             </div>
-
-                            @if($collection->layout == "gallery")
-       
+                            
                             @else
                             <table class="table table-hover table-nomargin">
                                 <thead>
@@ -83,7 +88,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($collection->items as $value)
+                                    @foreach (collectionItems as $value)
                                     <tr>
                                         @if($collection->show_id)
                                             <td>{{$value->id}}</td>

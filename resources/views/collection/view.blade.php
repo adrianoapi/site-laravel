@@ -61,7 +61,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            
+
                             @else
                             <table class="table table-hover table-nomargin">
                                 <thead>
@@ -88,7 +88,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (collectionItems as $value)
+                                    @foreach ($collectionItems as $value)
                                     <tr>
                                         @if($collection->show_id)
                                             <td>{{$value->id}}</td>

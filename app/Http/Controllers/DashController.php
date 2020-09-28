@@ -14,49 +14,7 @@ class DashController extends Controller
     
     public function index()
     {
-        $expensive = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
-        ->where('transition_types.action', 'expensive')
-        ->groupBy('ledger_entries.entry_date')
-        ->orderByDesc('ledger_entries.entry_date')
-        ->limit(3)
-        ->get();
-
-        $recipe = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
-        ->where('transition_types.action', 'recipe')
-        ->groupBy('ledger_entries.entry_date')
-        ->orderByDesc('ledger_entries.entry_date')
-        ->limit(7)
-        ->get();
-
-        $tasks = \App\Task::where('archived', false)->orderBy('title', 'asc')->get();
-
-        $totalExpensive = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'))
-        ->where([
-            ['transition_types.action', '=', 'expensive'],
-            ['transition_types.credit_card', '<>', true]
-        ])
-        ->orderByDesc('ledger_entries.entry_date')
-        ->get();
-
-        $totalRecipe = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'))
-        ->where('transition_types.action', 'recipe')
-        ->orderByDesc('ledger_entries.entry_date')
-        ->get();
-        
-        return view('dash.index', [
-            'lancamentoTotal' => $this->legderSort($expensive, $recipe),
-            'tasks' => $tasks,
-            'dbTotalExpensive' => $totalExpensive,
-            'dbTotalRecipe'    => $totalRecipe
-        ]);
+        return view('dash.index');
     }
 
     public function ajaxChart()
@@ -87,8 +45,31 @@ class DashController extends Controller
         #->limit(7)
         ->get();
 
+        $totalExpensive = DB::table('ledger_entries')
+        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+        ->select(DB::raw('sum( ledger_entries.amount ) as total'))
+        ->where([
+            ['transition_types.action', '=', 'expensive'],
+            ['transition_types.credit_card', '<>', true]
+        ])
+        ->orderByDesc('ledger_entries.entry_date')
+        ->get();
+
+        $totalExpensive = DB::table('ledger_entries')
+        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+        ->where([
+            ['transition_types.action', '=', 'expensive'],
+            ['transition_types.credit_card', '<>', true],
+            ['ledger_entries.entry_date', '>=', '2020-09-01'],
+            ['ledger_entries.entry_date', '<=', '2020-09-30']
+        ])
+        ->orderByDesc('ledger_entries.entry_date')
+        ->get();
+
         return response()->json([
-            'body' => view('dash.ajaxChart', ['lancamentoTotal' => $this->legderSort($expensive, $recipe)])->render(),
+            'chart'   => view('dash.ajaxChart',   ['lancamentoTotal' => $this->legderSort($expensive, $recipe)])->render(),
+            'finance' => view('dash.ajaxFinance', ['lancamentoTotal' => $this->legderSort($totalExpensive, $recipe)])->render(),
         ]);
     }
 

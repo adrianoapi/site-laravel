@@ -64,19 +64,27 @@ class DashController extends Controller
         $expensive = DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
-        ->where('transition_types.action', 'expensive')
+        ->where([
+            ['transition_types.action', 'expensive'],
+            ['ledger_entries.entry_date', '>=', '2020-09-01'],
+            ['ledger_entries.entry_date', '<=', '2020-09-30']
+        ])
         ->groupBy('ledger_entries.entry_date')
         ->orderByDesc('ledger_entries.entry_date')
-        ->limit(3)
+        #->limit(3)
         ->get();
 
         $recipe = DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
-        ->where('transition_types.action', 'recipe')
+        ->where([
+            ['transition_types.action', 'recipe'],
+            ['ledger_entries.entry_date', '>=', '2020-09-01'],
+            ['ledger_entries.entry_date', '<=', '2020-09-30']
+        ])
         ->groupBy('ledger_entries.entry_date')
         ->orderByDesc('ledger_entries.entry_date')
-        ->limit(7)
+        #->limit(7)
         ->get();
 
         return response()->json([

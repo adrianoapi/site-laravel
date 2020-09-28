@@ -24,21 +24,39 @@
         $percentRecipe = $totalRecipe * 100 / ($totalRecipe + $totalCost);
         $percentCost   = $totalCost * 100 / ($totalRecipe + $totalCost);
     }
+
+    $catTotal = 0;
+    foreach($cart as $value):
+        $catTotal += $value->total;
+    endforeach;
+
+    $cartPercentCost;
+    if(($catTotal) > 0){
+        $cartPercentCost   = $catTotal * 100 / ($totalRecipe + $catTotal);
+    }
+
 ?>
 
 <ul class="stat-list m-t-lg">
     <li>
         <h2 class="no-margins">R$ {{number_format($totalRecipe, 2, ',','.')}}</h2>
-        <small>Total orders in period</small>
+        <small>Faturamento</small>
         <div class="progress progress-mini">
             <div class="progress-bar" style="width: {{$percentRecipe}}%;"></div>
         </div>
     </li>
     <li>
         <h2 class="no-margins ">R$ {{number_format($totalCost, 2, ',','.')}}</h2>
-        <small>Orders in last month</small>
+        <small>Despesa</small>
         <div class="progress progress-mini">
             <div class="progress-bar-danger" style="width: {{$percentCost}}%;"></div>
+        </div>
+    </li>
+    <li>
+        <h2 class="no-margins ">R$ {{number_format($catTotal, 2, ',','.')}}</h2>
+        <small>Lançamentos para a próxima fatura do cartão</small>
+        <div class="progress progress-mini">
+            <div class="progress-bar-warning" style="width: {{$cartPercentCost}}%;"></div>
         </div>
     </li>
 </ul>

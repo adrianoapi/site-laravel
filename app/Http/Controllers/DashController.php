@@ -67,9 +67,21 @@ class DashController extends Controller
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
 
+        $totalExpensiveCart = DB::table('ledger_entries')
+        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+        ->where([
+            ['transition_types.action', '=', 'expensive'],
+            ['transition_types.credit_card', '=', true],
+            ['ledger_entries.entry_date', '>=', '2020-09-16'],
+            ['ledger_entries.entry_date', '<=', '2020-09-30']
+        ])
+        ->orderByDesc('ledger_entries.entry_date')
+        ->get();
+
         return response()->json([
             'chart'   => view('dash.ajaxChart',   ['lancamentoTotal' => $this->legderSort($expensive, $recipe)])->render(),
-            'finance' => view('dash.ajaxFinance', ['lancamentoTotal' => $this->legderSort($totalExpensive, $recipe)])->render(),
+            'finance' => view('dash.ajaxFinance', ['lancamentoTotal' => $this->legderSort($totalExpensive, $recipe), 'cart' => $totalExpensiveCart])->render(),
         ]);
     }
 

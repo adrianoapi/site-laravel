@@ -24,7 +24,7 @@ class FinancialChartController extends Controller
         ->limit(10)
         ->get();
 
-        return view('FinancialChart.index', ['rank_cost' => $rank_cost]);
+        return view('financialChart.index', ['rank_cost' => $rank_cost]);
     }
 
 }

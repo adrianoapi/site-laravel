@@ -166,6 +166,10 @@ Route::prefix('lancamento-itens')->group(function(){
     Route::delete('destroy/{ledgerItem}','LedgerItemController@destroy')->name('ledgerItems.destroy');
 });
 
+Route::prefix('grafico-financeiro')->group(function(){
+    Route::get('/', 'FinancialChartController@index')->name('financialCharts.index');
+});
+
 Route::prefix('exames')->group(function(){
     Route::get ('/',             'ExamController@index' )->name('exams.index');
     Route::get ('novo',          'ExamController@create')->name('exams.create');

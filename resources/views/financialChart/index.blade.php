@@ -45,7 +45,7 @@
                         <tr>
                             <td>{{$value->description}}</td>
                             <td class="text-center">{{$value->entry_date}}</td>
-                            <td class="text-center"><span class="label label-danger">R$ {{$value->amount}}</span></td>
+                            <td class="text-center"><span class="label label-danger">R$ {{number_format($value->amount, 2, ",", ".")}}</span></td>
                         </tr>
                         @endforeach
                         </tbody>
@@ -58,7 +58,7 @@
         <div class="col-lg-6">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Movimentação <span class="label label-warning">R$ {{$monthly['monthlyExpenseCart'][0]->total}}</span></h5> <small>Período de 30 dias</small>
+                    <h5>Movimentação <span class="label label-warning">R$ {{number_format($monthly['monthlyExpenseCart'][0]->total, 2, ",", ".")}}</span></h5> <small>Período de 30 dias</small>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -94,15 +94,15 @@
 
                             <tr>
                                 <td>Débito</td>
-                                <td><span class="label label-danger">R$ {{$monthly['monthlyExpense'][0]->total}}</span></td>
+                                <td><span class="label label-danger">R$ {{number_format($monthly['monthlyExpense'][0]->total, 2, ",", ".")}}</span></td>
                             </tr>
                             <tr>
                                 <td>Crédito</td>
-                                <td><span class="label label-info">R$ {{$monthly['monthlyRecipe'][0]->total}}</span></td>
+                                <td><span class="label label-info">R$ {{number_format($monthly['monthlyRecipe'][0]->total, 2, ",", ".")}}</span></td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td><span class="label label-{{$total > 0 ? 'info': 'danger'}}">R$ {{$total}}</span></td>
+                                <td><span class="label label-{{$total > 0 ? 'info': 'danger'}}">R$ {{number_format($total, 2, ",", ".")}}</span></td>
                             </tr>
                         
                         </tbody>

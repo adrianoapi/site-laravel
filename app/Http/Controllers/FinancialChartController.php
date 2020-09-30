@@ -21,6 +21,7 @@ class FinancialChartController extends Controller
 
     public function index()
     {
+        ############ Rank de Despesas
         $rank_cost = DB::table('ledger_entries')
         ->select('ledger_entries.*')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
@@ -33,6 +34,7 @@ class FinancialChartController extends Controller
         ->limit(3)
         ->get();
 
+        ############ Movimentação
         $monthlyExpense = DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'))
@@ -68,9 +70,12 @@ class FinancialChartController extends Controller
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
 
+        $fixedCost = \App\FixedCost::orderBy('entry_date', 'asc')->limit(3)->get();
+
         return view('financialChart.index', [
             'rank_cost' => $rank_cost,
-            'monthly'   => ['monthlyExpense' => $monthlyExpense, 'monthlyExpenseCart' => $monthlyExpenseCart, 'monthlyRecipe' => $monthlyRecipe]
+            'monthly'   => ['monthlyExpense' => $monthlyExpense, 'monthlyExpenseCart' => $monthlyExpenseCart, 'monthlyRecipe' => $monthlyRecipe],
+            'fixedCost' => $fixedCost
             ]);
     }
 

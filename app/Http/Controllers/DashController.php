@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class DashController extends Controller
 {
+    private $date_begin;
+    private $date_end;
+
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->date_begin = date('Y-m-d');
+        $this->date_begin = date('Y-m-d', strtotime("$this->date_begin -30 days"));
+        $this->date_end   = date('Y-m-d');
     }
     
     public function index()
@@ -19,17 +26,13 @@ class DashController extends Controller
 
     public function ajaxChart()
     {
-        $date_begin   = date('Y-m-d');
-        $date_begin   = date('Y-m-d', strtotime("$date_begin -30 days"));
-        $date_end     = date('Y-m-d');
-
         $expensive = DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
         ->where([
             ['transition_types.action', 'expensive'],
-            ['ledger_entries.entry_date', '>=', $date_begin],
-            ['ledger_entries.entry_date', '<=', $date_end]
+            ['ledger_entries.entry_date', '>=', $this->date_begin],
+            ['ledger_entries.entry_date', '<=', $this->date_end]
         ])
         ->groupBy('ledger_entries.entry_date')
         ->orderByDesc('ledger_entries.entry_date')
@@ -41,8 +44,8 @@ class DashController extends Controller
         ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
         ->where([
             ['transition_types.action', 'recipe'],
-            ['ledger_entries.entry_date', '>=', $date_begin],
-            ['ledger_entries.entry_date', '<=', $date_end]
+            ['ledger_entries.entry_date', '>=', $this->date_begin],
+            ['ledger_entries.entry_date', '<=', $this->date_end]
         ])
         ->groupBy('ledger_entries.entry_date')
         ->orderByDesc('ledger_entries.entry_date')
@@ -65,8 +68,8 @@ class DashController extends Controller
         ->where([
             ['transition_types.action', '=', 'expensive'],
             ['transition_types.credit_card', '<>', true],
-            ['ledger_entries.entry_date', '>=', $date_begin],
-            ['ledger_entries.entry_date', '<=', $date_end]
+            ['ledger_entries.entry_date', '>=', $this->date_begin],
+            ['ledger_entries.entry_date', '<=', $this->date_end]
         ])
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
@@ -77,8 +80,8 @@ class DashController extends Controller
         ->where([
             ['transition_types.action', '=', 'expensive'],
             ['transition_types.credit_card', '=', true],
-            ['ledger_entries.entry_date', '>=', '2020-09-16'],
-            ['ledger_entries.entry_date', '<=', $date_end]
+            ['ledger_entries.entry_date', '>=', $this->date_begin],
+            ['ledger_entries.entry_date', '<=', $this->date_end]
         ])
         ->orderByDesc('ledger_entries.entry_date')
         ->get();

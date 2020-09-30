@@ -9,12 +9,6 @@
             <div class="col-lg-12">
                 <div class="ibox ">
                     <div class="ibox-content">
-                        <div>
-                            <h3 class="font-bold no-margins">
-                                Faturamento do mês
-                            </h3>
-                            <small>Sales marketing.</small>
-                        </div>
 
                         <div class="m-t-sm">
 
@@ -47,16 +41,6 @@
                                 </div>
                             </div>
 
-                        </div>
-
-                        <div class="m-t-md">
-                            <small class="float-right">
-                                <i class="fa fa-clock-o"> </i>
-                                {{date('d/m/Y H:i:s')}}
-                            </small>
-                            <small>
-                                <strong>Analysis of sales:</strong> The value has been changed over time, and last month reached a level over $50,000.
-                            </small>
                         </div>
 
                     </div>

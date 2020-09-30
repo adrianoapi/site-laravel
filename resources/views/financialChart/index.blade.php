@@ -10,7 +10,7 @@
         <div class="col-lg-6">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Rank de Despesas</h5>
+                    <h5>Rank de Despesas</h5> <small>Período de 30 dias</small>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -58,7 +58,7 @@
         <div class="col-lg-6">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Em 30 dias: Cartão <span class="label label-warning">R$ {{$monthly['monthlyExpenseCart'][0]->total}}</span></h5>
+                    <h5>Movimentação <span class="label label-warning">R$ {{$monthly['monthlyExpenseCart'][0]->total}}</span></h5> <small>Período de 30 dias</small>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -82,8 +82,8 @@
                     <table class="table table-hover margin bottom">
                         <thead>
                         <tr>
-                            <th class="">Date</th>
-                            <th class="">Amount</th>
+                            <th class="w-75">Tipo</th>
+                            <th class="">Valor</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -94,15 +94,15 @@
 
                             <tr>
                                 <td>Débito</td>
-                                <td><span class="label label-danger">{{$monthly['monthlyExpense'][0]->total}}</span></td>
+                                <td><span class="label label-danger">R$ {{$monthly['monthlyExpense'][0]->total}}</span></td>
                             </tr>
                             <tr>
-                                <td>Cartão</td>
-                                <td><span class="label label-info">{{$monthly['monthlyRecipe'][0]->total}}</span></td>
+                                <td>Crédito</td>
+                                <td><span class="label label-info">R$ {{$monthly['monthlyRecipe'][0]->total}}</span></td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td><span class="label label-{{$total > 0 ? 'info': 'danger'}}">{{$total}}</span></td>
+                                <td><span class="label label-{{$total > 0 ? 'info': 'danger'}}">R$ {{$total}}</span></td>
                             </tr>
                         
                         </tbody>

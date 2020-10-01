@@ -117,6 +117,8 @@ class FixedCostController extends Controller
      */
     public function entry(FixedCost $fixedCost)
     {
+        
+
         $ledgerEntry = new \App\LedgerEntry();
         $ledgerEntry->user_id            = $fixedCost->user_id;
         $ledgerEntry->ledger_group_id    = $fixedCost->ledger_group_id;
@@ -124,7 +126,16 @@ class FixedCostController extends Controller
         $ledgerEntry->description        = $fixedCost->description;
         $ledgerEntry->entry_date         = $fixedCost->entry_date;
         $ledgerEntry->amount             = $fixedCost->amount;
-        $ledgerEntry->save();
+
+        if($ledgerEntry->save()){
+
+            $date    = str_replace('/', '-', $ledgerEntry->entry_date);
+            $newDate = date('d/m/Y', strtotime("$date +1 month"));
+
+            $fixedCost->entry_date = $newDate;
+            $fixedCost->save();
+
+        }
 
         return redirect()->route('ledgerEntries.index');
     }

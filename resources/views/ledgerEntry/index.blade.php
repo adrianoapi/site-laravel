@@ -63,7 +63,7 @@
                                     <tbody>
                                         @foreach ($ledgerEntries as $value)
                                             <tr>
-                                                <td>{{substr($value->entry_date,0,-5)}}</td>
+                                                <td>{{$value->entry_date}}</td>
                                                 <td><span class="label label-{{$value->transitionType->action == 'recipe' ? 'info' : 'danger'}}">{{$value->amount}}</span></td>
                                                 <td>{{$value->description}}</td>
                                                 <td>{{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}</td>

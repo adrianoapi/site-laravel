@@ -19,7 +19,8 @@ class UserController extends Controller
     {
         $users = auth('api')->user();
 
-        $collections = \App\Collection::where('user_id', $users->id)->orderBy('title', 'asc')->get();
+        #$collections = \App\Collection::where('user_id', $users->id)->orderBy('title', 'asc')->get();
+        $collections = \App\Collection::where('user_id', $users->id)->orderBy('title', 'asc')->paginate(5);;
         return response()->json($collections);
     }
 

@@ -14,4 +14,14 @@ class UserController extends Controller
 
         return response()->json($users);
     }
+
+    public function getCollection()
+    {
+        $users = auth('api')->user();
+
+        $collections = \App\Collection::where('user_id', $users->id)->orderBy('title', 'asc')->get();
+        return response()->json($collections);
+    }
+
+
 }

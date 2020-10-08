@@ -8,7 +8,15 @@
     ksort($lancamentoTotal);
     foreach($lancamentoTotal as $key => $value):
         $separetor = ($i < count($lancamentoTotal)) ? ',' : '';
-        $days .= "\"".date('d/m', strtotime($key))."\"".$separetor;
+
+        if($range == "annual"){
+            $days .= "\"".$key."\"".$separetor;
+        }else if($range == "monthly"){
+            $days .= "\"".$key."\"".$separetor;
+        }else if($range == "today"){
+            $days .= "\"".date('d/m', strtotime($key))."\"".$separetor;
+        }
+        
         $recipe .= $value['lucro'].$separetor;
         $cost .= $value['despesa'].$separetor;
 

@@ -26,53 +26,55 @@ class DashController extends Controller
 
     public function ajaxChart()
     {
-        $expensive = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
-        ->where([
-            ['transition_types.action', 'expensive'],
-            ['ledger_entries.entry_date', '>=', $this->date_begin],
-            ['ledger_entries.entry_date', '<=', $this->date_end]
-        ])
-        ->groupBy('ledger_entries.entry_date')
-        ->orderByDesc('ledger_entries.entry_date')
-        #->limit(3)
-        ->get();
+        if($_GET['range'] == "today"){
+            $expensive = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+            ->where([
+                ['transition_types.action', 'expensive'],
+                ['ledger_entries.entry_date', '>=', $this->date_begin],
+                ['ledger_entries.entry_date', '<=', $this->date_end]
+            ])
+            ->groupBy('ledger_entries.entry_date')
+            ->orderByDesc('ledger_entries.entry_date')
+            #->limit(3)
+            ->get();
 
-        $recipe = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
-        ->where([
-            ['transition_types.action', 'recipe'],
-            ['ledger_entries.entry_date', '>=', $this->date_begin],
-            ['ledger_entries.entry_date', '<=', $this->date_end]
-        ])
-        ->groupBy('ledger_entries.entry_date')
-        ->orderByDesc('ledger_entries.entry_date')
-        #->limit(7)
-        ->get();
-
-        $totalExpensive = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'))
-        ->where([
-            ['transition_types.action', '=', 'expensive'],
-            ['transition_types.credit_card', '<>', true]
-        ])
-        ->orderByDesc('ledger_entries.entry_date')
-        ->get();
+            $recipe = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+            ->where([
+                ['transition_types.action', 'recipe'],
+                ['ledger_entries.entry_date', '>=', $this->date_begin],
+                ['ledger_entries.entry_date', '<=', $this->date_end]
+            ])
+            ->groupBy('ledger_entries.entry_date')
+            ->orderByDesc('ledger_entries.entry_date')
+            #->limit(7)
+            ->get();
+        }
 
         $totalExpensive = DB::table('ledger_entries')
-        ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-        ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
-        ->where([
-            ['transition_types.action', '=', 'expensive'],
-            ['transition_types.credit_card', '<>', true],
-            ['ledger_entries.entry_date', '>=', $this->date_begin],
-            ['ledger_entries.entry_date', '<=', $this->date_end]
-        ])
-        ->orderByDesc('ledger_entries.entry_date')
-        ->get();
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'))
+            ->where([
+                ['transition_types.action', '=', 'expensive'],
+                ['transition_types.credit_card', '<>', true]
+            ])
+            ->orderByDesc('ledger_entries.entry_date')
+            ->get();
+
+            $totalExpensive = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+            ->where([
+                ['transition_types.action', '=', 'expensive'],
+                ['transition_types.credit_card', '<>', true],
+                ['ledger_entries.entry_date', '>=', $this->date_begin],
+                ['ledger_entries.entry_date', '<=', $this->date_end]
+            ])
+            ->orderByDesc('ledger_entries.entry_date')
+            ->get();
 
         $totalExpensiveCart = DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
@@ -85,9 +87,63 @@ class DashController extends Controller
         ])
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
+        
+
+        if($_GET['range'] == "monthly"){
+
+            $expensive = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw('MONTH(ledger_entries.entry_date) dt_lancamento'))
+            ->where([
+                ['transition_types.action', 'expensive'],
+                ['ledger_entries.entry_date', '>=', '2020-01-01'],
+                ['ledger_entries.entry_date', '<=', '2020-12-31']
+            ])
+            ->groupBy('dt_lancamento')
+            ->orderByDesc('dt_lancamento')
+            ->get();
+
+            $recipe = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw('MONTH(ledger_entries.entry_date) dt_lancamento'))
+            ->where([
+                ['transition_types.action', 'recipe'],
+                ['ledger_entries.entry_date', '>=', '2020-01-01'],
+                ['ledger_entries.entry_date', '<=', '2020-12-31']
+            ])
+            ->groupBy('dt_lancamento')
+            ->orderByDesc('dt_lancamento')
+            ->get();
+            
+        }
+
+        if($_GET['range'] == "annual"){
+
+            $expensive = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw('YEAR(ledger_entries.entry_date) dt_lancamento'))
+            ->where([
+                ['transition_types.action', 'expensive']
+            ])
+            ->groupBy('dt_lancamento')
+            ->orderByDesc('dt_lancamento')
+            ->get();
+
+            $recipe = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw('YEAR(ledger_entries.entry_date) dt_lancamento'))
+            ->where([
+                ['transition_types.action', 'recipe']
+            ])
+            ->groupBy('dt_lancamento')
+            ->orderByDesc('dt_lancamento')
+            ->get();
+            
+        }
 
         return response()->json([
-            'chart'   => view('dash.ajaxChart',   ['lancamentoTotal' => $this->legderSort($expensive, $recipe)])->render(),
+            'range' => $_GET['range'],
+            'chart'   => view('dash.ajaxChart',   ['lancamentoTotal' => $this->legderSort($expensive, $recipe), 'range' => $_GET['range']])->render(),
             'finance' => view('dash.ajaxFinance', ['lancamentoTotal' => $this->legderSort($totalExpensive, $recipe), 'cart' => $totalExpensiveCart])->render(),
         ]);
     }
@@ -104,7 +160,7 @@ class DashController extends Controller
     {
         $dtLancamento    = array();
         $lancamentoTotal = array();
-        
+
         $tempDespesas = array();
         foreach($expensive as $value):
             $tempDespesas[$value->dt_lancamento] = $value->total;

@@ -13,9 +13,9 @@
                     <h5>Orders</h5>
                     <div class="float-right">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-xs btn-white active">Today</button>
-                            <button type="button" class="btn btn-xs btn-white">Monthly</button>
-                            <button type="button" class="btn btn-xs btn-white">Annual</button>
+                            <button type="button" class="btn btn-xs btn-white" onclick="financeChart('today')">Today</button>
+                            <button type="button" class="btn btn-xs btn-white" onclick="financeChart('monthly')">Monthly</button>
+                            <button type="button" class="btn btn-xs btn-white" onclick="financeChart('annual')">Annual</button>
                         </div>
                     </div>
                 </div>
@@ -98,14 +98,16 @@
     <script src="{!! asset('inspinia/js/plugins/tinycon/tinycon.min.js') !!}"></script>
 
 <script>
-    
-    $(document).ready(function() {
-        
+
+    function financeChart(value)
+    {
+        console.log(value);
         $.ajax({
             url: "{{route('dash.ajaxChart')}}",
             type: "GET",
             data: {
-                "_token": "{{csrf_token()}}"
+                "_token": "{{csrf_token()}}",
+                "range": value
             },
             dataType: 'json',
                 success: function(data){
@@ -113,6 +115,11 @@
                     $("#ajax-finance").html(data['finance']);
             }
         });
+    }
+    
+    $(document).ready(function() {
+        
+        financeChart('today');
 
         $.ajax({
             url: "{{route('dash.ajaxTask')}}",

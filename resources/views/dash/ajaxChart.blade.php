@@ -12,7 +12,7 @@
         if($range == "annual"){
             $days .= "\"".$key."\"".$separetor;
         }else if($range == "monthly"){
-            $days .= "\"".$key."\"".$separetor;
+            $days .= "\"".date('m/Y', strtotime($key))."\"".$separetor;
         }else if($range == "today"){
             $days .= "\"".date('d/m', strtotime($key))."\"".$separetor;
         }

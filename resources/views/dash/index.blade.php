@@ -13,9 +13,9 @@
                     <h5>Orders</h5>
                     <div class="float-right">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-xs btn-white" onclick="financeChart('today')">Today</button>
-                            <button type="button" class="btn btn-xs btn-white" onclick="financeChart('monthly')">Monthly</button>
-                            <button type="button" class="btn btn-xs btn-white" onclick="financeChart('annual')">Annual</button>
+                            <button type="button" class="btn btn-xs btn-white chart-dash" onclick="financeChart('today')"   id="today">Today</button>
+                            <button type="button" class="btn btn-xs btn-white chart-dash" onclick="financeChart('monthly')" id="monthly">Monthly</button>
+                            <button type="button" class="btn btn-xs btn-white chart-dash" onclick="financeChart('annual')"  id="annual">Annual</button>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,9 @@
 
     function financeChart(value)
     {
-        console.log(value);
+        $(".chart-dash").removeClass('active');
+        $("#"+value).addClass('active');
+
         $.ajax({
             url: "{{route('dash.ajaxChart')}}",
             type: "GET",

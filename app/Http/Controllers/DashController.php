@@ -91,13 +91,15 @@ class DashController extends Controller
 
         if($_GET['range'] == "monthly"){
 
+            $date_begin = date('Y-m-d', strtotime("$this->date_begin -1 year"));
+
             $expensive = DB::table('ledger_entries')
             ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw('MONTH(ledger_entries.entry_date) dt_lancamento'))
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw("DATE_FORMAT(ledger_entries.entry_date, '%Y-%m') dt_lancamento"))
             ->where([
                 ['transition_types.action', 'expensive'],
-                ['ledger_entries.entry_date', '>=', '2020-01-01'],
-                ['ledger_entries.entry_date', '<=', '2020-12-31']
+                ['ledger_entries.entry_date', '>=', $date_begin],
+                ['ledger_entries.entry_date', '<=', $this->date_end]
             ])
             ->groupBy('dt_lancamento')
             ->orderByDesc('dt_lancamento')
@@ -105,11 +107,11 @@ class DashController extends Controller
 
             $recipe = DB::table('ledger_entries')
             ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw('MONTH(ledger_entries.entry_date) dt_lancamento'))
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), DB::raw("DATE_FORMAT(ledger_entries.entry_date, '%Y-%m') dt_lancamento"))
             ->where([
                 ['transition_types.action', 'recipe'],
-                ['ledger_entries.entry_date', '>=', '2020-01-01'],
-                ['ledger_entries.entry_date', '<=', '2020-12-31']
+                ['ledger_entries.entry_date', '>=', $date_begin],
+                ['ledger_entries.entry_date', '<=', $this->date_end]
             ])
             ->groupBy('dt_lancamento')
             ->orderByDesc('dt_lancamento')

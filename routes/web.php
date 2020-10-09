@@ -168,6 +168,7 @@ Route::prefix('lancamento-itens')->group(function(){
 
 Route::prefix('grafico-financeiro')->group(function(){
     Route::get('/', 'FinancialChartController@index')->name('financialCharts.index');
+    Route::get ('/ajax-fixed-coast',  'FinancialChartController@fixedCoastAjax')->name('financialCharts.fixedCoastAjax');
 });
 
 Route::prefix('exames')->group(function(){

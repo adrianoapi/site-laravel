@@ -164,7 +164,7 @@ class DashController extends Controller
 
     public function ajaxTask()
     {
-        $tasks = \App\Task::where('archived', false)->orderBy('title', 'asc')->get();
+        $tasks = \App\Task::where('archived', false)->orderBy('title', 'asc')->limit(5)->get();
         return response()->json([
             'body' => view('dash.ajaxTask', ['tasks' => $tasks])->render()
         ]);

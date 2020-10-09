@@ -59,18 +59,36 @@
         </div>
     </div>
 
-    <div class="row" id="ajax-task">
-        <div class="ibox-content">
-            <div class="spiner-example">
-                <div class="sk-spinner sk-spinner-wave">
-                    <div class="sk-rect1"></div>
-                    <div class="sk-rect2"></div>
-                    <div class="sk-rect3"></div>
-                    <div class="sk-rect4"></div>
-                    <div class="sk-rect5"></div>
+    <div class="row">
+
+        <div class="col-lg-6" id="ajax-fixedCost">
+            <div class="ibox-content">
+                <div class="spiner-example">
+                    <div class="sk-spinner sk-spinner-wave">
+                        <div class="sk-rect1"></div>
+                        <div class="sk-rect2"></div>
+                        <div class="sk-rect3"></div>
+                        <div class="sk-rect4"></div>
+                        <div class="sk-rect5"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-6" id="ajax-task">
+            <div class="ibox-content">
+                <div class="spiner-example">
+                    <div class="sk-spinner sk-spinner-wave">
+                        <div class="sk-rect1"></div>
+                        <div class="sk-rect2"></div>
+                        <div class="sk-rect3"></div>
+                        <div class="sk-rect4"></div>
+                        <div class="sk-rect5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
 
@@ -131,7 +149,26 @@
             },
             dataType: 'json',
                 success: function(data){
-                    $("#ajax-task").html(data['body']);
+                   $("#ajax-task").html(data['body']);
+            }
+        });
+
+    });
+
+    $(document).ready(function() {
+        
+        financeChart('today');
+
+        $.ajax({
+            url: "{{route('financialCharts.fixedCoastAjax')}}",
+            type: "GET",
+            data: {
+                "_token": "{{csrf_token()}}"
+            },
+            dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                    $("#ajax-fixedCost").html(data['body']);
             }
         });
 

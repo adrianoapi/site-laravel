@@ -198,8 +198,6 @@
     }
     
     $(document).ready(function() {
-        
-        financeChart('today');
 
         $.ajax({
             url: "{{route('dash.ajaxTask')}}",
@@ -217,8 +215,6 @@
 
     $(document).ready(function() {
         
-        financeChart('today');
-
         $.ajax({
             url: "{{route('financialCharts.fixedCoastAjax')}}",
             type: "GET",
@@ -233,6 +229,8 @@
         });
 
     });
+
+    financeChart('today');
 
 </script>
 @endsection

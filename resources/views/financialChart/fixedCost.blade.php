@@ -22,14 +22,18 @@
     <div class="ibox-content">
         
         <table class="table table-hover margin bottom">
+            <thead>
+            <tr>
+                <th class="w-75">Despesa</th>
+                <th class="">Data</th>
+            </tr>
+            </thead>
             <tbody>
-
 
             @foreach($fixedCost as $value)
             <tr>
                 <td>{{$value->description}}</td>
                 <td class="text-center">{{$value->entry_date}}</td>
-                <td class="text-center"><span class="label label-danger">R$ {{$value->amount}}</span></td>
             </tr>
             @endforeach
             

@@ -52,17 +52,6 @@ class DashController extends Controller
             ->orderByDesc('ledger_entries.entry_date')
             #->limit(7)
             ->get();
-        }
-
-        $totalExpensive = DB::table('ledger_entries')
-            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
-            ->select(DB::raw('sum( ledger_entries.amount ) as total'))
-            ->where([
-                ['transition_types.action', '=', 'expensive'],
-                ['transition_types.credit_card', '<>', true]
-            ])
-            ->orderByDesc('ledger_entries.entry_date')
-            ->get();
 
             $totalExpensive = DB::table('ledger_entries')
             ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
@@ -75,6 +64,7 @@ class DashController extends Controller
             ])
             ->orderByDesc('ledger_entries.entry_date')
             ->get();
+        }
 
         $totalExpensiveCart = DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
@@ -116,6 +106,18 @@ class DashController extends Controller
             ->groupBy('dt_lancamento')
             ->orderByDesc('dt_lancamento')
             ->get();
+
+            $totalExpensive = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+            ->where([
+                ['transition_types.action', '=', 'expensive'],
+                ['transition_types.credit_card', '<>', true],
+                ['ledger_entries.entry_date', '>=', $date_begin],
+                ['ledger_entries.entry_date', '<=', $this->date_end]
+            ])
+            ->orderByDesc('ledger_entries.entry_date')
+            ->get();
             
         }
 
@@ -139,6 +141,16 @@ class DashController extends Controller
             ])
             ->groupBy('dt_lancamento')
             ->orderByDesc('dt_lancamento')
+            ->get();
+
+            $totalExpensive = DB::table('ledger_entries')
+            ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
+            ->select(DB::raw('sum( ledger_entries.amount ) as total'), 'ledger_entries.entry_date as dt_lancamento')
+            ->where([
+                ['transition_types.action', '=', 'expensive'],
+                ['transition_types.credit_card', '<>', true]
+            ])
+            ->orderByDesc('ledger_entries.entry_date')
             ->get();
             
         }

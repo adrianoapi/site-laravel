@@ -53,6 +53,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($ledgerEntry->ledgerItems as $value)
                                     <tr>
                                         <td>{{$value->description}}</td>
                                         <td>{{$value->quantity}}</td>

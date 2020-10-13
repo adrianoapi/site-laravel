@@ -43,16 +43,6 @@
             
             labels: [{!! html_entity_decode($days) !!}],
             datasets: [
-                
-                
-                {
-                    label: "Despesa",
-                    backgroundColor: "rgba(205, 90, 219, 0.5)",
-                    borderColor: "rgba(205, 90, 219,0.7)",
-                    pointBackgroundColor: "rgba(205, 90, 219,1)",
-                    pointBorderColor: "#fff",
-                    data: [{{$cost}}]
-                },
                 {
                     label: "Receita",
                     backgroundColor: "rgba(26,179,148,0.5)",
@@ -62,12 +52,12 @@
                     data: [{{$recipe}}]
                 },
                 {
-                    label: "Cartao",
-                    backgroundColor: "rgba(248, 167, 0,0.5)",
-                    borderColor: "rgba(248, 167, 0,0.7)",
-                    pointBackgroundColor: "rgba(248, 167, 0,1)",
+                    label: "Despesa",
+                    backgroundColor: "rgba(255, 100, 148, 0.5)",
+                    borderColor: "rgba(225,100,148,0.7)",
+                    pointBackgroundColor: "rgba(225,100,148,1)",
                     pointBorderColor: "#fff",
-                    data: [{{$cart}}]
+                    data: [{{$cost}}]
                 }
             ]
         };

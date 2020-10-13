@@ -53,9 +53,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $total = 0; ?>
-                                    @foreach ($ledgerEntry->ledgerItems as $value)
-                                    <?php $total = number_format($value->total_price, 2, ',', '.');?>
                                     <tr>
                                         <td>{{$value->description}}</td>
                                         <td>{{$value->quantity}}</td>

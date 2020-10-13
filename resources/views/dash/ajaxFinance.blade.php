@@ -2,22 +2,17 @@
     $days   = NULL;
     $recipe = NULL;
     $cost   = NULL;
+    $totalCart     = 0;
     $totalCost     = 0;
     $totalRecipe   = 0;
     $percentRecipe = 0;
     $percentCost   = 0;
-    $i = 1;
-    ksort($lancamentoTotal);
     foreach($lancamentoTotal as $key => $value):
-        $separetor = ($i < count($lancamentoTotal)) ? ',' : '';
-        $days .= "\"$key\"".$separetor;
-        $recipe .= $value['lucro'].$separetor;
-        $cost .= $value['despesa'].$separetor;
 
         $totalRecipe += $value['lucro'  ];
         $totalCost   += $value['despesa'];
+        $totalCart   += $value['cartao'];
         
-        $i++;
     endforeach;
 
     if(($totalRecipe + $totalCost) > 0){
@@ -25,14 +20,9 @@
         $percentCost   = $totalCost * 100 / ($totalRecipe + $totalCost);
     }
 
-    $catTotal = 0;
-    foreach($cart as $value):
-        $catTotal += $value->total;
-    endforeach;
-
-    $cartPercentCost;
-    if(($catTotal) > 0){
-        $cartPercentCost   = $catTotal * 100 / ($totalRecipe + $catTotal);
+    $cartPercentCost = 0;
+    if(($totalCart) > 0){
+        $cartPercentCost   = $totalCart * 100 / ($totalRecipe + $totalCart);
     }
 
 ?>
@@ -53,7 +43,7 @@
         </div>
     </li>
     <li>
-        <h2 class="no-margins ">R$ {{number_format($catTotal, 2, ',','.')}}</h2>
+        <h2 class="no-margins ">R$ {{number_format($totalCart, 2, ',','.')}}</h2>
         <small>Lançamentos para a próxima fatura do cartão</small>
         <div class="progress progress-mini">
             <div class="progress-bar-warning" style="width: {{$cartPercentCost}}%;"></div>

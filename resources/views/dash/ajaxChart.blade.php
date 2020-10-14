@@ -46,15 +46,15 @@
                 
                 {
                     label: "Cartao",
-                    backgroundColor: "rgba(255, 102, 0,0.5)",
-                    borderColor: "rgba(255, 102, 0,0.5)",
-                    pointBackgroundColor: "rgba(255, 102, 0,1)",
+                    backgroundColor: "rgba(153, 102, 255,0.1)",
+                    borderColor: "rgba(153, 102, 255,0.5)",
+                    pointBackgroundColor: "rgba(153, 102, 255,1)",
                     pointBorderColor: "#fff",
                     data: [{{$cart}}]
                 },
                 {
                     label: "Despesa",
-                    backgroundColor: "rgba(255, 26, 26, 0.3)",
+                    backgroundColor: "rgba(255, 26, 26, 0.1)",
                     borderColor: "rgba(255, 26, 26,0.5)",
                     pointBackgroundColor: "rgba(255, 0, 0,1)",
                     pointBorderColor: "#fff",

@@ -12,11 +12,20 @@ foreach ($expensive as $value) {
 }
 
 ?>
-
 <div class="ibox ">
     <div class="ibox-title">
-        <h5>Pie </h5>
-
+        <h5>Despesas <small>
+            <?php echo $range == "today" ? 'Até 30 dias' : NULL; ?>
+            <?php echo $range == "monthly" ? 'Até 12 meses' : NULL; ?>
+            <?php echo $range == "annual" ? 'Até 10 anos' : NULL; ?>
+        </small></h5>
+        <div class="float-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-xs btn-white <?php echo $range == "today" ? 'active' : NULL; ?>" onclick="financeChartPie('today')"   >Today</button>
+                <button type="button" class="btn btn-xs btn-white <?php echo $range == "monthly" ? 'active' : NULL; ?>" onclick="financeChartPie('monthly')" >Monthly</button>
+                <button type="button" class="btn btn-xs btn-white <?php echo $range == "annual" ? 'active' : NULL; ?>" onclick="financeChartPie('annual')"  >Annual</button>
+            </div>
+        </div>
     </div>
     <div class="ibox-content">
         <div>

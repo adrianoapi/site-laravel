@@ -131,6 +131,22 @@
 
 <script>
 
+    function financeChartPie(value)
+    {
+        $.ajax({
+            url: "{{route('dash.graphPie')}}",
+            type: "GET",
+            data: {
+                "_token": "{{csrf_token()}}",
+                "range": value
+            },
+            dataType: 'json',
+                success: function(data){
+                   $("#ajax-graph-pie").html(data['body']);
+                }
+        });
+    }
+
     function financeChart(value)
     {
         $(".chart-dash").removeClass('active');
@@ -152,19 +168,6 @@
     }
     
     $(document).ready(function() {
-
-        $.ajax({
-            url: "{{route('dash.graphPie')}}",
-            type: "GET",
-            data: {
-                "_token": "{{csrf_token()}}"
-            },
-            dataType: 'json',
-                success: function(data){
-                   $("#ajax-graph-pie").html(data['body']);
-                }
-        });
-
 
         $.ajax({
             url: "{{route('dash.ajaxTask')}}",
@@ -197,6 +200,7 @@
     });
 
     financeChart('today');
+    financeChartPie('today');
 
 </script>
 @endsection

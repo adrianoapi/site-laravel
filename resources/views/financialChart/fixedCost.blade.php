@@ -33,7 +33,7 @@
             @foreach($fixedCost as $value)
             <tr>
                 <td>{{$value->description}}</td>
-                <td class="text-center">{{$value->entry_date}}</td>
+                <td class="text-center">{{substr($value->entry_date, 0, -5)}}</td>
             </tr>
             @endforeach
             

@@ -61,7 +61,7 @@
 
     <div class="row">
 
-        <div class="col-lg-4" id="ajax-fixedCost">
+        <div class="col-lg-3" id="ajax-fixedCost">
             <div class="ibox-content">
                 <div class="spiner-example">
                     <div class="sk-spinner sk-spinner-wave">
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4" id="ajax-graph-pie">
+        <div class="col-lg-5" id="ajax-graph-pie">
             <div class="ibox-content">
                 <div class="spiner-example">
                     <div class="sk-spinner sk-spinner-wave">

@@ -75,62 +75,16 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
-            <div class="ibox ">
-                <div class="ibox-title">
-                    <h5>Agenda</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
+        <div class="col-lg-4" id="ajax-graph-pie">
+            <div class="ibox-content">
+                <div class="spiner-example">
+                    <div class="sk-spinner sk-spinner-wave">
+                        <div class="sk-rect1"></div>
+                        <div class="sk-rect2"></div>
+                        <div class="sk-rect3"></div>
+                        <div class="sk-rect4"></div>
+                        <div class="sk-rect5"></div>
                     </div>
-                </div>
-                <div class="ibox-content table-responsive">
-                    <table class="table table-hover no-margins">
-                        <thead>
-                        <tr>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>User</th>
-                            <th>Value</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><small>Pending...</small></td>
-                            <td><i class="fa fa-clock-o"></i> 11:20pm</td>
-                            <td>Samantha</td>
-                            <td class="text-navy"> <i class="fa fa-level-up"></i> 24% </td>
-                        </tr>
-                        <tr>
-                            <td><span class="label label-warning">Canceled</span> </td>
-                            <td><i class="fa fa-clock-o"></i> 10:40am</td>
-                            <td>Monica</td>
-                            <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
-                        </tr>
-                        <tr>
-                            <td><small>Pending...</small> </td>
-                            <td><i class="fa fa-clock-o"></i> 01:30pm</td>
-                            <td>John</td>
-                            <td class="text-navy"> <i class="fa fa-level-up"></i> 54% </td>
-                        </tr>
-                        <tr>
-                            <td><small>Pending...</small> </td>
-                            <td><i class="fa fa-clock-o"></i> 02:20pm</td>
-                            <td>Agnes</td>
-                            <td class="text-navy"> <i class="fa fa-level-up"></i> 12% </td>
-                        </tr>
-                        <tr>
-                            <td><small>Pending...</small> </td>
-                            <td><i class="fa fa-clock-o"></i> 09:40pm</td>
-                            <td>Janet</td>
-                            <td class="text-navy"> <i class="fa fa-level-up"></i> 22% </td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
@@ -200,6 +154,19 @@
     $(document).ready(function() {
 
         $.ajax({
+            url: "{{route('dash.graphPie')}}",
+            type: "GET",
+            data: {
+                "_token": "{{csrf_token()}}"
+            },
+            dataType: 'json',
+                success: function(data){
+                   $("#ajax-graph-pie").html(data['body']);
+                }
+        });
+
+
+        $.ajax({
             url: "{{route('dash.ajaxTask')}}",
             type: "GET",
             data: {
@@ -208,7 +175,7 @@
             dataType: 'json',
                 success: function(data){
                    $("#ajax-task").html(data['body']);
-            }
+                }
         });
 
     });
@@ -223,7 +190,6 @@
             },
             dataType: 'json',
                 success: function(data){
-                    console.log(data);
                     $("#ajax-fixedCost").html(data['body']);
             }
         });

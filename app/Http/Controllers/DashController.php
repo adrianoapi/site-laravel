@@ -24,6 +24,27 @@ class DashController extends Controller
         return view('dash.index');
     }
 
+    public function graphPie()
+    {
+        $expensive = DB::table('ledger_entries AS le')
+        ->join('transition_types AS tt', 'le.transition_type_id', '=', 'tt.id')
+        ->join('ledger_groups AS lg', 'le.ledger_group_id', '=', 'lg.id')
+        ->join('ledger_groups AS parent', 'lg.ledger_group_id', '=', 'parent.id')
+        ->select(DB::raw('sum( le.amount ) as total'), 'parent.title')
+        ->where([
+            ['tt.action', 'expensive'],
+            ['tt.credit_card', '<>', true],
+            ['le.entry_date', '>=', $this->date_begin],
+            ['le.entry_date', '<=', $this->date_end]
+        ])
+        ->groupBy('parent.id')
+        ->get();
+
+        return response()->json([
+            'body' => view('dash.ajaxGraphPie', ['expensive' => $expensive])->render()
+        ]);
+    }
+
     public function ajaxChart()
     {
         if($_GET['range'] == "today"){

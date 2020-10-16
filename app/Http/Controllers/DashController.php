@@ -33,9 +33,9 @@ class DashController extends Controller
         ->select(DB::raw('sum( le.amount ) as total'), 'parent.title')
         ->where([
             ['tt.action', 'expensive'],
-            ['tt.credit_card', '<>', true],
-            ['le.entry_date', '>=', $this->date_begin],
-            ['le.entry_date', '<=', $this->date_end]
+            #['tt.credit_card', '<>', true],
+            #['le.entry_date', '>=', $this->date_begin],
+            #['le.entry_date', '<=', $this->date_end]
         ])
         ->groupBy('parent.id')
         ->get();

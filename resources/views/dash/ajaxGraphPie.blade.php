@@ -31,7 +31,16 @@ var doughnutData = {
         labels: [<?php echo $label; ?>],
         datasets: [{
             data: [{{$datas}}],
-            backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+            backgroundColor: [
+                "#ff66ff",
+                "#cceeff", 
+                "#ffccdd",
+                "#dedede",
+                "#b5b8cf",
+                "#ffb3b3",
+                "#99ff99",
+                "#3399ff"
+            ]
         }]
     } ;
 

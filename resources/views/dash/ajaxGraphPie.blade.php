@@ -32,14 +32,16 @@ var doughnutData = {
         datasets: [{
             data: [{{$datas}}],
             backgroundColor: [
-                "#cceeff", 
+                "#9933ff",
                 "#99ff99",
-                "#ffccdd",
-                "#dedede",
-                "#b5b8cf",
+                "#ff9966",
+                "#ff0066",
+                "#00cccc",
                 "#ffb3b3",
                 "#ff66ff",
-                "#3399ff"
+                "#3399ff",
+                "#00ccff",
+                "#cceeff"
             ]
         }]
     } ;

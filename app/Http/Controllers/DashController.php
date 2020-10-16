@@ -34,8 +34,8 @@ class DashController extends Controller
         ->where([
             ['tt.action', 'expensive'],
             #['tt.credit_card', '<>', true],
-            #['le.entry_date', '>=', $this->date_begin],
-            #['le.entry_date', '<=', $this->date_end]
+            ['le.entry_date', '>=', $this->date_begin],
+            ['le.entry_date', '<=', $this->date_end]
         ])
         ->groupBy('parent.id')
         ->get();

@@ -17,7 +17,7 @@ class CreateTransitionTypesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('description')->nullable(true);
-            $table->enum('action', ['expensive', 'recipe']);
+            $table->enum('action', ['expensive', 'recipe', 'investment']);
             $table->boolean('credit_card')->default(false);
             $table->timestamps();
         });

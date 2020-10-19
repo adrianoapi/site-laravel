@@ -51,6 +51,7 @@
                             <div class="col-sm-10">
                                 <div class="i-checks"><label> <input type="radio" name="action" value="recipe"     checked> <i></i> Receita</label></div>
                                 <div class="i-checks"><label> <input type="radio" name="action" value="expensive"> <i></i> Despesa </label></div>
+                                <div class="i-checks"><label> <input type="radio" name="action" value="investment"> <i></i> Investimento </label></div>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>

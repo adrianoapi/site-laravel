@@ -52,6 +52,7 @@
                             <div class="col-sm-10">
                                 <div class="i-checks"><label> <input type="radio" name="action" value="recipe"     {{ $transitionType->action === "recipe" ? "checked" : "" }}> <i></i> Receita</label></div>
                                 <div class="i-checks"><label> <input type="radio" name="action" value="expensive"  {{ $transitionType->action === "expensive" ? "checked" : "" }}> <i></i> Despesa </label></div>
+                                <div class="i-checks"><label> <input type="radio" name="action" value="investment" {{ $transitionType->action === "investment" ? "checked" : "" }}> <i></i> Investimento </label></div>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>

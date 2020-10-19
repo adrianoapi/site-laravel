@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>{{$value->id}}</td>
                                             <td>{{$value->title}}</td>
-                                            <td><span class="label label-{{$value->action == 'recipe' ? 'info' : 'danger'}}">{{$value->action}}</span></td>
+                                            <td><span class="label label-{{$value->action == 'expensive' ? 'danger' : 'info'}}">{{$value->action}}</span></td>
                                             <td>
                                                 <form action="{{route('transitionTypes.destroy', ['transitionType' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                                     @csrf

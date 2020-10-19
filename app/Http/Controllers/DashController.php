@@ -37,6 +37,7 @@ class DashController extends Controller
                 ['le.entry_date', '>=', $this->date_begin],
                 ['le.entry_date', '<=', $this->date_end]
             ])
+            ->orderBy('parent.title')
             ->groupBy('parent.id')
             ->get();
         }
@@ -55,6 +56,7 @@ class DashController extends Controller
                 ['le.entry_date', '>=', $date_begin],
                 ['le.entry_date', '<=', $this->date_end]
             ])
+            ->orderBy('parent.title')
             ->groupBy('parent.id')
             ->get();
         }
@@ -73,6 +75,7 @@ class DashController extends Controller
                 ['le.entry_date', '>=', $date_begin],
                 ['le.entry_date', '<=', $this->date_end]
             ])
+            ->orderBy('parent.title')
             ->groupBy('parent.id')
             ->get();
         }

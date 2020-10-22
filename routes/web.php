@@ -214,6 +214,10 @@ Route::prefix('imagens')->group(function(){
     Route::delete('destroy/{questionImage}', 'QuestionImageController@destroy' )->name('questionImages.destroy');
 });
 
+Route::prefix('parcelamento-cartao')->group(function(){
+    Route::get('/', 'CreditCardController@index')->name('creditcards.index');
+});
+
 Route::prefix('colecoes')->group(function(){
     Route::get('/',                 'CollectionController@index' )->name('collections.index');
     Route::get('novo',              'CollectionController@create')->name('collections.create');

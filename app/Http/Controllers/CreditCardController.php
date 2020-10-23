@@ -20,6 +20,7 @@ class CreditCardController extends Controller
      */
     public function index()
     {
+        $table = [];
         $credCards = DB::table('ledger_entries')
         ->select(
             'installments',
@@ -33,36 +34,36 @@ class CreditCardController extends Controller
         ->orderBy('entry_date', 'desc')
         ->get();
         
-        
-        $arr_data_limite = [];
-        foreach($credCards as $value):
-            array_push($arr_data_limite, $value->limite);
-        endforeach;
+        if(count($credCards) > 0){
+            $arr_data_limite = [];
+            foreach($credCards as $value):
+                array_push($arr_data_limite, $value->limite);
+            endforeach;
 
-        #Cria as colunas da tabela
-        $columns = [];
-        $date    = date('Y-m', strtotime("$arr_data_limite[0] -30 days"));
-        do{
-            array_push($columns, $date);
-            $date = date('Y-m', strtotime("$date -30 days"));
-        }
-        while($date >= date('Y-m'));
+            #Cria as colunas da tabela
+            $columns = [];
+            $date    = date('Y-m', strtotime("$arr_data_limite[0] -30 days"));
+            do{
+                array_push($columns, $date);
+                $date = date('Y-m', strtotime("$date -30 days"));
+            }
+            while($date >= date('Y-m'));
 
-        #Cria uma matriz de acordo com a data do array columns
-        $table = [];
-        foreach($columns as $key => $value):
+            #Cria uma matriz de acordo com a data do array columns
+            foreach($columns as $key => $value):
 
-            foreach($credCards as $cart):
+                foreach($credCards as $cart):
 
-                if(date('Y-m', strtotime("$cart->limite")) >= $value){
-                    $table[$value][] = $cart->amount/$cart->installments;
-                }
+                    if(date('Y-m', strtotime("$cart->limite")) >= $value){
+                        $table[$value][] = $cart->amount/$cart->installments;
+                    }
+
+                endforeach;
 
             endforeach;
 
-        endforeach;
-
-        ksort($table);
+            ksort($table);
+        }
 
         return view('creditCard.index', ['table' => $table]);
     }

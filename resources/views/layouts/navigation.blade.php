@@ -30,11 +30,13 @@
             </li>
             <li class="{{Route::current()->getName() === 'ledgerEntries.index' ||
              Route::current()->getName() === 'fixedCosts.index' ||
+             Route::current()->getName() === 'creditcards.index' ||
              Route::current()->getName() === 'financialCharts.index' ? 'active' : ''}}">
                 <a href="#"><i class="fa fa-money"></i> <span class="nav-label">Financeiro</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('ledgerEntries.index')}}">Lançamentos</a></li>
                     <li><a href="{{route('fixedCosts.index')}}">Lançamentos fixos</a></li>
+                    <li><a href="{{route('creditcards.index')}}">Parcelamentos</a></li>
                     <li><a href="{{route('financialCharts.index')}}">Gráficos</a></li>
                 </ul>
             </li>

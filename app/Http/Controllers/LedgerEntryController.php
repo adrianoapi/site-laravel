@@ -76,6 +76,7 @@ class LedgerEntryController extends Controller
         $ledgerEntry->description        = $request->description;
         $ledgerEntry->entry_date         = $request->entry_date;
         $ledgerEntry->amount             = $request->amount;
+        $ledgerEntry->installments       = $request->installments;
         $ledgerEntry->save();
 
         return redirect()->route('ledgerItems.create', ['ledgerEntry' => $ledgerEntry]);
@@ -123,6 +124,7 @@ class LedgerEntryController extends Controller
         $ledgerEntry->description        = $request->description;
         $ledgerEntry->entry_date         = $request->entry_date;
         $ledgerEntry->amount             = $request->amount;
+        $ledgerEntry->installments       = $request->installments;
         $ledgerEntry->save();
 
         return redirect()->route('ledgerEntries.index');

@@ -21,6 +21,7 @@
                             $total = [];
                             $i=0;
                             $maiorRepeticao = 0;
+                            echo count($table)."<br>";
                             foreach($table as $key => $values):
                                 echo "<th>{$key}</th>";
 
@@ -29,7 +30,7 @@
 
                                 #Apenas para achar a maior repetição
                                 $maiorRepeticao = count($values) > $maiorRepeticao ? count($values) : $maiorRepeticao;
-
+                                echo $maiorRepeticao."<br>";
                             endforeach;
                             echo "</tr>";
                             echo "</thead>";

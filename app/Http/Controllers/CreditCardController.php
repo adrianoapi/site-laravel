@@ -29,7 +29,7 @@ class CreditCardController extends Controller
             'amount')
         ->where([
             ['installments', '>', 0],
-            [DB::raw('ADDDATE(entry_date, INTERVAL installments MONTH)'), '>', '2020-10-20']
+            [DB::raw('ADDDATE(entry_date, INTERVAL installments MONTH)'), '>', date('Y-m-d')]
         ])
         ->orderBy('entry_date', 'desc')
         ->get();
@@ -40,12 +40,14 @@ class CreditCardController extends Controller
                 array_push($arr_data_limite, $value->limite);
             endforeach;
 
+            rsort($arr_data_limite);
+
             #Cria as colunas da tabela
             $columns = [];
-            $date    = date('Y-m', strtotime("$arr_data_limite[0] -30 days"));
+            $date    = date('Y-m', strtotime("$arr_data_limite[0]"));
             do{
                 array_push($columns, $date);
-                $date = date('Y-m', strtotime("$date -30 days"));
+                $date = date('Y-m', strtotime("$date -1 month"));
             }
             while($date >= date('Y-m'));
 

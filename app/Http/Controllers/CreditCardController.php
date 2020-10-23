@@ -56,7 +56,7 @@ class CreditCardController extends Controller
 
                 foreach($credCards as $cart):
 
-                    if(date('Y-m', strtotime("$cart->limite")) >= $value){
+                    if(date('Y-m', strtotime("$cart->limite")) > $value){
                         $table[$value][] = $cart->amount/$cart->installments;
                     }
 

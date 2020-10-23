@@ -22,7 +22,7 @@
                             $i=0;
                             $maiorRepeticao = 0;
                             foreach($table as $key => $values):
-                                echo "<th>{$key}</th>";
+                                echo "<th>".strftime('%B de %Y', strtotime($key))."</th>";
 
                                 $total[$i] = array_sum($values);
                                 $i++;

@@ -31,7 +31,7 @@ class FinancialChartController extends Controller
             ['ledger_entries.entry_date', '<=', $this->date_end]
         ])
         ->orderByDesc('ledger_entries.amount', 'desc')
-        ->limit(3)
+        ->limit(10)
         ->get();
 
         ############ Movimentação

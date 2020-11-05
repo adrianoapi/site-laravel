@@ -12,24 +12,51 @@
                         <h5>Lançamentos</h5>
                     </div>
                     <div class="ibox-content">
-                    
+                        
                         <table class="table table-bordered table-hover table-nomargin">
-                        <tr>
                         <?php
-                            
+
+                            echo "<thead>";
+                            echo "<tr>";
+                            $total = [];
+                            $i=0;
+                            $maiorRepeticao = 0;
                             foreach($table as $key => $values):
-                                echo "<th>{$key}</th>";
+                                echo "<th>".strftime('%B de %Y', strtotime($key))."</th>";
+
+                                $total[$i] = array_sum($values);
+                                $i++;
+
+                                #Apenas para achar a maior repetição
+                                $maiorRepeticao = count($values) > $maiorRepeticao ? count($values) : $maiorRepeticao;
+                            
                             endforeach;
+                            echo "</tr>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                            for($i=0; $i < $maiorRepeticao; $i++){
+                                echo "<tr>";
+                                foreach($table as $key => $values):
+
+                                    if(array_key_exists($i, $values)){
+                                        echo "<td/>R$ ".number_format($values[$i], 2, ',', '.')."</td>";
+                                    }else{
+                                        echo "<td/>-</td>";
+                                    }
+
+                                endforeach;
+                                echo "</tr>";
+                            }
+                            echo "</tbody>";
+                        
+                            echo '<tfoot><tr>';
+                            foreach ($total as $value) {
+                                echo "<td>R$ ".number_format($value, 2, ',', '.')."</td>";
+                            }
+                            echo '</tfoot></tr>';
                         ?>
-                        </tr>
+
                         </table>
-                        <?php
-                        
-                        echo '<pre>';
-                        print_r($table);
-                        echo '</pre>';
-                        
-                        ?>
 
                     </div>
                 </div>

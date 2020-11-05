@@ -20,6 +20,7 @@ class CreditCardController extends Controller
      */
     public function index()
     {
+        $table = [];
         $credCards = DB::table('ledger_entries')
         ->select(
             'installments',
@@ -28,41 +29,43 @@ class CreditCardController extends Controller
             'amount')
         ->where([
             ['installments', '>', 0],
-            [DB::raw('ADDDATE(entry_date, INTERVAL installments MONTH)'), '>', '2020-10-20']
+            [DB::raw('ADDDATE(entry_date, INTERVAL installments MONTH)'), '>', date('Y-m-d')]
         ])
         ->orderBy('entry_date', 'desc')
         ->get();
         
-        
-        $arr_data_limite = [];
-        foreach($credCards as $value):
-            array_push($arr_data_limite, $value->limite);
-        endforeach;
+        if(count($credCards) > 0){
+            $arr_data_limite = [];
+            foreach($credCards as $value):
+                array_push($arr_data_limite, $value->limite);
+            endforeach;
 
-        #Cria as colunas da tabela
-        $columns = [];
-        $date    = date('Y-m', strtotime("$arr_data_limite[0] -30 days"));
-        do{
-            array_push($columns, $date);
-            $date = date('Y-m', strtotime("$date -30 days"));
-        }
-        while($date >= date('Y-m'));
+            rsort($arr_data_limite);
 
-        #Cria uma matriz de acordo com a data do array columns
-        $table = [];
-        foreach($columns as $key => $value):
+            #Cria as colunas da tabela
+            $columns = [];
+            $date    = date('Y-m', strtotime("$arr_data_limite[0]"));
+            do{
+                array_push($columns, $date);
+                $date = date('Y-m', strtotime("$date -1 month"));
+            }
+            while($date >= date('Y-m'));
 
-            foreach($credCards as $cart):
+            #Cria uma matriz de acordo com a data do array columns
+            foreach($columns as $key => $value):
 
-                if(date('Y-m', strtotime("$cart->limite")) >= $value){
-                    $table[$value][] = $cart->amount/$cart->installments;
-                }
+                foreach($credCards as $cart):
+
+                    if(date('Y-m', strtotime("$cart->limite")) > $value){
+                        $table[$value][] = $cart->amount/$cart->installments;
+                    }
+
+                endforeach;
 
             endforeach;
 
-        endforeach;
-
-        ksort($table);
+            ksort($table);
+        }
 
         return view('creditCard.index', ['table' => $table]);
     }

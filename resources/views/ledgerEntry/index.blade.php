@@ -54,8 +54,7 @@
                                         <tr>
                                             <th>Data</th>
                                             <th>Valor</th>
-                                            <th class="w-25">Lançamento</th>
-                                            <th>Tipo de Despesa</th>
+                                            <th class="w-50">Lançamento</th>
                                             <th>Tipo de Transação</th>
                                             <th>Options</th>
                                         </tr>
@@ -65,8 +64,10 @@
                                             <tr>
                                                 <td>{{$value->entry_date}}</td>
                                                 <td><span class="label label-{{$value->transitionType->action == 'recipe' ? 'info' : 'danger'}}">{{$value->amount}}</span></td>
-                                                <td>{{$value->description}}</td>
-                                                <td>{{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}</td>
+                                                <td>
+                                                <strong>{{$value->description}}</strong><br>
+                                                {{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}
+                                                </td>
                                                 <td>{{$value->transitionType->title}}</td>
                                                 <td>
                                                     <form action="{{route('ledgerEntries.destroy', ['ledgerEntry' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">

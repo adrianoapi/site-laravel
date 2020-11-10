@@ -276,6 +276,11 @@ Route::post('/categoria/store', 'CategoryController@store')->name('category.stor
 
 Route::resource('produtos', 'Form\\ProductController')->names('products')->parameters(['produtos' => 'product']);
 
+Route::prefix('perfil')->group(function(){
+    Route::get('/', 'PerfilController@index')->name('perfil.index');
+    Route::put ('/editar', 'PerfilController@update')->name('perfil.update');
+});
+
 Route::get('listagem', 'UserController@listUser');
 Route::group(['namespace' => 'form'], function () {
 

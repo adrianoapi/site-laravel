@@ -278,7 +278,8 @@ Route::resource('produtos', 'Form\\ProductController')->names('products')->param
 
 Route::prefix('perfil')->group(function(){
     Route::get('/', 'PerfilController@index')->name('perfil.index');
-    Route::put ('/editar', 'PerfilController@update')->name('perfil.update');
+    Route::get('sair', 'PerfilController@logout')->name('perfil.logout');
+    Route::put ('editar', 'PerfilController@update')->name('perfil.update');
 });
 
 Route::get('listagem', 'UserController@listUser');

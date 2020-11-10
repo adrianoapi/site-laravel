@@ -38,7 +38,7 @@ class PerfilController extends Controller
         $user = User::where('id', Auth::id())->get();
 
 
-        if(!empty($request->email)){
+        if(filter_var($request->email, FILTER_VALIDATE_EMAIL)){
             $user[0]->email = $request->email;
         }
 
@@ -48,6 +48,12 @@ class PerfilController extends Controller
 
         $user[0]->save();
 
+        return redirect()->route('perfil.index');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
         return redirect()->route('perfil.index');
     }
 

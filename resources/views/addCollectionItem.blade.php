@@ -83,5 +83,5 @@ filebrowserUploadUrl : '/admin/panel/upload-image',
 filebrowserImageUploadUrl :  '/admin/panel/upload-image'
 });
 </script>
-    
+
 @endsection

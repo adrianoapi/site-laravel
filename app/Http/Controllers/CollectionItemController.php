@@ -30,7 +30,7 @@ class CollectionItemController extends Controller
      */
     public function create(\App\Collection $collection)
     {
-        return view('addCollectionItem', ['collection' => $collection, 'collItem' => '']);
+        return view('collectionItem.add', ['collection' => $collection, 'collItem' => '']);
     }
 
     /**

@@ -10,13 +10,13 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Adicionar</h5>
+                    <h5>Editar</h5>
                     <div class="ibox-tools">
 
                         <div class="btn-group">
                             <a href="{{route('collItems.show',   ['collection'  => $collection->id])}}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-reply"></i> Listar itens</a>
-                            <a href="{{route('collItems.create', ['collection' => $collection->id])}}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send"><i class="fa fa-pencil"></i>  Novo Item</a>
-                            <a href="{{route('collections.show', ['collection'   => $collection->id])}}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-search"></i> Coleção</a>
+                            <a href="{{route('collItems.show',   ['collection'  => $collItem->collection->id])}}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send"><i class="fa fa-pencil"></i>  Novo Item</a>
+                            <a href="{{route('collections.index')}}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to draft folder"><i class="fa fa-search"></i> Coleção</a>
                         </div>
 
                     </div>
@@ -33,20 +33,20 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{$collection->title}}</td>
-                                    <td>{{$collection->description}}</td>
+                                    <td>{{$collItem->collection->title}}</td>
+                                    <td>{{$collItem->collection->description}}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <form action="{{route('collItems.store')}}" method="POST">
+                    <form action="{{route('collItems.update', ['collItem' => $collItem->id])}}" method="POST">
                         @csrf
-
+                        @method('PUT')
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">Titulo</label>
                             <div class="col-sm-10">
-                                <input type="text" name="title" class="form-control"  tabindex="1">
+                                <input type="text" name="title" value="{{$collItem->title}}" class="form-control"  tabindex="1">
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@
                         <div class="form-group  row">
                             <label class="col-sm-2 col-form-label">Descrição</label>
                             <div class="col-sm-10">
-                                <textarea id="content" name="description"></textarea>
+                                <textarea id="content" name="description">{{$collItem->description}}</textarea>
                             </div>
                         </div>
 
@@ -66,13 +66,12 @@
                             <div class="col-sm-5">
                                 <div class="input-group date">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="text" name="release" id="release" class="form-control" value="<?php echo date('d/m/yy'); ?>" tabindex="4">
+                                    <input type="text" name="release" value="{{$collItem->release}}" id="release" class="form-control" value="<?php echo date('d/m/yy'); ?>" tabindex="4">
                                 </div>
                             </div>
                         </div>
 
                         <div class="hr-line-dashed"></div>
-                        <input type="hidden" name="collection_id" value="{{$collection->id}}">
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a href="{{route('collItems.index')}}" class="btn btn-white btn-sm">Cancelar</a>

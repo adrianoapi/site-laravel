@@ -72,7 +72,8 @@ class CollectionItemController extends Controller
      */
     public function edit(CollectionItem $collItem)
     {
-        return view('editCollectionItem', ['collItem' => $collItem]);
+        $collection = \App\Collection::where('id', $collItem->collection_id)->first();
+        return view('collectionItem.edit', ['collItem' => $collItem, 'collection' => $collection]);
     }
 
     /**

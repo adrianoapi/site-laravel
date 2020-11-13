@@ -61,7 +61,7 @@ class CollectionItemController extends Controller
      */
     public function show(\App\Collection $collection)
     {
-        return view('showCollectionItem',['collection' => $collection]);
+        return view('collectionItem.show',['collection' => $collection]);
     }
 
     /**

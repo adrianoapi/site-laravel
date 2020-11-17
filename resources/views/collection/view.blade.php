@@ -30,7 +30,7 @@
                         </div>
                         <div class="table-responsive">
 
-                        
+
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -111,7 +111,7 @@
                                                     <img src="data:{{$value->images[0]->type}};base64, {{$value->images[0]->image}}" width="120" alt="" />
                                                 </a>
                                                 </form>
-                                                @endif    
+                                                @endif
                                             </td>
                                         @endif
 
@@ -167,7 +167,7 @@
 
 @section('scripts')
 <script>
-    
+
 function qsa(sel) {
     return Array.apply(null, document.querySelectorAll(sel));
 }

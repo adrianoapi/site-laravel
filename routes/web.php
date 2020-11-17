@@ -28,11 +28,11 @@ Route::prefix('/site-old')->group(function(){
     Route::get('/', function(){
         return view('site.home');
     })->name('site.home');
-    
+
     Route::get('cursos', function(){
         return view('site.courses');
     })->name('site.curses');
-    
+
     Route::get('contato', function(){
         return view('site.contact');
     })->name('site.contact');
@@ -73,6 +73,10 @@ Route::prefix('favoritos')->group(function(){
     Route::delete('destroy/{link}', 'LinkController@destroy')->name('links.destroy');
 });
 
+Route::prefix('diagramas')->group(function(){
+    Route::get('/', 'DiagramController@index')->name('diagrams.index');
+});
+
 Route::prefix('favoritos-itens')->group(function(){
     Route::get ('/',                 'LinkItemController@listAllLinksItems')->name('linksItems.listAll');
     Route::get ('novo',              'LinkItemController@create'           )->name('linksItems.create');
@@ -80,7 +84,7 @@ Route::prefix('favoritos-itens')->group(function(){
     Route::put ('edit/{linkItem}',   'LinkItemController@edit'             )->name('linksItems.edit');
     Route::get ('{linkItem}',        'LinkItemController@list'             )->name('linksItems.list');
     Route::get ('editar/{linkItem}', 'LinkItemController@formEditLink'     )->name('linksItems.formEditLink');
-    
+
     Route::delete('destroy/{linkItem}', 'LinkItemController@destroy')->name('linksItems.destroy');
 });
 
@@ -91,7 +95,7 @@ Route::prefix('tarefas-grupo')->group(function(){
     Route::get ('editar/{taskGroup}', 'TaskGroupController@edit'  )->name('taskGroups.edit');
     Route::put ('edit/{taskGroup}',   'TaskGroupController@update')->name('taskGroups.update');
     Route::get ('{taskGroup}',        'TaskGroupController@show'  )->name('taskGroups.show');
-    
+
     Route::delete('tarefas-grupo/destroy/{taskGroup}', 'TaskGroupController@destroy')->name('taskGroups.destroy');
 });
 
@@ -117,7 +121,7 @@ Route::prefix('transacoes-tipo')->group(function(){
     Route::get ('editar/{transitionType}', 'TransitionTypeController@edit'  )->name('transitionTypes.edit');
     Route::put ('editar/{transitionType}', 'TransitionTypeController@update')->name('transitionTypes.update');
     Route::get ('{transitionType}',        'TransitionTypeController@show'  )->name('transitionTypes.show');
-   
+
     Route::delete('destroy/{transitionType}', 'TransitionTypeController@destroy')->name('transitionTypes.destroy');
 });
 
@@ -163,7 +167,7 @@ Route::prefix('lancamento-itens')->group(function(){
     Route::get ('editar/{ledgerItem}', 'LedgerItemController@edit'  )->name('ledgerItems.edit');
     Route::put ('editar/{ledgerItem}', 'LedgerItemController@update')->name('ledgerItems.update');
     Route::get ('{ledgerEntry}',       'LedgerItemController@show'  )->name('ledgerItems.show');
-    
+
     Route::delete('destroy/{ledgerItem}','LedgerItemController@destroy')->name('ledgerItems.destroy');
 });
 

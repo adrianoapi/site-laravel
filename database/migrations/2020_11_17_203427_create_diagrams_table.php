@@ -15,7 +15,7 @@ class CreateDiagramsTable extends Migration
     {
         Schema::create('diagrams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('serie_id');
             $table->string('title');
             $table->string('body');
             $table->enum('type', ['mindMap', 'class'])->default('mindMap');

@@ -308,12 +308,13 @@
 </head>
 <body>
 <div id="sample">
-  <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:300px;"></div>
+  <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:500px;"></div>
 
   <button id="SaveButton" onclick="save()">Save</button>
-  <button onclick="load()">Load</button>
-  <button onclick="layoutAll()">Layout</button>
-  Diagram Model saved in JSON format:
+  <button onclick="load()">Carregar</button>
+  <button onclick="layoutAll()">Organizar</button>
+
+  <br />
   <br />
   <textarea id="mySavedModel" style="width:100%;height:400px">
    <?php echo $body; ?>

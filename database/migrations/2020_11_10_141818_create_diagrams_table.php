@@ -11,17 +11,19 @@ class CreateDiagramsTable extends Migration
      *
      * @return void
      */
+    private $myTable = 'diagrams';
     public function up()
     {
-        Schema::create('diagrams', function (Blueprint $table) {
+
+        Schema::create($this->myTable, function (Blueprint $table) {
+            $table->engine = 'MyISAM';
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('body');
             $table->enum('type', ['mindMap', 'class'])->default('mindMap');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
@@ -32,6 +34,6 @@ class CreateDiagramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diagrams');
+        Schema::dropIfExists($this->myTable);
     }
 }

@@ -75,6 +75,9 @@ Route::prefix('favoritos')->group(function(){
 
 Route::prefix('diagramas')->group(function(){
     Route::get('/', 'DiagramController@index')->name('diagrams.index');
+    Route::get('editar/{diagram}', 'DiagramController@edit')->name('diagrams.edit');
+
+    Route::delete('destroy/{diagram}', 'DiagramController@destroy')->name('diagrams.destroy');
 });
 
 Route::prefix('favoritos-itens')->group(function(){

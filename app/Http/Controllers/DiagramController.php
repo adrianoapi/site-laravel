@@ -14,7 +14,8 @@ class DiagramController extends Controller
      */
     public function index()
     {
-        return view('diagram.index');
+        $diagrams = Diagram::orderBy('id', 'desc')->paginate(50);
+        return view('diagram.index', ['diagrams' => $diagrams]);
     }
 
     /**
@@ -57,7 +58,7 @@ class DiagramController extends Controller
      */
     public function edit(Diagram $diagram)
     {
-        //
+        return view('diagram.index', ['diagram' => $diagram]);
     }
 
     /**

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Diagram;
+use App\DiagramItem;
 use Illuminate\Http\Request;
 
-class DiagramController extends Controller
+class DiagramItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class DiagramController extends Controller
      */
     public function index()
     {
-        $diagrams = Diagram::orderBy('id', 'desc')->paginate(50);
-        return view('diagram.index', ['diagrams' => $diagrams]);
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class DiagramController extends Controller
      */
     public function create()
     {
-        return view('diagram.add');
+        //
     }
 
     /**
@@ -36,25 +35,16 @@ class DiagramController extends Controller
      */
     public function store(Request $request)
     {
-        echo '<pre>';
-        print_r(json_decode($request->body));
-        die();
-        $model = new Diagram();
-        $model->title = $request->title;
-        $model->body  = $request->body;
-        $model->type  = $request->type;
-        $model->save();
-
-        return redirect()->route('diagrams.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Diagram  $diagram
+     * @param  \App\DiagramItem  $diagramItem
      * @return \Illuminate\Http\Response
      */
-    public function show(Diagram $diagram)
+    public function show(DiagramItem $diagramItem)
     {
         //
     }
@@ -62,26 +52,22 @@ class DiagramController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Diagram  $diagram
+     * @param  \App\DiagramItem  $diagramItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Diagram $diagram)
+    public function edit(DiagramItem $diagramItem)
     {
-        $body = $diagram->body;
-       # echo '<pre>';
-        #print_r();
-        #die();
-        return view('diagram.edit', ['body' => $body]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Diagram  $diagram
+     * @param  \App\DiagramItem  $diagramItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Diagram $diagram)
+    public function update(Request $request, DiagramItem $diagramItem)
     {
         //
     }
@@ -89,10 +75,10 @@ class DiagramController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Diagram  $diagram
+     * @param  \App\DiagramItem  $diagramItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Diagram $diagram)
+    public function destroy(DiagramItem $diagramItem)
     {
         //
     }

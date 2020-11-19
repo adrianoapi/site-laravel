@@ -17,12 +17,13 @@ class CreateDiagramItemsTable extends Migration
             $table->engine = 'MyISAM';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('diagram_id');
-            $table->integer('key');
-            $table->integer('parent');
-            $table->string('text');
-            $table->string('brush');
-            $table->string('dir');
-            $table->string('loc');
+            $table->integer('key')->nullable(true);
+            $table->integer('parent')->nullable(true);
+            $table->string('text')->nullable(true);
+            $table->string('brush')->nullable(true);
+            $table->string('dir')->nullable(true);
+            $table->string('loc')->nullable(true);
+            $table->timestamps();
 
             $table->foreign('diagram_id')->references('id')->on('diagrams')->onDelete('CASCADE');
 

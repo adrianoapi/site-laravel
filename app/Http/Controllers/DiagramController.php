@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Diagram;
+use App\DiagramItem;
 use Illuminate\Http\Request;
 
 class DiagramController extends Controller
@@ -36,14 +37,38 @@ class DiagramController extends Controller
      */
     public function store(Request $request)
     {
-        echo '<pre>';
-        print_r(json_decode($request->body));
-        die();
         $model = new Diagram();
         $model->title = $request->title;
-        $model->body  = $request->body;
         $model->type  = $request->type;
-        $model->save();
+        if($model->save()){
+
+            $item = json_decode($request->body);
+
+            foreach($item->nodeDataArray as $item):
+
+                $modelItem = new DiagramItem();
+                $modelItem->diagram_id = $model->id;
+                $modelItem->key = $item->key;
+                if(array_key_exists('parent', $item)){
+                    $modelItem->parent = $item->parent;
+                }
+                if(array_key_exists('text', $item)){
+                    $modelItem->text = $item->text;
+                }
+                if(array_key_exists('brush', $item)){
+                    $modelItem->brush = $item->brush;
+                }
+                if(array_key_exists('dir', $item)){
+                    $modelItem->dir = $item->dir;
+                }
+                if(array_key_exists('loc', $item)){
+                    $modelItem->loc = $item->loc;
+                }
+                $modelItem->save();
+
+            endforeach;
+
+        }
 
         return redirect()->route('diagrams.index');
     }
@@ -67,11 +92,41 @@ class DiagramController extends Controller
      */
     public function edit(Diagram $diagram)
     {
-        $body = $diagram->body;
-       # echo '<pre>';
-        #print_r();
-        #die();
-        return view('diagram.edit', ['body' => $body]);
+        $json = NULL;
+        $json .=  '{ "class": "TreeModel",
+            "nodeDataArray": [';
+        $json .=  "\n";
+        $limit = count($diagram->items);
+        $i = 0;
+        foreach($diagram->items as $item):
+            $i++;
+            $json .=  '{';
+            $json .=  '"key":'.$item->key.',';
+            if(is_numeric($item->parent)){
+                $json .=  '"parent":'.$item->parent.',';
+            }
+            if(!empty($item->text)){
+                $json .=  '"text":"'.preg_replace( "/\r|\n/", "", $item->text ).'",';
+            }
+            if(!empty($item->brush)){
+                $json .=  '"brush":"'.$item->brush.'",';
+            }
+            if(!empty($item->dir)){
+                $json .=  '"dir":"'.$item->dir.'",';
+            }
+            if(!empty($item->loc)){
+                $json .=  '"loc":"'.$item->loc.'"';
+            }
+            $json .=  '}';
+
+            if($i < $limit){
+                $json .=  ',';
+            }
+
+        endforeach;
+        $json .=  ']}';
+
+        return view('diagram.edit', ['body' => $json]);
     }
 
     /**

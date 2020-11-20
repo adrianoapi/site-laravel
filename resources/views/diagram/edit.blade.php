@@ -310,15 +310,31 @@
 <div id="sample">
   <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:500px;"></div>
 
-  <button id="SaveButton" onclick="save()">Save</button>
+  <button id="SaveButton" onclick="save()">Aplicar</button>
   <button onclick="load()">Carregar</button>
   <button onclick="layoutAll()">Organizar</button>
 
   <br />
   <br />
-  <textarea id="mySavedModel" style="width:100%;height:400px">
-   <?php echo $body; ?>
-  </textarea>
+  <form action="{{route('diagrams.update', ['diagram' => $diagram->id])}}" method="POST" class="form-horizontal form-bordered">
+        @csrf
+        @method('PUT')
+
+
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group row">
+            <div class="col-sm-4 col-sm-offset-2">
+                <a href="{{route('diagrams.index')}}" class="btn btn-white btn-sm">Cancelar</a>
+                <button class="btn btn-primary btn-sm" type="submit">Salvar </button>
+            </div>
+        </div>
+
+        <textarea name="body" id="mySavedModel" style="width:100%;height:400px">
+        <?php echo $body; ?>
+        </textarea>
+
+  </form>
 </div>
 
 <script>

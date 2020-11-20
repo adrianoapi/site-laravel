@@ -126,7 +126,7 @@ class DiagramController extends Controller
         endforeach;
         $json .=  ']}';
 
-        return view('diagram.edit', ['body' => $json]);
+        return view('diagram.edit', ['diagram' => $diagram,'body' => $json]);
     }
 
     /**
@@ -138,7 +138,35 @@ class DiagramController extends Controller
      */
     public function update(Request $request, Diagram $diagram)
     {
-        //
+        // Clear old items
+        DiagramItem::where('diagram_id', $diagram->id)->delete();
+        $item = json_decode($request->body);
+
+            foreach($item->nodeDataArray as $item):
+
+                $modelItem = new DiagramItem();
+                $modelItem->diagram_id = $diagram->id;
+                $modelItem->key = $item->key;
+                if(array_key_exists('parent', $item)){
+                    $modelItem->parent = $item->parent;
+                }
+                if(array_key_exists('text', $item)){
+                    $modelItem->text = $item->text;
+                }
+                if(array_key_exists('brush', $item)){
+                    $modelItem->brush = $item->brush;
+                }
+                if(array_key_exists('dir', $item)){
+                    $modelItem->dir = $item->dir;
+                }
+                if(array_key_exists('loc', $item)){
+                    $modelItem->loc = $item->loc;
+                }
+                $modelItem->save();
+
+            endforeach;
+
+        return redirect()->route('diagrams.index');
     }
 
     /**

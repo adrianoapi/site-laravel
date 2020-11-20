@@ -177,6 +177,10 @@ class DiagramController extends Controller
      */
     public function destroy(Diagram $diagram)
     {
-        //
+        if($diagram->delete()){
+            DiagramItem::where('diagram_id', $diagram->id)->delete();
+        }
+
+        return redirect()->route('diagrams.index');
     }
 }

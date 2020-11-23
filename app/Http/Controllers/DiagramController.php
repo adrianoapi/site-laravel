@@ -44,29 +44,32 @@ class DiagramController extends Controller
 
             $item = json_decode($request->body);
 
-            foreach($item->nodeDataArray as $item):
+            if($diagram->type == 'mindMap'){
 
-                $modelItem = new DiagramItem();
-                $modelItem->diagram_id = $model->id;
-                $modelItem->key = $item->key;
-                if(array_key_exists('parent', $item)){
-                    $modelItem->parent = $item->parent;
-                }
-                if(array_key_exists('text', $item)){
-                    $modelItem->text = $item->text;
-                }
-                if(array_key_exists('brush', $item)){
-                    $modelItem->brush = $item->brush;
-                }
-                if(array_key_exists('dir', $item)){
-                    $modelItem->dir = $item->dir;
-                }
-                if(array_key_exists('loc', $item)){
-                    $modelItem->loc = $item->loc;
-                }
-                $modelItem->save();
+                foreach($item->nodeDataArray as $item):
 
-            endforeach;
+                    $modelItem = new DiagramItem();
+                    $modelItem->diagram_id = $model->id;
+                    $modelItem->key = $item->key;
+                    if(array_key_exists('parent', $item)){
+                        $modelItem->parent = $item->parent;
+                    }
+                    if(array_key_exists('text', $item)){
+                        $modelItem->text = $item->text;
+                    }
+                    if(array_key_exists('brush', $item)){
+                        $modelItem->brush = $item->brush;
+                    }
+                    if(array_key_exists('dir', $item)){
+                        $modelItem->dir = $item->dir;
+                    }
+                    if(array_key_exists('loc', $item)){
+                        $modelItem->loc = $item->loc;
+                    }
+                    $modelItem->save();
+
+                endforeach;
+            }
 
         }
 
@@ -92,39 +95,41 @@ class DiagramController extends Controller
      */
     public function edit(Diagram $diagram)
     {
-        $json = NULL;
-        $json .=  '{ "class": "TreeModel",
-            "nodeDataArray": [';
-        $json .=  "\n";
-        $limit = count($diagram->items);
-        $i = 0;
-        foreach($diagram->items as $item):
-            $i++;
-            $json .=  '{';
-            $json .=  '"key":'.$item->key.',';
-            if(is_numeric($item->parent)){
-                $json .=  '"parent":'.$item->parent.',';
-            }
-            if(!empty($item->text)){
-                $json .=  '"text":"'.preg_replace( "/\r|\n/", "", $item->text ).'",';
-            }
-            if(!empty($item->brush)){
-                $json .=  '"brush":"'.$item->brush.'",';
-            }
-            if(!empty($item->dir)){
-                $json .=  '"dir":"'.$item->dir.'",';
-            }
-            if(!empty($item->loc)){
-                $json .=  '"loc":"'.$item->loc.'"';
-            }
-            $json .=  '}';
+        if($diagram->type == 'mindMap'){
+            $json = NULL;
+            $json .=  '{ "class": "TreeModel",
+                "nodeDataArray": [';
+            $json .=  "\n";
+            $limit = count($diagram->items);
+            $i = 0;
+            foreach($diagram->items as $item):
+                $i++;
+                $json .=  '{';
+                $json .=  '"key":'.$item->key.',';
+                if(is_numeric($item->parent)){
+                    $json .=  '"parent":'.$item->parent.',';
+                }
+                if(!empty($item->text)){
+                    $json .=  '"text":"'.preg_replace( "/\r|\n/", "", $item->text ).'",';
+                }
+                if(!empty($item->brush)){
+                    $json .=  '"brush":"'.$item->brush.'",';
+                }
+                if(!empty($item->dir)){
+                    $json .=  '"dir":"'.$item->dir.'",';
+                }
+                if(!empty($item->loc)){
+                    $json .=  '"loc":"'.$item->loc.'"';
+                }
+                $json .=  '}';
 
-            if($i < $limit){
-                $json .=  ',';
-            }
+                if($i < $limit){
+                    $json .=  ',';
+                }
 
-        endforeach;
-        $json .=  ']}';
+            endforeach;
+            $json .=  ']}';
+        }
 
         return view('diagram.edit', ['diagram' => $diagram,'body' => $json]);
     }
@@ -142,6 +147,7 @@ class DiagramController extends Controller
         DiagramItem::where('diagram_id', $diagram->id)->delete();
         $item = json_decode($request->body);
 
+        if($diagram->type == 'mindMap'){
             foreach($item->nodeDataArray as $item):
 
                 $modelItem = new DiagramItem();
@@ -165,6 +171,7 @@ class DiagramController extends Controller
                 $modelItem->save();
 
             endforeach;
+        }
 
         return redirect()->route('diagrams.index');
     }

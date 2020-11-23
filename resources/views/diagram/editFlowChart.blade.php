@@ -346,10 +346,27 @@
   </p>
   <button id="SaveButton" onclick="save()">Save</button>
   <button onclick="load()">Load</button>
-  Diagram Model saved in JSON format:
-  <textarea id="mySavedModel" style="width:100%;height:300px">
-  <?php echo $body; ?>
-</textarea>
+
+  <br />
+  <br />
+  <form action="{{route('diagrams.update', ['diagram' => $diagram->id])}}" method="POST" class="form-horizontal form-bordered">
+        @csrf
+        @method('PUT')
+
+        <div class="hr-line-dashed"></div>
+
+        <div class="form-group row">
+            <div class="col-sm-4 col-sm-offset-2">
+                <a href="{{route('diagrams.index')}}" class="btn btn-white btn-sm">Cancelar</a>
+                <button class="btn btn-primary btn-sm" type="submit">Salvar </button>
+            </div>
+        </div>
+
+    <textarea id="mySavedModel" name="body" style="width:100%;height:300px">
+    <?php echo $body; ?>
+    </textarea>
+
+</form>
   <button onclick="printDiagram()">Print Diagram Using SVG</button>
 </div>
 

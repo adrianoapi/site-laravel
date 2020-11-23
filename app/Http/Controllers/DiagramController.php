@@ -78,10 +78,18 @@ class DiagramController extends Controller
 
                     $modelLink = new DiagramLinkData();
                     $modelLink->diagram_id = $model->id;
+                    if(array_key_exists('from', $value)){
                     $modelLink->from = $value->from;
-                    $modelLink->to = $value->to;
-                    $modelLink->fromPort = $value->fromPort;
-                    $modelLink->toPort = $value->toPort;
+                    }
+                    if(array_key_exists('to', $value)){
+                        $modelLink->to = $value->to;
+                    }
+                    if(array_key_exists('fromPort', $value)){
+                        $modelLink->fromPort = $value->fromPort;
+                    }
+                    if(array_key_exists('toPort', $value)){
+                        $modelLink->toPort = $value->toPort;
+                    }
                     $modelLink->save();
 
                 endforeach;
@@ -247,6 +255,7 @@ class DiagramController extends Controller
     {
         // Clear old items
         DiagramItem::where('diagram_id', $diagram->id)->delete();
+        DiagramLinkData::where('diagram_id', $diagram->id)->delete();
         $item = json_decode($request->body);
 
         if($diagram->type == 'mindMap'){
@@ -274,6 +283,44 @@ class DiagramController extends Controller
 
             endforeach;
         }else{
+
+            foreach($item->linkDataArray as $value):
+
+                $modelLink = new DiagramLinkData();
+                $modelLink->diagram_id = $diagram->id;
+                if(array_key_exists('from', $value)){
+                    $modelLink->from = $value->from;
+                }
+                if(array_key_exists('to', $value)){
+                    $modelLink->to = $value->to;
+                }
+                if(array_key_exists('fromPort', $value)){
+                    $modelLink->fromPort = $value->fromPort;
+                }
+                if(array_key_exists('toPort', $value)){
+                    $modelLink->toPort = $value->toPort;
+                }
+                $modelLink->save();
+
+            endforeach;
+
+            foreach($item->nodeDataArray as $item):
+
+                $modelItem = new DiagramItem();
+                $modelItem->diagram_id = $diagram->id;
+                $modelItem->key = $item->key;
+                if(array_key_exists('category', $item)){
+                    $modelItem->category = $item->category;
+                }
+                if(array_key_exists('text', $item)){
+                    $modelItem->text = $item->text;
+                }
+                if(array_key_exists('loc', $item)){
+                    $modelItem->loc = $item->loc;
+                }
+                $modelItem->save();
+
+            endforeach;
 
         }
 

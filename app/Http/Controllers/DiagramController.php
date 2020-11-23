@@ -133,6 +133,7 @@ class DiagramController extends Controller
     public function edit(Diagram $diagram)
     {
         if($diagram->type == 'mindMap'){
+
             $json = NULL;
             $json .=  '{ "class": "TreeModel",
                 "nodeDataArray": [';
@@ -165,13 +166,70 @@ class DiagramController extends Controller
                 }
 
             endforeach;
-            #$page = 'diagram.edit';
-            $page = 'diagram.editFlowChart';
             $json .=  ']}';
+            $page = 'diagram.edit';
+
         }else{
 
+            $json = NULL;
+            $json .=  '{ "class": "go.GraphLinksModel",
+                "linkFromPortIdProperty": "fromPort",
+                "linkToPortIdProperty": "toPort",
+                "nodeDataArray": [';
+            $json .=  "\n";
+            $limit = count($diagram->items);
+            $i = 0;
+            foreach($diagram->items as $item):
+                $i++;
+                $json .=  '{';
+                if(!empty($item->category)){
+                    $json .=  '"category":"'.$item->category.'",';
+                }
+                if(is_numeric($item->key)){
+                    $json .=  '"key":'.$item->key.',';
+                }
+                if(!empty($item->text)){
+                    $json .=  '"text":"'.preg_replace( "/\r|\n/", "", $item->text ).'",';
+                }
+                if(!empty($item->loc)){
+                    $json .=  '"loc":"'.$item->loc.'"';
+                }
+                $json .=  '}';
 
+                if($i < $limit){
+                    $json .=  ',';
+                }
 
+            endforeach;
+
+            $json .=  '],';
+            $json .=  '"linkDataArray": [';
+
+            $j = 0;
+            $linkDataLimit = count($diagram->linkData);
+            foreach($diagram->linkData as $item):
+                $j++;
+                $json .=  '{';
+                if(!empty($item->from)){
+                    $json .=  '"from":'.$item->from.',';
+                }
+                if(is_numeric($item->to)){
+                    $json .=  '"to":'.$item->to.',';
+                }
+                if(!empty($item->fromPort)){
+                    $json .=  '"fromPort":"'.$item->fromPort.'",';
+                }
+                if(!empty($item->toPort)){
+                    $json .=  '"toPort":"'.$item->toPort.'"';
+                }
+                $json .=  '}';
+
+                if($j < $linkDataLimit){
+                    $json .=  ',';
+                }
+
+            endforeach;
+            $json .=  ']}';
             $page = 'diagram.editFlowChart';
         }
 

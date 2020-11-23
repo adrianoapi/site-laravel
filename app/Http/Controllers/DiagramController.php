@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Diagram;
 use App\DiagramItem;
+use App\DiagramLinkData;
 use Illuminate\Http\Request;
 
 class DiagramController extends Controller
@@ -44,7 +45,7 @@ class DiagramController extends Controller
 
             $item = json_decode($request->body);
 
-            if($diagram->type == 'mindMap'){
+            if($request->type == 'mindMap'){
 
                 foreach($item->nodeDataArray as $item):
 
@@ -69,6 +70,42 @@ class DiagramController extends Controller
                     $modelItem->save();
 
                 endforeach;
+            }else{
+
+                $item = json_decode($request->body);
+
+                foreach($item->linkDataArray as $value):
+
+                    $modelLink = new DiagramLinkData();
+                    $modelLink->diagram_id = $model->id;
+                    $modelLink->from = $value->from;
+                    $modelLink->to = $value->to;
+                    $modelLink->fromPort = $value->fromPort;
+                    $modelLink->toPort = $value->toPort;
+                    $modelLink->save();
+
+                endforeach;
+
+                foreach($item->nodeDataArray as $item):
+
+                    $modelItem = new DiagramItem();
+                    $modelItem->diagram_id = $model->id;
+                    $modelItem->key = $item->key;
+
+                    if(array_key_exists('category', $item)){
+                        $modelItem->category = $item->category;
+                    }
+                    if(array_key_exists('text', $item)){
+                        $modelItem->text = $item->text;
+                    }
+
+                    if(array_key_exists('loc', $item)){
+                        $modelItem->loc = $item->loc;
+                    }
+                    $modelItem->save();
+
+                endforeach;
+
             }
 
         }
@@ -128,10 +165,17 @@ class DiagramController extends Controller
                 }
 
             endforeach;
+            #$page = 'diagram.edit';
+            $page = 'diagram.editFlowChart';
             $json .=  ']}';
+        }else{
+
+
+
+            $page = 'diagram.editFlowChart';
         }
 
-        return view('diagram.edit', ['diagram' => $diagram,'body' => $json]);
+        return view($page, ['diagram' => $diagram,'body' => $json]);
     }
 
     /**
@@ -171,6 +215,8 @@ class DiagramController extends Controller
                 $modelItem->save();
 
             endforeach;
+        }else{
+
         }
 
         return redirect()->route('diagrams.index');

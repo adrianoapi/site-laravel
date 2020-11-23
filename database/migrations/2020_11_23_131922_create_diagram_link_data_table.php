@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiagramItemsTable extends Migration
+class CreateDiagramLinkDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,17 @@ class CreateDiagramItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('diagram_items', function (Blueprint $table) {
+        Schema::create('diagram_link_data', function (Blueprint $table) {
             $table->engine = 'MyISAM';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('diagram_id');
-            $table->string('category')->nullable(true);
-            $table->integer('key')->nullable(true);
-            $table->integer('parent')->nullable(true);
-            $table->string('text')->nullable(true);
-            $table->string('brush')->nullable(true);
-            $table->string('dir')->nullable(true);
-            $table->string('loc')->nullable(true);
+            $table->integer('from')->nullable(true);
+            $table->integer('to')->nullable(true);
+            $table->string('fromPort')->nullable(true);
+            $table->string('toPort')->nullable(true);
             $table->timestamps();
 
             $table->foreign('diagram_id')->references('id')->on('diagrams')->onDelete('CASCADE');
-
         });
     }
 
@@ -38,6 +34,6 @@ class CreateDiagramItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diagram_items');
+        Schema::dropIfExists('diagram_link_data');
     }
 }

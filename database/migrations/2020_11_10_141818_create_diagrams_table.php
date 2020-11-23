@@ -21,7 +21,7 @@ class CreateDiagramsTable extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
-            $table->enum('type', ['mindMap', 'class'])->default('mindMap');
+            $table->enum('type', ['mindMap', 'class', 'flowChart'])->default('mindMap');
             $table->timestamps();
         });
     }

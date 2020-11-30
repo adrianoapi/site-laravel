@@ -45,12 +45,12 @@
             <li class="{{Route::current()->getName() === 'collections.index' ? 'active' : ''}}">
                 <a href="{{route('collections.index')}}"><i class="fa fa-trophy"></i> <span class="nav-label">Coleções</span> <span class="fa arrow"></span></a>
             </li>
-            <li class="{{Route::current()->getName() === 'diagrams.index' ? 'active' : ''}}">
+            <li class="{{Route::current()->getName() === 'diagrams.index' ||
+                Route::current()->getName() === 'diagrams.create' ||
+                Route::current()->getName() === 'diagrams.edit'  ? 'active' : ''}}">
                 <a href="{{route('diagrams.index')}}"><i class="fa fa-code-fork"></i> <span class="nav-label">Diagramas</span> <span class="fa arrow"></span></a>
             </li>
-            <li class="{{Route::current()->getName() === 'passwords.index' ||
-                Route::current()->getName() === 'diagrams.create' ||
-                Route::current()->getName() === 'diagrams.edit' ? 'active' : ''}}">
+            <li class="{{Route::current()->getName() === 'passwords.index' ? 'active' : ''}}">
                 <a href="{{route('passwords.index')}}"><i class="fa fa-key"></i> <span class="nav-label">Senhas</span> <span class="fa arrow"></span></a>
             </li>
             <li class="{{Route::current()->getName() === 'tasks.index' || Route::current()->getName() === 'taskGroups.index' ? 'active' : ''}}">

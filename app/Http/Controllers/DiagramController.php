@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Diagram;
 use App\DiagramItem;
 use App\DiagramLinkData;
+use App\DiagramLinkDataPoint;
 use Illuminate\Http\Request;
 
 class DiagramController extends Controller
@@ -230,6 +231,31 @@ class DiagramController extends Controller
                 if(!empty($item->toPort)){
                     $json .=  '"toPort":"'.$item->toPort.'"';
                 }
+                if(!empty($item->visible)){
+                    $json .=  ',"visible":"'.$item->visible.'"';
+                }
+                if(!empty($item->text)){
+                    $json .=  ',"text":"'.$item->text.'"';
+                }
+
+                $k = 0;
+                $pointsTotal = count($item->points);
+                if($pointsTotal > 0){
+
+                    $json .=  ',"points":[';
+                    foreach($item->points as $point):
+
+                        $k++;
+                        $json .= $point['item'];
+                        if($k < $pointsTotal){
+                            $json .=  ',';
+                        }
+
+                    endforeach;
+                    $json .=  ']';
+
+                }
+
                 $json .=  '}';
 
                 if($j < $linkDataLimit){
@@ -300,7 +326,27 @@ class DiagramController extends Controller
                 if(array_key_exists('toPort', $value)){
                     $modelLink->toPort = $value->toPort;
                 }
-                $modelLink->save();
+                if(array_key_exists('visible', $value)){
+                    $modelLink->visible = $value->visible;
+                }
+                if(array_key_exists('text', $value)){
+                    $modelLink->text = $value->text;
+                }
+                if($modelLink->save())
+                {
+                    if(array_key_exists('points', $value)){
+
+                        foreach($value->points as $point):
+
+                            $modelPoint = new DiagramLinkDataPoint();
+                            $modelPoint->diagram_link_data_id = $modelLink->id;
+                            $modelPoint->item = $point;
+                            $modelPoint->save();
+
+                        endforeach;
+
+                    }
+                }
 
             endforeach;
 

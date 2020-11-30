@@ -21,8 +21,8 @@ class CreateDiagramLinkDataTable extends Migration
             $table->integer('to')->nullable(true);
             $table->string('fromPort')->nullable(true);
             $table->string('toPort')->nullable(true);
-            $table->boolean('visible')->default(true);
-            $table->string('points')->nullable(true);
+            $table->boolean('visible')->default(false);
+            $table->string('text')->nullable(true);
             $table->timestamps();
 
             $table->foreign('diagram_id')->references('id')->on('diagrams')->onDelete('CASCADE');

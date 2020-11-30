@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Diagram;
 use App\DiagramItem;
 use App\DiagramLinkData;
-use App\DiagramLinkDataPoint;
 use Illuminate\Http\Request;
 
 class DiagramController extends Controller
@@ -238,24 +237,6 @@ class DiagramController extends Controller
                     $json .=  ',"text":"'.$item->text.'"';
                 }
 
-                $k = 0;
-                $pointsTotal = count($item->points);
-                if($pointsTotal > 0){
-
-                    $json .=  ',"points":[';
-                    foreach($item->points as $point):
-
-                        $k++;
-                        $json .= $point['item'];
-                        if($k < $pointsTotal){
-                            $json .=  ',';
-                        }
-
-                    endforeach;
-                    $json .=  ']';
-
-                }
-
                 $json .=  '}';
 
                 if($j < $linkDataLimit){
@@ -279,9 +260,11 @@ class DiagramController extends Controller
      */
     public function update(Request $request, Diagram $diagram)
     {
-        // Clear old items
         DiagramItem::where('diagram_id', $diagram->id)->delete();
         DiagramLinkData::where('diagram_id', $diagram->id)->delete();
+
+
+
         $item = json_decode($request->body);
 
         if($diagram->type == 'mindMap'){
@@ -332,21 +315,7 @@ class DiagramController extends Controller
                 if(array_key_exists('text', $value)){
                     $modelLink->text = $value->text;
                 }
-                if($modelLink->save())
-                {
-                    if(array_key_exists('points', $value)){
-
-                        foreach($value->points as $point):
-
-                            $modelPoint = new DiagramLinkDataPoint();
-                            $modelPoint->diagram_link_data_id = $modelLink->id;
-                            $modelPoint->item = $point;
-                            $modelPoint->save();
-
-                        endforeach;
-
-                    }
-                }
+                $modelLink->save();
 
             endforeach;
 

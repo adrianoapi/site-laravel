@@ -90,6 +90,12 @@ class DiagramController extends Controller
                     if(array_key_exists('toPort', $value)){
                         $modelLink->toPort = $value->toPort;
                     }
+                    if(array_key_exists('visible', $value)){
+                        $modelLink->visible = $value->visible;
+                    }
+                    if(array_key_exists('text', $value)){
+                        $modelLink->text = $value->text;
+                    }
                     $modelLink->save();
 
                 endforeach;

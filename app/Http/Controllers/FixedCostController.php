@@ -20,7 +20,7 @@ class FixedCostController extends Controller
      */
     public function index()
     {
-        $fixedCosts      = FixedCost::orderBy('entry_date', 'asc')->paginate(50);
+        $fixedCosts      = FixedCost::orderBy('entry_date', 'asc')->paginate(100);
         $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
@@ -85,7 +85,7 @@ class FixedCostController extends Controller
         $transitionTypes = DB::table('transition_types')->get();
 
         return view('fixedCost.edit', ['fixedCost' => $fixedCost, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
-    
+
     }
 
     /**
@@ -117,7 +117,7 @@ class FixedCostController extends Controller
      */
     public function entry(FixedCost $fixedCost)
     {
-        
+
 
         $ledgerEntry = new \App\LedgerEntry();
         $ledgerEntry->user_id            = $fixedCost->user_id;
@@ -149,7 +149,7 @@ class FixedCostController extends Controller
     public function destroy(FixedCost $fixedCost)
     {
         $fixedCost->delete();
-        
+
         return redirect()->route('fixedCosts.index');
     }
 }

@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    
+
                     <table class="table table-hover margin bottom">
                         <thead>
                         <tr>
@@ -56,7 +56,7 @@
                                 <td>Total</td>
                                 <td><span class="label label-{{$total > 0 ? 'info': 'danger'}}">R$ {{number_format($total, 2, ",", ".")}}</span></td>
                             </tr>
-                        
+
                         </tbody>
                     </table>
 
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    
+
                     <table class="table table-hover margin bottom">
                         <thead>
                         <tr>
@@ -105,7 +105,7 @@
                             <td class="text-center"><span class="label label-danger">R$ {{$value->amount}}</span></td>
                         </tr>
                         @endforeach
-                        
+
                         </tbody>
                     </table>
 
@@ -136,7 +136,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    
+
                     <table class="table table-hover margin bottom">
                         <thead>
                         <tr>

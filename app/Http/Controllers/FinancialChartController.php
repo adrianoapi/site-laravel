@@ -21,8 +21,25 @@ class FinancialChartController extends Controller
 
     public function index()
     {
-        ############ Rank de Despesas
-        $rank_cost = DB::table('ledger_entries')
+        $fixedCost = \App\FixedCost::orderBy('entry_date', 'asc')->limit(3)->get();
+
+        return view('financialChart.index', [
+            'rank_cost' => $this->rankCost(),
+            'monthly'   => [
+                'monthlyExpense' =>$this->monthlyExpense(),
+                'monthlyExpenseCart' => $this->monthlyExpenseCart(),
+                'monthlyRecipe' => $this->monthlyRecipe()
+            ],
+            'fixedCost' => $fixedCost
+            ]);
+    }
+
+    /**
+     * Rank de Despesas
+     */
+    public function rankCost()
+    {
+        return DB::table('ledger_entries')
         ->select('ledger_entries.*')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->where([
@@ -33,9 +50,14 @@ class FinancialChartController extends Controller
         ->orderByDesc('ledger_entries.amount', 'desc')
         ->limit(10)
         ->get();
+    }
 
-        ############ Movimentação
-        $monthlyExpense = DB::table('ledger_entries')
+    /**
+     * Movimentacao mensal sem cartao de creito
+     */
+    public function monthlyExpense()
+    {
+        return DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'))
         ->where([
@@ -46,8 +68,14 @@ class FinancialChartController extends Controller
         ])
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
-        
-        $monthlyExpenseCart = DB::table('ledger_entries')
+    }
+
+    /**
+     * Movimentacao mensal com cartao de credito
+     */
+    public function monthlyExpenseCart()
+    {
+        return DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'))
         ->where([
@@ -58,8 +86,14 @@ class FinancialChartController extends Controller
         ])
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
+    }
 
-        $monthlyRecipe = DB::table('ledger_entries')
+    /**
+     * Receita mensal
+     */
+    public function monthlyRecipe()
+    {
+        return DB::table('ledger_entries')
         ->join('transition_types', 'ledger_entries.transition_type_id', '=', 'transition_types.id')
         ->select(DB::raw('sum( ledger_entries.amount ) as total'))
         ->where([
@@ -69,14 +103,6 @@ class FinancialChartController extends Controller
         ])
         ->orderByDesc('ledger_entries.entry_date')
         ->get();
-
-        $fixedCost = \App\FixedCost::orderBy('entry_date', 'asc')->limit(3)->get();
-
-        return view('financialChart.index', [
-            'rank_cost' => $rank_cost,
-            'monthly'   => ['monthlyExpense' => $monthlyExpense, 'monthlyExpenseCart' => $monthlyExpenseCart, 'monthlyRecipe' => $monthlyRecipe],
-            'fixedCost' => $fixedCost
-            ]);
     }
 
     public function fixedCoastAjax()

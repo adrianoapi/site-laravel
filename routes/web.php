@@ -178,6 +178,7 @@ Route::prefix('lancamento-itens')->group(function(){
 });
 
 Route::prefix('grafico-financeiro')->group(function(){
+    Route::get ('/ajax-dynamic', 'FinancialChartController@graphDynamic')->name('financialCharts.dynamic');
     Route::get('/', 'FinancialChartController@index')->name('financialCharts.index');
     Route::get ('/ajax-fixed-coast',  'FinancialChartController@fixedCoastAjax')->name('financialCharts.fixedCoastAjax');
 });

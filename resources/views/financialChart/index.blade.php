@@ -19,17 +19,22 @@
                             <i class="fa fa-wrench"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#" class="dropdown-item">Config option 1</a>
+                        <?php
+                        for($i=0;$i<$count = 6;$i++){
+                        ?>
+                            <li>
+                                <a href="javascript:void(0)" class="dropdown-item" onClick="showDynamic(<?php echo $i; ?>)"><?php echo $i; ?> mês atrás</a>
                             </li>
-                            <li><a href="#" class="dropdown-item">Config option 2</a>
-                            </li>
+                        <?php
+                        }
+                        ?>
                         </ul>
                         <a class="close-link">
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content" id="ajax-dynamic">
 
                     <table class="table table-hover margin bottom">
                         <thead>
@@ -75,12 +80,6 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-wrench"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#" class="dropdown-item">Config option 1</a>
-                            </li>
-                            <li><a href="#" class="dropdown-item">Config option 2</a>
-                            </li>
-                        </ul>
                         <a class="close-link">
                             <i class="fa fa-times"></i>
                         </a>
@@ -220,5 +219,25 @@
 
     </div>
 </div>
+
+<script>
+
+function showDynamic(value)
+{
+    $.ajax({
+        url: "{{route('financialCharts.dynamic')}}",
+        type: "GET",
+        data: {
+            "_token": "{{csrf_token()}}",
+            "range": value
+        },
+        dataType: 'json',
+            success: function(data){
+                $("#ajax-dynamic").html(data['dynamic']);
+            }
+    });
+}
+
+</script>
 
 @endsection

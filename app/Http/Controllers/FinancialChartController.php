@@ -155,4 +155,19 @@ class FinancialChartController extends Controller
         ->get();
     }
 
+    public function graphDynamic()
+    {
+        $day = (int) $_GET['range'];
+        $this->firstDay = date('Y-m-01', strtotime("$this->firstDay -$day monthy"));
+        $this->date_end = date('Y-m-d', strtotime("$this->firstDay +30 days"));
+
+        return response()->json([
+            'range' => $_GET['range'],
+            'dynamic'   => view('financialChart.ajaxDynamic', [ 'dynamic' => [
+                'expense' => $this->expenseDynamic(),
+                'recipe' => $this->recipeDynamic(),
+            ]])->render(),
+        ]);
+    }
+
 }

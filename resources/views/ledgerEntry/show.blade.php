@@ -17,7 +17,7 @@
                                 <a href="{{route('ledgerEntries.index')}}" class="btn btn-primary"><i class="icon-reorder"></i> Lancamentos</a>
                             </div>
                             <div class="col-sm-7">
-                                
+
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -53,7 +53,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{$soma = 0}}
                                     @foreach ($ledgerEntry->ledgerItems as $value)
+                                    {{$soma += str_replace(",",".",$value->total_price)}}
                                     <tr>
                                         <td>{{$value->description}}</td>
                                         <td>{{$value->quantity}}</td>
@@ -65,7 +67,7 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="3">Subtotal</td>
-                                        <td>$</td>
+                                        <td>R$ {{$soma}}</td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -77,7 +79,7 @@
         </div>
     </div>
 </div>
-        
+
 @endsection
 
 @section('scripts')
@@ -102,3 +104,4 @@
 
 </script>
 @endsection
+

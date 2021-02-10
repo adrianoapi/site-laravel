@@ -53,9 +53,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{$soma = 0}}
+                                    <?php $soma = 0; ?>
                                     @foreach ($ledgerEntry->ledgerItems as $value)
-                                    {{$soma += str_replace(",",".",$value->total_price)}}
+                                    <?php $soma += str_replace(",",".",$value->total_price); ?>
                                     <tr>
                                         <td>{{$value->description}}</td>
                                         <td>{{$value->quantity}}</td>

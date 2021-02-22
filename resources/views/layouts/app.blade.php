@@ -8,7 +8,7 @@
 
     <link href="{!! asset('inspinia/css/bootstrap.min.css') !!}" rel="stylesheet">
     <link href="{!! asset('inspinia/font-awesome/css/font-awesome.css') !!}" rel="stylesheet">
-    
+
     <!-- iCheck style -->
     <link href="{!! asset('inspinia/css/plugins/iCheck/custom.css') !!}" rel="stylesheet">
 

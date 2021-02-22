@@ -13,7 +13,7 @@ class LedgerEntryController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +31,7 @@ class LedgerEntryController extends Controller
                 endforeach;
 
                 $ledgerEntries = LedgerEntry::whereIn('ledger_group_id', $ids)->orderBy('entry_date', 'desc')->paginate(50);
-            
+
             }elseif($_GET['filtro'] == 'pesquisa'){
                 $ledgerEntries = LedgerEntry::where('description', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('entry_date', 'desc')->paginate(50);
             }else{
@@ -44,7 +44,12 @@ class LedgerEntryController extends Controller
         $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
-        return view('ledgerEntry.index', ['ledgerEntries' => $ledgerEntries, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+        return view('ledgerEntry.index', [
+            'ledgerEntries' => $ledgerEntries,
+            'ledgerGroups' => $ledgerGroups,
+            'transitionTypes' => $transitionTypes,
+            'weekDays' => $this->getWeekDays()
+        ]);
     }
 
     /**
@@ -140,5 +145,10 @@ class LedgerEntryController extends Controller
     {
         $ledgerEntry->delete();
         return redirect()->route('ledgerEntries.index');
+    }
+
+    public function getWeekDays()
+    {
+        return array('Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday');
     }
 }

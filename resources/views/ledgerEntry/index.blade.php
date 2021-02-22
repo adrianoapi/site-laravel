@@ -62,7 +62,10 @@
                                     <tbody>
                                         @foreach ($ledgerEntries as $value)
                                             <tr>
-                                                <td>{{$value->entry_date}}</td>
+                                                <td>
+                                                {{$value->entry_date}}<br>
+                                                <small>{{$weekDays[date('w', strtotime($value->entry_date))]}}</small>
+                                                </td>
                                                 <td><span class="label label-{{$value->transitionType->action == 'recipe' ? 'info' : 'danger'}}">{{$value->amount}}</span></td>
                                                 <td>
                                                 <strong>{{$value->description}}</strong><br>

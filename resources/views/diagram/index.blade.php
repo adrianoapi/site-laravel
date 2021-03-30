@@ -25,6 +25,7 @@
                                 <thead>
                                     <tr>
                                         <th class="w-50">Title</th>
+                                        <th>Type</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
@@ -32,6 +33,7 @@
                                     @foreach ($diagrams as $value)
                                         <tr>
                                             <td>{{$value->title}}</td>
+                                            <td>{{$value->type}}</td>
                                             <td>
                                                 <form action="{{route('diagrams.destroy', ['diagram' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">
                                                     @csrf

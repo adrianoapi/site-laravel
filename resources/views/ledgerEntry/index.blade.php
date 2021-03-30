@@ -64,7 +64,11 @@
                                             <tr>
                                                 <td>
                                                 {{$value->entry_date}}<br>
-                                                <small>{{$weekDays[date('w', strtotime($value->entry_date))]}}</small>
+                                                <?php
+                                                $date = str_replace('/', '-', $value->entry_date);
+                                                $date = date("Y-m-d", strtotime($date));
+                                                ?>
+                                                <small>{{$date}}</small>
                                                 </td>
                                                 <td><span class="label label-{{$value->transitionType->action == 'recipe' ? 'info' : 'danger'}}">{{$value->amount}}</span></td>
                                                 <td>

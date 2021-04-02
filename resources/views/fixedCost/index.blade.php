@@ -32,7 +32,6 @@
                                         <th>Data</th>
                                         <th>Valor</th>
                                         <th>Lançamento</th>
-                                        <th>Tipo de Despesa</th>
                                         <th>Tipo de Transação</th>
                                         <th>Options</th>
                                     </tr>
@@ -40,10 +39,19 @@
                                 <tbody>
                                     @foreach ($fixedCosts as $value)
                                         <tr>
-                                            <td>{{$value->entry_date}}</td>
+                                            <td>
+                                                {{$value->entry_date}}<br>
+                                                <?php
+                                                $date = str_replace('/', '-', $value->entry_date);
+                                                $date = date("Y-m-d", strtotime($date));
+                                                ?>
+                                                <small>{{$date}}</small>
+                                            </td>
                                             <td><span class="label label-{{$value->transitionType->action == 'recipe' ? 'info' : 'danger'}}">{{$value->amount}}</span></td>
-                                            <td>{{$value->description}}</td>
-                                            <td>{{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}</td>
+                                            <td>
+                                                <strong>{{$value->description}}</strong><br>
+                                                {{$value->ledgerGroup->ledgerGroup->title}} > {{$value->ledgerGroup->title}}
+                                            </td>
                                             <td>{{$value->transitionType->title}}</td>
                                             <td>
                                                 <form action="{{route('fixedCosts.destroy', ['fixedCost' => $value->id])}}" method="POST" onSubmit="return confirm('Deseja excluir?');" style="padding: 0px;margin:0px;">

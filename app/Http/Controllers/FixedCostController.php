@@ -20,11 +20,20 @@ class FixedCostController extends Controller
      */
     public function index()
     {
-        $fixedCosts      = FixedCost::orderBy('entry_date', 'asc')->paginate(100);
+        $fixedCosts      = FixedCost::where('status', true)->orderBy('entry_date', 'asc')->paginate(100);
         $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
         return view('fixedCost.index',  ['fixedCosts' => $fixedCosts, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+    }
+
+    public function trash()
+    {
+        $fixedCosts      = FixedCost::where('status', false)->orderBy('entry_date', 'asc')->paginate(100);
+        $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
+        $transitionTypes = DB::table('transition_types')->get();
+
+        return view('fixedCost.trash',  ['fixedCosts' => $fixedCosts, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
     }
 
     /**
@@ -148,8 +157,25 @@ class FixedCostController extends Controller
      */
     public function destroy(FixedCost $fixedCost)
     {
-        $fixedCost->delete();
+        #$fixedCost->delete();
+        $fixedCost->status = false;
+        $fixedCost->save();
 
         return redirect()->route('fixedCosts.index');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\FixedCost  $fixedCost
+     * @return \Illuminate\Http\Response
+     */
+    public function recycle(FixedCost $fixedCost)
+    {
+        $fixedCost->status = true;
+        $fixedCost->save();
+
+        return redirect()->route('fixedCosts.trash');
+    }
+
 }

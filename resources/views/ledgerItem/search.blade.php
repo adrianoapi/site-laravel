@@ -38,7 +38,11 @@
                                     <tbody>
                                         @foreach ($ledgerItems as $value)
                                             <tr>
-                                                <td>{{$value->description}}</td>
+                                                <td>
+                                                <strong>{{$value->description}}</strong>
+                                                <br>
+                                                [{{$value->ledgerEntry->entry_date}}] {{$value->ledgerEntry->description}}
+                                                </td>
                                                 <td>{{$value->price}}</td>
                                                 <td>{{$value->quantity}}</td>
                                                 <td>{{$value->total_price}}</td>

@@ -170,6 +170,7 @@ Route::prefix('lancamentos')->group(function(){
 
 Route::prefix('lancamento-itens')->group(function(){
     Route::get ('/',                   'LedgerItemController@index' )->name('ledgerItems.index');
+    Route::get ('pesquisar',           'LedgerItemController@search')->name('ledgerItems.search');
     Route::get ('novo/{ledgerEntry}',  'LedgerItemController@create')->name('ledgerItems.create');
     Route::post('store',               'LedgerItemController@store' )->name('ledgerItems.store');
     Route::get ('editar/{ledgerItem}', 'LedgerItemController@edit'  )->name('ledgerItems.edit');

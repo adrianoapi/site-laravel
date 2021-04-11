@@ -13,7 +13,7 @@ class LedgerItemController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +36,7 @@ class LedgerItemController extends Controller
         }
 
         $ledgerItems = LedgerItem::where('ledger_entry_id', $ledgerEntry->id)->orderBy('id', 'desc')->get();
-        
+
         return view('ledgerItem.add', ['ledgerItems' => $ledgerItems, 'ledgerEntry' => $ledgerEntry, 'ledgerItem' => '']);
     }
 
@@ -79,8 +79,24 @@ class LedgerItemController extends Controller
         }
 
         $ledgerItems = LedgerItem::where('ledger_entry_id', $ledgerEntry->id)->orderBy('id', 'desc')->get();
-        
+
         return view('ledgerItem.show', ['ledgerItems' => $ledgerItems, 'ledgerEntry' => $ledgerEntry]);
+    }
+
+    public function search()
+    {
+        $filtro = NULL;
+        if(array_key_exists('filtro',$_GET))
+        {
+            $filtro = $_GET['filtro'];
+            $ledgerItems = LedgerItem::where('description', 'like', '%' .$filtro. '%')->orderBy('created_at', 'desc')->paginate(50);
+        }else{
+            $ledgerItems = LedgerItem::orderBy('created_at', 'desc')->paginate(50);
+        }
+        return view('ledgerItem.search', [
+            'ledgerItems' => $ledgerItems,
+            'filtro' => $filtro
+        ]);
     }
 
     /**

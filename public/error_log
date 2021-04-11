@@ -1,0 +1,25 @@
+[22-Jul-2020 22:16:13 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[22-Jul-2020 22:16:16 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[22-Jul-2020 22:16:18 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[22-Jul-2020 22:16:20 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[24-Jul-2020 16:18:41 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[24-Jul-2020 16:18:42 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[24-Jul-2020 16:18:43 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[24-Jul-2020 16:18:44 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[27-Jul-2020 06:14:37 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[27-Jul-2020 06:14:38 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[27-Jul-2020 06:14:39 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[27-Jul-2020 06:14:40 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[28-Jul-2020 02:55:26 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[28-Jul-2020 02:55:26 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[28-Jul-2020 02:55:27 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[28-Jul-2020 02:55:28 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[28-Jul-2020 02:55:28 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[28-Jul-2020 02:55:29 America/Fortaleza] PHP Warning:  Missing boundary in multipart/form-data POST data in Unknown on line 0
+[24-Sep-2020 13:04:14 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home2/mania945/public_html/pagsoft.com.br/vendor/symfony/translation/TranslatorInterface.php on line 24
+[24-Sep-2020 13:04:59 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home2/mania945/public_html/pagsoft.com.br/vendor/symfony/translation/TranslatorInterface.php on line 24
+[24-Sep-2020 13:05:02 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home2/mania945/public_html/pagsoft.com.br/vendor/symfony/translation/TranslatorInterface.php on line 24
+[24-Sep-2020 13:06:41 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home2/mania945/public_html/pagsoft.com.br/vendor/symfony/translation/TranslatorInterface.php on line 24
+[24-Sep-2020 13:07:07 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home2/mania945/public_html/pagsoft.com.br/vendor/symfony/translation/TranslatorInterface.php on line 24
+[24-Sep-2020 13:10:52 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home2/mania945/public_html/pagsoft.com.br/vendor/symfony/translation/TranslatorInterface.php on line 24
+[24-Sep-2020 13:11:49 UTC] PHP Fatal error:  Declaration of Symfony\Component\Translation\TranslatorInterface::setLocale($locale) must be compatible with Symfony\Contracts\Translation\LocaleAwareInterface::setLocale(string $locale) in /home2/mania945/public_html/pagsoft.com.br/vendor/symfony/translation/TranslatorInterface.php on line 24

@@ -4,6 +4,12 @@
 
 @section('content')
 
+<?php
+
+$days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday');
+
+?>
+
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
@@ -61,14 +67,18 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($ledgerEntries as $value)
+                                            <?php
+                                            $date = $value->entry_date;
+                                            ?>
                                             <tr>
                                                 <td>
-                                                {{$value->entry_date}}<br>
+                                                {{$date}}<br>
                                                 <?php
-                                                $date = str_replace('/', '-', $value->entry_date);
-                                                $date = date("Y-m-d", strtotime($date));
+                                                $date = explode('/',$date);
+                                                $date = $date[2].'-'.$date[1].'-'.$date[0];
+                                                $dayofweek = date('w', strtotime($date));
                                                 ?>
-                                                <small>{{$date}}</small>
+                                                <small>{{$days[$dayofweek]}}</small>
                                                 </td>
                                                 <td><span class="label label-{{$value->transitionType->action == 'recipe' ? 'info' : 'danger'}}">{{$value->amount}}</span></td>
                                                 <td>

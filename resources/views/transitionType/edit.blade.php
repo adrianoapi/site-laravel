@@ -15,7 +15,7 @@
     </div>
     <div class="box box-bordered box-color">
         <div class="box-title">
-            <h3><i class="icon-th-list"></i> Adicionar</h3>
+            <h3><i class="icon-th-list"></i> Editar</h3>
         </div>
         <div class="box-content nopadding">
             <form action="{{route('transitionTypes.update', ['transitionType' => $transitionType->id])}}" method="POST" class="form-horizontal form-bordered">

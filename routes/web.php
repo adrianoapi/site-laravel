@@ -135,6 +135,7 @@ Route::prefix('lancamentos-fixos')->group(function(){
     Route::get ('/',                  'FixedCostController@index' )->name('fixedCosts.index');
     Route::get ('novo',               'FixedCostController@create')->name('fixedCosts.create');
     Route::get('trash',               'FixedCostController@trash' )->name('fixedCosts.trash');
+    Route::get('pesquisar',           'FixedCostController@search')->name('fixedCosts.search');
     Route::post('store',              'FixedCostController@store' )->name('fixedCosts.store');
     Route::get ('editar/{fixedCost}', 'FixedCostController@edit'  )->name('fixedCosts.edit');
     Route::get ('lancar/{fixedCost}', 'FixedCostController@entry' )->name('fixedCosts.entry');

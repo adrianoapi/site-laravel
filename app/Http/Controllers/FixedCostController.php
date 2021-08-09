@@ -24,7 +24,13 @@ class FixedCostController extends Controller
         $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
         $transitionTypes = DB::table('transition_types')->get();
 
-        return view('fixedCost.index',  ['fixedCosts' => $fixedCosts, 'ledgerGroups' => $ledgerGroups, 'transitionTypes' => $transitionTypes]);
+        return view('fixedCost.index',  [
+            'fixedCosts' => $fixedCosts,
+            'ledgerGroups' => $ledgerGroups,
+            'transitionTypes' => $transitionTypes,
+            'filtro' => NULL,
+            ]
+        );
     }
 
     public function trash()
@@ -69,6 +75,31 @@ class FixedCostController extends Controller
         $fixedCost->save();
 
         return redirect()->route('fixedCosts.index');
+    }
+
+    public function search(Request $request)
+    {
+        $filtro = NULL;
+        if(array_key_exists('descricao',$_GET))
+        {
+            $filtro     = $request->descricao;
+            $fixedCosts = FixedCost::where('description', 'like', '%' .$filtro. '%')
+                                    ->where('status', true)->orderBy('created_at', 'desc')->paginate(50);
+        }else{
+            $fixedCosts = FixedCost::where()->orderBy('entry_date', 'asc')->paginate(100);
+        }
+
+        $ledgerGroups    = \App\LedgerGroup::whereColumn('id', 'ledger_group_id')->orderBy('title', 'asc')->get();
+        $transitionTypes = DB::table('transition_types')->get();
+
+        return view('fixedCost.index',  [
+            'fixedCosts' => $fixedCosts,
+            'ledgerGroups' => $ledgerGroups,
+            'transitionTypes' => $transitionTypes,
+            'filtro' => $filtro,
+            ]
+        );
+
     }
 
     /**
@@ -138,11 +169,15 @@ class FixedCostController extends Controller
 
         if($ledgerEntry->save()){
 
-            $date    = str_replace('/', '-', $ledgerEntry->entry_date);
-            $newDate = date('d/m/Y', strtotime("$date +1 month"));
+            if($fixedCost->recurrent)
+            {
+                $date    = str_replace('/', '-', $ledgerEntry->entry_date);
+                $newDate = date('d/m/Y', strtotime("$date +1 month"));
 
-            $fixedCost->entry_date = $newDate;
-            $fixedCost->save();
+                $fixedCost->entry_date = $newDate;
+                $fixedCost->save();
+            }
+
 
         }
 

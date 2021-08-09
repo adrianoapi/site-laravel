@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="hr-line-dashed"></div>
-          
+
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a href="{{route('fixedCosts.index')}}" class="btn btn-white btn-sm">Cancelar</a>
@@ -120,7 +120,7 @@
 
 
 </div>
-        
+
 @endsection
 
 @section('scripts')
@@ -145,3 +145,4 @@
 
 </script>
 @endsection
+

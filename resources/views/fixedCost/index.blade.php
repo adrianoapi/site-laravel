@@ -20,8 +20,14 @@
                                 <a href="{{route('fixedCosts.trash')}}" class="btn btn-default"><i class="icon-trash" title="Lixeira"></i> Lixeira</a>
                             </div>
                             <div class="col-sm-10">
-                                <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm"> <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!
-                                </button> </span></div>
+                                <form action="{{route('fixedCosts.search')}}" method="GET" class="form-horizontal form-bordered">
+                                    <div class="input-group">
+                                        <input placeholder="Search" type="text" name="descricao" id="descricao" value="{{$filtro}}" class="form-control form-control-sm">
+                                        <span class="input-group-append">
+                                            <button type="submit" class="btn btn-sm btn-primary">Pesquisar!</button>
+                                        </span>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="table-responsive">

@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+
+use App\Repository\UserRepositoryInterface;
 
 class UserController extends Controller
 {
+    private $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json($this->userRepository->all(), 200);
     }
 
     /**
@@ -58,7 +66,7 @@ class UserController extends Controller
                 echo "<p>#{$post->id}, {$post->title}, {$post->content}</p>";
             endforeach;
         }
-        
+
         return view('listUser', ['user' => $user, 'address' => $address]);
     }
 

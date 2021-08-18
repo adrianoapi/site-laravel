@@ -181,7 +181,7 @@ class FixedCostController extends Controller
 
         }
 
-        return redirect()->route('ledgerEntries.index');
+        return redirect()->route('ledgerEntries.edit', ['ledgerEntry' => $ledgerEntry->id]);
     }
 
     /**

@@ -178,7 +178,6 @@ class FixedCostController extends Controller
                 $fixedCost->save();
             }
 
-
         }
 
         return redirect()->route('ledgerEntries.edit', ['ledgerEntry' => $ledgerEntry->id]);

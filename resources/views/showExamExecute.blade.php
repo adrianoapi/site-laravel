@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="container-fluid">
-    
+
     <div class="box box-bordered">
 
         <div class="box-title">
-            <h3><i class="icon-plus-sign"></i> Exame Teste</h3>    
+            <h3><i class="icon-plus-sign"></i> Exame Teste</h3>
         </div>
 
         <div class="box-content nopadding">
@@ -50,8 +50,8 @@
             </form>
 
         </div>
-        
+
     </div>
 </div>
-    
+
 @endsection

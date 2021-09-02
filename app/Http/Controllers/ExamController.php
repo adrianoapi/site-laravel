@@ -98,7 +98,16 @@ class ExamController extends Controller
      */
     public function execute(Exam $exam)
     {
-        $question = \App\Question::inRandomOrder()->where('exam_id', $exam->id)->first();
+        $question = \App\Question::inRandomOrder()
+        ->where('exam_id', $exam->id)
+        ->where('answer', 0)
+        ->first();
+
+        if(empty($question))
+        {
+            die('Não há questões para responder!');
+        }
+
         return view('showExamExecute', ['exam' => $exam, 'question' => $question]);
     }
 

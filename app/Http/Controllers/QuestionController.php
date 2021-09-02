@@ -23,16 +23,16 @@ class QuestionController extends Controller
     {
         if(array_key_exists('filtro',$_GET)){
             if($_GET['filtro'] == 'exame'){
-                $questions = Question::where('exam_id', $_GET['id'])->paginate(10);
+                $questions = Question::where('exam_id', $_GET['id'])->paginate(50);
             }elseif($_GET['filtro'] == 'pesquisa'){
-                $questions = Question::where('title', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('title', 'asc')->paginate(10);
+                $questions = Question::where('title', 'like', '%' . $_GET['pesquisar'] . '%')->orderBy('title', 'asc')->paginate(50);
             }
         }else{
             $questions = Question::paginate(10);
         }
 
         $exams = \App\Exam::all();
-        
+
         return view('listAllQuestion', ['questions' => $questions, 'exams' => $exams]);
     }
 
@@ -109,6 +109,10 @@ class QuestionController extends Controller
     {
         $answer = \App\Answer::where('id', $request->answer_id)->first();
         $exam   = \App\Exam::where('id', $question->exam_id)->first();
+
+        $question->answer = $question->answer +1;
+        $question->save();
+
         return view('showExamConfirm', ['exam' => $exam, 'question' => $question, 'answer' => $answer]);
     }
 

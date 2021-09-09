@@ -86,11 +86,11 @@ class LedgerGroupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreLedgerGroupRequest  $request
      * @param  \App\LedgerGroup  $ledgerGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LedgerGroup $ledgerGroup)
+    public function update(StoreLedgerGroupRequest $request, LedgerGroup $ledgerGroup)
     {
         $ledgerGroup->title           = $request->title;
         $ledgerGroup->description     = $request->description;

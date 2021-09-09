@@ -33,9 +33,12 @@
                     <form action="{{route('ledgerGroups.update', ['ledgerGroup' => $ledgerGroup->id])}}" method="POST" class="form-horizontal form-bordered">
                         @csrf
                         @method('PUT')
-                        <div class="form-group  row"><label class="col-sm-2 col-form-label">Título</label>
+                        <div class="form-group row {{$errors->has('title') ? 'error' : ''}}"><label class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
                                 <input type="text" name="title" id="title" value="{{$ledgerGroup->title}}" class="form-control" tabindex="1">
+                                @if ($errors->has('title'))
+                                    <span class="help-inline">{{ $errors->first('title') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -60,7 +63,7 @@
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
-          
+
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a href="{{route('ledgerGroups.index')}}" class="btn btn-white btn-sm">Cancelar</a>
@@ -76,7 +79,7 @@
 
 
 </div>
-        
+
 @endsection
 
 @section('scripts')

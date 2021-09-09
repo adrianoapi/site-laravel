@@ -21,10 +21,13 @@
             <form action="{{route('transitionTypes.update', ['transitionType' => $transitionType->id])}}" method="POST" class="form-horizontal form-bordered">
                 @csrf
                 @method('PUT')
-                <div class="control-group">
+                <div class="control-group {{$errors->has('title') ? 'error' : ''}}">
                     <label for="title" class="control-label">Title</label>
                     <div class="controls">
                         <input type="text" name="title" id="title" value="{{$transitionType->title}}" placeholder="Text input" class="input-xlarge">
+                        @if ($errors->has('title'))
+                            <span class="help-inline">{{ $errors->first('title') }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="control-group">

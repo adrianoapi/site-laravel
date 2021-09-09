@@ -77,11 +77,11 @@ class TransitionTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreTransitionTypeRequest  $request
      * @param  \App\TransitionType  $transitionType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TransitionType $transitionType)
+    public function update(StoreTransitionTypeRequest $request, TransitionType $transitionType)
     {
         $transitionType->title       = $request->title;
         $transitionType->description = $request->description;

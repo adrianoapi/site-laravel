@@ -32,14 +32,17 @@
                 <div class="ibox-content">
                     <form action="{{route('ledgerGroups.store')}}" method="POST" class="form-horizontal form-bordered">
                         @csrf
-                        <div class="form-group  row"><label class="col-sm-2 col-form-label">Título</label>
+                        <div class="form-group row {{$errors->has('title') ? 'error' : ''}}"><label class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
                                 <input type="text" name="title" id="title" value="" class="form-control" tabindex="1">
+                                @if ($errors->has('title'))
+                                    <span class="help-inline">{{ $errors->first('title') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
 
-                        <div class="form-group  row">
+                        <div class="form-group row {{$errors->has('ledger_group_id') ? 'error' : ''}}">
                             <label class="col-sm-2 col-form-label">Level</label>
                             <div class="col-sm-10">
                                 <select name="ledger_group_id" id="ledger_group_id" data-placeholder="Choose a level..." class="chosen-select"  tabindex="2">
@@ -48,6 +51,9 @@
                                         <option value="{{$value->id}}">{{$value->title}}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('ledger_group_id'))
+                                    <span class="help-inline">{{ $errors->first('ledger_group_id') }}</span>
+                                @endif
                             </div>
                         </div>
 
@@ -59,7 +65,7 @@
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
-          
+
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a href="{{route('ledgerGroups.index')}}" class="btn btn-white btn-sm">Cancelar</a>
@@ -75,7 +81,7 @@
 
 
 </div>
-        
+
 @endsection
 
 @section('scripts')

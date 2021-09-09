@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TransitionType;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTransitionTypeRequest;
 
 class TransitionTypeController extends Controller
 {
@@ -36,10 +37,10 @@ class TransitionTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreTransitionTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTransitionTypeRequest $request)
     {
         $transitionType = new TransitionType();
         $transitionType->title       = $request->title;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LedgerGroup;
+use App\Http\Requests\StoreLedgerGroupRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class LedgerGroupController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,15 +40,15 @@ class LedgerGroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreLedgerGroupRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreLedgerGroupRequest $request)
     {
         $ledgerGroup                   = new LedgerGroup();
         $ledgerGroup->title            = $request->title;
         $ledgerGroup->description      = $request->description;
-        $ledgerGroup->ledger_group_id = $request->ledger_group_id;
+        $ledgerGroup->ledger_group_id  = $request->ledger_group_id;
         $ledgerGroup->save();
 
         if($request->ledger_group_id < 1){

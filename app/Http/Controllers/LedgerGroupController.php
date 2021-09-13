@@ -33,7 +33,7 @@ class LedgerGroupController extends Controller
      */
     public function create()
     {
-        $parents = DB::table('ledger_groups')->get();
+        $parents = LedgerGroup::pluck('title', 'id');
         return view('ledgerGroup.add', ['parents' => $parents]);
     }
 
@@ -79,7 +79,9 @@ class LedgerGroupController extends Controller
      */
     public function edit(LedgerGroup $ledgerGroup)
     {
-        $parents = DB::table('ledger_groups')->get();
+        #$parents = DB::table('ledger_groups')->get();
+        $parents = LedgerGroup::pluck('title', 'id');
+
         return view('ledgerGroup.edit', ['ledgerGroup' => $ledgerGroup, 'parents' => $parents]);
     }
 

@@ -22,29 +22,28 @@
                 @csrf
                 @method('PUT')
                 <div class="control-group {{$errors->has('title') ? 'error' : ''}}">
-                    <label for="title" class="control-label">Title</label>
+                    {!! Form::label('title', 'Title', ['class' => 'control-label']) !!}
                     <div class="controls">
-                        <input type="text" name="title" id="title" value="{{$ledgerGroup->title}}" placeholder="Text input" class="input-xlarge">
+                        {!! Form::text('title', $ledgerGroup->title, array('class'=>'input-xlarge')) !!}
                         @if ($errors->has('title'))
                             <span class="help-inline">{{ $errors->first('title') }}</span>
                         @endif
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="ledger_groups_id" class="control-label">Basic</label>
+                    {!! Form::label('ledger_groups_id', 'Grupo', ['class' => 'control-label']) !!}
                     <div class="controls">
-                        <select name="ledger_groups_id" id="ledger_groups_id" class="select2-me input-xlarge">
-                            <option value="">Select...</option>
-                            @foreach ($parents as $value)
-                                <option value="{{$value->id}}" {{$value->id == $ledgerGroup->ledger_groups_id ? 'selected' : ''}}>{{$value->title}}</option>
-                            @endforeach
-                        </select>
+                        {{ Form::select('id', $parents, $ledgerGroup->ledger_group_id, [
+                            'id' => 'ledger_groups_id',
+                            'class' => 'select2-me input-xlarge'
+                            ])
+                        }}
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="description" class="control-label">Conteúdo</label>
+                    {!! Form::label('description', 'Conteúdo', ['class' => 'control-label']) !!}
                     <div class="controls">
-                        <textarea name="description" id="description" rows="5" class="input-block-level">{{$ledgerGroup->description}}</textarea>
+                        {!! Form::textarea('description', $ledgerGroup->description, array('class'=>'input-block-level', 'rows' => 5)) !!}
                     </div>
                 </div>
 

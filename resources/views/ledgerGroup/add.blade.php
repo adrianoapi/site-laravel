@@ -21,29 +21,28 @@
             <form action="{{route('ledgerGroups.store')}}" method="POST" class="form-horizontal form-bordered">
                 @csrf
                 <div class="control-group {{$errors->has('title') ? 'error' : ''}}">
-                    <label for="title" class="control-label">Title</label>
+                    {!! Form::label('title', 'Title', ['class' => 'control-label']) !!}
                     <div class="controls">
-                        <input type="text" name="title" id="title" placeholder="Text input" class="input-xlarge">
+                        {!! Form::text('title', NULL, array('class'=>'input-xlarge')) !!}
                         @if ($errors->has('title'))
                             <span class="help-inline">{{ $errors->first('title') }}</span>
                         @endif
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="ledger_groups_id" class="control-label">Basic</label>
+                    {!! Form::label('ledger_groups_id', 'Grupo', ['class' => 'control-label']) !!}
                     <div class="controls">
-                        <select name="ledger_groups_id" id="ledger_groups_id" class="select2-me input-xlarge">
-                            <option value="">Select...</option>
-                            @foreach ($parents as $value)
-                                <option value="{{$value->id}}">{{$value->title}}</option>
-                            @endforeach
-                        </select>
+                        {{ Form::select('id', $parents, NULL, [
+                            'id' => 'ledger_groups_id',
+                            'class' => 'select2-me input-xlarge'
+                            ])
+                        }}
                     </div>
                 </div>
                 <div class="control-group">
                     <label for="description" class="control-label">Conteúdo</label>
                     <div class="controls">
-                        <textarea name="description" id="description" rows="5" class="input-block-level"></textarea>
+                        {!! Form::textarea('description', NULL, array('class'=>'input-block-level', 'rows' => 5)) !!}
                     </div>
                 </div>
 

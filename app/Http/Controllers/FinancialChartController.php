@@ -113,7 +113,7 @@ class FinancialChartController extends Controller
 
     public function fixedCoastAjax()
     {
-        $fixedCost = \App\FixedCost::orderBy('entry_date', 'asc')->limit(5)->get();
+        $fixedCost = \App\FixedCost::where('status', true)->orderBy('entry_date', 'asc')->limit(5)->get();
 
         return response()->json([
             'body' => view('financialChart.fixedCost', ['fixedCost' => $fixedCost])->render()

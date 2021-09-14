@@ -34,8 +34,11 @@
                         @csrf
                         <div class="form-group  row"><label class="col-sm-2 col-form-label">Descrição</label>
                             <div class="col-sm-10">
-                                <input type="text" name="description" id="description" class="form-control" tabindex="1">
+                                {!! Form::text('description', NULL, array('id' => 'description', 'class'=>'form-control', 'tabindex' => '1')) !!}
                             </div>
+                            @if ($errors->has('description'))
+                                <span class="help-inline">{{ $errors->first('description') }}</span>
+                            @endif
                         </div>
                         <div class="hr-line-dashed"></div>
 
@@ -52,6 +55,9 @@
                                 endforeach;
                                 ?>
                                 </select>
+                                @if ($errors->has('ledger_group_id'))
+                                    <span class="help-inline">{{ $errors->first('ledger_group_id') }}</span>
+                                @endif
                             </div>
                         </div>
 
@@ -65,6 +71,9 @@
                                         <option value="{{$value->id}}">{{$value->title}}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('title'))
+                                    <span class="help-inline">{{ $errors->first('transition_type_id') }}</span>
+                                @endif
                             </div>
                         </div>
 
@@ -84,6 +93,9 @@
                         <div class="form-group row"><label class="col-sm-2 col-form-label">Valor</label>
                             <div class="col-sm-10">
                                 <input type="text" name="amount" id="amount" placeholder="0,00" class="form-control" tabindex="5">
+                                @if ($errors->has('title'))
+                                    <span class="help-inline">{{ $errors->first('amount') }}</span>
+                                @endif
                             </div>
                         </div>
 
@@ -93,11 +105,14 @@
                         <div class="form-group row"><label class="col-sm-2 col-form-label">Parcelas</label>
                             <div class="col-sm-10">
                                 <input type="text" name="installments" id="installments" value="" placeholder="0" class="form-control" tabindex="6">
+                                @if ($errors->has('title'))
+                                    <span class="help-inline">{{ $errors->first('installments') }}</span>
+                                @endif
                             </div>
                         </div>
-                  
+
                         <div class="hr-line-dashed"></div>
-          
+
                         <div class="form-group row">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a href="{{route('ledgerEntries.index')}}" class="btn btn-white btn-sm">Cancelar</a>
@@ -113,7 +128,7 @@
 
 
 </div>
-        
+
 @endsection
 
 @section('scripts')

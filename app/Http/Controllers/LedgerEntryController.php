@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LedgerEntry;
+use App\Http\Requests\StoreLedgerEntryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -69,10 +70,10 @@ class LedgerEntryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreLedgerEntryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreLedgerEntryRequest $request)
     {
         $ledgerEntry = new LedgerEntry();
         $ledgerEntry->user_id            = Auth::id();
